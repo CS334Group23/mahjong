@@ -40,6 +40,32 @@ public class Tile {
 			return id / 4;
 		}
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public int getRankIndex() {
+		return rankIndex;
+	}
+
+	public void setRankIndex(int rankIndex) {
+		this.rankIndex = rankIndex;
+	}
+	
+	
 	
 	
 }
