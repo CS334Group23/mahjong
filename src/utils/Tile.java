@@ -41,5 +41,13 @@ public class Tile {
 		}
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public Type getType() {
+		return type;
+	}
+	
 	
 }
