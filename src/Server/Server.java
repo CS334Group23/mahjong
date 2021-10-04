@@ -16,6 +16,7 @@ public class Server implements Peer{
 	public final static int CLIENT_NUM = 4;
 	
 	public Deque<Integer> cardlist;
+	public ArrayList<ArrayList<Integer>> client_hands;
 
 	public Server() {
 		cardlist = new LinkedList<>();
@@ -27,7 +28,7 @@ public class Server implements Peer{
 		for(int i = 0;i<CLIENT_NUM;i++) {
 			allClients.set(i, new Client());
 		}
-		ArrayList<ArrayList<Integer>> client_hands = deal();
+		client_hands = deal();
 		//send initial hands to the clients
 	}
 	
