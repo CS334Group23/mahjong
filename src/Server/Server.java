@@ -3,6 +3,7 @@ package Server;
 import utils.Message;
 import utils.Peer;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
@@ -15,8 +16,9 @@ public class Server implements Peer{
 	public final static int INITIAL_HAND = 13;
 	public final static int CLIENT_NUM = 4;
 	
-	public Deque<Integer> cardlist;
-	public ArrayList<ArrayList<Integer>> client_hands;
+	private Deque<Integer> cardlist;
+	private ArrayList<ArrayList<Integer>> client_hands;
+	private Operation op;
 
 	public Server() {
 		cardlist = new LinkedList<>();
@@ -66,8 +68,15 @@ public class Server implements Peer{
 
 	@Override
 	public void onRecv(Message msg) {
-		// TODO Auto-generated method stub
-		
+		try {
+			Class c = Class.forName(msg.getName());
+			Constructor constructor = c.getConstructor(); //this warning need to be solved later
+			op = (Operation)constructor.newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		op.operate(this, msg);
 	}
 	
 }
