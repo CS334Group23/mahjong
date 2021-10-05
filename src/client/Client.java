@@ -1,4 +1,4 @@
-package Client;
+package client;
 
 import utils.Message;
 import utils.Peer;

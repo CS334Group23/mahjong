@@ -1,4 +1,4 @@
-package Server;
+package server;
 
 import utils.Message;
 import utils.Peer;
@@ -10,7 +10,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import Client.Client;
+import client.Client;
 
 public class Server implements Peer{
 	public final static int INITIAL_HAND = 13;
