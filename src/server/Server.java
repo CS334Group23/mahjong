@@ -29,7 +29,7 @@ public class Server implements Peer{
 		ArrayList<Client> allClients = new ArrayList<Client>(CLIENT_NUM);
 		cardlist = shuffle();
 		for(int i = 0;i<CLIENT_NUM;i++) {
-			allClients.set(i, new Client());
+			allClients.add(new Client());
 		}
 		client_hands = deal();
 		//send initial hands to the clients
@@ -40,9 +40,9 @@ public class Server implements Peer{
 	
 	public Deque<Integer> shuffle() {
 		Deque<Integer> deque = new LinkedList<>();
-		ArrayList<Integer> IDs = new ArrayList<Integer>(144);
+		ArrayList<Integer> IDs = new ArrayList<Integer>();
 		for(int i=0;i<144;i++) {
-			IDs.set(i,i);
+			IDs.add(i);
 		}
 		Collections.shuffle(IDs);
 		for(Integer id : IDs) {
@@ -53,6 +53,9 @@ public class Server implements Peer{
 	
 	private ArrayList<ArrayList<Integer>> deal(){
 		ArrayList<ArrayList<Integer>> client_hands = new ArrayList<ArrayList<Integer>>(CLIENT_NUM);
+		for(int i=0; i<CLIENT_NUM; i++) {
+			client_hands.add(new ArrayList<Integer>());
+		}
 		for(int i=0;i<INITIAL_HAND*CLIENT_NUM;i++) {
 			int clientID = i%4;
 			client_hands.get(clientID).add(cardlist.pollFirst());
