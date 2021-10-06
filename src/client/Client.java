@@ -21,7 +21,7 @@ public class Client implements Peer{
 	@Override
 	public void onRecv(Message msg) {
 		try {
-			Class c = Class.forName(msg.getOperationName());
+			Class c = Class.forName("client."+msg.getOperationName()); //this hard code need to be solved later
 			Constructor constructor = c.getConstructor(); //this warning need to be solved later
 			op = (ClientOperation)constructor.newInstance();
 		} catch (Exception e) {
