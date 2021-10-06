@@ -2,7 +2,7 @@ package server;
 
 import utils.Message;
 
-public class BidOperation implements Operation{
+public class BidOperation implements ServerOperation{
 
 	@Override
 	public void operate(Server server, Message msg) {

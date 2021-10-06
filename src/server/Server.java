@@ -1,5 +1,6 @@
 package server;
 
+import utils.DealMsg;
 import utils.Message;
 import utils.Peer;
 
@@ -18,7 +19,7 @@ public class Server implements Peer{
 	
 	private Deque<Integer> cardlist;
 	private ArrayList<ArrayList<Integer>> client_hands;
-	private Operation op;
+	private ServerOperation op;
 
 	public Server() {
 		cardlist = new LinkedList<>();
@@ -32,6 +33,9 @@ public class Server implements Peer{
 		}
 		client_hands = deal();
 		//send initial hands to the clients
+		for(int i = 0;i<CLIENT_NUM;i++) {
+			send(allClients.get(i),new DealMsg(client_hands.get(i)));
+		}
 	}
 	
 	public Deque<Integer> shuffle() {
@@ -62,16 +66,15 @@ public class Server implements Peer{
 	
 	@Override
 	public void send(Peer target, Message msg) {
-		// TODO Auto-generated method stub
-		
+		target.onRecv(msg);
 	}
 
 	@Override
 	public void onRecv(Message msg) {
 		try {
-			Class c = Class.forName(msg.getName());
+			Class c = Class.forName(msg.getOperationName());
 			Constructor constructor = c.getConstructor(); //this warning need to be solved later
-			op = (Operation)constructor.newInstance();
+			op = (ServerOperation)constructor.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);

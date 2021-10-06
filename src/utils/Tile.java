@@ -14,6 +14,12 @@ public class Tile {
 	private Type type;
 	private int rankIndex;
 	
+	public Tile(int id) {
+		this.id = id;
+		this.type = idToType(id);
+		this.rankIndex = idToRankIndex(id);
+	}
+	
 	public static Type idToType(int id) {
 		int typeIndex;
 		if((typeIndex = id % SUIT_SIZE) < SUIT_NUM) {
@@ -47,6 +53,10 @@ public class Tile {
 
 	public Type getType() {
 		return type;
+	}
+	
+	public int getRankIndex() {
+		return rankIndex;
 	}
 	
 	
