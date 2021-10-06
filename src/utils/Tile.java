@@ -20,7 +20,7 @@ public class Tile {
 		this.rankIndex = idToRankIndex(id);
 	}
 	
-	public static Type idToType(int id) {
+	public static Type idToType(int id) { //later need to add exception handling
 		int typeIndex;
 		if((typeIndex = id % SUIT_SIZE) < SUIT_NUM) {
 			return Type.getType(typeIndex);
