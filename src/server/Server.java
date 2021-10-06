@@ -19,7 +19,7 @@ public class Server implements Peer{
 	
 	private Deque<Integer> cardlist;
 	private ArrayList<ArrayList<Integer>> client_hands;
-	private ServerOperation op;
+	private ServerOperation op; //need to later add exception handling
 
 	public Server() {
 		cardlist = new LinkedList<>();
