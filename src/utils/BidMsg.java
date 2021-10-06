@@ -1,11 +1,11 @@
 package utils;
 
 public class BidMsg implements Message{
-	private String name;
+	private String opName;
 	private int tileId;
 	
 	@Override
-	public String getName() {
-		return name;
+	public String getOperationName() {
+		return opName;
 	}
 }
