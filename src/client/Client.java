@@ -10,11 +10,16 @@ import utils.Tile;
 public class Client implements Peer{
 	private ClientOperation op; //need to later add exception handling
 	private ArrayList<Tile> wall;
+	private int id;
 	
-	public Client() {
+	public Client(int aid) {
+		this.id = aid;
 		this.wall = new ArrayList<>();
 	}
 	
+	public int getId() {
+		return id;
+	}
 	
 	@Override
 	public void send(Peer target, Message msg) {
