@@ -3,11 +3,11 @@ package utils;
 import java.util.ArrayList;
 
 public class DealMsg implements Message{
-	private ArrayList<Integer> initialcards;
+	private ArrayList<Integer> initCards;
 	private String opName;
 	
 	public DealMsg(ArrayList<Integer> cards) {
-		this.initialcards = cards;
+		this.initCards = cards;
 		this.opName = "DealOperation";
 	}
 	
@@ -16,4 +16,7 @@ public class DealMsg implements Message{
 		return opName;
 	}
 	
+	public ArrayList<Integer> getInitCards(){
+		return initCards;
+	}
 }
