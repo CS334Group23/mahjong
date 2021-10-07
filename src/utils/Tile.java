@@ -13,11 +13,13 @@ public class Tile {
 	private int id;
 	private Type type;
 	private int rankIndex;
+	private String name;
 	
 	public Tile(int id) {
 		this.id = id;
 		this.type = idToType(id);
 		this.rankIndex = idToRankIndex(id);
+		this.name = idToName(id);
 	}
 	
 	public static Type idToType(int id) { //later need to add exception handling
@@ -47,6 +49,10 @@ public class Tile {
 		}
 	}
 	
+	public static String idToName(int id) {
+		return "Dot One"; //need to implement this method later
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -57,6 +63,10 @@ public class Tile {
 	
 	public int getRankIndex() {
 		return rankIndex;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	

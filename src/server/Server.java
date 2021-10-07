@@ -1,6 +1,7 @@
 package server;
 
 import utils.DealMsg;
+import utils.DrawMsg;
 import utils.Message;
 import utils.Peer;
 
@@ -37,6 +38,11 @@ public class Server implements Peer{
 		for(int i = 0;i<CLIENT_NUM;i++) {
 			send(allClients.get(i),new DealMsg(client_hands.get(i)));
 		}
+	}
+	
+	public void startGame() {
+		int currentClientId = 0;
+		send(allClients.get(currentClientId),new DrawMsg(cardlist.pollFirst()));
 	}
 	
 	public Deque<Integer> shuffle() {
