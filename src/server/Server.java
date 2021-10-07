@@ -20,16 +20,17 @@ public class Server implements Peer{
 	private Deque<Integer> cardlist;
 	private ArrayList<ArrayList<Integer>> client_hands;
 	private ServerOperation op; //need to later add exception handling
+	private ArrayList<Client> allClients;
 
 	public Server() {
 		cardlist = new LinkedList<>();
 	}
 	
 	public void init() {
-		ArrayList<Client> allClients = new ArrayList<Client>(CLIENT_NUM);
+		allClients = new ArrayList<Client>(CLIENT_NUM);
 		cardlist = shuffle();
 		for(int i = 0;i<CLIENT_NUM;i++) {
-			allClients.add(new Client());
+			allClients.add(new Client(i));
 		}
 		client_hands = deal();
 		//send initial hands to the clients
@@ -65,6 +66,12 @@ public class Server implements Peer{
 		}
 
 		return client_hands;
+	}
+	
+	public void sendAll(Message msg) {
+		for(int i = 0;i<CLIENT_NUM;i++) {
+			send(allClients.get(i),msg);
+		}
 	}
 	
 	@Override
