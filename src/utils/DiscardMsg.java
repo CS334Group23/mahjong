@@ -1,11 +1,11 @@
 package utils;
 
-public class PlayMsg implements Message{
+public class DiscardMsg implements Message{
 	private String opName;
 	private int tileId;
-	public PlayMsg(int id) {
+	public DiscardMsg(int id) {
 		this.tileId = id;
-		this.opName = "PlayOperation";
+		this.opName = "DiscardOperation";
 	}
 	
 	@Override
