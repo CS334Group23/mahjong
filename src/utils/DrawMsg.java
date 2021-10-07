@@ -8,9 +8,13 @@ public class DrawMsg implements Message{
 		this.opName = "DrawOperation";
 	}
 	
+	public int getTileId() {
+		return tileId;
+	}
+	
 	@Override
 	public String getOperationName() {
 		return opName;
 	}
-
+	
 }

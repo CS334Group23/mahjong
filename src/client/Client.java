@@ -44,4 +44,12 @@ public class Client implements Peer{
 			wall.add(new Tile(id));
 		}
 	}
+	
+	public String getWall() {
+		String s = "";
+		for(Tile t:wall) {
+			s = s+(t.getName()+" ");
+		}
+		return s;
+	}
 }
