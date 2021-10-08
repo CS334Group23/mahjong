@@ -11,14 +11,20 @@ public class Client implements Peer{
 	private ClientOperation op; //need to later add exception handling
 	private ArrayList<Tile> wall;
 	private int id;
+	private Peer server;
 	
-	public Client(int aid) {
+	public Client(int aid, Peer server) {
 		this.id = aid;
 		this.wall = new ArrayList<>();
+		this.server = server;
 	}
 	
 	public int getId() {
 		return id;
+	}
+	
+	public Peer getServer() {
+		return server;
 	}
 	
 	@Override
