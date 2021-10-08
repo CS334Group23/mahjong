@@ -31,7 +31,7 @@ public class Server implements Peer{
 		allClients = new ArrayList<Client>(CLIENT_NUM);
 		cardlist = shuffle();
 		for(int i = 0;i<CLIENT_NUM;i++) {
-			allClients.add(new Client(i));
+			allClients.add(new Client(i,this));
 		}
 		client_hands = deal();
 		//send initial hands to the clients
