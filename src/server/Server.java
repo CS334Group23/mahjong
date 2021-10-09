@@ -87,8 +87,8 @@ public class Server implements Peer{
 
 	@Override
 	public void onRecv(Message msg) {
-		try {
-			Class c = Class.forName(msg.getOperationName());
+		try {// this part may be extracted later
+			Class c = Class.forName("server."+msg.getOperationName());
 			Constructor constructor = c.getConstructor(); //this warning need to be solved later
 			op = (ServerOperation)constructor.newInstance();
 		} catch (Exception e) {
