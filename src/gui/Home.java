@@ -23,7 +23,7 @@ public class Home extends JPanel {
 
 	public Home(){
 		try {
-			this.bgImage = ImageIO.read(new File("src/static/others/home.jpg"));
+			this.bgImage = ImageIO.read(new File("resource/static/others/home.jpg"));
 			this.setLayout(null);
 			
 			// TODO: set button image
