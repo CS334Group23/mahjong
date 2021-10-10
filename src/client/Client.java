@@ -51,11 +51,15 @@ public class Client implements Peer{
 		}
 	}
 	
-	public String getWall() {
+	public String printWall() {
 		String s = "";
 		for(Tile t:wall) {
 			s = s+(t.getName()+" ");
 		}
 		return s;
+	}
+	
+	public Tile getTile(int index) {
+		return wall.get(index);
 	}
 }
