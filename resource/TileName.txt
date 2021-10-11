@@ -1,0 +1,61 @@
+0:One Bamboo
+1:Two Bamboos
+2:Three Bamboos
+3:Four Bamboos
+4:Five Bamboos
+5:Six Bamboos
+6:Seven Bamboos			
+7:Eight Bamboos
+8:Nine Bamboos
+9:Invalid Tile
+10:One Character
+11:Two Characters
+12:Three Characters
+13:Four Characters
+14:Five Characters
+15:Six Characters
+16:Seven Characters			
+17:Eight Characters
+18:Nine Characters
+19:Invalid Tile
+20:One Dot
+21:Two Dots
+22:Three Dots
+23:Four Dots
+24:Five Dots
+25:Six Dots
+26:Seven Dots			
+27:Eight Dots
+28:Nine Dots
+29:Invalid Tile
+30:Red Dragon
+31:Green Dragon
+32:White Dragon
+33:Invalid Tile
+34:Invalid Tile
+35:Invalid Tile
+36:Invalid Tile
+37:Invalid Tile
+38:Invalid Tile
+39:Invalid Tile
+40:East Wind
+41:South Wind
+42:West Wind
+43:North Wind
+44:Invalid Tile
+45:Invalid Tile
+46:Invalid Tile
+47:Invalid Tile
+48:Invalid Tile
+49:Invalid Tile
+50:Spring
+51:Summer
+52:Autumn
+53:Winter
+54:Plum
+55:Orchid
+56:Bamboo
+57:Chrysanthemum
+58:Invalid Tile
+59:Invalid Tile
+

@@ -1,5 +1,6 @@
 package utils;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -8,12 +9,26 @@ class TileTest {
 
 	@Test
 	void testIdToRankIndex() {
-		fail("Not yet implemented");
+		Tile t = new Tile(1);
+		int idx = t.getRankIndex();
+		//System.out.println(idx);
+		assertEquals(0,idx);
 	}
 	
 	@Test
 	void testIdToType() {
-		fail("Not yet implemented");
+		Tile t = new Tile(1);
+		Type type = t.getType();
+		//System.out.println(type);
+		assertEquals(Type.BAMBOO,type);
 	}
 
+	@Test
+	void testIdToName() {
+		Tile t = new Tile(138);
+		String name = t.getName();
+		System.out.println(name);
+		assertEquals("Autumn",name);
+		
+	}
 }
