@@ -10,7 +10,7 @@ public class DrawOperation implements ClientOperation{
 	@Override
 	public void operate(Client client, Message msg) {
 		// TODO Auto-generated method stub
-		System.out.printf("Client%d draws card %s", client.getId(),Tile.idToName(((DrawMsg)msg).getTileId()));
+		System.out.printf("Client%d draws card %s\n", client.getId(),Tile.idToName(((DrawMsg)msg).getTileId()));
 		client.send(client.getServer(),new DiscardMsg(client.getId(),((DrawMsg)msg).getTileId()));
 	}
 

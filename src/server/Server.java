@@ -22,6 +22,7 @@ public class Server implements Peer{
 	private ArrayList<ArrayList<Integer>> client_hands;
 	private ServerOperation op; //need to later add exception handling
 	private ArrayList<Client> allClients;
+	private int nextClient;
 
 	public Server() {
 		cardlist = new LinkedList<>();
@@ -41,8 +42,8 @@ public class Server implements Peer{
 	}
 	
 	public void startGame() {
-		int currentClientId = 0;
-		send(allClients.get(currentClientId),new DrawMsg(cardlist.pollFirst()));
+		nextClient = 0;
+		sendNextDraw();
 	}
 	
 	public Deque<Integer> shuffle() {
@@ -78,6 +79,13 @@ public class Server implements Peer{
 		for(int i = 0;i<CLIENT_NUM;i++) {
 			send(allClients.get(i),msg);
 		}
+	}
+	
+	public void sendNextDraw() {
+		int sendTarget = nextClient; //use this to edit before send
+		nextClient ++;
+		nextClient %= CLIENT_NUM;
+		send(allClients.get(sendTarget),new DrawMsg(cardlist.pollFirst()));
 	}
 	
 	@Override
