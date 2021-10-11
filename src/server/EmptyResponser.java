@@ -6,8 +6,7 @@ public class EmptyResponser implements BidResponser{
 
 	@Override
 	public void response(Server server, BidMsg msg) {
-		// TODO Auto-generated method stub
-		
+		server.sendNextDraw();
 	}
 
 }
