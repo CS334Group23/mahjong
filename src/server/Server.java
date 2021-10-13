@@ -23,12 +23,14 @@ public class Server implements Peer{
 	private ServerOperation op; //need to later add exception handling
 	private ArrayList<Client> allClients;
 	private int nextClient;
+	private boolean gameStart = false;
 
 	public Server() {
 		cardlist = new LinkedList<>();
 	}
 	
 	public void init() {
+		gameStart = true;
 		allClients = new ArrayList<Client>(CLIENT_NUM);
 		cardlist = shuffle();
 		for(int i = 0;i<CLIENT_NUM;i++) {
@@ -85,7 +87,16 @@ public class Server implements Peer{
 		int sendTarget = nextClient; //use this to edit before send
 		nextClient ++;
 		nextClient %= CLIENT_NUM;
-		send(allClients.get(sendTarget),new DrawMsg(cardlist.pollFirst()));
+		if(!cardlist.isEmpty())
+			send(allClients.get(sendTarget),new DrawMsg(cardlist.pollFirst()));
+		else {
+			setGameOver();
+		}	
+	}
+	
+	public void setGameOver() {
+		System.out.println("Game Over!!!");
+		gameStart = false;
 	}
 	
 	@Override
