@@ -1,7 +1,7 @@
 package sequence;
 
 import java.util.ArrayList;
-import utils.Tile;
+
 import utils.Meld;
 import utils.Tile;
 
@@ -23,16 +23,18 @@ import utils.Tile;
 public class Combination {
 	private ArrayList<ArrayList<Meld>> combination_set = new ArrayList<>();
 	private ArrayList<Meld> Combi_temp = new ArrayList<>();
-	Checker checker=new Checker();
+	Checker checker=Checker.getInstance();
 	public Combination() {};
 	public int count=0;
-	public void getCombination(ArrayList<Tile> hand) {
+	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
 		checkcombination(hand);
 		if(Combi_temp.size()==0) {
 			System.out.println("null");
 		}
 			
 		else list(); 
+		
+		return combination_set;
 		
 	}
 	public boolean checkcombination(ArrayList<Tile> hand) {
