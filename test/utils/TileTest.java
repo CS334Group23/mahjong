@@ -27,8 +27,18 @@ class TileTest {
 	void testIdToName() {
 		Tile t = new Tile(138);
 		String name = t.getName();
-		System.out.println(name);
+		//System.out.println(name);
 		assertEquals("Autumn",name);
 		
+	}
+	
+	@Test
+	void testGetUrl() {
+		Tile t = new Tile(0);
+		String url = t.getUrl();
+		String name = t.getName();
+		System.out.println(name);
+		System.out.println(url);
+		assertEquals("resource/static/tiles/bamboo-1.png", url);
 	}
 }
