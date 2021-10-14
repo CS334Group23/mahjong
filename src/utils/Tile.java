@@ -19,6 +19,7 @@ public class Tile {
 	private Type type;
 	private int rankIndex;
 	private String name;
+	private String url;
 	
 	
 	public Tile(int id) {
@@ -27,6 +28,7 @@ public class Tile {
 		this.rankIndex = idToRankIndex(id);
 		nameMap = fileToMap(filename);
 		this.name = idToName(id);
+		this.setStringUrl();
 	}
 	
 	public static Type idToType(int id) { //later need to add exception handling
@@ -93,4 +95,14 @@ public class Tile {
         return map;
 	}
 	
+	private void setStringUrl() {
+		String temp = "resource/static/tiles/";
+		String tileType = this.type.toString().toLowerCase();
+		String tileIndex = new String().valueOf(this.rankIndex + 1);
+		this.url =  temp + tileType + "-" + tileIndex + ".png";
+	}
+	
+	public String getUrl() {
+		return url;
+	}
 }

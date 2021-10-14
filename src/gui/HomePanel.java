@@ -12,8 +12,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class Home extends JPanel {
+public class HomePanel extends JPanel {
 	private Image bgImage;
+	private JButton gameStart;
+	private JButton exit;
 	
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -21,21 +23,17 @@ public class Home extends JPanel {
 		g.drawImage(bgImage, 0, 0, this);
 	}
 
-	public Home(){
+	public HomePanel(){
 		try {
 			this.bgImage = ImageIO.read(new File("resource/static/others/home.jpg"));
 			this.setLayout(null);
 			
 			// TODO: set button image
-			JButton gameStart = new JButton("Game Start");
+			gameStart = new JButton("Game Start");
+			exit = new JButton("Exit");
 			gameStart.setBounds(250, 500, 150, 30);
-			gameStart.addActionListener((e) -> {
-				//TODO: game start
-				System.out.println("game start");
-			});
-			
-			JButton exit = new JButton("Exit");
 			exit.setBounds(600, 500, 150, 30);
+			
 			exit.addActionListener((e) -> {
 				System.exit(0);
 			});
@@ -43,7 +41,11 @@ public class Home extends JPanel {
 			this.add(gameStart);
 			this.add(exit);
 		} catch (IOException e) {
-			System.out.println("Cannot open home.jpg");
+			System.out.println("Cannot set HomePanel's background");
 		}
+	}
+	
+	public JButton getGameStartButton() {
+		return gameStart;
 	}
 }
