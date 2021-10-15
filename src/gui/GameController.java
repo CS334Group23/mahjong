@@ -1,12 +1,16 @@
 package gui;
 
 import java.awt.Container;
+import java.util.ArrayList;
+
 import javax.swing.*;
+
+import utils.Tile;
 
 public class GameController extends JFrame{
 	private static final long serialVersionUID = 1L;
-	public static final int FRAME_WIDTH = 1024;
-	public static final int FRAME_HEIGHT = 768;
+	public static final int FRAME_WIDTH = 1280;
+	public static final int FRAME_HEIGHT = 1024;
 	
 	private HomePanel homePanel;
 	private GamePanel gamePanel;
@@ -17,10 +21,6 @@ public class GameController extends JFrame{
 	
 	private GameController() {
 		super("Mahjong");
-		homePanel = new HomePanel();
-		gamePanel = new GamePanel();
-		
-		init();
 		
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);
 		setResizable(false);
@@ -29,7 +29,11 @@ public class GameController extends JFrame{
 		setVisible(true);
 	}
 	
-	private void init() {
+	// get initial hand from server, show homePanel
+	public void init(ArrayList<Tile> hand) {
+		homePanel = new HomePanel();
+		gamePanel = new GamePanel(hand);
+		
 		add(homePanel);
 		
 		// violate law of demeter, may need to change later
@@ -39,5 +43,9 @@ public class GameController extends JFrame{
 			repaint();
 			validate();
 		});
+	}
+
+	public void addNewTile(Tile tile) {
+		gamePanel.addNewTile(tile);
 	}
 }

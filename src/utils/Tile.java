@@ -13,6 +13,8 @@ public class Tile {
 	public final static int WIND_SIZE = 4 * 4;
 	public final static int FLOWER_SIZE = 1 * 8;
 	public final static int SUIT_NUM = 3;
+	public final static int TILE_WIDTH = 80;
+	public final static int TILE_HEIGHT = 80;
 	private static Map<Integer, String> nameMap = new HashMap<Integer, String>();
 	private final String filename = "resource/TileName.txt";
 	private int id;
