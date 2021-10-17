@@ -35,6 +35,10 @@ public class Meld {
 		
 		
 	}
+	public int compareTo(Meld meld) {
+
+		return this.first.compareTo(meld.first);
+	}
 	public Tile getFirst() {
 		return first;
 		
