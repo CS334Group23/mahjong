@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public enum Type{
-	BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FLOWER(5, 136), WIND(4, 120);
+	BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FACEDOWN(6, 144), FLOWER(5, 136), WIND(4, 120);
 	
 	private final int typeIndex;
 	private final int startId;

@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Container;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -22,6 +24,7 @@ public class GameController extends JFrame{
 	private GameController() {
 		super("Mahjong");
 		
+		pack();
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -31,8 +34,9 @@ public class GameController extends JFrame{
 	
 	// get initial hand from server, show homePanel
 	public void init(ArrayList<Tile> hand) {
+		ArrayList<User> users = userInit(hand);
 		homePanel = new HomePanel();
-		gamePanel = new GamePanel(hand);
+		gamePanel = new GamePanel(users);
 		
 		add(homePanel);
 		
@@ -43,9 +47,22 @@ public class GameController extends JFrame{
 			repaint();
 			validate();
 		});
+		
+		// for testing coordinate, will be deleted later
+		gamePanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println(e.getX() + "," + e.getY());
+			}
+		});
 	}
-
-	public void addNewTile(Tile tile) {
-		gamePanel.addNewTile(tile);
+	
+	private ArrayList<User> userInit(ArrayList<Tile> hand){
+		ArrayList<User> users = new ArrayList<>();
+		users.add(new User(1, hand));
+		users.add(new User(2, null));
+		users.add(new User(3, null));
+		users.add(new User(4, null));
+		return users;
 	}
 }
