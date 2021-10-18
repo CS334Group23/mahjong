@@ -14,10 +14,14 @@ public class Tile {
 	public final static int FLOWER_SIZE = 1 * 8;
 	public final static int FACEDOWN_SIZE = 1;
 	public final static int SUIT_NUM = 3;
-	public final static int TILE_WIDTH = 120;
-	public final static int TILE_HEIGHT = 120;
-	public final static int TILE_WIDTH_OTHERS = 90;
-	public final static int TILE_HEIGHT_OTHERS = 90;
+	public final static int TILE_WIDTH_USER = 120;
+	public final static int TILE_HEIGHT_USER = 120;
+	public final static int TILE_WIDTH_AI = 90;
+	public final static int TILE_HEIGHT_AI = 90;
+	public final static int TILE_WIDTH_MELD = 90;
+	public final static int TILE_HEIGHT_MELD = 90;
+	public final static int TILE_WIDTH_BOARD = 70;
+	public final static int TILE_HEIGHT_BOARD = 70;
 	
 	private static Map<Integer, String> nameMap = new HashMap<Integer, String>();
 	private final String filename = "resource/TileName.txt";
@@ -113,5 +117,9 @@ public class Tile {
 	
 	public String getUrl() {
 		return url;
+	}
+	
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

@@ -23,18 +23,23 @@ public class GameControllerTest {
 	@Test
 	public void testGameController2() {
 		GameController gameController = GameController.getInstance();
-		ArrayList<Tile> hand = new ArrayList<>();
+		
+		ArrayList<ArrayList<Tile>> hands = new ArrayList<>();
 		
 		Random rand = new Random();
 		int randomNum;
 		
-		for(int i = 0; i < 13; i++) {
-			randomNum = rand.nextInt(120);
-			hand.add(new Tile(randomNum));
+		for(int i = 0; i < 4; i++) {
+			ArrayList<Tile> hand = new ArrayList<>();
+			for(int j = 0; j < 13; j++) {
+				randomNum = rand.nextInt(120);
+				hand.add(new Tile(randomNum));
+			}
+			hand.sort(new idComparator());
+			hands.add(hand);
 		}
 		
-		hand.sort(new idComparator());
-		gameController.init(hand);
+		gameController.init(hands);
 		
 		while(true) {
 			gameController.setVisible(true);

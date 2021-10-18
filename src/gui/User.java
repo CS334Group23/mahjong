@@ -2,106 +2,82 @@ package gui;
 
 import java.util.ArrayList;
 
+import utils.ImageUtils;
 import utils.Tile;
 
 public class User {
 	private int userId;
 	private boolean isRealUser;
 	
-	private Point handPoint;
-	private Point meldPoint;
-	private Point boardPoint;
-	
-	private ArrayList<Tile> hand;
-	private ArrayList<Tile> meld;
+	private Deck handDeck;
+	private Deck meldDeck;
+	private Deck boardDeck;
 	
 	public User(int id, ArrayList<Tile> hand) {
-		this.userId = id;
-		this.hand = hand;
-		this.meld = new ArrayList<>();
-		this.meldPoint = new Point();
-		this.isRealUser = false;
+		userId = id;
+		isRealUser = false;
 		
-		// TODO: set coordinate of board point
 		switch (id) {
-			case 1 : // real user
-				isRealUser = true;
-				handPoint = new Point(90, 800);
-				boardPoint = new Point();
-				break;
-			case 2 : 
-				handPoint = new Point(900, 900);
-				boardPoint = new Point();
-				break;
-			case 3 : 
-				handPoint = new Point(250, 50);
-				boardPoint = new Point();
-				break;
-			case 4 : 
-				handPoint = new Point(30, 60);
-				boardPoint = new Point();
+		case 0 : // real user
+			isRealUser = true;
+			handDeck = new Deck(hand, new Point(90, 800), Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
+			boardDeck = new Deck(new Point(), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
+			break;
+		case 1 : // AI 1
+			changeTileImgToFaceDown(hand); // AI's tile show facedown only
+			handDeck = new Deck(hand, new Point(850, 850), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
+			meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
+			boardDeck = new Deck(new Point(), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
+			break;
+		case 2 : // AI 2
+			changeTileImgToFaceDown(hand);
+			handDeck = new Deck(hand, new Point(250, 50), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
+			meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
+			boardDeck = new Deck(new Point(), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
+			break;
+		case 3 : // AI 3
+			changeTileImgToFaceDown(hand); 
+			handDeck = new Deck(hand, new Point(20, 60), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
+			meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
+			boardDeck = new Deck(new Point(), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 		}
-		
-		if(hand == null) {
-			this.hand = new ArrayList<>();
-			for(int i = 0; i < 13; i++) {
-				this.hand.add(new Tile(144));
-			}
-		}
 	}
-
-	public ArrayList<Tile> getHand() {
-		return hand;
-	}
-
-	public void setHand(ArrayList<Tile> hand) {
-		this.hand = hand;
-	}
-
-	public ArrayList<Tile> getMeld() {
-		return meld;
-	}
-
-	public void setMeld(ArrayList<Tile> meld) {
-		this.meld = meld;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public Point getHandPoint() {
-		return handPoint;
-	}
-
-	public void setHandPoint(Point handPoint) {
-		this.handPoint = handPoint;
-	}
-
-	public Point getMeldPoint() {
-		return meldPoint;
-	}
-
-	public void setMeldPoint(Point meldPoint) {
-		this.meldPoint = meldPoint;
-	}
-
-	public Point getBoardPoint() {
-		return boardPoint;
-	}
-
-	public void setBoardPoint(Point boardPoint) {
-		this.boardPoint = boardPoint;
+	
+	private void changeTileImgToFaceDown(ArrayList<Tile> hand) {
+		for(Tile tile : hand) 
+			ImageUtils.changeTileImgToFaceDown(tile);
 	}
 
 	public boolean isRealUser() {
 		return isRealUser;
 	}
+
+	public Deck getHandDeck() {
+		return handDeck;
+	}
+
+	public Deck getMeldDeck() {
+		return meldDeck;
+	}
+
+	public Deck getBoardDeck() {
+		return boardDeck;
+	}
 	
+	public ArrayList<Tile> getHand() {
+		return handDeck.getTiles();
+	}
 	
+	public ArrayList<Tile> getMeld() {
+		return meldDeck.getTiles();
+	}
 	
+	public ArrayList<Tile> getBoard() {
+		return boardDeck.getTiles();
+	}
+
+	public int getUserId() {
+		return userId;
+	}
 }

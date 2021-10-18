@@ -32,9 +32,9 @@ public class GameController extends JFrame{
 		setVisible(true);
 	}
 	
-	// get initial hand from server, show homePanel
-	public void init(ArrayList<Tile> hand) {
-		ArrayList<User> users = userInit(hand);
+	// get 4 sets of hands from server, initialize
+	public void init(ArrayList<ArrayList<Tile>> hands) {
+		ArrayList<User> users = userInit(hands);
 		homePanel = new HomePanel();
 		gamePanel = new GamePanel(users);
 		
@@ -57,12 +57,17 @@ public class GameController extends JFrame{
 		});
 	}
 	
-	private ArrayList<User> userInit(ArrayList<Tile> hand){
+	private ArrayList<User> userInit(ArrayList<ArrayList<Tile>> hands){
 		ArrayList<User> users = new ArrayList<>();
-		users.add(new User(1, hand));
-		users.add(new User(2, null));
-		users.add(new User(3, null));
-		users.add(new User(4, null));
+		
+		for(int i = 0; i < hands.size(); i++) {
+			users.add(new User(i, hands.get(i)));
+		}
+		
 		return users;
+	}
+	
+	public void addNewTile(int userId, Tile tile) {
+		// TODO: get user, add tile
 	}
 }

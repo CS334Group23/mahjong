@@ -27,6 +27,7 @@ public class GamePanel extends JPanel{
 	
 	public GamePanel(ArrayList<User> users){
 		try {
+			this.users = users;
 			bgImage = ImageIO.read(new File("resource/static/others/table.jpg"));
 			setLayout(null);
 		
