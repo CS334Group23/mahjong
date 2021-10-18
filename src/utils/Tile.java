@@ -93,6 +93,17 @@ public class Tile {
 	public String getName() {
 		return name;
 	}
+	public int compareTo(Tile tile) {
+
+		if(this.id<tile.id) {
+			return -1;
+			
+		}
+		if(this.id>tile.id) {
+			return 1;
+		}
+		return 0;
+	}
 	
 	public Map<Integer,String> fileToMap(String filename){
 		String delimiter = ":";
