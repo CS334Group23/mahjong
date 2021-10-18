@@ -1,8 +1,9 @@
 package sequence;
 
 import java.util.ArrayList;
-import utils.Tile;
-import utils.Meld;
+
+import utils.sorting;
+import utils.*;
 import utils.Tile;
 
 //The logic is to find out all the combination set to check the score, count the highest.
@@ -23,16 +24,19 @@ import utils.Tile;
 public class Combination {
 	private ArrayList<ArrayList<Meld>> combination_set = new ArrayList<>();
 	private ArrayList<Meld> Combi_temp = new ArrayList<>();
-	Checker checker=new Checker();
+	Checker checker=Checker.getInstance();
 	public Combination() {};
 	public int count=0;
-	public void getCombination(ArrayList<Tile> hand) {
+	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
+		sorting.sortTile(hand);
 		checkcombination(hand);
 		if(Combi_temp.size()==0) {
-			System.out.println("null");
+			//pass
 		}
 			
 		else list(); 
+		
+		return combination_set;
 		
 	}
 	public boolean checkcombination(ArrayList<Tile> hand) {
@@ -65,7 +69,15 @@ public class Combination {
 				if(checker.CheckChow(hand.get(i),hand.get(i+1),hand.get(i+2))||
 						checker.CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
 					//System.out.println(hand.get(i).getId()+" "+hand.get(i+1).getId()+" "+hand.get(i+2).getId());
-					Meld Mtemp = new Meld(hand.get(i),hand.get(i+1),hand.get(i+2),null);
+					Meld Mtemp= new Meld(hand.get(i),hand.get(i+1),hand.get(i+2),null);
+					/*
+					if(checker.CheckChow(hand.get(i),hand.get(i+1),hand.get(i+2))) {
+						 Mtemp = new Chow(hand.get(i),hand.get(i+1),hand.get(i+2),null);
+						
+					}else {
+						 Mtemp = new Pong(hand.get(i),hand.get(i+1),hand.get(i+2),null);
+					}
+					*/
 					Combi_temp.add(Mtemp);
 					hand.remove(i);
 					hand.remove(i);
@@ -93,7 +105,7 @@ public class Combination {
 			
 			return false;
 		}
-		public void list() {
+		public void list() {//debug and also use for result
 			
 			for(ArrayList<Meld> m: combination_set) {
 				for(Meld m2: m) {

@@ -5,24 +5,27 @@ public class Meld {
 	private Tile second;
 	private Tile third;
 	private Tile forth;
-	private int type; // just for temp
+	private int comb_type; // just for temp
 	public Meld(Tile a,Tile b, Tile c, Tile d) {
 		if(c==null)
 		{
-			type=0; // eye
+			comb_type=0; // eye
 			first=a;
 			second=b;
 			
 		}else if (d==null) {
-			
-			type=1; //pong or chow
+			if(c.getId()-a.getId()>3) {
+				comb_type=1;
+				
+			}else
+				comb_type=2; //pong or chow
 			first=a;
 			second=b;
 			third=c;
 		}
 		else {
 			
-			type=2;//kong 
+			comb_type=3;//kong 
 			first=a;
 			second=b;
 			third=c;
@@ -31,6 +34,10 @@ public class Meld {
 		}
 		
 		
+	}
+	public int compareTo(Meld meld) {
+
+		return this.first.compareTo(meld.first);
 	}
 	public Tile getFirst() {
 		return first;
@@ -47,5 +54,9 @@ public class Meld {
 	public Tile getForth() {
 		return forth;
 		
+	}
+	public int getcomb_type() {
+		
+		return comb_type;
 	}
 }
