@@ -1,8 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -12,9 +9,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import utils.Tile;
-
 public class HomePanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Image bgImage;
 	private JButton gameStart;
 	private JButton exit;
@@ -39,7 +38,7 @@ public class HomePanel extends JPanel {
 	}
 	
 	private void setScene() {
-		// TODO: set button image
+		// TODO: set button image, add game logo
 		gameStart = new JButton("Game Start");
 		exit = new JButton("Exit");
 		

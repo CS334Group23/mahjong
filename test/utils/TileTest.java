@@ -34,7 +34,7 @@ class TileTest {
 	
 	@Test
 	void testGetUrl() {
-		Tile t = new Tile(0);
+		Tile t = new Tile(144);
 		String url = t.getUrl();
 		String name = t.getName();
 		System.out.println(name);
