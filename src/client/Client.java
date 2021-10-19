@@ -2,6 +2,8 @@ package client;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import utils.Message;
 import utils.Peer;
@@ -51,11 +53,34 @@ public class Client implements Peer{
 		}
 	}
 	
-	public String getWall() {
+	public String printWall() {
 		String s = "";
 		for(Tile t:wall) {
-			s = s+(t.getName()+" ");
+			s = s+(t.getChnName()+" /");
 		}
 		return s;
+	}
+
+	public Tile getTile(int index) {
+		return wall.get(index);
+	}
+	
+	public void addTile(int id) {
+		wall.add(new Tile(id));
+	}
+	
+	public void discardTile(int index) {
+		wall.remove(index);
+		reSort();
+	}
+	
+	public void reSort() {
+		Collections.sort(wall,new Comparator<Tile>() {
+
+			@Override
+			public int compare(Tile o1, Tile o2) {
+				return o1.getId()-o2.getId();
+			}
+		});
 	}
 }
