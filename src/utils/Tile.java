@@ -23,12 +23,15 @@ public class Tile {
 	public final static int TILE_WIDTH_BOARD = 70;
 	public final static int TILE_HEIGHT_BOARD = 70;
 	
-	private static Map<Integer, String> nameMap = new HashMap<Integer, String>();
-	private final String filename = "resource/TileName.txt";
+	private static Map<Integer, String> engNameMap = new HashMap<Integer, String>();
+	private static Map<Integer, String> chnNameMap = new HashMap<Integer, String>();
+	private final String engFilename = "resource/TileName.txt";
+	private final String chnFilename = "resource/TileName_CHN.txt";
 	private int id;
 	private Type type;
 	private int rankIndex;
 	private String name;
+	private String chnName;
 	private String url;
 	
 	
@@ -36,8 +39,10 @@ public class Tile {
 		this.id = id;
 		this.type = idToType(id);
 		this.rankIndex = idToRankIndex(id);
-		nameMap = fileToMap(filename);
+		engNameMap = fileToMap(engFilename);
+		chnNameMap = fileToMap(chnFilename);
 		this.name = idToName(id);
+		this.chnName = idToChnName(id);
 		this.setStringUrl();
 	}
 	
@@ -75,7 +80,14 @@ public class Tile {
 		Type type = idToType(id);
 		int rankIndex = idToRankIndex(id);
 		int nameIndex = type.getTypeIndex()*10+rankIndex;
-		return nameMap.get(nameIndex);
+		return engNameMap.get(nameIndex);
+	}
+	
+	public static String idToChnName(int id) {
+		Type type = idToType(id);
+		int rankIndex = idToRankIndex(id);
+		int nameIndex = type.getTypeIndex()*10+rankIndex;
+		return chnNameMap.get(nameIndex);
 	}
 	
 	public int getId() {
@@ -93,6 +105,11 @@ public class Tile {
 	public String getName() {
 		return name;
 	}
+	
+	public String getChnName() {
+		return chnName;
+	}
+	
 	public int compareTo(Tile tile) {
 
 		if(this.id<tile.id) {

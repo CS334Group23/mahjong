@@ -1,0 +1,61 @@
+0:幺鸡
+1:二条
+2:三条
+3:四条
+4:五条
+5:六条
+6:七条
+7:八条
+8:九条
+9:Invalid Tile
+10:一万
+11:二万
+12:三万
+13:四万
+14:五万
+15:六万
+16:七万
+17:八万
+18:九万
+19:Invalid Tile
+20:一筒
+21:二筒
+22:三筒
+23:四筒
+24:五筒
+25:六筒
+26:七筒
+27:八筒
+28:九筒
+29:Invalid Tile
+30:红中
+31:发财
+32:白板
+33:Invalid Tile
+34:Invalid Tile
+35:Invalid Tile
+36:Invalid Tile
+37:Invalid Tile
+38:Invalid Tile
+39:Invalid Tile
+40:东风
+41:南风
+42:西风
+43:北风
+44:Invalid Tile
+45:Invalid Tile
+46:Invalid Tile
+47:Invalid Tile
+48:Invalid Tile
+49:Invalid Tile
+50:春
+51:夏
+52:秋
+53:冬
+54:梅
+55:兰
+56:竹
+57:菊
+58:Invalid Tile
+59:Invalid Tile
+60:Facedown
