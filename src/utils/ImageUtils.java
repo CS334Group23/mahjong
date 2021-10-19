@@ -1,5 +1,8 @@
 package utils;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,7 +35,7 @@ public class ImageUtils {
 	
 				if(user.isRealUser()) { // user
 					for(Tile tile : hand) {
-						jl = getTileLabelBySize(tile, tileWidth, tileHeight);
+						jl = getTileLabelBySize(tile, tileWidth, tileHeight, user.getUserId());
 						
 						final JLabel tileLabel = jl;
 						jl.addMouseListener(new MouseAdapter() {
@@ -51,12 +54,12 @@ public class ImageUtils {
 					}
 				} else { // AI
 					for(Tile tile : hand) {
-						jl = getTileLabelBySize(tile, tileWidth, tileHeight);
+						jl = getTileLabelBySize(tile, tileWidth, tileHeight, user.getUserId());
 						
 						jl.setBounds(point.x, point.y, Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
 						panel.add(jl);
 						
-						if(user.getUserId()%2 == 1) {
+						if(user.getUserId()%2 == 0) {
 							point.setX(point.x + 56);
 						} else {
 							point.setY(point.y + 56);
@@ -71,14 +74,27 @@ public class ImageUtils {
 	
 	}
 	
-	private static JLabel getTileLabelBySize(Tile tile, int width, int height) throws IOException {	
+	private static JLabel getTileLabelBySize(Tile tile, int width, int height, int orientation) throws IOException {	
 		Image tempTileImg = ImageIO.read(new File(tile.getUrl()));
 		Image tileImg;
 		
 		tileImg = tempTileImg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 	
 		ImageIcon tileImgIcon = new ImageIcon(tileImg);
-		JLabel jl = new JLabel(tileImgIcon);
+		JLabel jl = new JLabel() {
+			@Override
+			public Dimension getPreferredSize() {
+                return new Dimension(width, height);
+            }
+
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.rotate(Math.PI*orientation / 2, width / 2, height / 2);
+                g2.drawImage(tileImg, 0, 0, null);
+            }
+		};
 		
 		return jl;
 	}
