@@ -1,4 +1,4 @@
-package utils;
+package gui;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -15,9 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gui.Deck;
-import gui.Point;
-import gui.User;
+import utils.Tile;
 
 public class ImageUtils {
 	

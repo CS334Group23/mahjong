@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import utils.ImageUtils;
-
 public class GamePanel extends JPanel{	
 	/**
 	 * 

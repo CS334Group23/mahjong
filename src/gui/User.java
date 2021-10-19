@@ -2,7 +2,6 @@ package gui;
 
 import java.util.ArrayList;
 
-import utils.ImageUtils;
 import utils.Tile;
 
 public class User {
