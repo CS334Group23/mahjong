@@ -21,7 +21,7 @@ public class GameControllerTest {
 //	}
 	
 	@Test
-	public void testGameController2() {
+	public void testGameController2() throws InterruptedException {
 		GameController gameController = GameController.getInstance();
 		
 		ArrayList<ArrayList<Tile>> hands = new ArrayList<>();
@@ -41,8 +41,9 @@ public class GameControllerTest {
 		
 		gameController.init(hands);
 		
-		while(true) {
-			gameController.setVisible(true);
+		gameController.setVisible(true);
+		synchronized(this) {
+			this.wait();
 		}
 	}
 	

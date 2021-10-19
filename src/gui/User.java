@@ -2,7 +2,6 @@ package gui;
 
 import java.util.ArrayList;
 
-import utils.ImageUtils;
 import utils.Tile;
 
 public class User {
@@ -26,7 +25,7 @@ public class User {
 			break;
 		case 1 : // AI 1
 			changeTileImgToFaceDown(hand); // AI's tile show facedown only
-			handDeck = new Deck(hand, new Point(850, 850), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
+			handDeck = new Deck(hand, new Point(1100, 60), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
 			meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 			boardDeck = new Deck(new Point(), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 			break;
