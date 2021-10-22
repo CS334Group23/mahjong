@@ -4,7 +4,7 @@
 3:Four Bamboos
 4:Five Bamboos
 5:Six Bamboos
-6:Seven Bamboos			
+6:Seven Bamboos
 7:Eight Bamboos
 8:Nine Bamboos
 9:Invalid Tile
@@ -14,7 +14,7 @@
 13:Four Characters
 14:Five Characters
 15:Six Characters
-16:Seven Characters			
+16:Seven Characters
 17:Eight Characters
 18:Nine Characters
 19:Invalid Tile
@@ -24,7 +24,7 @@
 23:Four Dots
 24:Five Dots
 25:Six Dots
-26:Seven Dots			
+26:Seven Dots
 27:Eight Dots
 28:Nine Dots
 29:Invalid Tile
@@ -58,4 +58,4 @@
 57:Chrysanthemum
 58:Invalid Tile
 59:Invalid Tile
-
+60:Facedown

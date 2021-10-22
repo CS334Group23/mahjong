@@ -21,5 +21,9 @@ public class DiscardMsg implements Message{
 	public int getSenderId() {
 		return senderId;
 	}
+	
+	public int getTileId() {
+		return tileId;
+	}
 
 }

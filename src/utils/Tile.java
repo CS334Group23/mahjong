@@ -12,21 +12,38 @@ public class Tile {
 	public final static int DRAGON_SIZE = 4 * 3;
 	public final static int WIND_SIZE = 4 * 4;
 	public final static int FLOWER_SIZE = 1 * 8;
+	public final static int FACEDOWN_SIZE = 1;
 	public final static int SUIT_NUM = 3;
-	private static Map<Integer, String> nameMap = new HashMap<Integer, String>();
-	private final String filename = "resource/TileName.txt";
+	public final static int TILE_WIDTH_USER = 120;
+	public final static int TILE_HEIGHT_USER = 120;
+	public final static int TILE_WIDTH_AI = 90;
+	public final static int TILE_HEIGHT_AI = 90;
+	public final static int TILE_WIDTH_MELD = 90;
+	public final static int TILE_HEIGHT_MELD = 90;
+	public final static int TILE_WIDTH_BOARD = 70;
+	public final static int TILE_HEIGHT_BOARD = 70;
+	
+	private static Map<Integer, String> engNameMap = new HashMap<Integer, String>();
+	private static Map<Integer, String> chnNameMap = new HashMap<Integer, String>();
+	private final String engFilename = "resource/TileName.txt";
+	private final String chnFilename = "resource/TileName_CHN.txt";
 	private int id;
 	private Type type;
 	private int rankIndex;
 	private String name;
+	private String chnName;
+	private String url;
 	
 	
 	public Tile(int id) {
 		this.id = id;
 		this.type = idToType(id);
 		this.rankIndex = idToRankIndex(id);
-		nameMap = fileToMap(filename);
+		engNameMap = fileToMap(engFilename);
+		chnNameMap = fileToMap(chnFilename);
 		this.name = idToName(id);
+		this.chnName = idToChnName(id);
+		this.setStringUrl();
 	}
 	
 	public static Type idToType(int id) { //later need to add exception handling
@@ -40,15 +57,18 @@ public class Tile {
 		else if((id -= DRAGON_SIZE) < WIND_SIZE) {
 			return Type.WIND;
 		}
-		else {
+		else if((id -= WIND_SIZE) < FLOWER_SIZE) {
 			return Type.FLOWER;
+		}
+		else {
+			return Type.FACEDOWN;
 		}
 	}
 	
 	public static int idToRankIndex(int id) {
 		Type type = idToType(id);
 		id -= type.getStartId();
-		if(type == Type.FLOWER) {
+		if(type == Type.FLOWER || type == Type.FACEDOWN) {
 			return id;
 		}
 		else {
@@ -60,7 +80,14 @@ public class Tile {
 		Type type = idToType(id);
 		int rankIndex = idToRankIndex(id);
 		int nameIndex = type.getTypeIndex()*10+rankIndex;
-		return nameMap.get(nameIndex);
+		return engNameMap.get(nameIndex);
+	}
+	
+	public static String idToChnName(int id) {
+		Type type = idToType(id);
+		int rankIndex = idToRankIndex(id);
+		int nameIndex = type.getTypeIndex()*10+rankIndex;
+		return chnNameMap.get(nameIndex);
 	}
 	
 	public int getId() {
@@ -78,6 +105,11 @@ public class Tile {
 	public String getName() {
 		return name;
 	}
+	
+	public String getChnName() {
+		return chnName;
+	}
+	
 	public int compareTo(Tile tile) {
 
 		if(this.id<tile.id) {
@@ -104,4 +136,18 @@ public class Tile {
         return map;
 	}
 	
+	private void setStringUrl() {
+		String temp = "resource/static/tiles/";
+		String tileType = this.type.toString().toLowerCase();
+		String tileIndex = String.valueOf(this.rankIndex + 1);
+		this.url =  temp + tileType + "-" + tileIndex + ".png";
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+	
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }

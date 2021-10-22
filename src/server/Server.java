@@ -17,6 +17,8 @@ import client.Client;
 public class Server implements Peer{
 	public final static int INITIAL_HAND = 13;
 	public final static int CLIENT_NUM = 4;
+	public final static int TOTAL_TILES = 144;
+	public final static int TOTAL_TILES_WITHOUT_FLOWERS = 136;
 	
 	private Deque<Integer> cardlist;
 	private ArrayList<ArrayList<Integer>> client_hands;
@@ -51,7 +53,7 @@ public class Server implements Peer{
 	public Deque<Integer> shuffle() {
 		Deque<Integer> deque = new LinkedList<>();
 		ArrayList<Integer> IDs = new ArrayList<Integer>();
-		for(int i=0;i<144;i++) {
+		for(int i=0;i<TOTAL_TILES_WITHOUT_FLOWERS;i++) {
 			IDs.add(i);
 		}
 		Collections.shuffle(IDs);
