@@ -1,4 +1,4 @@
-package sequence;
+package  sequence;
 
 import java.util.ArrayList;
 import java.util.*;

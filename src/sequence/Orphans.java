@@ -1,4 +1,4 @@
-package sequence;
+package  sequence;
 
 public class Orphans extends Sequence{
 	public int getScore() {

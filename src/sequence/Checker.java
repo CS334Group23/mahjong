@@ -64,7 +64,7 @@ public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
 				Sequence mixed_one_suit=new Mixed_One_Suit();
 				temp_sequence.add(mixed_one_suit);
 			}
-			if(CheckQYS(winning_hand)) {
+			if(CheckQYS(winning_hand) ) {
 				Sequence all_one_suit=new All_One_Suit();
 				temp_sequence.add(all_one_suit);
 			}

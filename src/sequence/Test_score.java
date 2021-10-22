@@ -107,7 +107,7 @@ public class Test_score{
 				score+=s.getScore();
 				
 			}
-			System.out.println(score);
+			 System.out.println(score);
 			assertEquals(11, score);
 		
 	}

@@ -1,6 +1,6 @@
 package utils;
 import java.util.ArrayList;
-public class BinarySearch {
+public class  BinarySearch {
 	
 	   public static int FindPosition(ArrayList<Tile> hand, Tile a) {
 
