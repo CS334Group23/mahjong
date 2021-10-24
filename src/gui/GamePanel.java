@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import utils.Tile;
+
 public class GamePanel extends JPanel{	
 	/**
 	 * 
@@ -23,16 +25,42 @@ public class GamePanel extends JPanel{
 		g.drawImage(bgImage, 0, 0, GameController.FRAME_WIDTH, GameController.FRAME_HEIGHT, this);
 	}
 	
-	public GamePanel(ArrayList<User> users){
+	public GamePanel(ArrayList<ArrayList<Tile>> hands){
 		try {
-			this.users = users;
+			users = new ArrayList<>();
+			
+			userInit(hands);
 			bgImage = ImageIO.read(new File("resource/static/others/table.jpg"));
 			setLayout(null);
 		
-			ImageUtils.handInit(this, users);
+			handInit();
 			
 		} catch (IOException e) {
 			System.out.println("Cannot set GamePanel's background");
 		}
 	}
+	
+	private void userInit(ArrayList<ArrayList<Tile>> hands){
+		User user_bottom = new UserBottom(hands.get(User.USER_BOTTOM));
+		User user_right = new UserRight(hands.get(User.USER_RIGHT));
+		User user_top = new UserTop(hands.get(User.USER_TOP));
+		User user_left = new UserLeft(hands.get(User.USER_LEFT));
+		
+		users.add(user_bottom);
+		users.add(user_right);
+		users.add(user_top);
+		users.add(user_left);
+	}
+	
+	private void handInit() {
+		for(User user : users) {
+			user.handInit(this);
+		}
+	}
+
+	public void addNewTile(int userId, Tile tile) {
+		
+		
+	}
+
 }
