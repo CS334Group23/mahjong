@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -34,9 +33,8 @@ public class GameController extends JFrame{
 	
 	// get 4 sets of hands from server, initialize
 	public void init(ArrayList<ArrayList<Tile>> hands) {
-		ArrayList<User> users = userInit(hands);
 		homePanel = new HomePanel();
-		gamePanel = new GamePanel(users);
+		gamePanel = new GamePanel(hands);
 		
 		add(homePanel);
 		
@@ -57,17 +55,8 @@ public class GameController extends JFrame{
 		});
 	}
 	
-	private ArrayList<User> userInit(ArrayList<ArrayList<Tile>> hands){
-		ArrayList<User> users = new ArrayList<>();
-		
-		for(int i = 0; i < hands.size(); i++) {
-			users.add(new User(i, hands.get(i)));
-		}
-		
-		return users;
-	}
-	
+	// api for server
 	public void addNewTile(int userId, Tile tile) {
-		// TODO: get user, add tile
+		gamePanel.addNewTile(userId, tile);
 	}
 }

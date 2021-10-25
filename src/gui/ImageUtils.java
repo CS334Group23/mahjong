@@ -18,58 +18,20 @@ import javax.swing.JPanel;
 import utils.Tile;
 
 public class ImageUtils {
-	
-	public static void handInit(JPanel panel, ArrayList<User> users){
-		
-		JLabel jl;
+	@SuppressWarnings("all")
+	public static JLabel addTile(JPanel panel, Tile tile, int tileWidth, int tileHeight, Point point, int userId) {
+		JLabel jl = null;
 		try {
-			for(User user : users) {
-				Deck handDeck = user.getHandDeck();
-				ArrayList<Tile> hand = handDeck.getTiles();
-				Point point = handDeck.getPoint();
-				int tileWidth = handDeck.getTileWidth();
-				int tileHeight = handDeck.getTileHeight();
-				
-	
-				if(user.isRealUser()) { // user
-					for(Tile tile : hand) {
-						jl = getTileLabelBySize(tile, tileWidth, tileHeight, user.getUserId());
-						
-						final JLabel tileLabel = jl;
-						jl.addMouseListener(new MouseAdapter() {
-							public void mouseClicked(MouseEvent e) {
-								int originalX = tileLabel.getX();
-								int originalY = tileLabel.getY();
-								int afterY = originalY - 40;
-								tileLabel.setBounds(originalX, afterY, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-							}
-						});
-						
-						jl.setBounds(point.x, point.y, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-						panel.add(jl);
-						
-						point.setX(point.x + 76);
-					}
-				} else { // AI
-					for(Tile tile : hand) {
-						jl = getTileLabelBySize(tile, tileWidth, tileHeight, user.getUserId());
-						
-						jl.setBounds(point.x, point.y, Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
-						panel.add(jl);
-						
-						if(user.getUserId()%2 == 0) {
-							point.setX(point.x + 56);
-						} else {
-							point.setY(point.y + 56);
-						}
-					}
-				}
-			}
+			jl = getTileLabelBySize(tile, tileWidth, tileHeight, userId);
+			jl.setBounds(point.x, point.y, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			panel.add(jl);
 			
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		
+		return jl;	
 	}
 	
 	private static JLabel getTileLabelBySize(Tile tile, int width, int height, int orientation) throws IOException {	
@@ -78,7 +40,6 @@ public class ImageUtils {
 		
 		tileImg = tempTileImg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 	
-		ImageIcon tileImgIcon = new ImageIcon(tileImg);
 		JLabel jl = new JLabel() {
 			@Override
 			public Dimension getPreferredSize() {
