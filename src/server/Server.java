@@ -79,10 +79,15 @@ public class Server implements Peer{
 		return client_hands;
 	}
 	
-	public void sendAll(Message msg) {
+	public void sendAll(Message msg, int endClient) {
 		for(int i = 0;i<CLIENT_NUM;i++) {
-			send(allClients.get(i),msg);
+			int target = (endClient+i+1)%CLIENT_NUM;
+			send(allClients.get(target),msg);
 		}
+	}
+	
+	public void setNextCLient(int clientId) {
+		this.nextClient = clientId;
 	}
 	
 	public void sendNextDraw() {
