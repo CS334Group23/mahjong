@@ -42,4 +42,8 @@ public class BidMsg implements Message, Comparable{
 	public int getBidClient() {
 		return clientId;
 	}
+	
+	public Meld getMeld() {
+		return meld;
+	}
 }
