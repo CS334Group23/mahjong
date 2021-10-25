@@ -8,16 +8,27 @@ import java.util.Comparator;
 import utils.Message;
 import utils.Peer;
 import utils.Tile;
+import utils.Meld;
 
 public class Client implements Peer{
+	public final static int CLIENT_NUM = 4;
+	
 	private ClientOperation op; //need to later add exception handling
 	private ArrayList<Tile> wall;
+	private ArrayList<ArrayList<Meld>> meldWall;
+	private ArrayList<Integer> tileLength;
 	private int id;
 	private Peer server;
 	
 	public Client(int aid, Peer server) {
 		this.id = aid;
 		this.wall = new ArrayList<>();
+		this.meldWall = new ArrayList<ArrayList<Meld>>(CLIENT_NUM);
+		this.tileLength = new ArrayList<Integer>(CLIENT_NUM);
+		for(int i=0;i<CLIENT_NUM;i++) {
+			tileLength.add(13);
+		}
+			
 		this.server = server;
 	}
 	
@@ -82,5 +93,25 @@ public class Client implements Peer{
 				return o1.getId()-o2.getId();
 			}
 		});
+	}
+	
+	public void addMeld(int clientId, Meld meld) {
+		meldWall.get(clientId).add(meld);
+		int num = tileLength.get(clientId);
+		tileLength.set(clientId, num-3);
+	}
+	
+	public void updateWall(Meld meld) {
+		wall.remove(meld.getFirst());
+		wall.remove(meld.getSecond());
+		wall.remove(meld.getThird());
+		wall.remove(meld.getForth());
+		meldWall.get(id).add(meld);
+		tileLength.set(id, wall.size());
+		
+	}
+	
+	public int getLength() {
+		return wall.size();
 	}
 }
