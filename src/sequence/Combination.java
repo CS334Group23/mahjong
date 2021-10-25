@@ -1,7 +1,7 @@
-package sequence;
+package  sequence;
 
 import java.util.ArrayList;
-
+import java.util.*;
 import utils.sorting;
 import utils.*;
 import utils.Tile;
@@ -24,13 +24,15 @@ import utils.Tile;
 public class Combination {
 	private ArrayList<ArrayList<Meld>> combination_set = new ArrayList<>();
 	private ArrayList<Meld> Combi_temp = new ArrayList<>();
+	private ArrayList<Meld> all_temp=new ArrayList<>();
+	//Integer[] ponged = Collections.nCopies(144, 0).toArray(new Integer[0]);
 	Checker checker=Checker.getInstance();
 	public Combination() {};
 	public int count=0;
 	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
 		sorting.sortTile(hand);
 		checkcombination(hand);
-		if(Combi_temp.size()==0) {
+		if(combination_set.isEmpty()) {
 			//pass
 		}
 			
@@ -39,22 +41,32 @@ public class Combination {
 		return combination_set;
 		
 	}
+	
 	public boolean checkcombination(ArrayList<Tile> hand) {
 		if (hand.size() ==0) {
 			return true;
 			
 		}
+		//boolean Ponged=false;
+		//boolean Chowed=false;
+
 		for(int i=0;i<hand.size();i++) {
 			//System.out.println(count+"  "+i+"  "+hand.size());
 			if(hand.size()==2) { //if only 2, check if it is pair
 				if(hand.get(i).getId()/4==hand.get(i+1).getId()/4){
 					{
 						Meld Mtemp = new Meld(hand.get(i),hand.get(i+1),null,null);
+						
 						Combi_temp.add(Mtemp);
 						hand.remove(i);
 						hand.remove(i);
 						if(checkcombination(hand)) {
-							combination_set.add(Combi_temp);
+							ArrayList<Meld> meld=new ArrayList<Meld>(Combi_temp);
+							combination_set.add(meld);
+							System.out.println(Combi_temp.size());
+							Combi_temp.remove(Combi_temp.size()-1);
+							hand.add(Mtemp.getFirst());
+							hand.add(Mtemp.getSecond());
 							return true;
 						};
 							
@@ -66,43 +78,102 @@ public class Combination {
 				
 			}else if(hand.size()-i>2) {
 				//System.out.println("jump "+hand.get(i).getId());
-				if(checker.CheckChow(hand.get(i),hand.get(i+1),hand.get(i+2))||
-						checker.CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
-					//System.out.println(hand.get(i).getId()+" "+hand.get(i+1).getId()+" "+hand.get(i+2).getId());
+				
+				if(checker.CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
 					Meld Mtemp= new Meld(hand.get(i),hand.get(i+1),hand.get(i+2),null);
-					/*
-					if(checker.CheckChow(hand.get(i),hand.get(i+1),hand.get(i+2))) {
-						 Mtemp = new Chow(hand.get(i),hand.get(i+1),hand.get(i+2),null);
-						
-					}else {
-						 Mtemp = new Pong(hand.get(i),hand.get(i+1),hand.get(i+2),null);
-					}
-					*/
+					//if(ponged[hand.get(i).getId()]==0){
+					//ponged[hand.get(i).getId()]=1;	
+					//ponged[hand.get(i+1).getId()]=1;	
+					//ponged[hand.get(i+2).getId()]=1;	
+					all_temp.add(Mtemp);	
 					Combi_temp.add(Mtemp);
 					hand.remove(i);
 					hand.remove(i);
 					hand.remove(i);
+					
 					if(checkcombination(hand)) {
-						count++;
+			
 						// which mean, there is aleady a combination created
 						// for example, just checked eyes is true, then return
 						// put back the remain hand and also try again
-						hand.add(Mtemp.getFirst());
-						hand.add(Mtemp.getSecond());
-						hand.add(Mtemp.getThird());
+						hand.add(0,Mtemp.getThird());
+						hand.add(0,Mtemp.getSecond());
+						hand.add(0,Mtemp.getFirst());
 						
+						Combi_temp.remove(Combi_temp.size()-1);
+						sorting.sortTile(hand);
+				
+						
+					}else {
+						//r=true;					
+						//ponged[hand.get(i).getId()]=0;	
+						//ponged[Mtemp.getSecond().getId()]=0;	
+						//ponged[Mtemp.getThird().getId()]=0;
+						hand.add(0,Mtemp.getThird());
+						hand.add(0,Mtemp.getSecond());
+						hand.add(0,Mtemp.getFirst());
+						Combi_temp.remove(Combi_temp.size()-1);
+						sorting.sortTile(hand);
 					}
-					
+					//}else b
+						//System.out.println("hello");
+					//}
 					
 				} 
+			//	/*
+				int b_pos= checker.NextDifferentTile(hand,hand.get(i));
+				int c_pos=-1;
+				if(b_pos!=-1)
+				 c_pos= checker.NextDifferentTile(hand,hand.get(b_pos));
+				if(b_pos!=-1 && c_pos!=-1) {
+				if(checker.CheckChow(hand.get(i),hand.get(b_pos),hand.get(c_pos))) {
+				
+					Meld Mtemp= new Meld(hand.get(i),hand.get(b_pos),hand.get(c_pos),null);
+					//Chowed=true;
+					Combi_temp.add(Mtemp);
+					hand.remove(i);
+					hand.remove(b_pos-1);
+					hand.remove(c_pos-2);
+					
+					if(checkcombination(hand)) {
+			
+						// which mean, there is aleady a combination created
+						// for example, just checked eyes is true, then return
+						// put back the remain hand and also try again
+						hand.add(0,Mtemp.getThird());
+						hand.add(0,Mtemp.getSecond());
+						hand.add(0,Mtemp.getFirst());
+						sorting.sortTile(hand);
+						Combi_temp.remove(Combi_temp.size()-1);
+
+				
+						
+					}else {
+						hand.add(0,Mtemp.getThird());
+						hand.add(0,Mtemp.getSecond());
+						hand.add(0,Mtemp.getFirst());
+						Combi_temp.remove(Combi_temp.size()-1);
+						sorting.sortTile(hand);
+						//r=true;
+					}
+				
+					
+				}
+				}
+	
+					
+				
+				
+
+
 				
 				
 			  }
 				
-				
-				
 			}
-			
+		
+			if(hand.size()!=14)
+				return true;
 			return false;
 		}
 		public void list() {//debug and also use for result
@@ -110,11 +181,21 @@ public class Combination {
 			for(ArrayList<Meld> m: combination_set) {
 				for(Meld m2: m) {
 					if(m2.getThird()!=null)
-						System.out.print(m2.getFirst().getId()+" "+m2.getSecond().getId()+" "+m2.getThird().getId()+" ");
+						System.out.print(m2.getFirst().getRankIndex()+" "+m2.getSecond().getRankIndex()+" "+m2.getThird().getRankIndex()+" ");
 					else
-						System.out.print(m2.getFirst().getId()+" "+m2.getSecond().getId()+" ");
+						System.out.print(m2.getFirst().getId()/4+" "+m2.getSecond().getId()/4+" ");
 				}
-				System.out.println();
+				System.out.println("Hello");
+			}
+		}
+		public void list(ArrayList<Tile> h) {//debug and also use for result
+			
+			for(Tile m: h) {
+				
+					
+						System.out.print(m.getId()+" ");
+					
+			
 			}
 		}
 		
