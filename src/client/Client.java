@@ -24,6 +24,9 @@ public class Client implements Peer{
 		this.id = aid;
 		this.wall = new ArrayList<>();
 		this.meldWall = new ArrayList<ArrayList<Meld>>(CLIENT_NUM);
+		for(int i=0; i<CLIENT_NUM; i++) {
+			meldWall.add(new ArrayList<Meld>());
+		}
 		this.tileLength = new ArrayList<Integer>(CLIENT_NUM);
 		for(int i=0;i<CLIENT_NUM;i++) {
 			tileLength.add(13);
@@ -102,13 +105,20 @@ public class Client implements Peer{
 	}
 	
 	public void updateWall(Meld meld) {
-		wall.remove(meld.getFirst());
-		wall.remove(meld.getSecond());
-		wall.remove(meld.getThird());
-		wall.remove(meld.getForth());
+		wall.removeIf(m -> m.getId()==meld.getFirst().getId());
+		wall.removeIf(m -> m.getId()==meld.getSecond().getId());
+		wall.removeIf(m -> m.getId()==meld.getThird().getId());
+		if(meld.getMeldLength()==4) {
+			wall.removeIf(m -> m.getId()==meld.getForth().getId());
+		}
 		meldWall.get(id).add(meld);
 		tileLength.set(id, wall.size());
 		
+	}
+	
+	
+	public ArrayList<Tile> getWall(){
+		return wall;
 	}
 	
 	public int getLength() {

@@ -3,6 +3,7 @@ package client;
 import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.Message;
+import utils.TerminalIOUtils;
 import utils.Tile;
 import java.util.*;
 
@@ -10,8 +11,8 @@ public class DrawOperation implements ClientOperation{
 
 	@Override
 	public void operate(Client client, Message msg) {
-		// TODO Auto-generated method stub
-		printIndex(client.getLength());
+		System.out.printf("You are client%d\n", client.getId());
+		TerminalIOUtils.printIndex(client.getLength());
 		System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
 		System.out.printf("Client%d draws card %s\n", client.getId(),Tile.idToChnName(((DrawMsg)msg).getTileId()));
 		client.addTile(((DrawMsg)msg).getTileId());
@@ -25,19 +26,6 @@ public class DrawOperation implements ClientOperation{
         int discardId = client.getTile(tileIndex-1).getId();
         client.discardTile(tileIndex-1);
 		client.send(client.getServer(),new DiscardMsg(discardId,client.getId()));
-	}
-	
-	private void printIndex(int length) {
-		String str = "";
-		for(int i=0;i<16;i++) {
-			str += " ";
-		}
-		for(int i=0;i<length;i++) {
-			str += "    ";
-			str += Integer.toString(i+1);
-		}
-		System.out.println(str);
-		//System.out.printf("%21d%6d%5d%6d%5d%6d%5d%6d%5d%5d%5d%5d%5d\n", 1,2,3,4,5,6,7,8,9,10,11,12,13);
 	}
 
 }

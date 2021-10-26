@@ -9,10 +9,10 @@ public class CheckerTest {
 	public void testCheckChow() {
 		ArrayList<Tile> arr = new ArrayList<>();
 		arr.add(new Tile(0));
+		arr.add(new Tile(1));
+		arr.add(new Tile(2));
+		arr.add(new Tile(3));
 		arr.add(new Tile(4));
-		arr.add(new Tile(8));
-		arr.add(new Tile(12));
-		arr.add(new Tile(13));
 		arr.add(new Tile(16));
 		arr.add(new Tile(20));
 		arr.add(new Tile(60));

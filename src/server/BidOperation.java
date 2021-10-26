@@ -13,13 +13,15 @@ public class BidOperation implements ServerOperation{
 	@Override
 	public void operate(Server server, Message msg) {
 		msgQueue.add((BidMsg)msg);
+		System.out.printf("receive bid msg from client%d\n", ((BidMsg)msg).getBidClient());
 		if(msgQueue.size() >= Server.CLIENT_NUM) {
 			try {
-				Class c = Class.forName("server."+msgQueue.peek().getResponserName());
+				BidMsg peek = msgQueue.peek();
+				msgQueue.clear();
+				Class c = Class.forName("server."+peek.getResponserName());
 				Constructor constructor = c.getConstructor(); //this warning need to be solved later
 				BidResponser re = (BidResponser)constructor.newInstance();
-				re.response(server, msgQueue.peek());
-				msgQueue.clear();
+				re.response(server, peek);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.exit(1);

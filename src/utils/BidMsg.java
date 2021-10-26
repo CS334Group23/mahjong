@@ -32,7 +32,7 @@ public class BidMsg implements Message, Comparable{
 
 	@Override
 	public int compareTo(Object another) {
-		return this.bidType-((BidMsg)another).bidType;
+		return ((BidMsg)another).bidType-this.bidType;
 	}
 	
 	public String getResponserName() {
@@ -45,5 +45,9 @@ public class BidMsg implements Message, Comparable{
 	
 	public Meld getMeld() {
 		return meld;
+	}
+	
+	public int getBidType() {
+		return bidType;
 	}
 }
