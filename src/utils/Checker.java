@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class Checker {
 	public static ArrayList<Meld> checkChow(ArrayList<Tile> wall, Tile another) {
 		ArrayList<Meld> result = new ArrayList<>();
+		if(another.getType()!=Type.BAMBOO && another.getType()!=Type.CHARACTER && another.getType()!=Type.DOT) {
+			return result;
+		}
 		//check chow
 		for(Tile a : wall) {
 			if(a.getType() == another.getType() && a.getRankIndex() == another.getRankIndex()-1) {
@@ -34,11 +37,12 @@ public class Checker {
 				break;
 			}
 		}
-//		System.out.println(result.get(3).getcomb_type());
-//		System.out.println(result.get(3).getFirst().getChnName());
-//		System.out.println(result.get(3).getSecond().getChnName());
-//		System.out.println(result.get(3).getThird().getChnName());
-//		System.out.println(result.get(3).getForth().getChnName());
+//		System.out.println(result.size());
+//		System.out.println(result.get(0).getcomb_type());
+//		System.out.println(result.get(0).getFirst().getChnName());
+//		System.out.println(result.get(0).getSecond().getChnName());
+//		System.out.println(result.get(0).getThird().getChnName());
+//		System.out.println(result.get(0).getForth().getChnName());
 		return result;
 	}
 		
@@ -65,9 +69,6 @@ public class Checker {
 		for(int i=0; i+2<context.size();i++) {
 			if(context.get(i).getType() == context.get(i+1).getType() && context.get(i).getType() == context.get(i+2).getType()) {
 				if(context.get(i).getRankIndex() == context.get(i+1).getRankIndex() && context.get(i).getRankIndex() == context.get(i+2).getRankIndex()) {
-					return new Meld(context.get(i),context.get(i+1),context.get(i+2),null);
-				}
-				else if(context.get(i).getRankIndex()+1 == context.get(i+1).getRankIndex() && context.get(i+1).getRankIndex()+1 == context.get(i+2).getRankIndex()) {
 					return new Meld(context.get(i),context.get(i+1),context.get(i+2),null);
 				}
 			}
