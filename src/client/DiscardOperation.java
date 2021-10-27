@@ -46,12 +46,14 @@ public class DiscardOperation implements ClientOperation{
 				
 			}
 			System.out.println("过");
+			System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
+			System.out.print("Please input the index of the operation: ");
 			Scanner scan = new Scanner(System.in);
 			int opIndex=0;
 	        if (scan.hasNext()) {
 	            opIndex = scan.nextInt()-1;
 	        }
-	        if(opIndex<possibleMeld.size()) {
+	        if(opIndex<possibleMeld.size() && 0<=opIndex) {
 	        	switch(possibleMeld.get(opIndex).getcomb_type()) {
 				case 1:
 					client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.CHOW, "ChowResponser", ((DiscardMsg)msg).getTileId(),possibleMeld.get(opIndex)));
@@ -63,6 +65,15 @@ public class DiscardOperation implements ClientOperation{
 					client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.KONG, "KongResponser", ((DiscardMsg)msg).getTileId(),possibleMeld.get(opIndex)));
 					return;
 	        	}
+	        }
+	        else if(opIndex==possibleMeld.size()){
+	        	client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
+	        	return;
+	        }
+	        else {
+	        	System.out.println("Invalid operation. Automatically execute the default operation.");
+	        	client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
+	    		return;
 	        }
 	        
 		}
