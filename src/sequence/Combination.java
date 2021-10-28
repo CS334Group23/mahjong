@@ -31,6 +31,15 @@ public class Combination {
 	public int count=0;
 	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
 		sorting.sortTile(hand);
+		
+		for(int i=0;i<hand.size()-1;i++) {
+
+			if(hand.get(i).getId()>hand.get(i+1).getId()) {
+				System.out.println("Sorting errer");
+			}
+			
+			
+		}
 		checkcombination(hand);
 		if(combination_set.isEmpty()) {
 			//pass
@@ -49,7 +58,7 @@ public class Combination {
 		}
 		//boolean Ponged=false;
 		//boolean Chowed=false;
-
+		int initial_size=hand.size();
 		for(int i=0;i<hand.size();i++) {
 			//System.out.println(count+"  "+i+"  "+hand.size());
 			if(hand.size()==2) { //if only 2, check if it is pair
@@ -79,7 +88,7 @@ public class Combination {
 			}else if(hand.size()-i>2) {
 				//System.out.println("jump "+hand.get(i).getId());
 				
-				if(checker.CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
+				if(CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
 					Meld Mtemp= new Meld(hand.get(i),hand.get(i+1),hand.get(i+2),null);
 					//if(ponged[hand.get(i).getId()]==0){
 					//ponged[hand.get(i).getId()]=1;	
@@ -126,7 +135,7 @@ public class Combination {
 				if(b_pos!=-1)
 				 c_pos= checker.NextDifferentTile(hand,hand.get(b_pos));
 				if(b_pos!=-1 && c_pos!=-1) {
-				if(checker.CheckChow(hand.get(i),hand.get(b_pos),hand.get(c_pos))) {
+				if(CheckChow(hand.get(i),hand.get(b_pos),hand.get(c_pos))) {
 				
 					Meld Mtemp= new Meld(hand.get(i),hand.get(b_pos),hand.get(c_pos),null);
 					//Chowed=true;
@@ -172,10 +181,38 @@ public class Combination {
 				
 			}
 		
-			if(hand.size()!=14)
+			if(hand.size()!=initial_size)
 				return true;
 			return false;
 		}
+	public boolean CheckChow(Tile a, Tile b, Tile c) {
+
+		if(a.getRankIndex() == b.getRankIndex()-1 && b.getRankIndex()== c.getRankIndex()-1 && a.getType().equals(c.getType()))
+		{
+			
+			return true;
+		}
+		
+		return false;
+	}
+
+	public boolean CheckPong(Tile a, Tile b, Tile c) {
+		if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() && a.getType()==c.getType() &&b.getType()==c.getType())
+		{
+			
+			return true;
+		}
+		
+		return false;
+	}
+public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
+	if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() &&c.getRankIndex() == d.getRankIndex()&&b.getType()==c.getType())
+	{
+		//System.out.println(a.getId()+" "+b.getId()+" "+c.getId());
+		return true;
+	}
+	return false;
+}
 		public void list() {//debug and also use for result
 			
 			for(ArrayList<Meld> m: combination_set) {

@@ -23,10 +23,9 @@ public boolean CheckChow(Tile a, Tile b, Tile c) {
 	}
 
 	public boolean CheckPong(Tile a, Tile b, Tile c) {
-		
 		if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() && a.getType()==c.getType() &&b.getType()==c.getType())
 		{
-			//System.out.println(a.getId()+" "+b.getId()+" "+c.getId());
+			
 			return true;
 		}
 		
@@ -40,7 +39,75 @@ public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
 	}
 	return false;
 }
-	public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
+public ArrayList<Meld> CheckPCK(ArrayList<Tile> hand, ArrayList<Meld> showed_hand,Tile a){//hand+showed_hand size= 13/ more tiles ( for kong only),  a size=1 tiles
+	
+	ArrayList<Meld> allPCK=new ArrayList<>();
+	if(hand.size()<2) {
+		return allPCK;
+		
+	}
+	int pos=FindTilePosition.FindPosition(hand, a);
+	//System.out.println(pos);{}
+	ArrayList<Tile> temp=new ArrayList<>();
+	temp.addAll(hand);
+	temp.add(pos,a);
+	//System.out.print(te);
+	//Checking Pong //
+	int first_pos=15;
+	for(int i=0;i<temp.size();i++) {
+		if(temp.get(i).getId()/4 == temp.get(pos).getId()/4) {
+			first_pos=i;
+			break;
+		}
+		
+	} 
+	if(first_pos+2<=temp.size()) {
+		if(CheckPong(temp.get(first_pos),temp.get(first_pos+1),temp.get(first_pos+2))) {
+			Meld meld=new Meld(temp.get(first_pos),temp.get(first_pos+1),temp.get(first_pos+2),null);
+			allPCK.add(meld);
+		}
+		
+	} 
+	 // end check pong ,
+	
+	//Checking Chow//
+	int previous_tile_pos=PreviousDifferentTile(temp,temp.get(pos));
+	int pprevious_tile_pos=-1;
+	if(previous_tile_pos!=-1)
+		 pprevious_tile_pos=PreviousDifferentTile(temp,temp.get(previous_tile_pos));
+	int next_tile_pos=NextDifferentTile(temp,temp.get(pos));
+	int nnext_tile_pos=-1;
+		if(next_tile_pos!=-1)
+	 nnext_tile_pos=NextDifferentTile(temp,temp.get(next_tile_pos));
+	
+	//now consider case  _ _ A
+	if(previous_tile_pos !=-1 && pprevious_tile_pos!=-1)
+		if(CheckChow(temp.get(pprevious_tile_pos),temp.get(previous_tile_pos),temp.get(pos))) {
+			Meld meld=new Meld (temp.get(pprevious_tile_pos),temp.get(previous_tile_pos),temp.get(pos),null);
+			allPCK.add(meld);
+			
+		}
+	
+	//now consider case _ A _
+	if(previous_tile_pos !=-1 && next_tile_pos!=-1)
+		if(CheckChow(temp.get(previous_tile_pos),temp.get(pos),temp.get(next_tile_pos))) {
+			Meld meld=new Meld (temp.get(previous_tile_pos),temp.get(pos),temp.get(next_tile_pos),null);
+			allPCK.add(meld);
+			
+		}
+	
+	//now consdier case _ _ A  
+	if(nnext_tile_pos !=-1 && next_tile_pos!=-1)
+		if(CheckChow(temp.get(pos),temp.get(next_tile_pos),temp.get(nnext_tile_pos))) {
+			Meld meld=new Meld (temp.get(pos),temp.get(next_tile_pos),temp.get(nnext_tile_pos),null);
+			allPCK.add(meld);
+			
+		}
+	//End Check Chow
+	
+	return allPCK;
+}
+public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		int score=0;
 		
 		Combination comb=new Combination();
@@ -91,9 +158,20 @@ public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
 		
 	}
 	public int NextDifferentTile(ArrayList<Tile> hand, Tile a) {
-		int pos=BinarySearch.FindPosition(hand,a);
+		int pos=FindTilePosition.FindPosition(hand,a);
 		//System.out.println(a.getId()+" "+pos);
 		for(int i=pos;i<hand.size();i++) {
+			if(hand.get(pos).getRankIndex()!=  hand.get(i).getRankIndex()) {
+				return i;
+			}
+			
+		}
+		return -1;
+	}
+	public int PreviousDifferentTile(ArrayList<Tile> hand, Tile a) {
+		int pos=FindTilePosition.FindPosition(hand,a);
+		//System.out.println(a.getId()+" "+pos);
+		for(int i=0;i<pos;i++) {
 			if(hand.get(pos).getRankIndex()!=  hand.get(i).getRankIndex()) {
 				return i;
 			}
