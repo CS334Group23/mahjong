@@ -19,7 +19,7 @@ public class KongChecker {
 		if(insertPosition == wall.size()) {
 			context.add(another);
 		}
-
+		
 		//check kong
 		for(int i=0; i+3<context.size();i++) {
 			if(context.get(i).getType() == context.get(i+1).getType() && context.get(i).getType() == context.get(i+2).getType() && context.get(i).getType() == context.get(i+3).getType()) {

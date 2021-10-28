@@ -23,14 +23,11 @@ public class PongChecker {
 		if(insertPosition == wall.size()) {
 			context.add(another);
 		}
-
+		
 		//check pong
 		for(int i=0; i+2<context.size();i++) {
 			if(context.get(i).getType() == context.get(i+1).getType() && context.get(i).getType() == context.get(i+2).getType()) {
 				if(context.get(i).getRankIndex() == context.get(i+1).getRankIndex() && context.get(i).getRankIndex() == context.get(i+2).getRankIndex()) {
-					return new Meld(context.get(i),context.get(i+1),context.get(i+2),null);
-				}
-				else if(context.get(i).getRankIndex()+1 == context.get(i+1).getRankIndex() && context.get(i+1).getRankIndex()+1 == context.get(i+2).getRankIndex()) {
 					return new Meld(context.get(i),context.get(i+1),context.get(i+2),null);
 				}
 			}
