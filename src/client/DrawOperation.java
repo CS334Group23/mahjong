@@ -1,6 +1,7 @@
 package client;
 
 import utils.BidMsg;
+import utils.BidType;
 import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.Meld;
@@ -28,17 +29,27 @@ public class DrawOperation implements ClientOperation{
 		possibleSequence = facadeChecker.check_if_win();
 		boolean isWin = possibleSequence.size()!=0;
 		if(kong!=null || isWin) {
-			if(kong == null) {
-				handleWin(client, possibleSequence, msg);
+			ArrayList<BidMsg> possibleBid = new ArrayList<>();
+			if(kong != null) {
+				possibleBid.add(new BidMsg(client.getId(), BidType.KONG, "KongResponser", ((DrawMsg)msg).getTileId(),kong));
 			}
-			else {
-				if(!isWin) {
-					handleKong(client, kong, msg);
-				}
-				else {
-					handleWinAndKong(client, kong, possibleSequence, msg);
-				}
+			if(isWin) {
+				possibleBid.add(new BidMsg(client.getId(), BidType.WIN, "WinResponser", ((DiscardMsg)msg).getTileId(),null));
 			}
+			possibleBid.add(new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
+			TerminalIOUtils.printIndex(possibleBid.size());
+			System.out.print("You have options:");
+			BidMsg.printBid(possibleBid);
+			System.out.print("Please input the index of the operation: ");
+			Scanner scan = new Scanner(System.in);
+			int opIndex=0;
+	        if (scan.hasNext()) {
+	            opIndex = scan.nextInt()-1;
+	        }
+	        if(opIndex<possibleBid.size()-1 && 0<=opIndex) {
+	        	client.send(client.getServer(), possibleBid.get(opIndex));
+				return;
+	        }
 		}
 		client.addTile(((DrawMsg)msg).getTileId());
 		System.out.printf("Please Input the index of the card you want to play (If you want to discard the card you draw, type %d):",client.getLength());
@@ -61,65 +72,4 @@ public class DrawOperation implements ClientOperation{
         client.discardTile(tileIndex-1);
 		client.send(client.getServer(),new DiscardMsg(discardId,client.getId()));
 	}
-	
-	private void handleKong(Client client, Meld kong, Message msg) {
-		TerminalIOUtils.printIndex(2);
-		System.out.print("You have options:");
-		System.out.printf("%s %s   /",kong.getChnName(),kong.printMeld());
-		System.out.println("过");
-		System.out.print("Please input the index of the operation: ");
-		Scanner scan = new Scanner(System.in);
-		int opIndex=0;
-        if (scan.hasNext()) {
-            opIndex = scan.nextInt()-1;
-        }
-        if(opIndex<2 && 0<=opIndex) {
-        	if(opIndex == 0) {
-        		client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.KONG, "KongResponser", ((DrawMsg)msg).getTileId(),kong));
-				return;
-        	}
-        }
-	}
-	
-	private void handleWin(Client client, ArrayList<Sequence> possibleSequence, Message msg) {
-		TerminalIOUtils.printIndex(2);
-		System.out.print("You have options:");
-		System.out.println("胡   /过   ");
-		System.out.print("Please input the index of the operation: ");
-		Scanner scan = new Scanner(System.in);
-		int opIndex=0;
-        if (scan.hasNext()) {
-            opIndex = scan.nextInt()-1;
-        }
-        if(opIndex<2 && 0<=opIndex) {
-        	if(opIndex == 0) {
-        		client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.WIN, "WinResponser", ((DrawMsg)msg).getTileId(),null));
-				return;
-        	}
-        }
-	}
-	
-	private void handleWinAndKong(Client client, Meld kong, ArrayList<Sequence> possibleSequence, Message msg) {
-		TerminalIOUtils.printIndex(3);
-		System.out.print("You have options:");
-		System.out.printf("%s %s   /",kong.getChnName(),kong.printMeld());
-		System.out.println("胡   /过   ");
-		System.out.print("Please input the index of the operation: ");
-		Scanner scan = new Scanner(System.in);
-		int opIndex=0;
-        if (scan.hasNext()) {
-            opIndex = scan.nextInt()-1;
-        }
-        if(opIndex<3 && 0<=opIndex) {
-        	if(opIndex == 0) {
-        		client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.KONG, "KongResponser", ((DrawMsg)msg).getTileId(),kong));
-				return;
-        	}
-        	if(opIndex == 1) {
-        		client.send(client.getServer(), new BidMsg(client.getId(), BidMsg.WIN, "WinResponser", ((DrawMsg)msg).getTileId(),null));
-				return;
-        	}
-        }
-	}
-
 }
