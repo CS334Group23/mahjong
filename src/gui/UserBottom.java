@@ -4,9 +4,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import utils.Tile;
 
 public class UserBottom extends User{
@@ -26,32 +23,50 @@ public class UserBottom extends User{
 		int tileWidth = handDeck.getTileWidth();
 		int tileHeight = handDeck.getTileHeight();
 		
-		JLabel jl;
+		TileLabel label;
+		ArrayList<TileLabel> tileLabelList = handDeck.getTileLabels();
 		for(Tile tile : hand) {
-			jl = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, userId);
-			tileEventInit(jl, gamePanel);
+			label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, userId);
+			tileEventInit(label, gamePanel);
 			
-			point.setX(point.x + 76); // set new coordinate for the next tile
+			point.setX(point.x + 64); // set new coordinate for the next tile
+			
+			tileLabelList.add(label);
 		}
+		
+		// init the coordiante of the new tile sent by server
+		// coordiante = (the x of the last hand mile + some distance, the y of the last hand mile)
+		newTileShowPoint = new Point(point.x + Tile.TILE_WIDTH_USER / 2, point.y);
 	}
 	
-	private void tileEventInit(JLabel tile, GamePanel gamePanel) {
+	public void tileEventInit(TileLabel tile, GamePanel gamePanel) {
 		tile.addMouseListener(new MouseAdapter() {
-			boolean isFirstClick = true;
+			ArrayList<TileLabel> tileLabelList = handDeck.getTileLabels();
 			
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) {			
 				int originalX = tile.getX();
 				int originalY = tile.getY();
 				
-				int afterY = 0;
-				if(isFirstClick) {
-					afterY = originalY - 40;
+				// if it is first click
+				if(tile.isFirstClick()) {
+					// reset all tile to original position except clicked tile
+					resetTilePosition();
+					
+					tile.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+					tile.setIsFirstClick(false);
 				} else {
-					afterY = originalY + 40;
+					tile.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+					tile.setIsFirstClick(true);
 				}
-				isFirstClick = !isFirstClick;
-				
-				tile.setBounds(originalX, afterY, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			}
+			
+			public void resetTilePosition() {
+				for(TileLabel label : tileLabelList) {
+					if(! label.isFirstClick()) {
+						label.setBounds(label.getX(), label.getY() + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+						label.setIsFirstClick(true);
+					}
+				}
 			}
 		});
 	}

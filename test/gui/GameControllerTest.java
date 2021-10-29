@@ -8,6 +8,8 @@ import java.util.Random;
 
 import org.junit.Test;
 
+import utils.BidMsg;
+import utils.DrawMsg;
 import utils.Tile;
 import utils.Type;
 
@@ -20,10 +22,36 @@ public class GameControllerTest {
 //		}
 //	}
 	
+//	@Test
+//	public void testGameController2() throws InterruptedException {
+//		GameController gameController = GameController.getInstance();
+//		
+//		gameController.init(getHands());
+//		gameController.setVisible(true);
+//		
+//		synchronized(this) {
+//			this.wait();
+//		}
+//	}
+	
 	@Test
-	public void testGameController2() throws InterruptedException {
+	public void testGameController3() throws InterruptedException {
 		GameController gameController = GameController.getInstance();
 		
+		gameController.init(getHands());
+		gameController.setVisible(true);
+		
+		// test add new tile
+		gameController.infoDraw(new DrawMsg(50), new ArrayList<BidMsg>());
+		
+		// add event to new tile
+		
+		synchronized(this) {
+			this.wait();
+		}
+	}
+	
+	public ArrayList<ArrayList<Tile>> getHands() {
 		ArrayList<ArrayList<Tile>> hands = new ArrayList<>();
 		
 		Random rand = new Random();
@@ -39,12 +67,7 @@ public class GameControllerTest {
 			hands.add(hand);
 		}
 		
-		gameController.init(hands);
-		
-		gameController.setVisible(true);
-		synchronized(this) {
-			this.wait();
-		}
+		return hands;
 	}
 	
 	class idComparator implements Comparator<Tile>{

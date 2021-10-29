@@ -6,17 +6,20 @@ import utils.Tile;
 
 public class Deck {
 	private ArrayList<Tile> tiles;
+	private ArrayList<TileLabel> tileLabels;
 	private Point point;
 	private int tileWidth, tileHeight;
 	
 	public Deck(Point point, int tileWidth, int tileHeight) {
 		this.tiles = new ArrayList<>();
+		this.tileLabels = new ArrayList<>();
 		this.point = point;
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;
 	}
 	
 	public Deck(ArrayList<Tile> tiles, Point point, int tileWidth, int tileHeight) {
+		this.tileLabels = new ArrayList<>();
 		this.tiles = tiles;
 		this.point = point;
 		this.tileWidth = tileWidth;
@@ -43,6 +46,8 @@ public class Deck {
 		return tileHeight;
 	}
 	
-	
+	public ArrayList<TileLabel> getTileLabels() {
+		return tileLabels;
+	}
 	
 }
