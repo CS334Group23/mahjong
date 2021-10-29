@@ -16,7 +16,7 @@ public class ChowResponser implements BidResponser{
 			client.updateWall(chowMsg.getMeld());
 			TerminalIOUtils.printIndex(client.getLength());
 			System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
-			System.out.printf("Please Input the index of the card you want to play (If you want to discard the card you draw, type %d):",client.getLength());
+			System.out.print("Please Input the index of the card you want to play:");
 			Scanner scan = new Scanner(System.in);
 			int tileIndex=0;
 	        if (scan.hasNext()) {
