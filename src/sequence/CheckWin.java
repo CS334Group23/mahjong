@@ -39,7 +39,7 @@ public class CheckWin {
 			
 			// other check will add later 
 			
-			//extra score eg ªù«e/­·/ªá
+			//extra score eg ï¿½ï¿½ï¿½e/ï¿½ï¿½/ï¿½ï¿½
 			if(CheckMC(showed_hand)) {
 				Sequence win_from_wall=new Win_From_Wall();
 				temp_sequence.add(win_from_wall);
@@ -62,7 +62,7 @@ public class CheckWin {
 	
 	public boolean CheckSameType(Tile a, Tile b) {
 		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FLOWER(5, 136), WIND(4, 120);
-		if( a.getType().equals(b.getType())
+		if(a.getType().equals(b.getType())
 				) {return true;}
 		
 		return false;
@@ -71,7 +71,7 @@ public class CheckWin {
 	
 	
 	
-	public boolean CheckPH(ArrayList<Meld> hand) {//¥­Âw
+	public boolean CheckPH(ArrayList<Meld> hand) {//ï¿½ï¿½ï¿½w
 		for(int i=0;i<hand.size();i++){
 			if(hand.get(i).getcomb_type() !=1 ||hand.get(i).getcomb_type() !=0) {
 				return false;
@@ -80,9 +80,9 @@ public class CheckWin {
 		}
 		return true;
 	}
-	public boolean CheckPPH(ArrayList<Meld> hand) {//¹ï¹ï½k
+	public boolean CheckPPH(ArrayList<Meld> hand) {//ï¿½ï¿½ï¿½k
 		if(hand.get(0).getFirst().getType() == Type.DRAGON) {
-			return false; // exception of ¦r¤@¦â
+			return false; // exception of ï¿½rï¿½@ï¿½ï¿½
 		}
 		for(int i=0;i<hand.size();i++){
 			if(hand.get(i).getcomb_type() !=2 &&hand.get(i).getcomb_type() !=0) {
@@ -92,14 +92,14 @@ public class CheckWin {
 		}
 		return true;
 	}
-	public boolean CheckHYS(ArrayList<Meld> hand) {//²K¤@¦â
+	public boolean CheckHYS(ArrayList<Meld> hand) {//ï¿½Kï¿½@ï¿½ï¿½
 	
 		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
 		
 		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72),
 		if(!(first_hand.getType()== Type.BAMBOO || first_hand.getType()== Type.CHARACTER ||first_hand.getType()== Type.DOT )) {
 			
-			return false; // it should be check for ¦r¤@¦â , which is exception to HYS
+			return false; // it should be check for ï¿½rï¿½@ï¿½ï¿½ , which is exception to HYS
 		}
 		Boolean hasDragon_or_wind=false;	
 		for(int i=0;i<hand.size();i++) { //if all meld is same type with first tile, or if it is dragon, then return 3, else return 0
@@ -117,7 +117,7 @@ public class CheckWin {
 			return false; // exception on qys
 	}
 	
-	public boolean CheckQYS(ArrayList<Meld> hand) {//²M¤@¦â
+	public boolean CheckQYS(ArrayList<Meld> hand) {//ï¿½Mï¿½@ï¿½ï¿½
 		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
 		
 		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72),
@@ -139,12 +139,12 @@ public class CheckWin {
 	}
 	
 	
-	public int CheckMF(ArrayList<Meld> hand) { //ªù­·   will change later
+	public int CheckMF(ArrayList<Meld> hand) { //ï¿½ï¿½ï¿½ï¿½   will change later
 	
 	
 		return 1;
 	}
-	public int CheckJF(ArrayList<Meld> hand) {//¥¿ªá
+	public int CheckJF(ArrayList<Meld> hand) {//ï¿½ï¿½ï¿½ï¿½
 		
 		return 1;
 	}

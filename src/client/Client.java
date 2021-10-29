@@ -121,6 +121,10 @@ public class Client implements Peer{
 		return wall;
 	}
 	
+	public ArrayList<Meld> getMeld(){
+		return meldWall.get(id);
+	}
+	
 	public int getLength() {
 		return wall.size();
 	}
