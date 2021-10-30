@@ -3,5 +3,5 @@ package ui;
 public interface ClientInterface {
 	public int getId();
 	public int getLength();
-	public int printWall();
+	public String printWall(); //this may later need to change name
 }

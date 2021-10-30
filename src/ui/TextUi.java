@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import utils.BidMsg;
 import utils.BidType;
+import utils.DealMsg;
 import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.TerminalIOUtils;
@@ -12,6 +13,10 @@ import utils.Tile;
 
 public class TextUi implements Ui{
 	private ClientInterface client; //this client later need to try best to decouple out with input parameters
+	
+	public TextUi(ClientInterface client) { //this may later change to singleton
+		this.client = client;
+	}
 
 	@Override
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
@@ -19,7 +24,7 @@ public class TextUi implements Ui{
 		TerminalIOUtils.printIndex(client.getLength());
 		System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
 		System.out.printf("Client%d draws card %s\n", client.getId(),Tile.idToChnName((drawMsg).getTileId()));
-		if(possibleBid.size()>0) {
+		if(possibleBid != null && possibleBid.size()>0) {
 			TerminalIOUtils.printIndex(possibleBid.size());
 			System.out.print("You have options:");
 			BidMsg.printBid(possibleBid);
@@ -29,7 +34,7 @@ public class TextUi implements Ui{
 	@Override
 	public int getOpIndex() {
 		Scanner scan = new Scanner(System.in);
-		int opIndex=0;
+		int opIndex=-1;
         if (scan.hasNext()) {
             opIndex = scan.nextInt()-1;
         }
@@ -37,7 +42,7 @@ public class TextUi implements Ui{
 	}
 
 	@Override
-	public int getDraw() {
+	public int getDiscard() {
 		//this may add if to make two parts unity
 		System.out.printf("Please Input the index of the card you want to play (If you want to discard the card you draw, type %d):",client.getLength());
 		boolean validInput = false;
@@ -62,7 +67,7 @@ public class TextUi implements Ui{
 	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
 		System.out.printf("You are client%d\n", client.getId());
 		System.out.printf("Client%d discards %s\n", discardMsg.getSenderId(),Tile.idToChnName(discardMsg.getTileId()));
-		if(possibleBid.size()>0) { //in the main logic part still need to check
+		if(possibleBid != null && possibleBid.size()>0) { //in the main logic part still need to check
 			TerminalIOUtils.printIndex(possibleBid.size());
 			System.out.print("You have options:");
 			BidMsg.printBid(possibleBid);
@@ -78,6 +83,12 @@ public class TextUi implements Ui{
 			TerminalIOUtils.printIndex(client.getLength());
 			System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
 		}
+	}
+	
+	@Override
+	public void infoDeal(DealMsg dealMsg) {//this need later change to send a tile list instead of index list, or use get wall interface
+		//this may later need to change to extract with other info method with a print method
+		System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
 	}
 	
 	

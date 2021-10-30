@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import ui.ClientInterface;
+import ui.TextUi;
+import ui.Ui;
 import utils.Message;
 import utils.Peer;
 import utils.Tile;
 import utils.Meld;
 
-public class Client implements Peer{
+public class Client implements Peer, ClientInterface{
 	public final static int CLIENT_NUM = 4;
 	
 	private ClientOperation op; //need to later add exception handling
@@ -19,6 +22,7 @@ public class Client implements Peer{
 	private ArrayList<Integer> tileLength;
 	private int id;
 	private Peer server;
+	private Ui ui;
 	
 	public Client(int aid, Peer server) {
 		this.id = aid;
@@ -33,6 +37,7 @@ public class Client implements Peer{
 		}
 			
 		this.server = server;
+		this.ui = new TextUi(this); //this may later need to change other ui options
 	}
 	
 	public int getId() {
@@ -127,5 +132,9 @@ public class Client implements Peer{
 	
 	public int getLength() {
 		return wall.size();
+	}
+	
+	public Ui getUi() {
+		return ui;
 	}
 }

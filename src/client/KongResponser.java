@@ -11,8 +11,9 @@ public class KongResponser implements BidResponser{
 	@Override
 	public void response(Client client, BidMsg msg) {
 		BidMsg kongMsg = (BidMsg)msg;
-		System.out.printf("client%d plays the operation Kong\n", kongMsg.getBidClient());
+//		System.out.printf("client%d plays the operation Kong\n", kongMsg.getBidClient());
 		if(client.getId()== kongMsg.getBidClient()) {
+			client.getUi().infoBid(msg);
 			client.updateWall(kongMsg.getMeld());
 		}
 		else {
