@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import utils.BidMsg;
+import utils.DrawMsg;
 import utils.Tile;
 
 public class GamePanel extends JPanel{	
@@ -46,10 +48,10 @@ public class GamePanel extends JPanel{
 		User user_top = new UserTop(hands.get(User.USER_TOP));
 		User user_left = new UserLeft(hands.get(User.USER_LEFT));
 		
-		users.add(user_bottom);
-		users.add(user_right);
-		users.add(user_top);
-		users.add(user_left);
+		users.add(user_bottom); // index 0
+		users.add(user_right); // index 1
+		users.add(user_top); // index 2
+		users.add(user_left); // index 3
 	}
 	
 	private void handInit() {
@@ -58,9 +60,24 @@ public class GamePanel extends JPanel{
 		}
 	}
 
-	public void addNewTile(int userId, Tile tile) {
+	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
+		Tile tile = new Tile(msg.getTileId());
 		
+		// for testing, assume all draw request bind to user_bottom
+		User user_bottom = users.get(User.USER_BOTTOM);
+		int tileWidth = user_bottom.getHandDeck().getTileWidth();
+		int tileHeight = user_bottom.getHandDeck().getTileHeight();
+		Point point = user_bottom.getNewTileShowPoint();
+		int userId = user_bottom.getUserId();
+		TileLabel tileLabel = ImageUtils.addTile(this, tile, tileWidth, tileHeight, point, userId);
 		
+		// add tile and tile label to the user's hand deck list
+		UserBottom user = (UserBottom)users.get(User.USER_BOTTOM);
+		user.getHandDeck().getTiles().add(tile);
+		user.getHandDeck().getTileLabels().add(tileLabel);
+		
+		// add event to the tile label
+		user.tileEventInit(tileLabel, this);
 	}
 
 }

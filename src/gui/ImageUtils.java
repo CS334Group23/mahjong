@@ -19,8 +19,8 @@ import utils.Tile;
 
 public class ImageUtils {
 	@SuppressWarnings("all")
-	public static JLabel addTile(JPanel panel, Tile tile, int tileWidth, int tileHeight, Point point, int userId) {
-		JLabel jl = null;
+	public static TileLabel addTile(JPanel panel, Tile tile, int tileWidth, int tileHeight, Point point, int userId) {
+		TileLabel jl = null;
 		try {
 			jl = getTileLabelBySize(tile, tileWidth, tileHeight, userId);
 			jl.setBounds(point.x, point.y, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
@@ -34,13 +34,13 @@ public class ImageUtils {
 		return jl;	
 	}
 	
-	private static JLabel getTileLabelBySize(Tile tile, int width, int height, int orientation) throws IOException {	
+	private static TileLabel getTileLabelBySize(Tile tile, int width, int height, int orientation) throws IOException {	
 		Image tempTileImg = ImageIO.read(new File(tile.getUrl()));
 		Image tileImg;
 		
 		tileImg = tempTileImg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 	
-		JLabel jl = new JLabel() {
+		TileLabel jl = new TileLabel() {
 			@Override
 			public Dimension getPreferredSize() {
                 return new Dimension(width, height);

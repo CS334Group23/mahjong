@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import utils.BidMsg;
+import utils.DrawMsg;
 import utils.Tile;
 
 public class GameController extends JFrame{
@@ -55,8 +57,8 @@ public class GameController extends JFrame{
 		});
 	}
 	
-	// api for server
-	public void addNewTile(int userId, Tile tile) {
-		gamePanel.addNewTile(userId, tile);
+
+	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
+		gamePanel.infoDraw(msg, possibleBid);
 	}
 }

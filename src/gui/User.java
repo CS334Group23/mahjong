@@ -14,6 +14,7 @@ public class User {
 	protected Deck handDeck;
 	protected Deck meldDeck;
 	protected Deck boardDeck;
+	protected Point newTileShowPoint;
 	
 	protected void changeTileImgToFaceDown(ArrayList<Tile> hand) {
 		for(Tile tile : hand) 
@@ -46,6 +47,10 @@ public class User {
 	
 	public int getUserId() {
 		return userId;
+	}
+	
+	public Point getNewTileShowPoint() {
+		return newTileShowPoint;
 	}
 
 	public void handInit(GamePanel gamePanel) {
