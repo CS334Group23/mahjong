@@ -26,7 +26,7 @@ public class  FindTilePosition {
 	   public static int FindPosition(ArrayList<Tile> hand, Tile a) {
 
 		   int low=0;
-		   int high=hand.size();
+		   int high=hand.size()-1;
 		   while(high>=low) {
 			   int mid=(low+high)/2;
 			   //System.out.println(low+" l "+high+" h  "+ mid+ "   "+a.getId()+ "   "+hand.get(mid).getId());
