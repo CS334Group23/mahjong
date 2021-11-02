@@ -26,7 +26,6 @@ public class Combination {
 	private ArrayList<Meld> Combi_temp = new ArrayList<>();
 	private ArrayList<Meld> all_temp=new ArrayList<>();
 	//Integer[] ponged = Collections.nCopies(144, 0).toArray(new Integer[0]);
-	Checker checker=Checker.getInstance();
 	public Combination() {};
 	public int count=0;
 	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
@@ -103,10 +102,10 @@ public class Combination {
 
 				} 
 			//	/*
-				int b_pos= checker.NextDifferentTile(hand,hand.get(i));
+				int b_pos=  FindTilePosition.NextDifferentTile(hand,hand.get(i));
 				int c_pos=-1;
 				if(b_pos!=-1)
-				 c_pos= checker.NextDifferentTile(hand,hand.get(b_pos));
+				 c_pos=  FindTilePosition.NextDifferentTile(hand,hand.get(b_pos));
 				if(b_pos!=-1 && c_pos!=-1) {
 				if(CheckChow(hand.get(i),hand.get(b_pos),hand.get(c_pos))) {
 				
@@ -178,14 +177,7 @@ public class Combination {
 		
 		return false;
 	}
-public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
-	if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() &&c.getRankIndex() == d.getRankIndex()&&b.getType()==c.getType())
-	{
-		//System.out.println(a.getId()+" "+b.getId()+" "+c.getId());
-		return true;
-	}
-	return false;
-}
+
 		public void list() {//debug and also use for result
 			
 			for(ArrayList<Meld> m: combination_set) {

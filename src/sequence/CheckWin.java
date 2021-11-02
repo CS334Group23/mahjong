@@ -73,7 +73,7 @@ public class CheckWin {
 	
 	public boolean CheckPH(ArrayList<Meld> hand) {//���w
 		for(int i=0;i<hand.size();i++){
-			if(hand.get(i).getcomb_type() !=1 ||hand.get(i).getcomb_type() !=0) {
+			if(hand.get(i).getcomb_type() !=1 &&hand.get(i).getcomb_type() !=0) {
 				return false;
 			}
 			

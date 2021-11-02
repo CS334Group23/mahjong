@@ -1,28 +1,32 @@
 package utils;
 import java.util.*;
 public class  FindTilePosition {
-	public int NextDifferentTile(ArrayList<Tile> hand, Tile a) {
+	
+	public static int NextDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
 		//System.out.println(a.getId()+" "+pos);
 		for(int i=pos;i<hand.size();i++) {
 			if(hand.get(pos).getRankIndex()!=  hand.get(i).getRankIndex()) {
 				return i;
+				
 			}
 			
 		}
 		return -1;
 	}
-	public int PreviousDifferentTile(ArrayList<Tile> hand, Tile a) {
+	public static int PreviousDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
 		//System.out.println(a.getId()+" "+pos);
-		for(int i=0;i<pos;i++) {
+		for(int i=pos;i>=0;i--) {
 			if(hand.get(pos).getRankIndex()!=  hand.get(i).getRankIndex()) {
 				return i;
+				
 			}
 			
 		}
 		return -1;
 	}
+	
 	   public static int FindPosition(ArrayList<Tile> hand, Tile a) {
 
 		   int low=0;
