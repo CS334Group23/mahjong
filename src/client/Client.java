@@ -26,7 +26,7 @@ public class Client implements Peer, ClientInterface{
 	
 	public Client(int aid, Peer server) {
 		this.id = aid;
-		this.wall = new ArrayList<>();
+//		this.wall = new ArrayList<>();
 		this.meldWall = new ArrayList<ArrayList<Meld>>(CLIENT_NUM);
 		for(int i=0; i<CLIENT_NUM; i++) {
 			meldWall.add(new ArrayList<Meld>());
@@ -67,9 +67,10 @@ public class Client implements Peer, ClientInterface{
 	}
 	
 	public void initWall(ArrayList<Integer> initCards) {
-		for(Integer id : initCards) {
-			wall.add(new Tile(id));
-		}
+//		for(Integer id : initCards) {
+//			wall.add(new Tile(id));
+//		}
+		wall = Tile.idToTileList(initCards);
 	}
 	
 	public String printWall() {
