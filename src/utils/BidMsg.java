@@ -12,8 +12,9 @@ public class BidMsg implements Message, Comparable{
 	private int tileId;
 	private Meld meld;
 	private String bidName;
+	private ArrayList<Integer> winHand;
 	
-	public BidMsg(int clientId, BidType bidType, String responserName, int tileId, Meld meld) {
+	public BidMsg(int clientId, BidType bidType, String responserName, int tileId, Meld meld, ArrayList<Integer> winHand) {
 		this.clientId = clientId;
 		this.opName = "BidOperation";
 		this.bidType = bidType.getBidType();
@@ -21,6 +22,7 @@ public class BidMsg implements Message, Comparable{
 		this.tileId = tileId;
 		this.meld = meld;
 		this.bidName = bidType.getChnName();
+		this.winHand = winHand;
 	}
 	
 	@Override
@@ -51,6 +53,10 @@ public class BidMsg implements Message, Comparable{
 	
 	public String getChnName() {
 		return bidName;
+	}
+	
+	public ArrayList<Integer> getWinHand(){
+		return winHand;
 	}
 	
 	public static void printBid(ArrayList<BidMsg> msgs) {

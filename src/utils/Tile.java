@@ -167,4 +167,12 @@ public class Tile {
 		}
 		return result;
 	}
+	
+	public static String tileListToString (ArrayList<Tile> tileList) {
+		String s = "";
+		for(Tile t: tileList) {
+			s = s+(t.getChnName()+" /");
+		}
+		return s;
+	}
 }

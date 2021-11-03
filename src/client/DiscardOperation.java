@@ -27,34 +27,34 @@ public class DiscardOperation implements ClientOperation{
 		ArrayList<BidMsg> possibleBid = new ArrayList<>();
 		if(discardMsg.getSenderId()==client.getId()) {
 			client.getUi().infoDiscard(discardMsg, possibleBid);
-			client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
+			client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null, null));
 			return;
 		}
 		else if(discardMsg.getSenderId()==(client.getId()+3)%4) {
 			ArrayList<Meld> possibleMeld = ChowChecker.checkChow(client.getWall(), new Tile(discardMsg.getTileId()));
 			for(Meld m:possibleMeld) {
-				possibleBid.add(new BidMsg(client.getId(), BidType.CHOW, "ChowResponser", ((DiscardMsg)msg).getTileId(),m));
+				possibleBid.add(new BidMsg(client.getId(), BidType.CHOW, "ChowResponser", ((DiscardMsg)msg).getTileId(),m, null));
 			}
 		}
 		ArrayList<Sequence> possibleSequence = facadeChecker.check_if_win();
 		Meld pong = PongChecker.checkPong(client.getWall(), new Tile(discardMsg.getTileId()));
 		Meld kong = KongChecker.checkKong(client.getWall(), new Tile(discardMsg.getTileId()));
 		if(pong != null) {
-			possibleBid.add(new BidMsg(client.getId(), BidType.PONG, "PongResponser", ((DiscardMsg)msg).getTileId(),pong));
+			possibleBid.add(new BidMsg(client.getId(), BidType.PONG, "PongResponser", ((DiscardMsg)msg).getTileId(),pong,null));
 		}
 		if(kong != null) {
-			possibleBid.add(new BidMsg(client.getId(), BidType.KONG, "KongResponser", ((DiscardMsg)msg).getTileId(),kong));
+			possibleBid.add(new BidMsg(client.getId(), BidType.KONG, "KongResponser", ((DiscardMsg)msg).getTileId(),kong, null));
 		}
 		if(possibleSequence.size()!=0) {
-			possibleBid.add(new BidMsg(client.getId(), BidType.WIN, "WinResponser", ((DiscardMsg)msg).getTileId(),null));
+			possibleBid.add(new BidMsg(client.getId(), BidType.WIN, "WinResponser", ((DiscardMsg)msg).getTileId(),null, Tile.tileToIdList(client.getWall())));
 		}
 		if(possibleBid.size()==0) {
 			client.getUi().infoDiscard(discardMsg, possibleBid);
-			client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
+			client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null, null));
 			return;
 		}
 		else {
-			possibleBid.add(new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
+			possibleBid.add(new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null, null));
 //			TerminalIOUtils.printIndex(possibleBid.size());
 //			System.out.print("You have options:");
 //			BidMsg.printBid(possibleBid);
@@ -69,15 +69,16 @@ public class DiscardOperation implements ClientOperation{
 			int opIndex = client.getUi().getOpIndex();
 	        if(opIndex<possibleBid.size() && 0<=opIndex) {
 	        	client.send(client.getServer(), possibleBid.get(opIndex));
+	        	return;
 	        }
 	        else {// this print need later try to remove from this logical part.
 	        	System.out.println("Invalid operation. Automatically execute the default operation.");
-	        	client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
+	        	client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null, null));
 	    		return;
 	        }
 	        
 		}
-		client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null));
-		return;
+//		client.send(client.getServer(), new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", ((DiscardMsg)msg).getTileId(),null, null));
+//		return;
 	}
 }

@@ -73,13 +73,13 @@ public class Client implements Peer, ClientInterface{
 		wall = Tile.idToTileList(initCards);
 	}
 	
-	public String printWall() {
-		String s = "";
-		for(Tile t:wall) {
-			s = s+(t.getChnName()+" /");
-		}
-		return s;
-	}
+//	public String printWall() {
+//		String s = "";
+//		for(Tile t:wall) {
+//			s = s+(t.getChnName()+" /");
+//		}
+//		return s;
+//	}
 
 	public Tile getTile(int index) {
 		return wall.get(index);
