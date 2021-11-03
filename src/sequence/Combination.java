@@ -26,27 +26,12 @@ public class Combination {
 	private ArrayList<Meld> Combi_temp = new ArrayList<>();
 	private ArrayList<Meld> all_temp=new ArrayList<>();
 	//Integer[] ponged = Collections.nCopies(144, 0).toArray(new Integer[0]);
-	Checker checker=Checker.getInstance();
 	public Combination() {};
 	public int count=0;
 	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
 		sorting.sortTile(hand);
-		
-		for(int i=0;i<hand.size()-1;i++) {
-
-			if(hand.get(i).getId()>hand.get(i+1).getId()) {
-				System.out.println("Sorting errer");
-			}
-			
-			
-		}
 		checkcombination(hand);
-		if(combination_set.isEmpty()) {
-			//pass
-		}
-			
-		else list(); 
-		
+
 		return combination_set;
 		
 	}
@@ -56,11 +41,9 @@ public class Combination {
 			return true;
 			
 		}
-		//boolean Ponged=false;
-		//boolean Chowed=false;
+
 		int initial_size=hand.size();
 		for(int i=0;i<hand.size();i++) {
-			//System.out.println(count+"  "+i+"  "+hand.size());
 			if(hand.size()==2) { //if only 2, check if it is pair
 				if(hand.get(i).getId()/4==hand.get(i+1).getId()/4){
 					{
@@ -72,7 +55,6 @@ public class Combination {
 						if(checkcombination(hand)) {
 							ArrayList<Meld> meld=new ArrayList<Meld>(Combi_temp);
 							combination_set.add(meld);
-							System.out.println(Combi_temp.size());
 							Combi_temp.remove(Combi_temp.size()-1);
 							hand.add(Mtemp.getFirst());
 							hand.add(Mtemp.getSecond());
@@ -86,14 +68,10 @@ public class Combination {
 				
 				
 			}else if(hand.size()-i>2) {
-				//System.out.println("jump "+hand.get(i).getId());
 				
 				if(CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
 					Meld Mtemp= new Meld(hand.get(i),hand.get(i+1),hand.get(i+2),null);
-					//if(ponged[hand.get(i).getId()]==0){
-					//ponged[hand.get(i).getId()]=1;	
-					//ponged[hand.get(i+1).getId()]=1;	
-					//ponged[hand.get(i+2).getId()]=1;	
+
 					all_temp.add(Mtemp);	
 					Combi_temp.add(Mtemp);
 					hand.remove(i);
@@ -114,31 +92,25 @@ public class Combination {
 				
 						
 					}else {
-						//r=true;					
-						//ponged[hand.get(i).getId()]=0;	
-						//ponged[Mtemp.getSecond().getId()]=0;	
-						//ponged[Mtemp.getThird().getId()]=0;
+
 						hand.add(0,Mtemp.getThird());
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						Combi_temp.remove(Combi_temp.size()-1);
 						sorting.sortTile(hand);
 					}
-					//}else b
-						//System.out.println("hello");
-					//}
-					
+
 				} 
 			//	/*
-				int b_pos= checker.NextDifferentTile(hand,hand.get(i));
+				int b_pos=  FindTilePosition.NextDifferentTile(hand,hand.get(i));
 				int c_pos=-1;
 				if(b_pos!=-1)
-				 c_pos= checker.NextDifferentTile(hand,hand.get(b_pos));
+				 c_pos=  FindTilePosition.NextDifferentTile(hand,hand.get(b_pos));
 				if(b_pos!=-1 && c_pos!=-1) {
 				if(CheckChow(hand.get(i),hand.get(b_pos),hand.get(c_pos))) {
 				
 					Meld Mtemp= new Meld(hand.get(i),hand.get(b_pos),hand.get(c_pos),null);
-					//Chowed=true;
+
 					Combi_temp.add(Mtemp);
 					hand.remove(i);
 					hand.remove(b_pos-1);
@@ -205,14 +177,7 @@ public class Combination {
 		
 		return false;
 	}
-public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
-	if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() &&c.getRankIndex() == d.getRankIndex()&&b.getType()==c.getType())
-	{
-		//System.out.println(a.getId()+" "+b.getId()+" "+c.getId());
-		return true;
-	}
-	return false;
-}
+
 		public void list() {//debug and also use for result
 			
 			for(ArrayList<Meld> m: combination_set) {

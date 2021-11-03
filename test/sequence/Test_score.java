@@ -53,7 +53,6 @@ public class Test_score{
 				score+=s.getScore();
 				
 			}
-			System.out.println(score);
 			assertEquals(11, score);
 		
 	}
@@ -107,7 +106,6 @@ public class Test_score{
 				score+=s.getScore();
 				
 			}
-			 System.out.println(score);
 			assertEquals(11, score);
 		
 	}
@@ -151,7 +149,7 @@ public void test3() {
 		Tile t14= new Tile(a.get(13));
 		sorting.sortTile(hand);
 		ArrayList<Meld> showed_hand=new ArrayList<>();
-		facade_checker check= new facade_checker(hand, showed_hand, t14);
+		FacadeChecker check= new FacadeChecker(hand, showed_hand, t14);
 		
 		ArrayList<Sequence> test_sequence=check.check_if_win();
 		int score=0;
@@ -159,7 +157,6 @@ public void test3() {
 			score+=s.getScore();
 			
 		}
-		System.out.println(score);
 		assertEquals(4, score);
 	
 }
@@ -204,7 +201,7 @@ public void test4() {
 		//hand.add(t14);
 		
 		ArrayList<Meld> showed_hand=new ArrayList<>();
-		facade_checker check= new facade_checker(hand, showed_hand, t14);
+		FacadeChecker check= new FacadeChecker(hand, showed_hand, t14);
 		
 		ArrayList<Sequence> test_sequence=check.check_if_win();
 		int score=0;
@@ -253,7 +250,7 @@ public void testv5() {
 	Tile t14=new Tile(0);
 	
 	ArrayList<Meld> showed_hand=new ArrayList<>();
-	facade_checker check= new facade_checker(hand, showed_hand, t14);
+	FacadeChecker check= new FacadeChecker(hand, showed_hand, t14);
 	ArrayList<Meld> test=check.check_if_chow();
 	test.add(check.check_if_pong());
 	System.out.println(test.size());
