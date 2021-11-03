@@ -14,4 +14,5 @@ public interface Ui {
 	public int getDiscard();
 	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid);
 	public void infoBid(BidMsg bidMsg);
+	void infoWin(BidMsg bidMsg);
 }

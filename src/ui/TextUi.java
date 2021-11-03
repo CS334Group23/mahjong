@@ -22,7 +22,7 @@ public class TextUi implements Ui{
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
 		System.out.printf("You are client%d\n", client.getId());
 		TerminalIOUtils.printIndex(client.getLength());
-		System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
+		System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
 		System.out.printf("Client%d draws card %s\n", client.getId(),Tile.idToChnName((drawMsg).getTileId()));
 		if(possibleBid != null && possibleBid.size()>0) {
 			TerminalIOUtils.printIndex(possibleBid.size());
@@ -33,6 +33,7 @@ public class TextUi implements Ui{
 
 	@Override
 	public int getOpIndex() {
+		System.out.print("Please input the index of the operation: ");
 		Scanner scan = new Scanner(System.in);
 		int opIndex=-1;
         if (scan.hasNext()) {
@@ -71,7 +72,7 @@ public class TextUi implements Ui{
 			TerminalIOUtils.printIndex(possibleBid.size());
 			System.out.print("You have options:");
 			BidMsg.printBid(possibleBid);
-			System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
+			System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
 		}
 	}
 
@@ -81,16 +82,20 @@ public class TextUi implements Ui{
 		if(bidMsg.getBidType() == BidType.CHOW.getBidType() || bidMsg.getBidType() == BidType.PONG.getBidType()) {
 			//here getBidType later need more unity to save to may conversion
 			TerminalIOUtils.printIndex(client.getLength());
-			System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
+			System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
 		}
 	}
 	
 	@Override
 	public void infoDeal(DealMsg dealMsg) {//this need later change to send a tile list instead of index list, or use get wall interface
 		//this may later need to change to extract with other info method with a print method
-		System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
+		System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
 	}
 	
-	
+	@Override
+	public void infoWin(BidMsg bidMsg) {
+		System.out.printf("client%d wins\n", bidMsg.getBidClient());
+		System.out.printf("The hand is %s\n", Tile.tileListToString(Tile.idToTileList(bidMsg.getWinHand())));
+	}
 	
 }

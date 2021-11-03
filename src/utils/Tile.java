@@ -3,6 +3,7 @@ package utils;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -149,5 +150,29 @@ public class Tile {
 	
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public static ArrayList<Tile> idToTileList(ArrayList<Integer> idList) {
+		ArrayList<Tile> result = new ArrayList<>();
+		for(int id : idList) {
+			result.add(new Tile(id));
+		}
+		return result;
+	}
+	
+	public static ArrayList<Integer> tileToIdList(ArrayList<Tile> tileList){
+		ArrayList<Integer> result = new ArrayList<>();
+		for(Tile tile : tileList) {
+			result.add(tile.getId());
+		}
+		return result;
+	}
+	
+	public static String tileListToString (ArrayList<Tile> tileList) {
+		String s = "";
+		for(Tile t: tileList) {
+			s = s+(t.getChnName()+" /");
+		}
+		return s;
 	}
 }
