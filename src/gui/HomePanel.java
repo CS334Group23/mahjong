@@ -42,8 +42,8 @@ public class HomePanel extends JPanel {
 		gameStart = new JButton("Game Start");
 		exit = new JButton("Exit");
 		
-		gameStart.setBounds(350, 750, 150, 75);
-		exit.setBounds(750, 750, 150, 75);
+		gameStart.setBounds(GameController.FRAME_WIDTH/5, GameController.FRAME_HEIGHT/6*4, GameController.FRAME_WIDTH/11, GameController.FRAME_HEIGHT/12);
+		exit.setBounds(GameController.FRAME_WIDTH/6*4, GameController.FRAME_HEIGHT/6*4, GameController.FRAME_WIDTH/11, GameController.FRAME_HEIGHT/12);
 		
 		exit.addActionListener((e) -> {
 			System.exit(0);

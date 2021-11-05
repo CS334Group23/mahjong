@@ -10,7 +10,7 @@ public class UserBottom extends User{
 
 	public UserBottom(ArrayList<Tile> hand) {
 		userId = User.USER_BOTTOM;
-		handDeck = new Deck(hand, new Point(90, 800), Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.10, GameController.FRAME_HEIGHT*0.8), Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 		boardDeck = new Deck(new Point(), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 		
@@ -48,7 +48,7 @@ public class UserBottom extends User{
 				int originalY = tile.getY();
 				
 				// if it is first click
-				if(tile.isFirstClick()) {
+				if(tile.isFirstClick()) {// use e.x and e.y to check
 					// reset all tile to original position except clicked tile
 					resetTilePosition();
 					

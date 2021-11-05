@@ -9,7 +9,7 @@ public class UserRight extends User{
 	public UserRight(ArrayList<Tile> hand) {
 		userId = User.USER_RIGHT;
 		changeTileImgToFaceDown(hand); // AI's tile show facedown only
-		handDeck = new Deck(hand, new Point(1100, 60), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
+		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.9, GameController.FRAME_HEIGHT*0.015), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 		boardDeck = new Deck(new Point(), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}

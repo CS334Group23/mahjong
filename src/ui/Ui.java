@@ -8,7 +8,7 @@ import utils.DiscardMsg;
 import utils.DrawMsg;
 
 public interface Ui {
-	public void infoDeal(DealMsg dealMsg);
+	public void infoDeal(DealMsg dealMsg); 
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid);
 	public int getOpIndex();
 	public int getDiscard();
