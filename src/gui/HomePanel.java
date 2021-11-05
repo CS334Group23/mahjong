@@ -26,7 +26,7 @@ public class HomePanel extends JPanel {
 
 	public HomePanel(){
 		try {
-			bgImage = ImageIO.read(new File("resource/static/others/home.jpg"));
+			bgImage = ImageIO.read(new File("resource/static/others/background.jpg"));
 			
 			setLayout(null);
 			
@@ -42,8 +42,8 @@ public class HomePanel extends JPanel {
 		gameStart = new JButton("Game Start");
 		exit = new JButton("Exit");
 		
-		gameStart.setBounds(400, 750, 100, 50);
-		exit.setBounds(750, 750, 100, 50);
+		gameStart.setBounds(350, 750, 150, 75);
+		exit.setBounds(750, 750, 150, 75);
 		
 		exit.addActionListener((e) -> {
 			System.exit(0);
