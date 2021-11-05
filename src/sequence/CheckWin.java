@@ -13,6 +13,7 @@ public class CheckWin {
 		
 		Combination comb=new Combination();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
+		System.out.printf("Set:%d\n",set.size());
 		ArrayList<Sequence> sequence =new ArrayList<>();
 		for(ArrayList<Meld> winning_hand : set) {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
@@ -40,9 +41,11 @@ public class CheckWin {
 			// other check will add later 
 			
 			//extra score eg ���e/��/��
-			if(CheckMC(showed_hand)) {
-				Sequence win_from_wall=new Win_From_Wall();
-				temp_sequence.add(win_from_wall);
+			if(showed_hand != null) {
+				if(CheckMC(showed_hand)) {
+					Sequence win_from_wall=new Win_From_Wall();
+					temp_sequence.add(win_from_wall);
+				}
 			}
 			for(Sequence s: temp_sequence) {
 				local_score+=s.getScore();
