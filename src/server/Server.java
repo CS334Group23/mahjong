@@ -86,7 +86,7 @@ public class Server implements Peer{
 		}
 	}
 	
-	public void setNextCLient(int clientId) {
+	public void setNextClient(int clientId) {
 		this.nextClient = clientId;
 	}
 	
