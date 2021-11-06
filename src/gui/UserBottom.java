@@ -34,8 +34,8 @@ public class UserBottom extends User{
 			tileLabelList.add(label);
 		}
 		
-		// init the coordiante of the new tile sent by server
-		// coordiante = (the x of the last hand mile + some distance, the y of the last hand mile)
+		// init the coordinate of the new tile sent by server
+		// Coordinate = (the x of the last hand mile + some distance, the y of the last hand mile)
 		newTileShowPoint = new Point(point.x + Tile.TILE_WIDTH_USER / 2, point.y);
 	}
 	

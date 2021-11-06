@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import ui.ClientInterface;
 import utils.BidMsg;
+import utils.DealMsg;
+import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.Tile;
 
@@ -18,6 +21,7 @@ public class GamePanel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private Image bgImage;
 	private ArrayList<User> users;
 	
@@ -60,6 +64,11 @@ public class GamePanel extends JPanel{
 		}
 	}
 
+	public void infoDeal(DealMsg dealMsg) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
 		Tile tile = new Tile(msg.getTileId());
 		
@@ -78,6 +87,29 @@ public class GamePanel extends JPanel{
 		
 		// add event to the tile label
 		user.tileEventInit(tileLabel, this);
+	}
+
+	public int getOpIndex() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getDiscard() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void infoBid(BidMsg bidMsg) {
+		
+	}
+	
+	public void infoWin(BidMsg bidMsg) {
+		
 	}
 
 }

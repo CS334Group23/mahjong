@@ -6,11 +6,14 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import ui.Ui;
 import utils.BidMsg;
+import utils.DealMsg;
+import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.Tile;
 
-public class GameController extends JFrame{
+public class GameController extends JFrame implements Ui{
 	private static final long serialVersionUID = 1L;
 	public static final int FRAME_WIDTH = 1280; 
 	public static final int FRAME_HEIGHT = 800;  
@@ -57,8 +60,38 @@ public class GameController extends JFrame{
 		});
 	}
 	
-
+	@Override
+	public void infoDeal(DealMsg dealMsg) {
+		gamePanel.infoDeal(dealMsg);
+	}
+	
+	@Override
 	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
 		gamePanel.infoDraw(msg, possibleBid);
+	}
+	
+	@Override
+	public int getOpIndex() {
+		return gamePanel.getOpIndex();
+	}
+	
+	@Override
+	public int getDiscard() {
+		return gamePanel.getDiscard();
+	}
+	
+	@Override
+	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
+		gamePanel.infoDiscard(discardMsg, possibleBid);
+	}
+	
+	@Override
+	public void infoBid(BidMsg bidMsg) {
+		gamePanel.infoBid(bidMsg);
+	}
+	
+	@Override
+	public void infoWin(BidMsg bidMsg) {
+		gamePanel.infoWin(bidMsg);
 	}
 }
