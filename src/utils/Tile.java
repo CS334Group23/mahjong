@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
+
+import gui.TileLabel;
 
 public class Tile {
 	public final static int SUIT_SIZE = 4 * 9;
@@ -17,10 +20,10 @@ public class Tile {
 	public final static int SUIT_NUM = 3;
 	public final static int TILE_WIDTH_USER = 100;
 	public final static int TILE_HEIGHT_USER = 100;
-	public final static int TILE_WIDTH_AI = 90;
-	public final static int TILE_HEIGHT_AI = 90;
-	public final static int TILE_WIDTH_MELD = 90;
-	public final static int TILE_HEIGHT_MELD = 90;
+	public final static int TILE_WIDTH_AI = 70;
+	public final static int TILE_HEIGHT_AI = 70;
+	public final static int TILE_WIDTH_MELD = 70;
+	public final static int TILE_HEIGHT_MELD = 70;
 	public final static int TILE_WIDTH_BOARD = 70;
 	public final static int TILE_HEIGHT_BOARD = 70;
 	
@@ -175,4 +178,58 @@ public class Tile {
 		}
 		return s;
 	}
+	
+	public static boolean isSameType(Tile tile1, Tile tile2) {
+		if(tile1.getType() == tile2.getType()) {
+			if(tile1.getRankIndex() == tile2.getRankIndex())
+				return true;
+		}
+		return false;
+	}
+	
+	public static ArrayList<Tile> sortTileList(ArrayList<Tile> tiles) {
+		ArrayList<Tile> sortedTiles = null;
+		tiles.sort(new tileComparator());
+		
+		sortedTiles = tiles;
+		return sortedTiles;
+	}
+	
+	public static ArrayList<TileLabel> sortTileLabelList(ArrayList<TileLabel> tileLabels) {
+		ArrayList<TileLabel> sortedTileLabels = null;
+		tileLabels.sort(new tileLabelComparator());
+		
+		sortedTileLabels = tileLabels;
+		return sortedTileLabels;
+	}
+}
+
+class tileComparator implements Comparator<Tile>{
+
+	@Override
+	public int compare(Tile o1, Tile o2) {
+		int o1Id = o1.getId();
+		int o2Id = o2.getId();
+		
+		if(o1Id == o2Id) return 0;
+		
+		return o1Id < o2Id ? -1 : 1;
+	}
+	
+}
+
+class tileLabelComparator implements Comparator<TileLabel>{
+
+	@Override
+	public int compare(TileLabel o1, TileLabel o2) {
+		Tile tile1 = o1.getTile();
+		Tile tile2 = o2.getTile();
+		int o1Id = tile1.getId();
+		int o2Id = tile2.getId();
+		
+		if(o1Id == o2Id) return 0;
+		
+		return o1Id < o2Id ? -1 : 1;
+	}
+	
 }

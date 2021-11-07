@@ -56,4 +56,16 @@ public class User {
 	public void handInit(GamePanel gamePanel) {
 		
 	}
+	
+	public ArrayList<TileLabel> getHandLabel() {
+		return handDeck.getTileLabels();
+	}
+	
+	public ArrayList<TileLabel> getMeldLabel() {
+		return meldDeck.getTileLabels();
+	}
+	
+	public ArrayList<TileLabel> getBoardLabel() {
+		return boardDeck.getTileLabels();
+	}
 }

@@ -88,13 +88,13 @@ public class Meld {
 	private String toChnCombName(int comb_type) {
 		switch(comb_type) {
 		case 0:
-			return "眼";
+			return "�";
 		case 1:
-			return "吃";
+			return "���";
 		case 2:
-			return "碰";
+			return "蝣�";
 		case 3:
-			return "杠";
+			return "���";
 		default:
 			return null;
 		}

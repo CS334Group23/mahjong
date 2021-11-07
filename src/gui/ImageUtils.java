@@ -27,7 +27,6 @@ public class ImageUtils {
 			panel.add(jl);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -40,7 +39,7 @@ public class ImageUtils {
 		
 		tileImg = tempTileImg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 	
-		TileLabel jl = new TileLabel() {
+		TileLabel jl = new TileLabel(tile) {
 			@Override
 			public Dimension getPreferredSize() {
                 return new Dimension(width, height);

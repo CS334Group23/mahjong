@@ -25,6 +25,10 @@ public class BidMsg implements Message, Comparable{
 		this.winHand = winHand;
 	}
 	
+	public BidMsg() {
+		
+	}
+	
 	@Override
 	public String getOperationName() {
 		return opName;

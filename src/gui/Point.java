@@ -3,6 +3,9 @@ package gui;
 public class Point {
 	public double x;
 	public double y;
+	private double initialX;
+	private double initialY;
+	
 	public int row;
 	
 	public Point() {
@@ -12,12 +15,16 @@ public class Point {
 	public Point(double x, double y) {
 		this.x = x;
 		this.y = y;
+		this.initialX = x;
+		this.initialY = y;
 		this.row = 0;
 	}
 	
 	public Point(double x, double y, int row) {
 		this.x = x;
 		this.y = y;
+		this.initialX = x;
+		this.initialY = y;
 		this.row = row;
 	}
 	
@@ -31,5 +38,10 @@ public class Point {
 	
 	public void setRow(int row) {
 		this.row = row;
+	}
+	
+	public void resetCoordinate() {
+		x = initialX;
+		y = initialY;
 	}
 }

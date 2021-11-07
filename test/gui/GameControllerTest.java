@@ -9,7 +9,9 @@ import java.util.Random;
 import org.junit.Test;
 
 import utils.BidMsg;
+import utils.BidType;
 import utils.DrawMsg;
+import utils.Meld;
 import utils.Tile;
 import utils.Type;
 
@@ -42,7 +44,25 @@ public class GameControllerTest {
 		gameController.setVisible(true);
 		
 		// test add new tile
-		gameController.infoDraw(new DrawMsg(50), new ArrayList<BidMsg>());
+		ArrayList<BidMsg> possibleBid = new ArrayList<>();
+		
+		Meld kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+		BidMsg bidMsg = new BidMsg(User.USER_BOTTOM, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+		possibleBid.add(bidMsg);
+		
+		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+		bidMsg = new BidMsg(User.USER_RIGHT, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+		possibleBid.add(bidMsg);
+		
+		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+		bidMsg = new BidMsg(User.USER_TOP, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+		possibleBid.add(bidMsg);
+		
+		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+		bidMsg = new BidMsg(User.USER_LEFT, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+		possibleBid.add(bidMsg);
+		
+		gameController.infoDraw(new DrawMsg(50), possibleBid);
 		
 		// add event to new tile
 		
@@ -63,24 +83,39 @@ public class GameControllerTest {
 				randomNum = rand.nextInt(120);
 				hand.add(new Tile(randomNum));
 			}
-			hand.sort(new idComparator());
-			hands.add(hand);
+			hand = Tile.sortTileList(hand);
+			//hands.add(hand);
+			
+			// for testing kong
+			if(i == 0) {
+				hands.add(getDeisgnedHand());
+			} else {
+				hands.add(hand);
+			}
 		}
 		
 		return hands;
 	}
 	
-	class idComparator implements Comparator<Tile>{
-
-		@Override
-		public int compare(Tile o1, Tile o2) {
-			int o1Id = o1.getId();
-			int o2Id = o2.getId();
-			
-			if(o1Id == o2Id) return 0;
-			
-			return o1Id < o2Id ? -1 : 1;
-		}
+	public ArrayList<Tile> getDeisgnedHand(){
+		ArrayList<Tile> hand = new ArrayList<>();
+		hand.add(new Tile(48));
+		hand.add(new Tile(49));
+		hand.add(new Tile(51));
 		
+		hand.add(new Tile(52));
+		hand.add(new Tile(53));
+		hand.add(new Tile(54));
+		hand.add(new Tile(55));
+		
+		hand.add(new Tile(56));
+		hand.add(new Tile(57));
+		hand.add(new Tile(58));
+		hand.add(new Tile(59));
+		
+		hand.add(new Tile(60));
+		
+		hand = Tile.sortTileList(hand);
+		return hand;
 	}
 }
