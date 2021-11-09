@@ -17,17 +17,16 @@ import javax.swing.JPanel;
 
 import utils.Tile;
 
+@SuppressWarnings("all")
 public class ImageUtils {
-	@SuppressWarnings("all")
 	public static TileLabel addTile(JPanel panel, Tile tile, int tileWidth, int tileHeight, Point point, int userId) {
 		TileLabel jl = null;
 		try {
 			jl = getTileLabelBySize(tile, tileWidth, tileHeight, userId);
-			jl.setBounds(point.x, point.y, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			jl.setBounds((int)point.x, (int)point.y, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
 			panel.add(jl);
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -40,7 +39,7 @@ public class ImageUtils {
 		
 		tileImg = tempTileImg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
 	
-		TileLabel jl = new TileLabel() {
+		TileLabel jl = new TileLabel(tile) {
 			@Override
 			public Dimension getPreferredSize() {
                 return new Dimension(width, height);
