@@ -89,19 +89,11 @@ public class GamePanel extends JPanel{
 			tile = new Tile(msg.getTileId());
 		}
 		
-		if(possibleBid != null && tile != null) {
-			// add skip button
-			JButton skip = new JButton("Skip");
-			skip.setBounds((int)operationButtonStartPoint.x, (int)operationButtonStartPoint.y
-							, GameController.FRAME_WIDTH/16, GameController.FRAME_HEIGHT/16);
-			operationButtonEventInit(skip, "Skip", new BidMsg());
-			operationButtonList.add(skip);
-			this.add(skip);
-			
+		if(possibleBid != null && tile != null) {			
 			for(BidMsg bidMsg : possibleBid) {
 				User user = users.get(bidMsg.getBidClient());
 				// display tile to the gamePanel
-				TileLabel tileLabel = addTileToPanel(user, tile);
+				TileLabel tileLabel = addTileToPanel(user, tile); // TODO : solve the bug here: show multiple tiles in the same position
 				
 				// add tile and tile label to the user's hand deck list
 				user.getHandDeck().getTiles().add(tile);
@@ -128,8 +120,28 @@ public class GamePanel extends JPanel{
 		return 0;
 	}
 
-	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
-		// TODO Auto-generated method stub
+	public void infoDiscard(DiscardMsg msg, ArrayList<BidMsg> possibleBid) {
+		Tile tile = null;
+		User sender = null;
+		if(msg != null) {
+			tile = new Tile(msg.getTileId());
+			sender = users.get(msg.getSenderId());
+		}
+		
+		// possibleBid == null means no other option could do
+		// only show the tile to the user's board deck
+		if(possibleBid == null) {
+			sender.discardTile(this, tile);
+		}
+		else { // not null, means need to deal with all possibleBid option
+			for(BidMsg bidMsg : possibleBid) {
+				User user = users.get(bidMsg.getBidClient());
+				if(bidMsg.getBidClient() == User.USER_BOTTOM) {
+					// button init
+					operationButtonInit(bidMsg);
+				}
+			}
+		}
 		
 	}
 	
@@ -157,25 +169,26 @@ public class GamePanel extends JPanel{
 	}
 	
 	private void operationButtonInit(BidMsg msg) {
-		// move the start point to the left first
-		operationButtonStartPoint.setX(operationButtonStartPoint.x - GameController.FRAME_WIDTH/16 - GameController.FRAME_WIDTH/50);
-		operationButtonStartPoint.setY(operationButtonStartPoint.y);
-		
-		// add other button(s) if applicable
+		// add button
 		if(msg.getOperationName() != null) {
 			String operationName = msg.getChnName();
 			JButton btn = new JButton(operationName);
 			btn.setBounds((int)operationButtonStartPoint.x, (int)operationButtonStartPoint.y
 					, GameController.FRAME_WIDTH/16, GameController.FRAME_HEIGHT/16);
+			
+			// set button event
 			operationButtonEventInit(btn, operationName, msg);
 			operationButtonList.add(btn);
 			this.add(btn);
 		}
 		
+		// move the button start point to the left
+		operationButtonStartPoint.setX(operationButtonStartPoint.x - GameController.FRAME_WIDTH/16 - GameController.FRAME_WIDTH/50);
+		operationButtonStartPoint.setY(operationButtonStartPoint.y);
 	}
 	
 	private void operationButtonEventInit(JButton btn, String btnName, BidMsg msg) {
-		if(btnName.equals("Skip")) {
+		if(btnName.equals("过")) {
 			btn.addActionListener((e) -> {
 				for(JButton jbtn : operationButtonList)
 					this.remove(jbtn);
@@ -256,37 +269,40 @@ public class GamePanel extends JPanel{
 			    public void mouseClicked(MouseEvent e) {
 			    	opIndex = BidType.KONG.getBidType();
 			    	
-			    	// 1. put all the tile to the user meld list, meldLabel list
-			    	// 2. delete tile from user hand deck (including tiles and tileLabel list)
-			    	// 3. display all the related tiles to the right
-			    	userMeldList = user.getMeld();
-			    	userMeldLabelList= user.getMeldLabel();
-			    	userHandList = user.getHand();
-			    	userHandLabelList= user.getHandLabel();
-			    	
-			    	// step 1
-			    	for(int i = 0; i < userHandList.size(); i++) {
-			    		Tile currentTile = userHandList.get(i);
-			    		Tile tile;
-			    		for(int j = 0; j < sameTileList.size(); j++) {
-			    			tile = sameTileList.get(j);
-			    			if(currentTile.getId() == tile.getId()) {
-			    				userMeldList.add(tile);
-			    				userMeldLabelList.add(sameTileLabelList.get(j));
-			    				Tile.sortTileList(userMeldList);
-			    				Tile.sortTileLabelList(sameTileLabelList);
-			    			}
-			    		}
-			    	}
-			    	
-			    	// TODO : step 2
-
-			    	
-			    	// TODO : step 3
-
-			    	printUserDecks();
+//			    	// 1. put all the tile to the user meld list, meldLabel list
+//			    	// 2. delete tile from user hand deck (including tiles and tileLabel list)
+//			    	// 3. display all the related tiles to the right
+//			    	userMeldList = user.getMeld();
+//			    	userMeldLabelList= user.getMeldLabel();
+//			    	userHandList = user.getHand();
+//			    	userHandLabelList= user.getHandLabel();
+//			    	
+//			    	// step 1
+//			    	for(int i = 0; i < userHandList.size(); i++) {
+//			    		Tile currentTile = userHandList.get(i);
+//			    		Tile tile;
+//			    		for(int j = 0; j < sameTileList.size(); j++) {
+//			    			tile = sameTileList.get(j);
+//			    			if(currentTile.getId() == tile.getId()) {
+//			    				userMeldList.add(tile);
+//			    				userMeldLabelList.add(sameTileLabelList.get(j));
+//			    				Tile.sortTileList(userMeldList);
+//			    				Tile.sortTileLabelList(sameTileLabelList);
+//			    			}
+//			    		}
+//			    	}
+//			    	
+//			    	// TODO : step 2
+//
+//			    	
+//			    	// TODO : step 3
+//
+//			    	printUserDecks();
 			    }
 			});
+		}
+		else if(btnName.equals("碰")) {
+			
 		}
 	}
 	
@@ -328,7 +344,7 @@ public class GamePanel extends JPanel{
 	}
 	
 	// for testing
-	private void printUserDecks() {
+	public void printUserDecks() {
 		User user = users.get(0);
 		Deck handDeck = user.getHandDeck();
 		Deck meldDeck = user.getMeldDeck();

@@ -94,4 +94,8 @@ public class GameController extends JFrame implements Ui{
 	public void infoWin(BidMsg bidMsg) {
 		gamePanel.infoWin(bidMsg);
 	}
+	
+	public void printUserDecks() {
+		gamePanel.printUserDecks();
+	}
 }

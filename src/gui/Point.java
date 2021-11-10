@@ -44,4 +44,14 @@ public class Point {
 		x = initialX;
 		y = initialY;
 	}
+
+	public double getInitialX() {
+		return initialX;
+	}
+
+	public double getInitialY() {
+		return initialY;
+	}
+	
+	
 }

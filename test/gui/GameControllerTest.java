@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import utils.BidMsg;
 import utils.BidType;
+import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.Meld;
 import utils.Tile;
@@ -36,35 +37,76 @@ public class GameControllerTest {
 //		}
 //	}
 	
+//	@Test
+//	public void testGameController3() throws InterruptedException {
+//		GameController gameController = GameController.getInstance();
+//		
+//		gameController.init(getHands());
+//		gameController.setVisible(true);
+//		
+//		// test add new tile
+//		ArrayList<BidMsg> possibleBid = new ArrayList<>();
+//		
+//		Meld kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+//		BidMsg bidMsg = new BidMsg(User.USER_BOTTOM, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+//		possibleBid.add(bidMsg);
+//		
+//		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.EMPTY, "", 0, kongMeld, new ArrayList<Integer>());
+//		possibleBid.add(bidMsg);
+//
+//		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+//		bidMsg = new BidMsg(User.USER_RIGHT, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+//		possibleBid.add(bidMsg);
+//		
+//		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+//		bidMsg = new BidMsg(User.USER_TOP, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+//		possibleBid.add(bidMsg);
+//		
+//		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+//		bidMsg = new BidMsg(User.USER_LEFT, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+//		possibleBid.add(bidMsg);
+//		
+//		gameController.infoDraw(new DrawMsg(50), possibleBid);
+//		
+//		// add event to new tile
+//		
+//		synchronized(this) {
+//			this.wait();
+//		}
+//	}
+	
 	@Test
-	public void testGameController3() throws InterruptedException {
+	public void testGameController4() throws InterruptedException {
 		GameController gameController = GameController.getInstance();
 		
 		gameController.init(getHands());
 		gameController.setVisible(true);
 		
-		// test add new tile
 		ArrayList<BidMsg> possibleBid = new ArrayList<>();
 		
 		Meld kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
 		BidMsg bidMsg = new BidMsg(User.USER_BOTTOM, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
 		possibleBid.add(bidMsg);
 		
-		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
-		bidMsg = new BidMsg(User.USER_RIGHT, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.PONG, "", 0, kongMeld, new ArrayList<Integer>());
 		possibleBid.add(bidMsg);
 		
-		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
-		bidMsg = new BidMsg(User.USER_TOP, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.EMPTY, "", 0, kongMeld, new ArrayList<Integer>());
 		possibleBid.add(bidMsg);
 		
-		kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
-		bidMsg = new BidMsg(User.USER_LEFT, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
-		possibleBid.add(bidMsg);
+		DiscardMsg msg0 = new DiscardMsg(112, 0);
+		DiscardMsg msg1 = new DiscardMsg(112, 1);
+		DiscardMsg msg2 = new DiscardMsg(112, 2);
+		DiscardMsg msg3 = new DiscardMsg(112, 3);
 		
-		gameController.infoDraw(new DrawMsg(50), possibleBid);
+		for(int i = 0; i < 23; i++) {
+			gameController.infoDiscard(msg0, null);
+			gameController.infoDiscard(msg1, null);
+			gameController.infoDiscard(msg2, null);
+			gameController.infoDiscard(msg3, null);
+		}
 		
-		// add event to new tile
+		gameController.infoDiscard(msg0, possibleBid);
 		
 		synchronized(this) {
 			this.wait();

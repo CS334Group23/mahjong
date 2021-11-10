@@ -24,8 +24,8 @@ public class Tile {
 	public final static int TILE_HEIGHT_AI = 70;
 	public final static int TILE_WIDTH_MELD = 70;
 	public final static int TILE_HEIGHT_MELD = 70;
-	public final static int TILE_WIDTH_BOARD = 70;
-	public final static int TILE_HEIGHT_BOARD = 70;
+	public final static int TILE_WIDTH_BOARD = 60;
+	public final static int TILE_HEIGHT_BOARD = 60;
 	
 	private static Map<Integer, String> engNameMap = new HashMap<Integer, String>();
 	private static Map<Integer, String> chnNameMap = new HashMap<Integer, String>();

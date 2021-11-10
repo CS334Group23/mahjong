@@ -15,6 +15,8 @@ public class User {
 	protected Deck meldDeck;
 	protected Deck boardDeck;
 	protected Point newTileShowPoint;
+	// count how many tiles are discarded by user, also is a line indicator to show which line should the discarded tile be placed
+	protected int tileOnBoard;
 	
 	protected void changeTileImgToFaceDown(ArrayList<Tile> hand) {
 		for(Tile tile : hand) 
@@ -54,6 +56,10 @@ public class User {
 	}
 
 	public void handInit(GamePanel gamePanel) {
+		
+	}
+	
+	public void discardTile(GamePanel gamePanel, Tile tile) {
 		
 	}
 	
