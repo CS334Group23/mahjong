@@ -5,18 +5,14 @@ public class FacadeChecker {
 	private ChowChecker chowchecker;
 	private PongChecker pongchecker;
 	private KongChecker kongchecker;
+	private Combination combination;
 	private ArrayList<Tile> hand;
 	private ArrayList<Meld> showed_hand;
 	private CheckWin checkwin;
 	private Tile a;
 	private int pos;
 	public FacadeChecker(ArrayList<Tile> hand,ArrayList<Meld> showed_hand,Tile a) {
-		this.hand=new ArrayList<>();
-		this.hand.addAll(hand);
-		this.showed_hand=showed_hand;
-		this.a=a;
-		this.pos=FindTilePosition.FindPosition(hand, a);
-		this.hand.add(pos,a);
+		UpdateHand(hand,showed_hand,a);
 		chowchecker=new ChowChecker();
 		pongchecker=new PongChecker();
 		kongchecker=new KongChecker();
@@ -37,6 +33,15 @@ public class FacadeChecker {
 	}
 	public ArrayList<Sequence> check_if_win(){
 		return checkwin.CheckScore(hand,showed_hand);
+	}
+	public void UpdateHand(ArrayList<Tile> hand, ArrayList<Meld> showed_hand, Tile a) {
+		this.hand=new ArrayList<>();
+		this.hand.addAll(hand);
+		this.showed_hand=showed_hand;
+		this.a=a;
+		this.pos=FindTilePosition.FindPosition(hand, a);
+		this.hand.add(pos,a);
+		
 	}
 	
 }
