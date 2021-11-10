@@ -2,6 +2,7 @@ package server;
 
 import utils.DealMsg;
 import utils.DrawMsg;
+import utils.DrawNoticeMsg;
 import utils.Message;
 import utils.Peer;
 
@@ -47,6 +48,7 @@ public class Server implements Peer{
 	
 	public void startGame() {
 		nextClient = 0;
+		sendAll(new DrawNoticeMsg(nextClient), 0);
 		sendNextDraw();
 	}
 	
@@ -88,6 +90,10 @@ public class Server implements Peer{
 	
 	public void setNextClient(int clientId) {
 		this.nextClient = clientId;
+	}
+	
+	public int getNextClient() {
+		return nextClient;
 	}
 	
 	public void sendNextDraw() {
