@@ -231,10 +231,6 @@ public class GamePanel extends JPanel{
 				// for testing
 				boolean isPrinted = false;
 				
-				// for mouse click event
-				ArrayList<Tile> userMeldList, userHandList;
-				ArrayList<TileLabel> userMeldLabelList, userHandLabelList;
-				
 			    public void mouseEntered(MouseEvent e) {
 			    	int originalX, originalY;
 			    	for(TileLabel tileLabel : sameTileLabelList) {
@@ -302,7 +298,105 @@ public class GamePanel extends JPanel{
 			});
 		}
 		else if(btnName.equals("碰")) {
+			Meld meld = msg.getMeld();
+			Tile tile1 = meld.getFirst();
+			Tile tile2 = meld.getSecond();
+			Tile tile3 = meld.getThird();
 			
+			UserBottom user = (UserBottom) users.get(User.USER_BOTTOM);
+			ArrayList<TileLabel> tileLabelList = user.getHandDeck().getTileLabels();
+			
+			// an array to store all the matched tile
+			// thus to reduce the searching time
+			ArrayList<TileLabel> sameTileLabelList = new ArrayList<>();
+			ArrayList<Tile> sameTileList = new ArrayList<>();
+			for(TileLabel tileLabel : tileLabelList) {
+				Tile tile = tileLabel.getTile();
+				if(tile.compareTo(tile1) == 0 || tile.compareTo(tile2) == 0 || tile.compareTo(tile3) == 0) {
+					sameTileLabelList.add(tileLabel);
+					sameTileList.add(tile);
+				}
+				
+			}
+			
+			btn.addMouseListener(new MouseAdapter() {
+			    public void mouseEntered(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+
+			    		tileLabel.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseExited(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+			    		
+						// move it down when the cursor is left
+			    		tileLabel.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseClicked(MouseEvent e) {
+			    	opIndex = BidType.PONG.getBidType();
+			    }
+			});
+		} else if(btnName.equals("吃")) {
+			Meld meld = msg.getMeld();
+			Tile tile1 = meld.getFirst();
+			Tile tile2 = meld.getSecond();
+			Tile tile3 = meld.getThird();
+			
+			UserBottom user = (UserBottom) users.get(User.USER_BOTTOM);
+			ArrayList<TileLabel> tileLabelList = user.getHandDeck().getTileLabels();
+			
+			// an array to store all the matched tile
+			// thus to reduce the searching time
+			ArrayList<TileLabel> sameTileLabelList = new ArrayList<>();
+			ArrayList<Tile> sameTileList = new ArrayList<>();
+			for(TileLabel tileLabel : tileLabelList) {
+				Tile tile = tileLabel.getTile();
+				if(tile.compareTo(tile1) == 0 || tile.compareTo(tile2) == 0 || tile.compareTo(tile3) == 0) {
+					sameTileLabelList.add(tileLabel);
+					sameTileList.add(tile);
+				}
+				
+			}
+			
+			btn.addMouseListener(new MouseAdapter() {
+			    public void mouseEntered(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+
+			    		tileLabel.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseExited(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+			    		
+						// move it down when the cursor is left
+			    		tileLabel.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseClicked(MouseEvent e) {
+			    	opIndex = BidType.CHOW.getBidType();
+			    }
+			});
+		} else if(btnName.equals("胡")) {
+			btn.addActionListener((e) -> {
+				opIndex = BidType.WIN.getBidType();
+			});
 		}
 	}
 	
@@ -393,6 +487,7 @@ public class GamePanel extends JPanel{
 			System.out.print(tile.getTile().getId() + " ");
 		}
 		System.out.println();
+		System.out.println(opIndex);
 	}
 
 }

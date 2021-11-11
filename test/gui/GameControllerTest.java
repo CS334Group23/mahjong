@@ -88,7 +88,8 @@ public class GameControllerTest {
 		BidMsg bidMsg = new BidMsg(User.USER_BOTTOM, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
 		possibleBid.add(bidMsg);
 		
-		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.PONG, "", 0, kongMeld, new ArrayList<Integer>());
+		Meld pongMeld = new Meld(new Tile(48), new Tile(53), new Tile(58), null);
+		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.CHOW, "", 0, pongMeld, new ArrayList<Integer>());
 		possibleBid.add(bidMsg);
 		
 		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.EMPTY, "", 0, kongMeld, new ArrayList<Integer>());
@@ -105,7 +106,7 @@ public class GameControllerTest {
 			gameController.infoDiscard(msg2, null);
 			gameController.infoDiscard(msg3, null);
 		}
-		
+
 		gameController.infoDiscard(msg0, possibleBid);
 		
 		synchronized(this) {
