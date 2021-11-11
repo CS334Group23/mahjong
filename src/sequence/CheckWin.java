@@ -18,6 +18,7 @@ public class CheckWin {
 		Combination comb=new Combination();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
 		ArrayList<Sequence> sequence =new ArrayList<>();
+		System.out.printf("Set:%d\n",set.size());
 		for(ArrayList<Meld> winning_hand : set) {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
 			winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
