@@ -13,8 +13,9 @@ public class BidMsg implements Message, Comparable{
 	private Meld meld;
 	private String bidName;
 	private ArrayList<Integer> winHand;
+	private boolean selfDrawn;
 	
-	public BidMsg(int clientId, BidType bidType, String responserName, int tileId, Meld meld, ArrayList<Integer> winHand) {
+	public BidMsg(int clientId, BidType bidType, String responserName, int tileId, Meld meld, ArrayList<Integer> winHand, boolean selfDrawn) {
 		this.clientId = clientId;
 		this.opName = "BidOperation";
 		this.bidType = bidType.getBidType();
@@ -23,9 +24,10 @@ public class BidMsg implements Message, Comparable{
 		this.meld = meld;
 		this.bidName = bidType.getChnName();
 		this.winHand = winHand;
+		this.selfDrawn = selfDrawn;
 	}
 	
-	public BidMsg() {
+	public BidMsg() { //this may need to be deleted later
 		
 	}
 	
@@ -74,5 +76,9 @@ public class BidMsg implements Message, Comparable{
 			}
 		}
 		System.out.println(s);
+	}
+	
+	public boolean isSelfDrawn() {
+		return selfDrawn;
 	}
 }
