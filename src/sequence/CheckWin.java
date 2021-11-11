@@ -21,7 +21,8 @@ public class CheckWin {
 		System.out.printf("Set:%d\n",set.size());
 		for(ArrayList<Meld> winning_hand : set) {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
-			winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
+			if(showed_hand!=null)
+				winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
 			sorting.sort_Meld(winning_hand);
 			//sort winning all by first of each meld, put eye at last
 			int local_score=0;
@@ -30,10 +31,11 @@ public class CheckWin {
 				Sequence common_hand=new Common_Hand();
 				temp_sequence.add(common_hand);
 			}
-			if(CheckPPH(winning_hand,showed_hand)) {
+			if(showed_hand!=null)
+				if(CheckPPH(winning_hand,showed_hand)) {
 				Sequence all_in_triplet=new All_In_Triplet();
 				temp_sequence.add(all_in_triplet);
-			}
+				}
 			if(CheckHYS(winning_hand)) {
 				Sequence mixed_one_suit=new Mixed_One_Suit();
 				temp_sequence.add(mixed_one_suit);
@@ -55,15 +57,15 @@ public class CheckWin {
 					temp_sequence.add(win_from_wall);
 				}
 			}
-			if(CheckRedDragon(showed_hand)) {
+			if(CheckRedDragon(winning_hand)) {
 				Sequence red=new Red_Dragon();
 				temp_sequence.add(red);
 			}
-			if(CheckGreenDragon(showed_hand)) {
+			if(CheckGreenDragon(winning_hand)) {
 				Sequence green=new Green_Dragon();
 				temp_sequence.add(green);
 			}
-			if(CheckWhiteDragon(showed_hand)) {
+			if(CheckWhiteDragon(winning_hand)) {
 				Sequence white=new White_Dragon();
 				temp_sequence.add(white);
 			}
@@ -106,23 +108,31 @@ public class CheckWin {
 	}
 	public boolean CheckPPH(ArrayList<Meld> hand,ArrayList<Meld>showed_hand) {//���k
 		if(showed_hand.isEmpty())
-			return false; // exception 
-		if(hand.get(0).getFirst().getType() == Type.DRAGON) {
-			return false; // exception of �r�@��
-		}
+			return false; // exception for 
+		boolean OnlyDragonOrWind = true;
+		boolean AllKongs=true; //exception for all kong
 		for(int i=0;i<hand.size();i++){
-			if(hand.get(i).getcomb_type() !=2 &&hand.get(i).getcomb_type() !=0) {
+			if(hand.get(i).getcomb_type() ==1) {
 				return false;
 			}
+			if(hand.get(i).getcomb_type()!=3) {
+				AllKongs=false;
+			}
+			if(hand.get(i).getFirst().getType()!= Type.WIND &&
+					hand.get(i).getFirst().getType()!= Type.DRAGON	)
+				OnlyDragonOrWind=false;
 			
 		}
+		if(OnlyDragonOrWind)
+			return false;
 		return true;
 	}
 	public boolean CheckHYJ(ArrayList<Meld> hand) {
 		boolean withYJ=false;
 		boolean onlyYJ=true;
 		for(int i=0;i<hand.size();i++) {
-			if(hand.get(i).getcomb_type()==2 || hand.get(i).getcomb_type() ==0) {
+			if(hand.get(i).getcomb_type()==2 
+					|| hand.get(i).getcomb_type() ==0) {
 				if(hand.get(i).getFirst().getType() != Type.DRAGON &&
 						hand.get(i).getFirst().getType() != Type.WIND)
 				{
@@ -134,7 +144,7 @@ public class CheckWin {
 				else
 					onlyYJ=false;
 				
-			}
+			}else return false;
 			
 		}
 		if(withYJ&&!onlyYJ)
