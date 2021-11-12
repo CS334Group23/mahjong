@@ -5,4 +5,8 @@ public class Nine_Gates extends Sequence{
 		return 10;  
 		
 	}
+	public String getName() {
+		
+		return "Nine Gates";
+	}
 }

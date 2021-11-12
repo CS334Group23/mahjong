@@ -5,5 +5,9 @@ public class All_One_Suit extends Sequence{
 		return 7 ;  
 		
 	}
+	public String getName() {
+		
+		return "All One Suit";
+	}
 
 }

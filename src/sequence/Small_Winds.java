@@ -5,5 +5,9 @@ public class Small_Winds extends Sequence{
 		return 9;  
 		
 	}
+	public String getName() {
+		
+		return "Small Winds";
+	}
 
 }

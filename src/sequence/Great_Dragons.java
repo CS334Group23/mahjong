@@ -5,5 +5,9 @@ public class Great_Dragons extends Sequence{
 		return 8;   
 		
 	}
+	public String getName() {
+		
+		return "Great Dragons";
+	}
 
 }

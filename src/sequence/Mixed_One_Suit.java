@@ -5,4 +5,8 @@ public class Mixed_One_Suit extends Sequence{
 		return 3;  
 		
 	}
+	public String getName() {
+		
+		return "Mixed One Suit";
+	}
 }

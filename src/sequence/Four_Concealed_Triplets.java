@@ -5,5 +5,9 @@ public class Four_Concealed_Triplets extends Sequence{
 		return 8 ;  
 		
 	}
+	public String getName() {
+		
+		return "Four Concealed Triplets";
+	}
 
 }

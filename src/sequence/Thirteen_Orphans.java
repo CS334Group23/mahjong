@@ -5,5 +5,9 @@ public class Thirteen_Orphans extends Sequence{
 		return 13;  
 		
 	}
+	public String getName() {
+		
+		return "Thirteen Orphans";
+	}
 	
 }

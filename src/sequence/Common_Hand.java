@@ -6,4 +6,8 @@ public class Common_Hand extends Sequence{
 		
 	}
 
+	public String getName() {
+		
+		return "Common Hand";
+	}
 }

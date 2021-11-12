@@ -5,5 +5,9 @@ public class Small_Dragons extends Sequence{
 		return 4;  
 		
 	}
+	public String getName() {
+		
+		return "Small Dragons";
+	}
 
 }

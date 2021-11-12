@@ -116,14 +116,19 @@ public class CheckWin {
 				return false;
 			}
 			if(hand.get(i).getcomb_type()!=3) {
-				AllKongs=false;
+				if(!(hand.get(i).getcomb_type()==0))
+					AllKongs=false;
 			}
-			if(hand.get(i).getFirst().getType()!= Type.WIND &&
-					hand.get(i).getFirst().getType()!= Type.DRAGON	)
+			if(hand.get(i).getFirst().getType()== Type.BAMBOO ||
+					hand.get(i).getFirst().getType()== Type.DOT ||
+					hand.get(i).getFirst().getType()== Type.CHARACTER 
+					)
 				OnlyDragonOrWind=false;
 			
 		}
 		if(OnlyDragonOrWind)
+			return false;
+		if(AllKongs)
 			return false;
 		return true;
 	}
@@ -224,13 +229,5 @@ public class CheckWin {
 	
 	}
 	
-	public int CheckMF(ArrayList<Meld> hand) { //����   will change later
 	
-	
-		return 1;
-	}
-	public int CheckJF(ArrayList<Meld> hand) {//����
-		
-		return 1;
-	}
 }

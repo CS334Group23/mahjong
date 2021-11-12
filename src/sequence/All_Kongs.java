@@ -5,5 +5,8 @@ public class All_Kongs extends Sequence{
 		return 13 ;  
 		
 	}
-
+	public String getName() {
+		
+		return "All Kongs";
+	}
 }
