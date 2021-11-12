@@ -8,11 +8,15 @@ import java.util.Random;
 
 import org.junit.Test;
 
+import client.Client;
+import server.Server;
+import ui.ClientInterface;
 import utils.BidMsg;
 import utils.BidType;
 import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.Meld;
+import utils.Peer;
 import utils.Tile;
 import utils.Type;
 
@@ -79,20 +83,29 @@ public class GameControllerTest {
 	public void testGameController4() throws InterruptedException {
 		GameController gameController = GameController.getInstance();
 		
-		gameController.init(getHands());
+		//gameController.init(getHands());
+		
+		
+		Server server = new Server();
+		server.init();
+		Client client = new Client(0, server);
+		client.initWall(getDeisgnedHand());
+		
+		gameController.init(client);
+		gameController.infoDeal(null);
 		gameController.setVisible(true);
 		
 		ArrayList<BidMsg> possibleBid = new ArrayList<>();
 		
 		Meld kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
-		BidMsg bidMsg = new BidMsg(User.USER_BOTTOM, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>());
+		BidMsg bidMsg = new BidMsg(User.USER_BOTTOM, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>(), false);
 		possibleBid.add(bidMsg);
 		
 		Meld pongMeld = new Meld(new Tile(48), new Tile(53), new Tile(58), null);
-		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.CHOW, "", 0, pongMeld, new ArrayList<Integer>());
+		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.CHOW, "", 0, pongMeld, new ArrayList<Integer>(), false);
 		possibleBid.add(bidMsg);
 		
-		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.EMPTY, "", 0, kongMeld, new ArrayList<Integer>());
+		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.EMPTY, "", 0, kongMeld, new ArrayList<Integer>(), false);
 		possibleBid.add(bidMsg);
 		
 		DiscardMsg msg0 = new DiscardMsg(112, 0);
@@ -140,25 +153,21 @@ public class GameControllerTest {
 		return hands;
 	}
 	
-	public ArrayList<Tile> getDeisgnedHand(){
-		ArrayList<Tile> hand = new ArrayList<>();
-		hand.add(new Tile(48));
-		hand.add(new Tile(49));
-		hand.add(new Tile(51));
+	public ArrayList<Integer> getDeisgnedHand(){
+		ArrayList<Integer> hand = new ArrayList<>();
+		hand.add(48);
+		hand.add(49);
+		hand.add(51);
+		hand.add(52);
+		hand.add(53);
+		hand.add(54);
+		hand.add(55);
+		hand.add(56);
+		hand.add(57);
+		hand.add(58);
+		hand.add(59);
+		hand.add(60);
 		
-		hand.add(new Tile(52));
-		hand.add(new Tile(53));
-		hand.add(new Tile(54));
-		hand.add(new Tile(55));
-		
-		hand.add(new Tile(56));
-		hand.add(new Tile(57));
-		hand.add(new Tile(58));
-		hand.add(new Tile(59));
-		
-		hand.add(new Tile(60));
-		
-		hand = Tile.sortTileList(hand);
 		return hand;
 	}
 }

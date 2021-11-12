@@ -44,7 +44,7 @@ public class UserLeft extends User{
 		}
 		
 		// add tile to the board
-		TileLabel label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, coordinate, userId);
+		TileLabel label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, coordinate, -userId);
 		
 		// move the show tile coordinate to the right
 		coordinate.setY(coordinate.y - 38);
@@ -55,18 +55,14 @@ public class UserLeft extends User{
 		boardTileLabelList.add(label);
 		boardTileList.add(tile);
 		tileOnBoard++;
-		
-		// delete the tile from handDeck
-		// compare by tile Id
-		// premise: tile in both array should be arranged in the same position
+
+		// simply delete the last tile from the hand, because for AIs, their tile is fake
 		ArrayList<TileLabel> handTileLabelList = handDeck.getTileLabels();
 		ArrayList<Tile> HandTileList = handDeck.getTiles();
-		for(int i = 0; i < HandTileList.size(); i++)
-			if(HandTileList.get(i).getId() == tile.getId()) {
-				HandTileList.remove(i);
-				handTileLabelList.remove(i);
-				break;
-			}
+		if(!handTileLabelList.isEmpty()){
+			handTileLabelList.remove(handTileLabelList.size() - 1);
+			HandTileList.remove(HandTileList.size() - 1);
+		}
 		
 	}
 }

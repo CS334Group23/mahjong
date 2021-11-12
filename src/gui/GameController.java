@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import utils.DrawNoticeMsg;
+import ui.ClientInterface;
 import ui.Ui;
 import utils.BidMsg;
 import utils.DealMsg;
@@ -37,9 +39,9 @@ public class GameController extends JFrame implements Ui{
 	}
 	
 	// get 4 sets of hands from server, initialize
-	public void init(ArrayList<ArrayList<Tile>> hands) {
+	public void init(ClientInterface client) {
 		homePanel = new HomePanel();
-		gamePanel = new GamePanel(hands);
+		gamePanel = new GamePanel(client);
 		
 		add(homePanel);
 		
@@ -97,5 +99,11 @@ public class GameController extends JFrame implements Ui{
 	
 	public void printUserDecks() {
 		gamePanel.printUserDecks();
+	}
+
+	@Override
+	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
+		// TODO Auto-generated method stub
+		
 	}
 }
