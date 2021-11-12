@@ -50,7 +50,7 @@ public class GamePanel extends JPanel{
 			operationButtonList = new ArrayList<>();
 			
 			userInit(hands);
-			bgImage = ImageIO.read(new File("resource/static/others/table.jpg"));
+			bgImage = ImageIO.read(new File("resource/static/others/table_new.jpg"));
 			setLayout(null);
 		
 			handInit();
