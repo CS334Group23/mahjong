@@ -1,11 +1,7 @@
 package utils;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public enum Type{
 	BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FACEDOWN(6, 144), FLOWER(5, 136), WIND(4, 120);
@@ -35,4 +31,9 @@ public enum Type{
 		return startId;
 	}
 	
+	public boolean isSameType(Type type) {
+		if(this.getTypeIndex()==type.getTypeIndex())
+			return true;
+		return false;
+	}
 }
