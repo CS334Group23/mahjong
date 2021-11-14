@@ -55,8 +55,9 @@ public class Testsorting {
 	}
 	@Test 
 	public void UnitTestsort_Meld() {
+		//0,4,8,12,16,20,24,28,32,36,40,44,6,5
 		ArrayList<Meld> hand = new ArrayList<>();
-		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,4,8,12,16,20,24,28,32,36,40,44,5,6 ));
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(99,95,45,44,41,20,19,12,10,9,8,5,4,1 ));
 		CheckWin checkwin=new CheckWin();
 		Tile t1= new Tile(a.get(0));
 		Tile t2= new Tile(a.get(1));

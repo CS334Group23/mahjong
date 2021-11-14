@@ -14,7 +14,7 @@ public class BidOperation implements ServerOperation{
 	public void operate(Server server, Message msg) {
 		msgQueue.add((BidMsg)msg);
 		System.out.printf("receive bid msg from client%d\n", ((BidMsg)msg).getBidClient());
-		if(msgQueue.size() >= Server.CLIENT_NUM) {
+		if(((BidMsg)msg).isSelfDrawn() || msgQueue.size() >= Server.CLIENT_NUM) {
 			try {
 				BidMsg peek = msgQueue.peek();
 				msgQueue.clear();

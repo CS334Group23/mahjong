@@ -8,6 +8,7 @@ import utils.BidType;
 import utils.DealMsg;
 import utils.DiscardMsg;
 import utils.DrawMsg;
+import utils.DrawNoticeMsg;
 import utils.TerminalIOUtils;
 import utils.Tile;
 
@@ -96,6 +97,11 @@ public class TextUi implements Ui{
 	public void infoWin(BidMsg bidMsg) {
 		System.out.printf("client%d wins\n", bidMsg.getBidClient());
 		System.out.printf("The hand is %s\n", Tile.tileListToString(Tile.idToTileList(bidMsg.getWinHand())));
+	}
+
+	@Override
+	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
+		System.out.printf("server will send a draw to client: %d\n", drawNoticeMsg.getClientId());
 	}
 	
 }

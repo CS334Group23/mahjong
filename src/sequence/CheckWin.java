@@ -8,16 +8,24 @@ import utils.Type;
 import utils.sorting;
 
 public class CheckWin {
+	private Combination comb;
+	public CheckWin() {
+		
+	}
 	public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		int score=0;
 		
 		Combination comb=new Combination();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
-		System.out.printf("Set:%d\n",set.size());
 		ArrayList<Sequence> sequence =new ArrayList<>();
+		System.out.printf("Set:%d\n",set.size());
 		for(ArrayList<Meld> winning_hand : set) {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
-			winning_hand.addAll(showed_hand);   //use to merge the showed_hand into winning_hand
+
+			if(showed_hand!=null)
+				winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
+			sorting.sort_Meld(winning_hand);
+
 			//sort winning all by first of each meld, put eye at last
 			int local_score=0;
 			sorting.sort_Meld(winning_hand);
@@ -25,10 +33,11 @@ public class CheckWin {
 				Sequence common_hand=new Common_Hand();
 				temp_sequence.add(common_hand);
 			}
-			if(CheckPPH(winning_hand)) {
+			if(showed_hand!=null)
+				if(CheckPPH(winning_hand,showed_hand)) {
 				Sequence all_in_triplet=new All_In_Triplet();
 				temp_sequence.add(all_in_triplet);
-			}
+				}
 			if(CheckHYS(winning_hand)) {
 				Sequence mixed_one_suit=new Mixed_One_Suit();
 				temp_sequence.add(mixed_one_suit);
@@ -37,7 +46,10 @@ public class CheckWin {
 				Sequence all_one_suit=new All_One_Suit();
 				temp_sequence.add(all_one_suit);
 			}
-			
+			if(CheckHYJ(winning_hand)) {
+				Sequence mixed_terminals=new Mixed_Terminals(); 
+				temp_sequence.add(mixed_terminals);
+			}
 			// other check will add later 
 			if(CheckXSY(winning_hand)) {
 				Sequence small_dragons=new Small_Dragons();
@@ -50,6 +62,19 @@ public class CheckWin {
 					temp_sequence.add(win_from_wall);
 				}
 			}
+			if(CheckRedDragon(winning_hand)) {
+				Sequence red=new Red_Dragon();
+				temp_sequence.add(red);
+			}
+			if(CheckGreenDragon(winning_hand)) {
+				Sequence green=new Green_Dragon();
+				temp_sequence.add(green);
+			}
+			if(CheckWhiteDragon(winning_hand)) {
+				Sequence white=new White_Dragon();
+				temp_sequence.add(white);
+			}
+			
 			for(Sequence s: temp_sequence) {
 				local_score+=s.getScore();
 			}
@@ -86,18 +111,55 @@ public class CheckWin {
 		}
 		return true;
 	}
-	public boolean CheckPPH(ArrayList<Meld> hand) {//���k
-		if(hand.get(0).getFirst().getType() == Type.DRAGON) {
-			return false; // exception of �r�@��
-		}
+	public boolean CheckPPH(ArrayList<Meld> hand,ArrayList<Meld>showed_hand) {//���k
+		if(showed_hand.isEmpty())
+			return false; // exception for 
+		boolean OnlyDragonOrWind = true;
+		boolean AllKongs=true; //exception for all kong
 		for(int i=0;i<hand.size();i++){
-			if(hand.get(i).getcomb_type() !=2 &&hand.get(i).getcomb_type() !=0) {
+			if(hand.get(i).getcomb_type() ==1) {
 				return false;
 			}
+			if(hand.get(i).getcomb_type()!=3) {
+				AllKongs=false;
+			}
+			if(hand.get(i).getFirst().getType()!= Type.WIND &&
+					hand.get(i).getFirst().getType()!= Type.DRAGON	)
+				OnlyDragonOrWind=false;
 			
 		}
+		if(OnlyDragonOrWind)
+			return false;
 		return true;
 	}
+	public boolean CheckHYJ(ArrayList<Meld> hand) {
+		boolean withYJ=false;
+		boolean onlyYJ=true;
+		for(int i=0;i<hand.size();i++) {
+			if(hand.get(i).getcomb_type()==2 
+					|| hand.get(i).getcomb_type() ==0) {
+				if(hand.get(i).getFirst().getType() != Type.DRAGON &&
+						hand.get(i).getFirst().getType() != Type.WIND)
+				{
+					if(hand.get(i).getFirst().getRankIndex()!=0 &&hand.get(i).getFirst().getRankIndex()!=8)
+						return false;
+					else
+						withYJ=true;
+				}
+				else
+					onlyYJ=false;
+				
+			}else return false;
+			
+		}
+		if(withYJ&&!onlyYJ)
+			return true;
+		else
+			return false;
+		
+	}
+	
+	
 	public boolean CheckHYS(ArrayList<Meld> hand) {//�K�@��
 	
 		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
@@ -143,7 +205,29 @@ public class CheckWin {
 			return true;
 		return false;
 	}
+	public boolean CheckRedDragon(ArrayList<Meld> hand) {
+		for(int i=0;i<hand.size();i++) {
+			if(hand.get(i).getFirst().getId()/4==27)
+				return true;
+		}
+		return false;
+	}
+	public boolean CheckGreenDragon(ArrayList<Meld> hand) {
+		for(int i=0;i<hand.size();i++) {
+			if(hand.get(i).getFirst().getId()/4==28)
+				return true;
+		}
+		return false;
+		
+	}
+	public boolean CheckWhiteDragon(ArrayList<Meld> hand) {
+		for(int i=0;i<hand.size();i++) {
+			if(hand.get(i).getFirst().getId()/4==29)
+				return true;
+		}
+		return false;
 	
+	}
 	
 	public int CheckMF(ArrayList<Meld> hand) { //����   will change later
 	

@@ -94,7 +94,7 @@ public class Meld {
 		case 2:
 			return "碰";
 		case 3:
-			return "杠";
+			return "槓";
 		default:
 			return null;
 		}
