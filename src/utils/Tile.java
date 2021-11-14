@@ -18,14 +18,14 @@ public class Tile {
 	public final static int FLOWER_SIZE = 1 * 8;
 	public final static int FACEDOWN_SIZE = 1;
 	public final static int SUIT_NUM = 3;
-	public final static int TILE_WIDTH_USER = 100;
-	public final static int TILE_HEIGHT_USER = 100;
+	public final static int TILE_WIDTH_USER = 90;
+	public final static int TILE_HEIGHT_USER = 90;
 	public final static int TILE_WIDTH_AI = 70;
 	public final static int TILE_HEIGHT_AI = 70;
 	public final static int TILE_WIDTH_MELD = 70;
 	public final static int TILE_HEIGHT_MELD = 70;
-	public final static int TILE_WIDTH_BOARD = 70;
-	public final static int TILE_HEIGHT_BOARD = 70;
+	public final static int TILE_WIDTH_BOARD = 60;
+	public final static int TILE_HEIGHT_BOARD = 60;
 	
 	private static Map<Integer, String> engNameMap = new HashMap<Integer, String>();
 	private static Map<Integer, String> chnNameMap = new HashMap<Integer, String>();

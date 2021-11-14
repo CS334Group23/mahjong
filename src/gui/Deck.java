@@ -19,6 +19,7 @@ public class Deck {
 	}
 	
 	public Deck(ArrayList<Tile> tiles, Point point, int tileWidth, int tileHeight) {
+		this.tiles = new ArrayList<>();
 		this.tileLabels = new ArrayList<>();
 		this.tiles = tiles;
 		this.point = point;
