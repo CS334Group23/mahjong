@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import gui.TileLabel;
 
-public class Tile {
+public class Tile implements Comparable<Tile> {
 	public final static int SUIT_SIZE = 4 * 9;
 	public final static int DRAGON_SIZE = 4 * 3;
 	public final static int WIND_SIZE = 4 * 4;
@@ -114,6 +114,7 @@ public class Tile {
 		return chnName;
 	}
 	
+	@Override
 	public int compareTo(Tile tile) {
 
 		if(this.id<tile.id) {
@@ -231,5 +232,4 @@ class tileLabelComparator implements Comparator<TileLabel>{
 		
 		return o1Id < o2Id ? -1 : 1;
 	}
-	
 }
