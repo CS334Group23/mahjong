@@ -66,7 +66,7 @@ public class GamePanel extends JPanel{
 		for(int i = 0; i < 3; i++) {
 			ArrayList<Tile> tiles = new ArrayList<>();
 			for(int j = 0; j < 13; j++) {
-				tiles.add(new Tile(144));
+				tiles.add(new Tile(144)); // set fake tile list for AIs (tileId 144 = facedown)
 			}
 			tileListForAI.add(tiles);
 		}
@@ -96,19 +96,22 @@ public class GamePanel extends JPanel{
 			tile = new Tile(msg.getTileId());
 		}
 		
-		if(possibleBid != null && tile != null) {			
+		if(possibleBid != null && tile != null) {
+			int userId = possibleBid.get(0).getBidClient();
+			User user = users.get(userId);
+			
+			// display tile to the gamePanel
+			TileLabel tileLabel = addTileToPanel(user, tile); 
+			
+			// add tile and tile label to the user's hand deck list
+			user.getHandDeck().getTiles().add(tile);
+			user.getHandDeck().getTileLabels().add(tileLabel);
+			
+			
 			for(BidMsg bidMsg : possibleBid) {
-				User user = users.get(bidMsg.getBidClient());
-				// display tile to the gamePanel
-				TileLabel tileLabel = addTileToPanel(user, tile); // TODO : solve the bug here: show multiple tiles in the same position
-				
-				// add tile and tile label to the user's hand deck list
-				user.getHandDeck().getTiles().add(tile);
-				user.getHandDeck().getTileLabels().add(tileLabel);
-				
 				// add event to the tile label, if the tile is for real user
 				// also display relative button(s), e.g. kong, skip
-				if(bidMsg.getBidClient() == User.USER_BOTTOM) {
+				if(userId == User.USER_BOTTOM) {
 					handTileEventInit(tileLabel, user);
 					
 					// button init
@@ -142,7 +145,6 @@ public class GamePanel extends JPanel{
 		}
 		else { // not null, means need to deal with all possibleBid option
 			for(BidMsg bidMsg : possibleBid) {
-				User user = users.get(bidMsg.getBidClient());
 				if(bidMsg.getBidClient() == User.USER_BOTTOM) {
 					// button init
 					operationButtonInit(bidMsg);
@@ -153,7 +155,16 @@ public class GamePanel extends JPanel{
 	}
 	
 	public void infoBid(BidMsg bidMsg) {
+		// clear the new tile label
 		
+		// move the input meld to the user's right
+		User user = users.get(bidMsg.getBidClient());
+		Meld meld = bidMsg.getMeld();
+		
+		if(user != null && meld != null) {
+			user.putMeldToRight(this, meld);
+			repaint();
+		}
 	}
 	
 	public void infoWin(BidMsg bidMsg) {
@@ -170,7 +181,14 @@ public class GamePanel extends JPanel{
 		if(user.getUserId() != User.USER_BOTTOM)
 			ImageUtils.changeTileImgToFaceDown(tile);
 		
+		// remove the previous new tile from panel
+		user.removeNewTile(this);
+		
+		// then display new tile in gamePanel, also record it
 		TileLabel tileLabel = ImageUtils.addTile(this, tile, tileWidth, tileHeight, point, userId);
+		
+		// bind new tile to user
+		user.setNewTileFromServer(tileLabel);
 		
 		return tileLabel;
 	}
@@ -235,9 +253,6 @@ public class GamePanel extends JPanel{
 			
 			// bind to event
 			btn.addMouseListener(new MouseAdapter(){
-				// for testing
-				boolean isPrinted = false;
-				
 			    public void mouseEntered(MouseEvent e) {
 			    	int originalX, originalY;
 			    	for(TileLabel tileLabel : sameTileLabelList) {
@@ -246,12 +261,6 @@ public class GamePanel extends JPanel{
 			    		
 						// move it up if they are the same type (e.g. bamboo1 = bamboo1)
 			    		tileLabel.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-			    	
-			    		// for testing
-			    		if(!isPrinted) {
-				    		printUserDecks();
-				    		isPrinted = true;
-			    		}
 			    	}
 			    }
 
@@ -263,44 +272,11 @@ public class GamePanel extends JPanel{
 			    		
 						// move it down when the cursor is left
 			    		tileLabel.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-			    		
-			    		// for testing
-			    		isPrinted = false;
 			    	}
 			    }
 			    
 			    public void mouseClicked(MouseEvent e) {
 			    	opIndex = BidType.KONG.getBidType();
-			    	
-//			    	// 1. put all the tile to the user meld list, meldLabel list
-//			    	// 2. delete tile from user hand deck (including tiles and tileLabel list)
-//			    	// 3. display all the related tiles to the right
-//			    	userMeldList = user.getMeld();
-//			    	userMeldLabelList= user.getMeldLabel();
-//			    	userHandList = user.getHand();
-//			    	userHandLabelList= user.getHandLabel();
-//			    	
-//			    	// step 1
-//			    	for(int i = 0; i < userHandList.size(); i++) {
-//			    		Tile currentTile = userHandList.get(i);
-//			    		Tile tile;
-//			    		for(int j = 0; j < sameTileList.size(); j++) {
-//			    			tile = sameTileList.get(j);
-//			    			if(currentTile.getId() == tile.getId()) {
-//			    				userMeldList.add(tile);
-//			    				userMeldLabelList.add(sameTileLabelList.get(j));
-//			    				Tile.sortTileList(userMeldList);
-//			    				Tile.sortTileLabelList(sameTileLabelList);
-//			    			}
-//			    		}
-//			    	}
-//			    	
-//			    	// TODO : step 2
-//
-//			    	
-//			    	// TODO : step 3
-//
-//			    	printUserDecks();
 			    }
 			});
 		}
@@ -446,7 +422,7 @@ public class GamePanel extends JPanel{
 	
 	// for testing
 	public void printUserDecks() {
-		User user = users.get(0);
+		User user = users.get(2);
 		Deck handDeck = user.getHandDeck();
 		Deck meldDeck = user.getMeldDeck();
 		Deck boardDeck = user.getBoardDeck();
@@ -461,40 +437,45 @@ public class GamePanel extends JPanel{
 		
 		System.out.print("User hand: ");
 		for(Tile tile : hand) {
-			System.out.print(tile.getId() + " ");
+			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
 		}
 		System.out.println();
 		
 		System.out.print("User handLabel: ");
 		for(TileLabel tile : handLabel) {
-			System.out.print(tile.getTile().getId() + " ");
+			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
 		}
 		System.out.println();
 		
 		System.out.print("User meld: ");
 		for(Tile tile : meld) {
-			System.out.print(tile.getId() + " ");
+			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
 		}
 		System.out.println();
 		
 		System.out.print("User meldLabel: ");
 		for(TileLabel tile : meldLabel) {
-			System.out.print(tile.getTile().getId() + " ");
+			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
 		}
 		System.out.println();
 		
-		System.out.print("User borad: ");
-		for(Tile tile : borad) {
-			System.out.print(tile.getId() + " ");
-		}
-		System.out.println();
-		
-		System.out.print("User boradLabel: ");
-		for(TileLabel tile : boradLabel) {
-			System.out.print(tile.getTile().getId() + " ");
-		}
-		System.out.println();
+//		System.out.print("User borad: ");
+//		for(Tile tile : borad) {
+//			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
+//		}
+//		System.out.println();
+//		
+//		System.out.print("User boradLabel: ");
+//		for(TileLabel tile : boradLabel) {
+//			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
+//		}
+//		System.out.println();
 		System.out.println(opIndex);
+	}
+	
+	public void removeTileLabelFromPanel(TileLabel tileLabel) {
+		if(tileLabel != null)
+			this.remove(tileLabel);
 	}
 
 }

@@ -28,7 +28,7 @@ public class GameController extends JFrame implements Ui{
 	public static GameController getInstance() {return instance;}
 	
 	private GameController() {
-		super("Mahjong");
+		super("Mahjong Legend");
 		
 		pack();
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);

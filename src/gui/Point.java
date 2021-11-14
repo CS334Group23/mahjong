@@ -44,6 +44,11 @@ public class Point {
 		x = initialX;
 		y = initialY;
 	}
+	
+	public void resetCoordinate(int offsetX, int offsetY) {
+		x = initialX + offsetX;
+		y = initialY + offsetY;
+	}
 
 	public double getInitialX() {
 		return initialX;

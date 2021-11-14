@@ -97,7 +97,7 @@ public class GameControllerTest {
 		
 		ArrayList<BidMsg> possibleBid = new ArrayList<>();
 		
-		Meld kongMeld = new Meld(new Tile(50),new Tile(50),new Tile(50),new Tile(50));
+		Meld kongMeld = new Meld(new Tile(52),new Tile(53),new Tile(54),new Tile(55));
 		BidMsg bidMsg = new BidMsg(User.USER_BOTTOM, BidType.KONG, "KongResponser", 0, kongMeld, new ArrayList<Integer>(), false);
 		possibleBid.add(bidMsg);
 		
@@ -108,19 +108,84 @@ public class GameControllerTest {
 		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.EMPTY, "", 0, kongMeld, new ArrayList<Integer>(), false);
 		possibleBid.add(bidMsg);
 		
-		DiscardMsg msg0 = new DiscardMsg(112, 0);
-		DiscardMsg msg1 = new DiscardMsg(112, 1);
-		DiscardMsg msg2 = new DiscardMsg(112, 2);
-		DiscardMsg msg3 = new DiscardMsg(112, 3);
+//		DiscardMsg msg0 = new DiscardMsg(112, 0);
+//		DiscardMsg msg1 = new DiscardMsg(112, 1);
+//		DiscardMsg msg2 = new DiscardMsg(112, 2);
+//		DiscardMsg msg3 = new DiscardMsg(112, 3);
+//		
+//		System.out.println("-----------------Before infoDiscard---------------");
+//		gameController.printUserDecks();
+//		
+//		for(int i = 0; i < 23; i++) {
+//			gameController.infoDiscard(msg0, null);
+//			gameController.infoDiscard(msg1, null);
+//			gameController.infoDiscard(msg2, null);
+//			gameController.infoDiscard(msg3, null);
+//		}
 		
-		for(int i = 0; i < 23; i++) {
-			gameController.infoDiscard(msg0, null);
-			gameController.infoDiscard(msg1, null);
-			gameController.infoDiscard(msg2, null);
-			gameController.infoDiscard(msg3, null);
-		}
+		System.out.println("-----------------After infoDiscard---------------");
 
-		gameController.infoDiscard(msg0, possibleBid);
+		gameController.printUserDecks();
+		
+		System.out.println("-----------------After 2 infoDiscard---------------");
+		gameController.printUserDecks();
+
+		Meld chowMeld = new Meld(new Tile(56), new Tile(60), new Tile(64), null);
+		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.CHOW, "ChowResponser", 0, chowMeld, new ArrayList<Integer>(), false);
+		gameController.infoBid(bidMsg);
+		
+		System.out.println("-----------------After infoBid---------------");
+		gameController.printUserDecks();
+		
+		// test again 1
+		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.CHOW, "ChowResponser", 0, kongMeld, new ArrayList<Integer>(), false);
+		gameController.infoBid(bidMsg);
+		
+		System.out.println("-----------------After infoBid 2---------------");
+		gameController.printUserDecks();
+		
+		
+//		// test again 2
+//		pongMeld = new Meld(new Tile(48), new Tile(49), new Tile(51), null);
+//		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.PONG, "PongResponser", 0, pongMeld, new ArrayList<Integer>(), false);
+//		gameController.infoBid(bidMsg);
+//		
+//		// test again 3
+//		pongMeld = new Meld(new Tile(57), new Tile(58), new Tile(59), null);
+//		bidMsg = new BidMsg(User.USER_BOTTOM, BidType.PONG, "PongResponser", 0, pongMeld, new ArrayList<Integer>(), false);
+//		gameController.infoBid(bidMsg);
+	
+		gameController.infoDraw(new DrawMsg(62), possibleBid);
+		
+		
+		// for user_top
+		// test infoBid
+		chowMeld = new Meld(new Tile(56), new Tile(60), new Tile(64), null);
+		bidMsg = new BidMsg(User.USER_TOP, BidType.CHOW, "ChowResponser", 0, chowMeld, new ArrayList<Integer>(), false);
+		gameController.infoBid(bidMsg);
+		
+		// simulate give new tile to user_top
+//		possibleBid.clear();
+//		possibleBid.add(bidMsg);
+//		gameController.infoDraw(new DrawMsg(62), possibleBid);
+		
+		// for user_right
+		// test infoBid
+		chowMeld = new Meld(new Tile(56), new Tile(60), new Tile(64), null);
+		bidMsg = new BidMsg(User.USER_RIGHT, BidType.CHOW, "ChowResponser", 0, chowMeld, new ArrayList<Integer>(), false);
+		gameController.infoBid(bidMsg);
+		
+		
+//		// simulate give new tile to user_right
+//		possibleBid.clear();
+//		possibleBid.add(bidMsg);
+//		gameController.infoDraw(new DrawMsg(62), possibleBid);
+		
+		// for user_left
+		// test infoBid
+		chowMeld = new Meld(new Tile(56), new Tile(60), new Tile(64), null);
+		bidMsg = new BidMsg(User.USER_LEFT, BidType.CHOW, "ChowResponser", 0, chowMeld, new ArrayList<Integer>(), false);
+		gameController.infoBid(bidMsg);
 		
 		synchronized(this) {
 			this.wait();
@@ -167,6 +232,7 @@ public class GameControllerTest {
 		hand.add(58);
 		hand.add(59);
 		hand.add(60);
+		hand.add(61);
 		
 		return hand;
 	}
