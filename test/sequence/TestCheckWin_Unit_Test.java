@@ -577,7 +577,7 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	@Test
-	public void UnitTestMCv1() { ///All_One_suit test false
+	public void UnitTestMCv1() { ///MC test false
 		ArrayList<Meld> hand = new ArrayList<>();
 		Tile t1= new Tile(0);
 		Tile t2= new Tile(1);
@@ -589,7 +589,7 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	@Test
-	public void UnitTestMCv2() { ///All_One_suit test false
+	public void UnitTestMCv2() { ///MC test false
 		ArrayList<Meld> hand = new ArrayList<>();
 		CheckWin checkwin=new CheckWin();
 		boolean result=checkwin.CheckMC(hand);
@@ -681,8 +681,125 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	@Test
-	public void IntegrationTestCheckScore() {
-		//will write once all scoring method are done ( some exception case need to handle)
+	public void IntegrationTestCheckKKHv1() { //check four concealed triplets if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,5,6,8,9,10,13,14,15,16,17 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+		hand.add(new Meld(t13,t14,null,null));
+		ArrayList<Meld> Showed_hand = new ArrayList<>();
+		boolean result=checkwin.CheckKKH(hand,Showed_hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckKKHv1() { //check four concealed triplets if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,5,6,8,9,10,13,14,15,16,17 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+		hand.add(new Meld(t13,t14,null,null));
+		ArrayList<Meld> Showed_hand = new ArrayList<>();
+		boolean result=checkwin.CheckKKH(hand,Showed_hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckKKHv2() { //check four concealed triplets if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,4,8,12,16,20,24,28,32,36,40,44,5,6 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+		hand.add(new Meld(t13,t14,null,null));
+		ArrayList<Meld> Showed_hand = new ArrayList<>();
+		boolean result=checkwin.CheckKKH(hand,Showed_hand);
+		assertEquals(false,result);
+		
+		
+	}
+	@Test
+	public void UnitTestCheckKKHv3() { //check four concealed triplets if false with not win from wall
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,5,6,8,9,10,13,14,15,16,17 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+
+		ArrayList<Meld> Showed_hand = new ArrayList<>();
+		Showed_hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckKKH(hand,Showed_hand);
+		assertEquals(false,result);
 		
 		
 	}

@@ -115,7 +115,7 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		ArrayList<Sequence> sequence =new ArrayList<>();
 		for(ArrayList<Meld> winning_hand : set) {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
-			//winning_hand.addAll(showed_hand);   use to merge the showed_hand into winning_hand
+			winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
 			//sort winning all by first of each meld, put eye at last
 			int local_score=0;
 			sorting.sort_Meld(winning_hand);

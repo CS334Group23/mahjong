@@ -200,6 +200,28 @@ public class CheckWin {
 		}
 		return true;
 	}
+	public boolean CheckKKH(ArrayList<Meld> hand, ArrayList<Meld> showed_hand) { // four concealed triplet
+			if(!showed_hand.isEmpty())
+				return false; // exception for pph
+			for(int i=0;i<hand.size();i++){
+				if(hand.get(i).getcomb_type() ==1 ||hand.get(i).getcomb_type() ==3 ) {
+					return false;
+				}		
+			}
+
+			return true;
+	}
+	public boolean CheckAKS(ArrayList<Meld> hand, ArrayList<Meld> showed_hand) { // all kongs
+		if(hand.size()>2)
+			return false;
+		for(Meld m:showed_hand) {
+			if(m.getcomb_type()!=0)
+				if(m.getcomb_type()!=3)
+					return false;
+		}
+		return true;
+		
+	}
 	public boolean CheckMC(ArrayList<Meld> hand) {
 		if(hand.isEmpty())
 			return true;
