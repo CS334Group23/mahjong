@@ -51,6 +51,9 @@ public class GameController extends JFrame implements Ui{
 			add(gamePanel);
 			repaint();
 			validate();
+			synchronized(this) { //solve not in the get the current bug
+				this.notifyAll();
+			}
 		});
 		
 		// for testing coordinate, will be deleted later
@@ -60,6 +63,15 @@ public class GameController extends JFrame implements Ui{
 				System.out.println(e.getX() + "," + e.getY());
 			}
 		});
+		setVisible(true); //solve not seen bug
+		synchronized(this) {
+			try {
+				this.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@Override
@@ -103,7 +115,6 @@ public class GameController extends JFrame implements Ui{
 
 	@Override
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
-		// TODO Auto-generated method stub
-		
+		gamePanel.infoDrawNotice(drawNoticeMsg);
 	}
 }

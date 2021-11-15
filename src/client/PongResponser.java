@@ -29,6 +29,7 @@ public class PongResponser implements BidResponser{
 			client.send(client.getServer(),new DiscardMsg(discardId,client.getId()));
 		}
 		else {
+			client.getUi().infoBid(msg); //solve the 
 			client.addMeld(pongMsg.getBidClient(), pongMsg.getMeld());
 		}
 	}

@@ -21,20 +21,21 @@ import utils.Tile;
 public class ImageUtils {
 	public static TileLabel addTile(JPanel panel, Tile tile, int tileWidth, int tileHeight, Point point, int userId) {
 		TileLabel jl = null;
-		try {
-			jl = getTileLabelBySize(tile, tileWidth, tileHeight, userId);
-			jl.setBounds((int)point.x, (int)point.y, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-			panel.add(jl);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		jl = getTileLabelBySize(tile, tileWidth, tileHeight, userId);
+		jl.setBounds((int)point.x, (int)point.y, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+		panel.add(jl);
 		
 		return jl;	
 	}
 	
-	public static TileLabel getTileLabelBySize(Tile tile, int width, int height, int orientation) throws IOException {	
-		Image tempTileImg = ImageIO.read(new File(tile.getUrl()));
+	public static TileLabel getTileLabelBySize(Tile tile, int width, int height, int orientation){	
+		Image tempTileImg = null;
+		try {
+			tempTileImg = ImageIO.read(new File(tile.getUrl()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Image tileImg;
 		
 		tileImg = tempTileImg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);

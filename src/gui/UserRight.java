@@ -62,10 +62,12 @@ public class UserRight extends User{
 		
 		// simply delete the last tile from the hand, because for AIs, their tile is fake
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
-		ArrayList<Tile> HandTileList = getHand();
+		ArrayList<Tile> handTileList = getHand();
 		if(!handTileLabelList.isEmpty()){
+			gamePanel.removeTileLabelFromPanel(handTileLabelList.get(handTileLabelList.size() - 1));
+			gamePanel.repaint();
 			handTileLabelList.remove(handTileLabelList.size() - 1);
-			HandTileList.remove(HandTileList.size() - 1);
+			handTileList.remove(handTileList.size() - 1);
 		}
 		
 	}
@@ -92,6 +94,7 @@ public class UserRight extends User{
 		// 5. display tile label to panel
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
 		for(TileLabel handTileLabel : handTileLabelList) {
+			System.out.println("paint a tile");
 			handTileLabel.setBounds((int)handStartPoint.x, (int)handStartPoint.y, tileWidth, tileHeight);
 			
 			// display it to the panel
@@ -112,6 +115,7 @@ public class UserRight extends User{
 		// 8. display meld in the meld deck, move the meldStartPoint to the right
 		ArrayList<TileLabel> meldTileLabelList = getMeldLabel();
 		for(TileLabel meldTileLabel : meldTileLabelList) {
+			System.out.println("paint a meld");
 			meldTileLabel.setBounds((int)meldStartPoint.x, (int)meldStartPoint.y, tileWidth, tileHeight);
 
 			// display it to the panel
