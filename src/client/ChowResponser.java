@@ -29,6 +29,7 @@ public class ChowResponser implements BidResponser{
 			client.send(client.getServer(),new DiscardMsg(discardId,client.getId()));
 		}
 		else {
+			client.getUi().infoBid(msg);
 			client.addMeld(chowMsg.getBidClient(), chowMsg.getMeld());
 		}
 	}

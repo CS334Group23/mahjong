@@ -252,8 +252,6 @@ public class CheckWin {
 	
 	}
 	
-	
-}
 
 					
 	

@@ -22,7 +22,7 @@ public class FacadeChecker {
 		return pongchecker.checkPong(hand, a);
 		
 	}	
-	public ArrayList<Meld> check_if_kong() {
+	public ArrayList<Meld> check_if_kong() {//this is not used, may be changed to this later
 		Tile temp=new Tile(-1);//initialize
 		ArrayList<Meld> result=new ArrayList<Meld>();
 		for(int i=0;i<hand.size();i++) {
@@ -56,7 +56,7 @@ public class FacadeChecker {
 		System.out.println(pos);
 		this.hand.add(pos,a);
 		
-		System.out.println("ID"+this.a.getId()+"  "+hand.get(12).getId());
+//		System.out.println("ID"+this.a.getId()+"  "+hand.get(12).getId());
 	}
 	
 }

@@ -20,6 +20,7 @@ import utils.BidType;
 import utils.DealMsg;
 import utils.DiscardMsg;
 import utils.DrawMsg;
+import utils.DrawNoticeMsg;
 import utils.Meld;
 import utils.Tile;
 
@@ -33,6 +34,7 @@ public class GamePanel extends JPanel{
 	private ArrayList<User> users;
 	
 	private int opIndex;
+	private int cardIndex;
 	private Point operationButtonStartPoint;
 	private ArrayList<JButton> operationButtonList;
 	
@@ -96,38 +98,55 @@ public class GamePanel extends JPanel{
 			tile = new Tile(msg.getTileId());
 		}
 		
-		if(possibleBid != null && tile != null) {
-			int userId = possibleBid.get(0).getBidClient();
-			User user = users.get(userId);
-			
+		if(tile != null) {
+//			int userId = possibleBid.get(0).getBidClient(); //solve not display draw bug and adjust the logic
+//			User user = users.get(userId);
+			User user = users.get(0); //this hard code should be changed later
 			// display tile to the gamePanel
 			TileLabel tileLabel = addTileToPanel(user, tile); 
 			
 			// add tile and tile label to the user's hand deck list
 			user.getHandDeck().getTiles().add(tile);
 			user.getHandDeck().getTileLabels().add(tileLabel);
-			
-			
-			for(BidMsg bidMsg : possibleBid) {
-				// add event to the tile label, if the tile is for real user
-				// also display relative button(s), e.g. kong, skip
-				if(userId == User.USER_BOTTOM) {
-					handTileEventInit(tileLabel, user);
+			handTileEventInit(tileLabel, user);
+			if(possibleBid != null && possibleBid.size() != 0) {
+				for(int i=0; i<possibleBid.size(); i++) {
+					// add event to the tile label, if the tile is for real user
+					// also display relative button(s), e.g. kong, skip
+//					if(userId == User.USER_BOTTOM) {
+//					handTileEventInit(tileLabel, user);
 					
 					// button init
-					operationButtonInit(bidMsg);
+					operationButtonInit(possibleBid.get(i), i);
+//					}
 				}
 			}
 		}
+		repaint(); //solve not display draw bug
 	}
 
 	public int getOpIndex() {
+		synchronized(this) {
+			try {
+				this.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return opIndex;
 	}
 
 	public int getDiscard() {
-		// TODO Auto-generated method stub
-		return 0;
+		synchronized(this) {
+			try {
+				this.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return cardIndex;
 	}
 
 	public void infoDiscard(DiscardMsg msg, ArrayList<BidMsg> possibleBid) {
@@ -140,18 +159,19 @@ public class GamePanel extends JPanel{
 		
 		// possibleBid == null means no other option could do
 		// only show the tile to the user's board deck
-		if(possibleBid == null) {
-			sender.discardTile(this, tile);
+		sender.discardTile(this, tile);
+		if(possibleBid == null || possibleBid.size() == 0) { //need refactor later, solve the not display discard bug
+//			sender.discardTile(this, tile);
 		}
 		else { // not null, means need to deal with all possibleBid option
-			for(BidMsg bidMsg : possibleBid) {
-				if(bidMsg.getBidClient() == User.USER_BOTTOM) {
+			for(int i=0; i<possibleBid.size(); i++) {
+				if(possibleBid.get(i).getBidClient() == User.USER_BOTTOM) {
 					// button init
-					operationButtonInit(bidMsg);
+					operationButtonInit(possibleBid.get(i), i);
 				}
 			}
 		}
-		
+		repaint(); //solve not display discard bug
 	}
 	
 	public void infoBid(BidMsg bidMsg) {
@@ -160,7 +180,7 @@ public class GamePanel extends JPanel{
 		// move the input meld to the user's right
 		User user = users.get(bidMsg.getBidClient());
 		Meld meld = bidMsg.getMeld();
-		
+		System.out.println("call to putMeldToRight");
 		if(user != null && meld != null) {
 			user.putMeldToRight(this, meld);
 			repaint();
@@ -187,13 +207,19 @@ public class GamePanel extends JPanel{
 		// then display new tile in gamePanel, also record it
 		TileLabel tileLabel = ImageUtils.addTile(this, tile, tileWidth, tileHeight, point, userId);
 		
+		// if user is AI, add new tile to his handDeck
+		if(user.getUserId() != User.USER_BOTTOM) {
+			user.getHand().add(tile);
+			user.getHandLabel().add(tileLabel);
+		}
+		
 		// bind new tile to user
 		user.setNewTileFromServer(tileLabel);
 		
 		return tileLabel;
 	}
 	
-	private void operationButtonInit(BidMsg msg) {
+	private void operationButtonInit(BidMsg msg, int opId) { //pass opId for later use
 		// add button
 		if(msg.getOperationName() != null) {
 			String operationName = msg.getChnName();
@@ -202,7 +228,7 @@ public class GamePanel extends JPanel{
 					, GameController.FRAME_WIDTH/16, GameController.FRAME_HEIGHT/16);
 			
 			// set button event
-			operationButtonEventInit(btn, operationName, msg);
+			operationButtonEventInit(btn, operationName, msg, opId);
 			operationButtonList.add(btn);
 			this.add(btn);
 		}
@@ -212,15 +238,18 @@ public class GamePanel extends JPanel{
 		operationButtonStartPoint.setY(operationButtonStartPoint.y);
 	}
 	
-	private void operationButtonEventInit(JButton btn, String btnName, BidMsg msg) {
+	private void operationButtonEventInit(JButton btn, String btnName, BidMsg msg, int opId) { //pass opId for later use, the tile may use the same methdo
 		if(btnName.equals("过")) {
 			btn.addActionListener((e) -> {
 				for(JButton jbtn : operationButtonList)
 					this.remove(jbtn);
 				
 				// update opIndex and repaint
-				opIndex = BidType.EMPTY.getBidType();
+				opIndex = opId;
 				repaint();
+				synchronized(GamePanel.this) { //solve not in the get the current bug
+					GamePanel.this.notifyAll();
+				}
 			});
 		} else if(btnName.equals("杠")) {
 			// when the mouse is hovering on JButton "kong"
@@ -276,7 +305,12 @@ public class GamePanel extends JPanel{
 			    }
 			    
 			    public void mouseClicked(MouseEvent e) {
-			    	opIndex = BidType.KONG.getBidType();
+			    	for(JButton jbtn : operationButtonList)
+						GamePanel.this.remove(jbtn);
+			    	opIndex = opId;
+					synchronized(GamePanel.this) { //solve not in the get the current bug
+						GamePanel.this.notifyAll();
+					}
 			    }
 			});
 		}
@@ -325,7 +359,12 @@ public class GamePanel extends JPanel{
 			    }
 			    
 			    public void mouseClicked(MouseEvent e) {
-			    	opIndex = BidType.PONG.getBidType();
+			    	for(JButton jbtn : operationButtonList)
+						GamePanel.this.remove(jbtn);
+			    	opIndex = opId;
+					synchronized(GamePanel.this) { //solve not in the get the current bug
+						GamePanel.this.notifyAll();
+					}
 			    }
 			});
 		} else if(btnName.equals("吃")) {
@@ -373,12 +412,22 @@ public class GamePanel extends JPanel{
 			    }
 			    
 			    public void mouseClicked(MouseEvent e) {
-			    	opIndex = BidType.CHOW.getBidType();
+			    	for(JButton jbtn : operationButtonList)
+						GamePanel.this.remove(jbtn);
+			    	opIndex = opId;
+					synchronized(GamePanel.this) { //solve not in the get the current bug
+						GamePanel.this.notifyAll();
+					}
 			    }
 			});
 		} else if(btnName.equals("胡")) {
 			btn.addActionListener((e) -> {
-				opIndex = BidType.WIN.getBidType();
+				for(JButton jbtn : operationButtonList)
+					this.remove(jbtn);
+				opIndex = opId;
+				synchronized(GamePanel.this) { //solve not in the get the current bug
+					GamePanel.this.notifyAll();
+				}
 			});
 		}
 	}
@@ -394,6 +443,16 @@ public class GamePanel extends JPanel{
 				
 				// if it is first click
 				if(tile.isFirstClick()) {// use e.x and e.y to check
+					//discard 
+					if(e.getClickCount() == 2) {
+						cardIndex = handDeck.getTileLabels().indexOf(tile)+1; //solve the discard wrong tile bug
+						synchronized(GamePanel.this) { //solve not in the get the current bug
+							GamePanel.this.notifyAll();
+						}
+						//here should remove all the listener to the card
+						return;
+					}
+					
 					// reset all tile to original position except clicked tile
 					resetTilePosition();
 					
@@ -476,6 +535,15 @@ public class GamePanel extends JPanel{
 	public void removeTileLabelFromPanel(TileLabel tileLabel) {
 		if(tileLabel != null)
 			this.remove(tileLabel);
+	}
+
+	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
+			if(drawNoticeMsg.getClientId() != User.USER_BOTTOM) {
+				User targetUser = users.get(drawNoticeMsg.getClientId());
+				Tile tempTile = new Tile(144);
+				this.addTileToPanel(targetUser, tempTile); //hard code to be changed later
+				repaint();
+			}
 	}
 
 }
