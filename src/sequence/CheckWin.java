@@ -250,12 +250,6 @@ public class CheckWin {
 	
 	}
 	
-	
-
-
-					
-	
-	
 	public boolean CheckXSY(ArrayList<Meld> hand) {//小三元
 		int dragon=0;
 		int dra_eye=0;

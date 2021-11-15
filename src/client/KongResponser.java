@@ -17,6 +17,7 @@ public class KongResponser implements BidResponser{
 			client.updateWall(kongMsg.getMeld());
 		}
 		else {
+			client.getUi().infoBid(msg); //use this to solve the bug, may have problem
 			client.addMeld(kongMsg.getBidClient(), kongMsg.getMeld());
 		}
 	}

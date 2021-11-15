@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import gui.TileLabel;
+import gui.TileLabel; //this is a problem, should be resolved
 
 public class Tile implements Comparable<Tile> {
 	public final static int SUIT_SIZE = 4 * 9;

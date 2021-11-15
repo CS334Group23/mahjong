@@ -8,6 +8,7 @@ import javax.swing.JButton;
 
 import utils.Meld;
 import utils.Tile;
+import utils.sorting;
 
 public class UserBottom extends User{
 
@@ -74,13 +75,24 @@ public class UserBottom extends User{
 		// premise: tile in both array should be arranged in the same position
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
 		ArrayList<Tile> HandTileList = getHand();
-		for(int i = 0; i < HandTileList.size(); i++)
+		for(int i = 0; i < HandTileList.size(); i++) {
 			if(HandTileList.get(i).getId() == tile.getId()) {
 				HandTileList.remove(i);
+				gamePanel.removeTileLabelFromPanel(handTileLabelList.get(i));
 				handTileLabelList.remove(i);
 				break;
 			}
+		}
 		
+		//here is the solve to the not display of draw card, use renew method, may be later changed to remove method
+		for(int i = 0; i < HandTileList.size(); i++) {
+			gamePanel.removeTileLabelFromPanel(handTileLabelList.get(i));
+		}
+		handTileLabelList.clear();
+		sorting.sortTile(HandTileList);
+		Point handStartPoint = handDeck.getPoint();
+		handStartPoint.resetCoordinate();
+		handInit(gamePanel);
 	}
 	
 	@Override

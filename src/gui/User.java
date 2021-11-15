@@ -63,7 +63,7 @@ public class User {
 	}
 	
 	public void discardTile(GamePanel gamePanel, Tile tile) {
-		
+
 	}
 	
 	public void putMeldToRight(GamePanel gamePanel, Meld meld) {
@@ -178,16 +178,19 @@ public class User {
 			}
 		} else { // for AI
 			int meldSize = tileListFromMeld.size();
+			//to be refactoring later
 			if(meldSize == 3) { // for chow, pong, simply delete 2 tiles from AI's hand deck
-				for(int i = 0; i < 2; i++) {
-					handTileList.remove(i);
-					handTileLabelList.remove(i);
-				}
+				handTileList.remove(tileListFromMeld.size()-1);
+				handTileList.remove(tileListFromMeld.size()-1);
+				handTileLabelList.remove(handTileLabelList.size()-1);
+				handTileLabelList.remove(handTileLabelList.size()-1);
 			} else { // kong, remove 3 tiles
-				for(int i = 0; i < 3; i++) {
-					handTileList.remove(i);
-					handTileLabelList.remove(i);
-				}
+				handTileList.remove(tileListFromMeld.size()-1);
+				handTileList.remove(tileListFromMeld.size()-1);
+				handTileList.remove(tileListFromMeld.size()-1);
+				handTileLabelList.remove(handTileLabelList.size()-1);
+				handTileLabelList.remove(handTileLabelList.size()-1);
+				handTileLabelList.remove(handTileLabelList.size()-1);
 			}
 		}
 	}

@@ -62,10 +62,11 @@ public class UserTop extends User{
 		
 		// simply delete the last tile from the hand, because for AIs, their tiles are fake
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
-		ArrayList<Tile> HandTileList = getHand();
+		ArrayList<Tile> handTileList = getHand();
 		if(!handTileLabelList.isEmpty()){
+			gamePanel.removeTileLabelFromPanel(handTileLabelList.get(handTileLabelList.size() - 1));
 			handTileLabelList.remove(handTileLabelList.size() - 1);
-			HandTileList.remove(HandTileList.size() - 1);
+			handTileList.remove(handTileList.size() - 1);
 		}
 		
 	}
