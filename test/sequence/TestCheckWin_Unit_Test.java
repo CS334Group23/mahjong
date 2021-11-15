@@ -794,13 +794,853 @@ public class TestCheckWin_Unit_Test {
 		hand.add(new Meld(t1,t2,t3,null));
 		hand.add(new Meld(t4,t5,t6,null));
 		hand.add(new Meld(t7,t8,t9,null));
-		hand.add(new Meld(t10,t11,t12,null));
+		hand.add(new Meld(t13,t14,null,null));
 
 		ArrayList<Meld> Showed_hand = new ArrayList<>();
-		Showed_hand.add(new Meld(t13,t14,null,null));
+		Showed_hand.add(new Meld(t10,t11,t12,null));
 		boolean result=checkwin.CheckKKH(hand,Showed_hand);
 		assertEquals(false,result);
 		
 		
 	}
+	
+	@Test
+	public void UnitTestCheckXSYv1() { //check small dragon if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,5,6,108,109,110,112,113,114,116,117 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckXSY(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckXSYv2() { //check small dragon if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,5,6,108,109,110,112,113,114,120,121 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckXSY(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckXSYv3() { //check small dragon if false as great dragons
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,116,117,118,0,1,2,4,5 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckXSY(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckXSXv1() { //check small wind if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,121,122,123,124,125,126,128,129,130,132,133));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckXSX(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckXSXv2() { //check small wind if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,121,122,123,124,125,126,128,129,130,112,113));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckXSX(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	@Test
+	public void UnitTestCheckXSXv3() { //check small wind if false as great wind
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,121,122,123,124,125,126,128,129,130,112,113));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckXSX(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckZYSv1() { //check all honour if true 
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,121,122,123,124,125,126,128,129,130,112,113));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckZYS(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckZYSv2() { //check all honour if false 
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,121,122,123,124,125,126,128,129,130,0,1));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckZYS(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckQYJv1() { //check all terminals if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,32,33,34,36,37,38,69,70,71,72,73));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckQYJ(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckQYJv2() { //check all terminals if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,32,33,34,36,37,38,69,70,71,4,5));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckQYJ(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckQYJv3() {// check all terminals if false with honour
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,32,33,34,36,37,38,69,70,71,4,5));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckQYJ(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckDSYv1() {// check great dragon if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,116,117,118,69,70,71,4,5));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckDSY(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckDSYv2() {// check great dragon if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,120,121,122,69,70,71,4,5));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckDSY(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckDSXv1() {// check great wind if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(121,122,123,124,125,126,128,129,130,132,133,134,0,1));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckDSX(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckDSXv2() {// check great wind if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,121,122,123,124,125,126,128,129,130,132,133));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckDSX(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckJLBDv1() {// check nine gate if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(2,4,8,12,16,20,24,28,32,33,34,35,0,1));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckJLBD(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckJLBDv2() {// check nine gate if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(2,4,8,12,16,20,24,28,32,33,34,35,5,6));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckJLBD(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	@Test
+	public void UnitTestCheckJLBDv3() {// check nine gate if true with one of 2-8 has 2
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,34,5,6));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckJLBD(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	@Test
+	public void UnitTestCheckJLBDv4() {// check nine gate if true with one of 2-8 has 2
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,34,5,6));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckJLBD(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	@Test
+	public void UnitTestCheckJLBDv5() {// check nine gate if false with first exceed 4
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,3,4,5,20,24,28,32,33,34,6,7));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckJLBD(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	@Test
+	public void UnitTestCheckJLBDv6() {// check nine gate if false with not same type
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,36,37,38,20,24,28,32,33,34,5,6));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckJLBD(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	@Test
+	public void UnitTestCheckJLBDv7() {// check nine gate if false 
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,36,37,38,20,24,28,32,33,34,5,6));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(new Meld(t1,t2,t3,null));
+		hand.add(new Meld(t4,t5,t6,null));
+		hand.add(new Meld(t7,t8,t9,null));
+		hand.add(new Meld(t10,t11,t12,null));
+	    hand.add(new Meld(t13,t14,null,null));
+		boolean result=checkwin.CheckJLBD(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	
+	@Test 
+	public void UnitTestCheckSSYv1() {// check SSY
+		ArrayList<Tile> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,32,36,71,72,107,108,112,116,120,124,128,132,133));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
+		boolean result=checkwin.CheckSSY(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	
+	@Test 
+	public void UnitTestCheckSSYv2() {// check SSY if false if all also terminal tile except one
+		ArrayList<Tile> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,32,36,71,72,107,108,112,116,120,124,128,132,5));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
+		boolean result=checkwin.CheckSSY(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	@Test 
+	public void UnitTestCheckSSYv3() {// check SSY if false 
+		ArrayList<Tile> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,5,32,36,71,72,107,108,112,116,120,124,128));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
+		boolean result=checkwin.CheckSSY(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	@Test 
+	public void UnitTestCheckAKSv1() {// check all kongs if true
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,40,41 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		Tile t15= new Tile(a.get(14));
+		Tile t16= new Tile(a.get(15));
+		Tile t17= new Tile(a.get(16));
+		Tile t18= new Tile(a.get(17));
+		hand.add(new Meld(t1,t2,t3,t4));
+		hand.add(new Meld(t5,t6,t7,t8));
+		hand.add(new Meld(t9,t10,t11,t12));
+		hand.add(new Meld(t13,t14,t15,t16));
+		hand.add(new Meld(t17,t18,null,null));
+		boolean result=checkwin.CheckAKS(hand);
+		assertEquals(true,result);
+		
+		
+	}
+	@Test 
+	public void UnitTestCheckAKSv2() {// check all kongs if false
+		ArrayList<Meld> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,40,41 ));
+		CheckWin checkwin=new CheckWin();
+		Tile t1= new Tile(a.get(0));
+		Tile t2= new Tile(a.get(1));
+		Tile t3= new Tile(a.get(2));
+		Tile t4= new Tile(a.get(3));
+		Tile t5= new Tile(a.get(4));
+		Tile t6= new Tile(a.get(5));
+		Tile t7= new Tile(a.get(6));
+		Tile t8= new Tile(a.get(7));
+		Tile t9= new Tile(a.get(8));
+		Tile t10= new Tile(a.get(9));
+		Tile t11= new Tile(a.get(10));
+		Tile t12= new Tile(a.get(11));
+		Tile t13= new Tile(a.get(12));
+		Tile t14= new Tile(a.get(13));
+		Tile t15= new Tile(a.get(14));
+		Tile t16= new Tile(a.get(15));
+		Tile t17= new Tile(a.get(16));
+		Tile t18= new Tile(a.get(17));
+		hand.add(new Meld(t1,t2,t3,t4));
+		hand.add(new Meld(t5,t6,t7,t8));
+		hand.add(new Meld(t9,t10,t11,null));
+		hand.add(new Meld(t13,t14,t15,t16));
+		hand.add(new Meld(t17,t18,null,null));
+		boolean result=checkwin.CheckAKS(hand);
+		assertEquals(false,result);
+		
+		
+	}
+	
+	
 }
