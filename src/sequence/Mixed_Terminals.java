@@ -5,5 +5,9 @@ public class Mixed_Terminals extends Sequence{
 		return 1;  
 		
 	}
+	public String getName() {
+		
+		return "Mixed Terminals";
+	}
 
 }

@@ -1,3 +1,4 @@
+
 package sequence;
 
 import java.util.ArrayList;
@@ -21,11 +22,9 @@ public class CheckWin {
 		System.out.printf("Set:%d\n",set.size());
 		for(ArrayList<Meld> winning_hand : set) {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
-
 			if(showed_hand!=null)
 				winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
 			sorting.sort_Meld(winning_hand);
-
 			//sort winning all by first of each meld, put eye at last
 			int local_score=0;
 			sorting.sort_Meld(winning_hand);
@@ -51,10 +50,7 @@ public class CheckWin {
 				temp_sequence.add(mixed_terminals);
 			}
 			// other check will add later 
-			if(CheckXSY(winning_hand)) {
-				Sequence small_dragons=new Small_Dragons();
-				temp_sequence.add(small_dragons); 
-			}
+			
 			//extra score eg ���e/��/��
 			if(showed_hand != null) {
 				if(CheckMC(showed_hand)) {
@@ -121,14 +117,19 @@ public class CheckWin {
 				return false;
 			}
 			if(hand.get(i).getcomb_type()!=3) {
-				AllKongs=false;
+				if(!(hand.get(i).getcomb_type()==0))
+					AllKongs=false;
 			}
-			if(hand.get(i).getFirst().getType()!= Type.WIND &&
-					hand.get(i).getFirst().getType()!= Type.DRAGON	)
+			if(hand.get(i).getFirst().getType()== Type.BAMBOO ||
+					hand.get(i).getFirst().getType()== Type.DOT ||
+					hand.get(i).getFirst().getType()== Type.CHARACTER 
+					)
 				OnlyDragonOrWind=false;
 			
 		}
 		if(OnlyDragonOrWind)
+			return false;
+		if(AllKongs)
 			return false;
 		return true;
 	}
@@ -200,6 +201,28 @@ public class CheckWin {
 		}
 		return true;
 	}
+	public boolean CheckKKH(ArrayList<Meld> hand, ArrayList<Meld> showed_hand) { // four concealed triplet
+			if(!showed_hand.isEmpty())
+				return false; // exception for pph
+			for(int i=0;i<hand.size();i++){
+				if(hand.get(i).getcomb_type() ==1 ||hand.get(i).getcomb_type() ==3 ) {
+					return false;
+				}		
+			}
+
+			return true;
+	}
+	public boolean CheckAKS(ArrayList<Meld> hand, ArrayList<Meld> showed_hand) { // all kongs
+		if(hand.size()>2)
+			return false;
+		for(Meld m:showed_hand) {
+			if(m.getcomb_type()!=0)
+				if(m.getcomb_type()!=3)
+					return false;
+		}
+		return true;
+		
+	}
 	public boolean CheckMC(ArrayList<Meld> hand) {
 		if(hand.isEmpty())
 			return true;
@@ -229,15 +252,11 @@ public class CheckWin {
 	
 	}
 	
-	public int CheckMF(ArrayList<Meld> hand) { //����   will change later
 	
+}
+
+					
 	
-		return 1;
-	}
-	public int CheckJF(ArrayList<Meld> hand) {//����
-		
-		return 1;
-	}
 	
 	public boolean CheckXSY(ArrayList<Meld> hand) {//小三元
 		int dragon=0;
@@ -411,3 +430,4 @@ public class CheckWin {
 		return false;
 	}
 }
+

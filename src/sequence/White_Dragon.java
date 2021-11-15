@@ -5,5 +5,9 @@ public class White_Dragon extends Sequence{
 		return 1;  
 		
 	}
+	public String getName() {
+		
+		return "White Dragon";
+	}
 
 }

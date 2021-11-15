@@ -5,5 +5,9 @@ public class All_Terminals extends Sequence{
 		return 10;  
 		
 	}
+	public String getName() {
+		
+		return "All Terminals";
+	}
 
 }

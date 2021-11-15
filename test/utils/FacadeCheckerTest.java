@@ -12,26 +12,26 @@ import sequence.Sequence;
 public class FacadeCheckerTest {
 	@Test
 	public void testFacadeChecker() {
-		//check PH
+		//check Kong
 		ArrayList<Tile> arr = new ArrayList<>();
 		arr.add(new Tile(0));
+		arr.add(new Tile(1));
+		arr.add(new Tile(2));
+		arr.add(new Tile(3));
 		arr.add(new Tile(4));
+		arr.add(new Tile(5));
+		arr.add(new Tile(6));
+		arr.add(new Tile(7));
 		arr.add(new Tile(8));
-		arr.add(new Tile(17));
-		arr.add(new Tile(21));
-		arr.add(new Tile(24));
-		arr.add(new Tile(41));
-		arr.add(new Tile(42));
-		arr.add(new Tile(62));
-		arr.add(new Tile(66));
-		arr.add(new Tile(96));
-		arr.add(new Tile(100));
-		arr.add(new Tile(105));
+		arr.add(new Tile(9));
+		arr.add(new Tile(10));
+		arr.add(new Tile(12));
+		arr.add(new Tile(13));
 		
-		FacadeChecker checker = new FacadeChecker(arr,null, new Tile(70));
-		ArrayList<Sequence> possibleSequence = checker.check_if_win();
-		System.out.printf("size:%d\n",possibleSequence.size());
-		assertEquals(1,possibleSequence.size());
+		FacadeChecker checker = new FacadeChecker(arr,new ArrayList<Meld>(), new Tile(11));
+		ArrayList<Meld> result = checker.check_if_kong();
+		System.out.printf("size:%d\n",result.size());
+		assertEquals(3,result.size());
 	}
 	
 	@Test
@@ -107,8 +107,8 @@ public class FacadeCheckerTest {
 	@Test
 	public void testFacadeChecker5() {
 		ArrayList<Tile> arr = new ArrayList<>();
-		arr.add(new Tile(0));
-		arr.add(new Tile(4));
+		arr.add(new Tile(0));   
+		arr.add(new Tile(4)); 
 		arr.add(new Tile(5));
 		arr.add(new Tile(8));
 		arr.add(new Tile(9));
@@ -121,7 +121,7 @@ public class FacadeCheckerTest {
 		arr.add(new Tile(93));
 		arr.add(new Tile(94));
 		
-		FacadeChecker checker = new FacadeChecker(arr,null, new Tile(21));
+		FacadeChecker checker = new FacadeChecker(arr,null, new Tile(17));
 		ArrayList<Sequence> possibleSequence = checker.check_if_win();
 		System.out.printf("size:%d\n",possibleSequence.size());
 		assertEquals(1,possibleSequence.size());

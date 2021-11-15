@@ -2,9 +2,8 @@ package  sequence;
 
 import java.util.ArrayList;
 import java.util.*;
-import utils.sorting;
+
 import utils.*;
-import utils.Tile;
 
 //The logic is to find out all the combination set to check the score, count the highest.
 
@@ -22,16 +21,56 @@ import utils.Tile;
 
 // the function may still buggy, and but at least it can check a winning hand, I will do it later.(or maybe do it on testing, have something write)
 public class Combination {
+	/*public int getmeldid(Meld t) {
+		if(t.getFirst().getType()==Type.BAMBOO)
+			if(t.getcomb_type()==2)
+				return t.getFirst().getRankIndex();
+			else
+				return t.getFirst().getRankIndex()+10;
+		else if(t.getFirst().getType()==Type.CHARACTER)
+			if(t.getcomb_type()==2)
+				return t.getFirst().getRankIndex()+20;
+			else
+				return t.getFirst().getRankIndex()+30;
+			
+		else if(t.getFirst().getType()==Type.DOT)
+			if(t.getcomb_type()==2)
+				return t.getFirst().getRankIndex()+40;
+			else
+				return t.getFirst().getRankIndex()+50;
+		else if(t.getFirst().getType()==Type.DRAGON)
+				return t.getFirst().getRankIndex()+60;
+			
+		else if(t.getFirst().getType()==Type.WIND)
+				return t.getFirst().getRankIndex()+63;
+		else
+			return -1;
+	}*/
 	private ArrayList<ArrayList<Meld>> combination_set = new ArrayList<>();
 	private ArrayList<Meld> Combi_temp = new ArrayList<>();
-	private ArrayList<Meld> all_temp=new ArrayList<>();
+	//private ArrayList<Meld> all_temp=new ArrayList<>();
 	//Integer[] ponged = Collections.nCopies(144, 0).toArray(new Integer[0]);
-	public Combination() {};
+	private Integer[] formmeld=new Integer[70]; // 0-8 bamboo pong, 10-16 bambo chow || 20-28 character pong, 30-16 chow || 40-48 dot pong,50-56 chow || 60-62 dragon 63-67 wind
+	public Combination() {
+		/*
+		for(int i=0;i<70;i++) {
+			
+			formmeld[i]=0;
+		}
+		*/
+	};
 	public int count=0;
 	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
+		if(!combination_set.isEmpty()) {
+			combination_set.clear();
+			
+		}
+		if(!Combi_temp.isEmpty()) {
+			Combi_temp.clear();
+			
+		}
 		sorting.sortTile(hand);
 		checkcombination(hand);
-
 		return combination_set;
 		
 	}
@@ -48,7 +87,7 @@ public class Combination {
 				if(hand.get(i).getId()/4==hand.get(i+1).getId()/4){
 					{
 						Meld Mtemp = new Meld(hand.get(i),hand.get(i+1),null,null);
-						
+				
 						Combi_temp.add(Mtemp);
 						hand.remove(i);
 						hand.remove(i);
@@ -71,14 +110,18 @@ public class Combination {
 				
 				if(CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
 					Meld Mtemp= new Meld(hand.get(i),hand.get(i+1),hand.get(i+2),null);
-
-					all_temp.add(Mtemp);	
-					Combi_temp.add(Mtemp);
-					hand.remove(i);
-					hand.remove(i);
-					hand.remove(i);
+					//if( formmeld[getmeldid(Mtemp)]>5){
+						
+					//}else 
+					//{
+					//	formmeld[getmeldid(Mtemp)]++;
+					//all_temp.add(Mtemp);	
+						Combi_temp.add(Mtemp);
+						hand.remove(i);
+						hand.remove(i);
+						hand.remove(i);
 					
-					if(checkcombination(hand)) {
+						if(checkcombination(hand)) {
 			
 						// which mean, there is aleady a combination created
 						// for example, just checked eyes is true, then return
@@ -91,16 +134,17 @@ public class Combination {
 						sorting.sortTile(hand);
 				
 						
-					}else {
+						}else {
 
 						hand.add(0,Mtemp.getThird());
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						Combi_temp.remove(Combi_temp.size()-1);
 						sorting.sortTile(hand);
+						}
 					}
 
-				} 
+				//} 
 			//	/*
 				int b_pos=  FindTilePosition.NextDifferentTile(hand,hand.get(i));
 				int c_pos=-1;
@@ -110,7 +154,10 @@ public class Combination {
 				if(CheckChow(hand.get(i),hand.get(b_pos),hand.get(c_pos))) {
 				
 					Meld Mtemp= new Meld(hand.get(i),hand.get(b_pos),hand.get(c_pos),null);
-
+					//if( formmeld[getmeldid(Mtemp)]>10){
+					//	continue;
+					//}else 
+					//	formmeld[getmeldid(Mtemp)]++;
 					Combi_temp.add(Mtemp);
 					hand.remove(i);
 					hand.remove(b_pos-1);

@@ -5,5 +5,9 @@ public class All_Honours extends Sequence{
 		return 10 ;  
 		
 	}
+	public String getName() {
+		
+		return "All Honours";
+	}
 
 }

@@ -6,7 +6,7 @@ public class FacadeChecker {
 	private PongChecker pongchecker;
 	private KongChecker kongchecker;
 	private Combination combination;
-	private ArrayList<Tile> hand;
+	protected ArrayList<Tile> hand;
 	private ArrayList<Meld> showed_hand;
 	private CheckWin checkwin;
 	private Tile a;
@@ -22,12 +22,25 @@ public class FacadeChecker {
 		return pongchecker.checkPong(hand, a);
 		
 	}	
-	public Meld check_if_kong() {
-		return kongchecker.checkKong(hand, a);
-		
+	public ArrayList<Meld> check_if_kong() {
+		Tile temp=new Tile(-1);//initialize
+		ArrayList<Meld> result=new ArrayList<Meld>();
+		for(int i=0;i<hand.size();i++) {
+			if(hand.get(i).getRankIndex()==temp.getRankIndex() && hand.get(i).getType()==temp.getType()) { //only return kongs with distinct meld
+				continue;
+			}
+			temp=hand.get(i);
+			hand.remove(i);
+			if(kongchecker.checkKong(hand, temp)!=null)
+				result.add(kongchecker.checkKong(hand, temp));
+			hand.add(i,temp);
+		}
+		return result;
 	}	
+	
 	public ArrayList<Meld> check_if_chow(){
 		return chowchecker.checkChow(hand, a);
+		
 		
 		
 	}
@@ -40,8 +53,10 @@ public class FacadeChecker {
 		this.showed_hand=showed_hand;
 		this.a=a;
 		this.pos=FindTilePosition.FindPosition(hand, a);
+		System.out.println(pos);
 		this.hand.add(pos,a);
 		
+		System.out.println("ID"+this.a.getId()+"  "+hand.get(12).getId());
 	}
 	
 }

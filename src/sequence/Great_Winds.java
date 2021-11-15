@@ -5,5 +5,9 @@ public class Great_Winds extends Sequence{
 		return 13;  
 		
 	}
+	public String getName() {
+		
+		return "Great Winds";
+	}
 
 }

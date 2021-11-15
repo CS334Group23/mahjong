@@ -110,7 +110,7 @@ public class Test_score{
 		
 	}
 	
-@Test
+//@Test
 
 
 public void test3() {
@@ -157,18 +157,18 @@ public void test3() {
 			score+=s.getScore();
 			
 		}
-		assertEquals(4, score);
+		assertEquals(1, score);
 	
 }
 
-//@Test
+@Test
 
 
 public void test4() {
 		
 		ArrayList<Tile> hand = new ArrayList<>();
 		Combination comb = new Combination();
-		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(1,2,3,4,8,12,16,17,18,19,20,24,121,122 ));
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(1,2,3,4,5,6,8,9,10,16,17,18,121,122 ));
 		Tile t1= new Tile(a.get(0));
 		hand.add(t1);
 		Tile t2= new Tile(a.get(1));
