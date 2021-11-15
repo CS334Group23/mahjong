@@ -13,11 +13,12 @@ import utils.Tile;
 // keep the cards that add up to the highest marks
 
 public class AiRecommender {
-	private static AiRecommender theAiRecommender; // Singleton Pattern
+	private static AiRecommender theAiRecommender; // singleton pattern
 	
-	private int cardToPlay = -1;
-	private List<Tile> cardsInHand;
-	private List<Tile> cardsPlayed;
+	private AiRecommenderUtil aiRecommenderUtil = new AiRecommenderUtil();
+	private Tile cardToPlay;
+	private List<Tile> cardsInHand; // cards in my hand
+	private List<Tile> cardsNotPlayed; // cards that may show up
 	
 	private AiRecommender() {
 		theAiRecommender = new AiRecommender();
@@ -30,15 +31,15 @@ public class AiRecommender {
 	// register current situation
 	// and clear last card recommendation 
 	// each time upon called
-	public void uponCalled(List<Tile> cardsInHand, List<Tile> cardsPlayed) {
+	public void uponCalled(List<Tile> cardsInHand, List<Tile> cardsNotPlayed) {
 		this.cardsInHand = new ArrayList<>(cardsInHand);
-		this.cardsPlayed = new ArrayList<>(cardsPlayed); // make two shallow copies for manipulation
-		this.cardToPlay = -1; 
+		this.cardsNotPlayed = new ArrayList<>(cardsNotPlayed); // make two shallow copies for manipulation
+		this.cardToPlay = null; 
 	}
 	
 	// simplified version
 	// only recommend to reach winning hand
-	public int recommend() {
+	public Tile recommend() {
 		
 		List<List<Tile>> eyes = new ArrayList<>();
 		List<List<Tile>> triplets = new ArrayList<>();
@@ -71,6 +72,9 @@ public class AiRecommender {
 			if(cardsInHand.get(i+1).getId() < cardsInHand.get(i+2).getId() - 1) {
 				continue;
 			}
+			if(cardsInHand.get(i).getType().isSameType(cardsInHand.get(i+2).getType())) {
+				continue;
+			}
 			List<Tile> sequence = new ArrayList<>();
 			sequence.add(cardsInHand.get(i));
 			sequence.add(cardsInHand.get(i+1));
@@ -80,22 +84,27 @@ public class AiRecommender {
 		}
 		
 		// find the combination closest to a winning hand
-		// TODO: OPTIMIZATION NEEDED!
-		
-		
-		
-		// TODO: implement isWinningHand
-		if(isWinningHand(cardsInHand)) {
-			System.out.println("Winning Tile!"); // update according to GUI
-			return -1;
+		// pick out the combinations that shouldn't be touched
+		List<List<Tile>> closest = this.aiRecommenderUtil.findClosest(eyes, triplets, sequences);
+		for(List<Tile> l: closest) {
+			cardsInHand.removeAll(l);
 		}
 		
 		// for each tile among those that can not pair up
 		// calculate its possibility to pair up with incoming cards
 		// simplified version: calculate the num of incoming cards that can pair up
 		// find the max among these
+		int[] markingBoard = new int[cardsInHand.size()];
+		for(int j=0; j<cardsNotPlayed.size(); j++) {
+			Tile t = cardsNotPlayed.get(j);
+			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
+		}
 		
-		
+		int maxAt = 0;
+		for (int j = 0; j < markingBoard.length; j++) {
+		    maxAt = markingBoard[j] > markingBoard[maxAt] ? j : maxAt;
+		}
+		this.cardToPlay=cardsInHand.get(maxAt);
 		
 		return this.cardToPlay;
 	}
@@ -108,5 +117,25 @@ public class AiRecommender {
 			}
 		}
 		return group;
+	}
+	
+	public int formSequence(final List<Tile> list,  Tile tile){
+		int value = 0;
+	    for(Tile t:list) {
+	    	if(t.getId()==tile.getId()-1)
+	    		value++;
+	    	if(t.getId()==tile.getId()+1)
+	    		value++;
+	    }
+	    return value;
+	}
+	
+	public int formEyesOrTriplets(final List<Tile> list, Tile tile) {
+		int value = 0;
+		for(Tile t: list) {
+			if(t.getName().equals(tile.getName()))
+				value++;
+		}
+		return value;
 	}
 }

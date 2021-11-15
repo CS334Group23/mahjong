@@ -33,7 +33,7 @@ public class ImageUtils {
 		return jl;	
 	}
 	
-	private static TileLabel getTileLabelBySize(Tile tile, int width, int height, int orientation) throws IOException {	
+	public static TileLabel getTileLabelBySize(Tile tile, int width, int height, int orientation) throws IOException {	
 		Image tempTileImg = ImageIO.read(new File(tile.getUrl()));
 		Image tileImg;
 		
@@ -62,5 +62,4 @@ public class ImageUtils {
 		String newUrl = faceDown.getUrl();
 		tile.setUrl(newUrl);
 	}
-
 }

@@ -36,51 +36,58 @@ public class GamePanel extends JPanel{
 	private Point operationButtonStartPoint;
 	private ArrayList<JButton> operationButtonList;
 	
+	private ClientInterface client;
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(bgImage, 0, 0, GameController.FRAME_WIDTH, GameController.FRAME_HEIGHT, this);
 	}
 	
-	public GamePanel(ArrayList<ArrayList<Tile>> hands){
+	public GamePanel(ClientInterface client){
 		try {
 			users = new ArrayList<>();
 			opIndex = -1;
 			operationButtonStartPoint = new Point(GameController.FRAME_WIDTH*0.815, GameController.FRAME_HEIGHT*0.6875);
 			operationButtonList = new ArrayList<>();
+			this.client = client;
 			
-			userInit(hands);
 			bgImage = ImageIO.read(new File("resource/static/others/table_new.jpg"));
 			setLayout(null);
-		
-			handInit();
 			
 		} catch (IOException e) {
 			System.out.println("Cannot set GamePanel's background");
 		}
 	}
-	
-	private void userInit(ArrayList<ArrayList<Tile>> hands){
-		User user_bottom = new UserBottom(hands.get(User.USER_BOTTOM));
-		User user_right = new UserRight(hands.get(User.USER_RIGHT));
-		User user_top = new UserTop(hands.get(User.USER_TOP));
-		User user_left = new UserLeft(hands.get(User.USER_LEFT));
+
+	public void infoDeal(DealMsg msg) {
+		// list<tile> for the other three AIs
+		ArrayList<ArrayList<Tile>> tileListForAI = new ArrayList<>();
+		for(int i = 0; i < 3; i++) {
+			ArrayList<Tile> tiles = new ArrayList<>();
+			for(int j = 0; j < 13; j++) {
+				tiles.add(new Tile(144)); // set fake tile list for AIs (tileId 144 = facedown)
+			}
+			tileListForAI.add(tiles);
+		}
+		
+		User user_bottom = new UserBottom(client.getWall());
+		User user_right = new UserRight(tileListForAI.get(0));
+		User user_top = new UserTop(tileListForAI.get(1));
+		User user_left = new UserLeft(tileListForAI.get(2));
 		
 		users.add(user_bottom); // index 0
 		users.add(user_right); // index 1
 		users.add(user_top); // index 2
 		users.add(user_left); // index 3
+		
+		handInit();
 	}
 	
 	private void handInit() {
 		for(User user : users) {
 			user.handInit(this);
 		}
-	}
-
-	public void infoDeal(DealMsg msg) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
@@ -90,26 +97,21 @@ public class GamePanel extends JPanel{
 		}
 		
 		if(possibleBid != null && tile != null) {
-			// add skip button
-			JButton skip = new JButton("Skip");
-			skip.setBounds((int)operationButtonStartPoint.x, (int)operationButtonStartPoint.y
-							, GameController.FRAME_WIDTH/16, GameController.FRAME_HEIGHT/16);
-			operationButtonEventInit(skip, "Skip", new BidMsg());
-			operationButtonList.add(skip);
-			this.add(skip);
+			int userId = possibleBid.get(0).getBidClient();
+			User user = users.get(userId);
+			
+			// display tile to the gamePanel
+			TileLabel tileLabel = addTileToPanel(user, tile); 
+			
+			// add tile and tile label to the user's hand deck list
+			user.getHandDeck().getTiles().add(tile);
+			user.getHandDeck().getTileLabels().add(tileLabel);
+			
 			
 			for(BidMsg bidMsg : possibleBid) {
-				User user = users.get(bidMsg.getBidClient());
-				// display tile to the gamePanel
-				TileLabel tileLabel = addTileToPanel(user, tile);
-				
-				// add tile and tile label to the user's hand deck list
-				user.getHandDeck().getTiles().add(tile);
-				user.getHandDeck().getTileLabels().add(tileLabel);
-				
 				// add event to the tile label, if the tile is for real user
 				// also display relative button(s), e.g. kong, skip
-				if(bidMsg.getBidClient() == User.USER_BOTTOM) {
+				if(userId == User.USER_BOTTOM) {
 					handTileEventInit(tileLabel, user);
 					
 					// button init
@@ -128,13 +130,41 @@ public class GamePanel extends JPanel{
 		return 0;
 	}
 
-	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
-		// TODO Auto-generated method stub
+	public void infoDiscard(DiscardMsg msg, ArrayList<BidMsg> possibleBid) {
+		Tile tile = null;
+		User sender = null;
+		if(msg != null) {
+			tile = new Tile(msg.getTileId());
+			sender = users.get(msg.getSenderId());
+		}
+		
+		// possibleBid == null means no other option could do
+		// only show the tile to the user's board deck
+		if(possibleBid == null) {
+			sender.discardTile(this, tile);
+		}
+		else { // not null, means need to deal with all possibleBid option
+			for(BidMsg bidMsg : possibleBid) {
+				if(bidMsg.getBidClient() == User.USER_BOTTOM) {
+					// button init
+					operationButtonInit(bidMsg);
+				}
+			}
+		}
 		
 	}
 	
 	public void infoBid(BidMsg bidMsg) {
+		// clear the new tile label
 		
+		// move the input meld to the user's right
+		User user = users.get(bidMsg.getBidClient());
+		Meld meld = bidMsg.getMeld();
+		
+		if(user != null && meld != null) {
+			user.putMeldToRight(this, meld);
+			repaint();
+		}
 	}
 	
 	public void infoWin(BidMsg bidMsg) {
@@ -151,31 +181,39 @@ public class GamePanel extends JPanel{
 		if(user.getUserId() != User.USER_BOTTOM)
 			ImageUtils.changeTileImgToFaceDown(tile);
 		
+		// remove the previous new tile from panel
+		user.removeNewTile(this);
+		
+		// then display new tile in gamePanel, also record it
 		TileLabel tileLabel = ImageUtils.addTile(this, tile, tileWidth, tileHeight, point, userId);
+		
+		// bind new tile to user
+		user.setNewTileFromServer(tileLabel);
 		
 		return tileLabel;
 	}
 	
 	private void operationButtonInit(BidMsg msg) {
-		// move the start point to the left first
-		operationButtonStartPoint.setX(operationButtonStartPoint.x - GameController.FRAME_WIDTH/16 - GameController.FRAME_WIDTH/50);
-		operationButtonStartPoint.setY(operationButtonStartPoint.y);
-		
-		// add other button(s) if applicable
+		// add button
 		if(msg.getOperationName() != null) {
 			String operationName = msg.getChnName();
 			JButton btn = new JButton(operationName);
 			btn.setBounds((int)operationButtonStartPoint.x, (int)operationButtonStartPoint.y
 					, GameController.FRAME_WIDTH/16, GameController.FRAME_HEIGHT/16);
+			
+			// set button event
 			operationButtonEventInit(btn, operationName, msg);
 			operationButtonList.add(btn);
 			this.add(btn);
 		}
 		
+		// move the button start point to the left
+		operationButtonStartPoint.setX(operationButtonStartPoint.x - GameController.FRAME_WIDTH/16 - GameController.FRAME_WIDTH/50);
+		operationButtonStartPoint.setY(operationButtonStartPoint.y);
 	}
 	
 	private void operationButtonEventInit(JButton btn, String btnName, BidMsg msg) {
-		if(btnName.equals("Skip")) {
+		if(btnName.equals("过")) {
 			btn.addActionListener((e) -> {
 				for(JButton jbtn : operationButtonList)
 					this.remove(jbtn);
@@ -215,13 +253,6 @@ public class GamePanel extends JPanel{
 			
 			// bind to event
 			btn.addMouseListener(new MouseAdapter(){
-				// for testing
-				boolean isPrinted = false;
-				
-				// for mouse click event
-				ArrayList<Tile> userMeldList, userHandList;
-				ArrayList<TileLabel> userMeldLabelList, userHandLabelList;
-				
 			    public void mouseEntered(MouseEvent e) {
 			    	int originalX, originalY;
 			    	for(TileLabel tileLabel : sameTileLabelList) {
@@ -230,12 +261,6 @@ public class GamePanel extends JPanel{
 			    		
 						// move it up if they are the same type (e.g. bamboo1 = bamboo1)
 			    		tileLabel.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-			    	
-			    		// for testing
-			    		if(!isPrinted) {
-				    		printUserDecks();
-				    		isPrinted = true;
-			    		}
 			    	}
 			    }
 
@@ -247,45 +272,113 @@ public class GamePanel extends JPanel{
 			    		
 						// move it down when the cursor is left
 			    		tileLabel.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-			    		
-			    		// for testing
-			    		isPrinted = false;
 			    	}
 			    }
 			    
 			    public void mouseClicked(MouseEvent e) {
 			    	opIndex = BidType.KONG.getBidType();
-			    	
-			    	// 1. put all the tile to the user meld list, meldLabel list
-			    	// 2. delete tile from user hand deck (including tiles and tileLabel list)
-			    	// 3. display all the related tiles to the right
-			    	userMeldList = user.getMeld();
-			    	userMeldLabelList= user.getMeldLabel();
-			    	userHandList = user.getHand();
-			    	userHandLabelList= user.getHandLabel();
-			    	
-			    	// step 1
-			    	for(int i = 0; i < userHandList.size(); i++) {
-			    		Tile currentTile = userHandList.get(i);
-			    		Tile tile;
-			    		for(int j = 0; j < sameTileList.size(); j++) {
-			    			tile = sameTileList.get(j);
-			    			if(currentTile.getId() == tile.getId()) {
-			    				userMeldList.add(tile);
-			    				userMeldLabelList.add(sameTileLabelList.get(j));
-			    				Tile.sortTileList(userMeldList);
-			    				Tile.sortTileLabelList(sameTileLabelList);
-			    			}
-			    		}
-			    	}
-			    	
-			    	// TODO : step 2
-
-			    	
-			    	// TODO : step 3
-
-			    	printUserDecks();
 			    }
+			});
+		}
+		else if(btnName.equals("碰")) {
+			Meld meld = msg.getMeld();
+			Tile tile1 = meld.getFirst();
+			Tile tile2 = meld.getSecond();
+			Tile tile3 = meld.getThird();
+			
+			UserBottom user = (UserBottom) users.get(User.USER_BOTTOM);
+			ArrayList<TileLabel> tileLabelList = user.getHandDeck().getTileLabels();
+			
+			// an array to store all the matched tile
+			// thus to reduce the searching time
+			ArrayList<TileLabel> sameTileLabelList = new ArrayList<>();
+			ArrayList<Tile> sameTileList = new ArrayList<>();
+			for(TileLabel tileLabel : tileLabelList) {
+				Tile tile = tileLabel.getTile();
+				if(tile.compareTo(tile1) == 0 || tile.compareTo(tile2) == 0 || tile.compareTo(tile3) == 0) {
+					sameTileLabelList.add(tileLabel);
+					sameTileList.add(tile);
+				}
+				
+			}
+			
+			btn.addMouseListener(new MouseAdapter() {
+			    public void mouseEntered(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+
+			    		tileLabel.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseExited(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+			    		
+						// move it down when the cursor is left
+			    		tileLabel.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseClicked(MouseEvent e) {
+			    	opIndex = BidType.PONG.getBidType();
+			    }
+			});
+		} else if(btnName.equals("吃")) {
+			Meld meld = msg.getMeld();
+			Tile tile1 = meld.getFirst();
+			Tile tile2 = meld.getSecond();
+			Tile tile3 = meld.getThird();
+			
+			UserBottom user = (UserBottom) users.get(User.USER_BOTTOM);
+			ArrayList<TileLabel> tileLabelList = user.getHandDeck().getTileLabels();
+			
+			// an array to store all the matched tile
+			// thus to reduce the searching time
+			ArrayList<TileLabel> sameTileLabelList = new ArrayList<>();
+			ArrayList<Tile> sameTileList = new ArrayList<>();
+			for(TileLabel tileLabel : tileLabelList) {
+				Tile tile = tileLabel.getTile();
+				if(tile.compareTo(tile1) == 0 || tile.compareTo(tile2) == 0 || tile.compareTo(tile3) == 0) {
+					sameTileLabelList.add(tileLabel);
+					sameTileList.add(tile);
+				}
+				
+			}
+			
+			btn.addMouseListener(new MouseAdapter() {
+			    public void mouseEntered(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+
+			    		tileLabel.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseExited(MouseEvent e) {
+			    	int originalX, originalY;
+			    	for(TileLabel tileLabel : sameTileLabelList) {
+			    		originalX = tileLabel.getX();
+						originalY = tileLabel.getY();
+			    		
+						// move it down when the cursor is left
+			    		tileLabel.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+			    	}
+			    }
+			    
+			    public void mouseClicked(MouseEvent e) {
+			    	opIndex = BidType.CHOW.getBidType();
+			    }
+			});
+		} else if(btnName.equals("胡")) {
+			btn.addActionListener((e) -> {
+				opIndex = BidType.WIN.getBidType();
 			});
 		}
 	}
@@ -328,8 +421,8 @@ public class GamePanel extends JPanel{
 	}
 	
 	// for testing
-	private void printUserDecks() {
-		User user = users.get(0);
+	public void printUserDecks() {
+		User user = users.get(2);
 		Deck handDeck = user.getHandDeck();
 		Deck meldDeck = user.getMeldDeck();
 		Deck boardDeck = user.getBoardDeck();
@@ -344,39 +437,45 @@ public class GamePanel extends JPanel{
 		
 		System.out.print("User hand: ");
 		for(Tile tile : hand) {
-			System.out.print(tile.getId() + " ");
+			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
 		}
 		System.out.println();
 		
 		System.out.print("User handLabel: ");
 		for(TileLabel tile : handLabel) {
-			System.out.print(tile.getTile().getId() + " ");
+			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
 		}
 		System.out.println();
 		
 		System.out.print("User meld: ");
 		for(Tile tile : meld) {
-			System.out.print(tile.getId() + " ");
+			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
 		}
 		System.out.println();
 		
 		System.out.print("User meldLabel: ");
 		for(TileLabel tile : meldLabel) {
-			System.out.print(tile.getTile().getId() + " ");
+			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
 		}
 		System.out.println();
 		
-		System.out.print("User borad: ");
-		for(Tile tile : borad) {
-			System.out.print(tile.getId() + " ");
-		}
-		System.out.println();
-		
-		System.out.print("User boradLabel: ");
-		for(TileLabel tile : boradLabel) {
-			System.out.print(tile.getTile().getId() + " ");
-		}
-		System.out.println();
+//		System.out.print("User borad: ");
+//		for(Tile tile : borad) {
+//			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
+//		}
+//		System.out.println();
+//		
+//		System.out.print("User boradLabel: ");
+//		for(TileLabel tile : boradLabel) {
+//			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
+//		}
+//		System.out.println();
+		System.out.println(opIndex);
+	}
+	
+	public void removeTileLabelFromPanel(TileLabel tileLabel) {
+		if(tileLabel != null)
+			this.remove(tileLabel);
 	}
 
 }
