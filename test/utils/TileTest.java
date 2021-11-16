@@ -3,6 +3,9 @@ package utils;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 class TileTest {
@@ -39,6 +42,52 @@ class TileTest {
 		String name = t.getName();
 		System.out.println(name);
 		System.out.println(url);
-		assertEquals("resource/static/tiles/bamboo-1.png", url);
+		assertEquals("resource/static/tiles/facedown-1.png", url);
 	}
+	
+	@Test
+	void testTileToIdList() {
+		ArrayList<Tile> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34,70));
+		for(Integer i:a) {
+			hand.add(new Tile(i));
+		}
+		ArrayList<Integer> result;
+		result = Tile.tileToIdList(hand);
+		assertEquals(result,a);
+	}
+	
+	@Test 
+	void testTileListToString(){
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
+		String s = "幺鸡 /幺鸡 /幺鸡 /二条 /三条 /四条 /五条 /六条 /七条 /八条 /九条 /九条 /九条 /";
+		ArrayList<Tile> wall = Tile.idToTileList(a);
+		String result = Tile.tileListToString(wall);
+		assertEquals(s,result);
+	}
+	
+	@Test
+	void testIsSameType1() {
+		Tile tile1 = new Tile(0);
+		Tile tile2 = new Tile(1);
+		boolean result = Tile.isSameTileFace(tile1, tile2);
+		assertEquals(result, true);
+	}
+	
+	@Test
+	void testIsSameType2() {
+		Tile tile1 = new Tile(0);
+		Tile tile2 = new Tile(4);
+		boolean result = Tile.isSameTileFace(tile1, tile2);
+		assertEquals(result, false);
+	}
+	
+	@Test
+	void testIsSameType3() {
+		Tile tile1 = new Tile(0);
+		Tile tile2 = new Tile(36);
+		boolean result = Tile.isSameTileFace(tile1, tile2);
+		assertEquals(result, false);
+	}
+
 }

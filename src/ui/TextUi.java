@@ -14,9 +14,11 @@ import utils.Tile;
 
 public class TextUi implements Ui{
 	private ClientInterface client; //this client later need to try best to decouple out with input parameters
+	private Scanner scan;
 	
 	public TextUi(ClientInterface client) { //this may later change to singleton
 		this.client = client;
+		scan = new Scanner(System.in);
 	}
 
 	@Override
@@ -32,10 +34,10 @@ public class TextUi implements Ui{
 		}
 	}
 
+
 	@Override
 	public int getOpIndex() {
 		System.out.print("Please input the index of the operation: ");
-		Scanner scan = new Scanner(System.in);
 		int opIndex=-1;
         if (scan.hasNext()) {
             opIndex = scan.nextInt()-1;
@@ -50,7 +52,6 @@ public class TextUi implements Ui{
 		boolean validInput = false;
 		int tileIndex=client.getLength();
 		while(!validInput) {
-			Scanner scan = new Scanner(System.in);
 	        if (scan.hasNext()) {
 	            tileIndex = scan.nextInt();
 	        }

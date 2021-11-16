@@ -73,7 +73,7 @@ public class Meld {
 	private String toCombName(int comb_type) {
 		switch(comb_type) {
 		case 0:
-			return "eye";
+			return "Eye";
 		case 1:
 			return "Chow";
 		case 2:
