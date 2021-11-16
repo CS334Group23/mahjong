@@ -230,12 +230,13 @@ public class TestCheckWin_Unit_Test {
 		Tile t16= new Tile(a.get(15));
 		Tile t17= new Tile(a.get(16));
 		Tile t18= new Tile(a.get(17));
-		hand.add(new Meld(t1,t2,t3,t4));
-		hand.add(new Meld(t5,t6,t7,t8));
-		hand.add(new Meld(t9,t10,t11,t12));
-		hand.add(new Meld(t13,t14,t15,t16));
+	
 		hand.add(new Meld(t17,t18,null,null));
 		ArrayList<Meld> Showed_hand = new ArrayList<>();
+		Showed_hand.add(new Meld(t1,t2,t3,t4));
+		Showed_hand.add(new Meld(t5,t6,t7,t8));
+		Showed_hand.add(new Meld(t9,t10,t11,t12));
+		Showed_hand.add(new Meld(t13,t14,t15,t16));
 		boolean result=checkwin.CheckPPH(hand,Showed_hand);
 		assertEquals(false,result);
 		

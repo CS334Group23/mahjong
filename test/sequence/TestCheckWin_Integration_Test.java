@@ -10,14 +10,8 @@ import org.junit.Test;
 import utils.Meld;
 import utils.Tile;
 public class TestCheckWin_Integration_Test {
-	@Test
-	public void IntegrationTestCheck_if_pong() {
-		
-		
-		
-	}
 	
-	//first test if showed hand + hand can form a winning hand
+
 	@Test
 	public void IntegrationTestCheckWinv1() { //test if can output score with meld
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -471,7 +465,7 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	@Test
-	public void IntegrationTestCheckWinv11() { //test if  mixed terminals
+	public void IntegrationTestCheckWinv11() { //test if not mixed terminals
 		ArrayList<Tile> hand = new ArrayList<>();
 		ArrayList<Meld> showed_hand=new ArrayList<>();
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,32,33,34,36,37,38,108,109,110,4,5));
@@ -516,11 +510,11 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
-	//@Test
+	@Test
 	public void IntegrationTestCheckWinv12() { //test if  small Dragons
 		ArrayList<Tile> hand = new ArrayList<>();
 		ArrayList<Meld> showed_hand=new ArrayList<>();
-		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,116,117,118,120,121,4,5,6));
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,116,117,122,120,121,4,5,6));
 		CheckWin checkwin=new CheckWin();
 		Tile t1= new Tile(a.get(0));
 		Tile t2= new Tile(a.get(1));
@@ -561,11 +555,11 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
-	//@Test
+	@Test
 		public void IntegrationTestCheckWinv13() { //test if not small Dragons
 			ArrayList<Tile> hand = new ArrayList<>();
 			ArrayList<Meld> showed_hand=new ArrayList<>();
-			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,116,117,124,125,126,4,5,6));
+			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,0,1,2,125,126,4,5,6));
 			CheckWin checkwin=new CheckWin();
 			Tile t1= new Tile(a.get(0));
 			Tile t2= new Tile(a.get(1));
@@ -606,11 +600,11 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}
-		//@Test
+		@Test
 		public void IntegrationTestCheckWinv14() { //test if  small winds
 			ArrayList<Tile> hand = new ArrayList<>();
 			ArrayList<Meld> showed_hand=new ArrayList<>();
-			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(124,125,126,128,129,130,132,133,134,108,109,110,136,137));
+			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(124,125,126,128,129,130,132,133,134,108,109,110,120,121));
 			CheckWin checkwin=new CheckWin();
 			Tile t1= new Tile(a.get(0));
 			Tile t2= new Tile(a.get(1));
@@ -652,7 +646,7 @@ public class TestCheckWin_Integration_Test {
 			
 		}
 		
-		//@Test
+		@Test
 		public void IntegrationTestCheckWinv15() { //test if not small winds
 					ArrayList<Tile> hand = new ArrayList<>();
 					ArrayList<Meld> showed_hand=new ArrayList<>();
@@ -784,7 +778,7 @@ public class TestCheckWin_Integration_Test {
 					result= true;
 				
 			}
-			assertEquals(true,result);
+			assertEquals(false,result);
 			
 			
 		}	
@@ -876,7 +870,7 @@ public class TestCheckWin_Integration_Test {
 					result= true;
 				
 			}
-			assertEquals(true,result);
+			assertEquals(false,result);
 			
 			
 		}
@@ -885,7 +879,7 @@ public class TestCheckWin_Integration_Test {
 		public void IntegrationTestCheckWinv20() { //test if Great Dragons
 			ArrayList<Tile> hand = new ArrayList<>();
 			ArrayList<Meld> showed_hand=new ArrayList<>();
-			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,116,117,118,69,70,74,75,76));
+			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,116,117,118,69,70,72,73,74));
 			CheckWin checkwin=new CheckWin();
 			Tile t1= new Tile(a.get(0));
 			Tile t2= new Tile(a.get(1));
@@ -927,10 +921,10 @@ public class TestCheckWin_Integration_Test {
 			
 		}
 		@Test
-		public void IntegrationTestCheckWinv21() { //test if Great Dragons
+		public void IntegrationTestCheckWinv21() { //test if not Great Dragons
 			ArrayList<Tile> hand = new ArrayList<>();
 			ArrayList<Meld> showed_hand=new ArrayList<>();
-			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,124,125,126,69,70,74,75,76));
+			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(108,109,110,112,113,114,124,125,126,69,70,72,73,74));
 			CheckWin checkwin=new CheckWin();
 			Tile t1= new Tile(a.get(0));
 			Tile t2= new Tile(a.get(1));
@@ -975,7 +969,7 @@ public class TestCheckWin_Integration_Test {
 		public void IntegrationTestCheckWinv22() { //test if Great Wind
 			ArrayList<Tile> hand = new ArrayList<>();
 			ArrayList<Meld> showed_hand=new ArrayList<>();
-			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(124,125,126,128,129,130,132,133,134,137,138,139,108,109));
+			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(120,121,122,128,129,130,132,133,134,124,125,126,108,109));
 			CheckWin checkwin=new CheckWin();
 			Tile t1= new Tile(a.get(0));
 			Tile t2= new Tile(a.get(1));
@@ -1017,10 +1011,10 @@ public class TestCheckWin_Integration_Test {
 			
 		}	
 		@Test
-		public void IntegrationTestCheckWinv23() { //test ifnot  Great Wind
+		public void IntegrationTestCheckWinv23() { //test if not  Great Wind
 			ArrayList<Tile> hand = new ArrayList<>();
 			ArrayList<Meld> showed_hand=new ArrayList<>();
-			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(124,125,126,128,129,130,132,133,134,137,138,107,108,109));
+			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(124,125,126,128,129,130,132,133,1,2,3,110,108,109));
 			CheckWin checkwin=new CheckWin();
 			Tile t1= new Tile(a.get(0));
 			Tile t2= new Tile(a.get(1));
@@ -1815,9 +1809,9 @@ public class TestCheckWin_Integration_Test {
 		boolean result=false;
 		boolean has_all_kongs=false;
 		for(Sequence s:seq) {
-			if(s.getClass()== (new All_In_Triplet()).getClass())
+			if(s.getClass().equals(new All_In_Triplet().getClass()))
 				result= true;
-			if(s.getClass()==(new All_Kongs()).getClass())
+			if(s.getClass()==(new All_Kongs().getClass()))
 				has_all_kongs=true;
 		}
 		assertEquals(has_all_kongs,true);
@@ -1848,16 +1842,20 @@ public class TestCheckWin_Integration_Test {
 		Tile t12= new Tile(a.get(11));
 		Tile t13= new Tile(a.get(12));
 		Tile t14= new Tile(a.get(13));
-		Tile t15= new Tile(a.get(13));
-		Tile t16= new Tile(a.get(13));
-		Tile t17= new Tile(a.get(13));
-		Tile t18= new Tile(a.get(13));
-		showed_hand.add(new Meld(t1,t2,t3,t4));
-		showed_hand.add(new Meld(t5,t6,t7,t8));
-		showed_hand.add(new Meld(t9,t10,t11,t12));
-		showed_hand.add(new Meld(t13,t14,t15,t16));
-		hand.add(t17);
-		hand.add(t18);
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
 		ArrayList<Sequence> seq=checkwin.CheckScore(hand,showed_hand);
 		boolean result=false;
 		for(Sequence s:seq) {
@@ -1890,16 +1888,20 @@ public class TestCheckWin_Integration_Test {
 		Tile t12= new Tile(a.get(11));
 		Tile t13= new Tile(a.get(12));
 		Tile t14= new Tile(a.get(13));
-		Tile t15= new Tile(a.get(13));
-		Tile t16= new Tile(a.get(13));
-		Tile t17= new Tile(a.get(13));
-		Tile t18= new Tile(a.get(13));
-		showed_hand.add(new Meld(t1,t2,t3,t4));
-		showed_hand.add(new Meld(t5,t6,t7,t8));
-		showed_hand.add(new Meld(t9,t10,t11,t12));
-		showed_hand.add(new Meld(t13,t14,t15,t16));
-		hand.add(t17);
-		hand.add(t18);
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
 		ArrayList<Sequence> seq=checkwin.CheckScore(hand,showed_hand);
 		boolean result=false;
 		for(Sequence s:seq) {
@@ -1932,16 +1934,20 @@ public class TestCheckWin_Integration_Test {
 		Tile t12= new Tile(a.get(11));
 		Tile t13= new Tile(a.get(12));
 		Tile t14= new Tile(a.get(13));
-		Tile t15= new Tile(a.get(13));
-		Tile t16= new Tile(a.get(13));
-		Tile t17= new Tile(a.get(13));
-		Tile t18= new Tile(a.get(13));
-		showed_hand.add(new Meld(t1,t2,t3,t4));
-		showed_hand.add(new Meld(t5,t6,t7,t8));
-		showed_hand.add(new Meld(t9,t10,t11,t12));
-		showed_hand.add(new Meld(t13,t14,t15,t16));
-		hand.add(t17);
-		hand.add(t18);
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
 		ArrayList<Sequence> seq=checkwin.CheckScore(hand,showed_hand);
 		boolean result=false;
 		for(Sequence s:seq) {
@@ -1974,16 +1980,20 @@ public class TestCheckWin_Integration_Test {
 		Tile t12= new Tile(a.get(11));
 		Tile t13= new Tile(a.get(12));
 		Tile t14= new Tile(a.get(13));
-		Tile t15= new Tile(a.get(13));
-		Tile t16= new Tile(a.get(13));
-		Tile t17= new Tile(a.get(13));
-		Tile t18= new Tile(a.get(13));
-		showed_hand.add(new Meld(t1,t2,t3,t4));
-		showed_hand.add(new Meld(t5,t6,t7,t8));
-		showed_hand.add(new Meld(t9,t10,t11,t12));
-		showed_hand.add(new Meld(t13,t14,t15,t16));
-		hand.add(t17);
-		hand.add(t18);
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
 		ArrayList<Sequence> seq=checkwin.CheckScore(hand,showed_hand);
 		boolean result=false;
 		for(Sequence s:seq) {
@@ -2016,16 +2026,20 @@ public class TestCheckWin_Integration_Test {
 		Tile t12= new Tile(a.get(11));
 		Tile t13= new Tile(a.get(12));
 		Tile t14= new Tile(a.get(13));
-		Tile t15= new Tile(a.get(13));
-		Tile t16= new Tile(a.get(13));
-		Tile t17= new Tile(a.get(13));
-		Tile t18= new Tile(a.get(13));
-		showed_hand.add(new Meld(t1,t2,t3,t4));
-		showed_hand.add(new Meld(t5,t6,t7,t8));
-		showed_hand.add(new Meld(t9,t10,t11,t12));
-		showed_hand.add(new Meld(t13,t14,t15,t16));
-		hand.add(t17);
-		hand.add(t18);
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
 		ArrayList<Sequence> seq=checkwin.CheckScore(hand,showed_hand);
 		boolean result=false;
 		for(Sequence s:seq) {
@@ -2058,20 +2072,25 @@ public class TestCheckWin_Integration_Test {
 		Tile t12= new Tile(a.get(11));
 		Tile t13= new Tile(a.get(12));
 		Tile t14= new Tile(a.get(13));
-		Tile t15= new Tile(a.get(13));
-		Tile t16= new Tile(a.get(13));
-		Tile t17= new Tile(a.get(13));
-		Tile t18= new Tile(a.get(13));
-		showed_hand.add(new Meld(t1,t2,t3,t4));
-		showed_hand.add(new Meld(t5,t6,t7,t8));
-		showed_hand.add(new Meld(t9,t10,t11,t12));
-		showed_hand.add(new Meld(t13,t14,t15,t16));
-		hand.add(t17);
-		hand.add(t18);
+		hand.add(t1); 
+		hand.add(t2);
+		hand.add(t3);
+		hand.add(t4);
+		hand.add(t5);
+		hand.add(t6);
+		hand.add(t7);
+		hand.add(t8);
+		hand.add(t9);
+		hand.add(t10);
+		hand.add(t11);
+		hand.add(t12);
+		hand.add(t13);
+		hand.add(t14);
 		ArrayList<Sequence> seq=checkwin.CheckScore(hand,showed_hand);
 		assertEquals(seq.isEmpty(),true);
 		
 		
 	}
+	
 	
 }

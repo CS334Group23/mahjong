@@ -19,7 +19,11 @@ public class CheckWin {
 		Combination comb=new Combination();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
 		ArrayList<Sequence> sequence =new ArrayList<>();
-		System.out.printf("Set:%d\n",set.size());
+		if(set.isEmpty()) {
+			if(CheckSSY(hand)) {
+				sequence.add(new Thirteen_Orphans());
+			}
+		}
 		for(ArrayList<Meld> winning_hand : set) {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
 			if(showed_hand!=null)
@@ -34,28 +38,83 @@ public class CheckWin {
 			}
 			if(showed_hand!=null)
 				if(CheckPPH(winning_hand,showed_hand)) {
-				Sequence all_in_triplet=new All_In_Triplet();
-				temp_sequence.add(all_in_triplet);
+					if(!CheckQYJ(winning_hand)) {
+			
+						Sequence all_in_triplet=new All_In_Triplet();
+						temp_sequence.add(all_in_triplet);
+					}		
+						
+					
 				}
+			if(CheckQYJ(winning_hand))
+			{
+
+				Sequence all_terminals=new All_Terminals();
+				temp_sequence.add(all_terminals);
+				
+			}
 			if(CheckHYS(winning_hand)) {
 				Sequence mixed_one_suit=new Mixed_One_Suit();
 				temp_sequence.add(mixed_one_suit);
 			}
 			if(CheckQYS(winning_hand) ) {
+				if(!CheckJLBD(winning_hand)) {
 				Sequence all_one_suit=new All_One_Suit();
 				temp_sequence.add(all_one_suit);
+				}
 			}
 			if(CheckHYJ(winning_hand)) {
 				Sequence mixed_terminals=new Mixed_Terminals(); 
 				temp_sequence.add(mixed_terminals);
+			}
+			if(CheckXSY(winning_hand)) {
+				Sequence small_dragon=new Small_Dragons();
+				temp_sequence.add(small_dragon);
+				
+			}
+			if(CheckXSX(winning_hand)) {
+				Sequence small_wind=new Small_Winds();
+				temp_sequence.add(small_wind);
+				
+			}
+			if(CheckZYS(winning_hand)) {
+				Sequence all_honour=new All_Honours();
+				temp_sequence.add(all_honour);
+				
+			}
+			if(CheckDSY(winning_hand)) {
+				Sequence great_dragon=new Great_Dragons();
+				temp_sequence.add(great_dragon);
+				
+			}
+			if(CheckDSX(winning_hand)) {
+				Sequence great_wind=new Great_Winds();
+				temp_sequence.add(great_wind);
+				
+			}
+			if(CheckJLBD(winning_hand)) {
+				Sequence nine_gate=new Nine_Gates() ;
+				temp_sequence.add(nine_gate);
+				
+			}
+			if(CheckKKH(winning_hand,showed_hand)) {
+				Sequence kkh = new Four_Concealed_Triplets();
+				temp_sequence.add(kkh);
+				
+			}
+			if(CheckAKS(winning_hand)) {
+				Sequence aks=new All_Kongs();
+				temp_sequence.add(aks);
 			}
 			// other check will add later 
 			
 			//extra score eg ���e/��/��
 			if(showed_hand != null) {
 				if(CheckMC(showed_hand)) {
+					if(!CheckJLBD(winning_hand) &&!CheckQYJ(winning_hand)) {
 					Sequence win_from_wall=new Win_From_Wall();
 					temp_sequence.add(win_from_wall);
+					}
 				}
 			}
 			if(CheckRedDragon(winning_hand)) {
@@ -95,7 +154,6 @@ public class CheckWin {
 		return false;
 		
 	}
-	
 	
 	
 	public boolean CheckPH(ArrayList<Meld> hand) {//���w
@@ -159,7 +217,6 @@ public class CheckWin {
 			return false;
 		
 	}
-	
 	
 	public boolean CheckHYS(ArrayList<Meld> hand) {//�K�@��
 	
