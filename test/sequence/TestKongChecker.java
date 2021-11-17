@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import sequence.CheckWin;
-import sequence.Combination;
+import sequence.GenerateWinningHand;
 import utils.*;
 import java.util.*;
 public class TestKongChecker {

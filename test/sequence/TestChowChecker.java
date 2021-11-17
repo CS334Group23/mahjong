@@ -3,14 +3,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import sequence.CheckWin;
-import sequence.Combination;
+import sequence.GenerateWinningHand;
 import utils.*;
 import java.util.*;
 public class TestChowChecker {
-	//@Test
+	@Test
 	public void UnitTestcheckChowv1() {//sorted list to test if can't Chow with different type
 	ArrayList<Tile> hand = new ArrayList<>();
-	ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,3,4,5,6,7,8,9,23,27,30,35,55 ));
+	ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,3,4,5,6,7,8,9,40,48,30,35,55 ));
 	Tile t1= new Tile(a.get(0));
 	hand.add(t1);
 	Tile t2= new Tile(a.get(1));
@@ -39,7 +39,7 @@ public class TestChowChecker {
 	Tile t13= new Tile(a.get(12));
 	hand.add(t13);
 	Tile t14= new Tile(a.get(13));
-	ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
+	ArrayList<Meld> result = (new ChowChecker()).checkChow(hand,t14);
 	assertEquals(true,result.isEmpty());
 	}
 	@Test
@@ -75,6 +75,8 @@ public class TestChowChecker {
 	hand.add(t13);
 	Tile t14= new Tile(a.get(13));
 	ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
+	assertEquals(true,result.isEmpty());
+	result = ChowChecker.checkChow(hand,new Tile(120));
 	assertEquals(true,result.isEmpty());
 	}
 	@Test
@@ -321,6 +323,24 @@ public class TestChowChecker {
 		Tile t14= new Tile(a.get(13));
 		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 		assertEquals(3,result.size());
+	}
+	
+	@Test
+	public void UnitTestcheckChowv10() { //empty list, cover for loop
+		ArrayList<Tile> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0));
+		Tile t14= new Tile(a.get(0));
+		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
+		assertEquals(0,result.size());
+	}
+	@Test
+	public void UnitTestcheckChowv11() { //1 in hand, cover for loop
+		ArrayList<Tile> hand = new ArrayList<>();
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0));
+		Tile t14= new Tile(a.get(0));
+		hand.add(new Tile(1));
+		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
+		assertEquals(0,result.size());
 	}
 
 }

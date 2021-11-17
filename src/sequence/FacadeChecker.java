@@ -5,7 +5,7 @@ public class FacadeChecker {
 	private ChowChecker chowchecker;
 	private PongChecker pongchecker;
 	private KongChecker kongchecker;
-	private Combination combination;
+	private GenerateWinningHand combination;
 	protected ArrayList<Tile> hand;
 	private ArrayList<Meld> showed_hand;
 	private CheckWin checkwin;
