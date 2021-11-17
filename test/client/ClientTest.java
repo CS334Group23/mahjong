@@ -17,6 +17,13 @@ import utils.Peer;
 import utils.Tile;
 
 class ClientTest {
+	
+	@Test
+	public void testConstructor() {
+		Client client = new Client(0, null);
+		assertEquals(client.getId(), 0);
+		assertEquals(client.getServer(), null);
+	}
 
 	@Test
 	void testInitWall() {
@@ -40,3 +47,4 @@ class ClientTest {
 	}
 
 }
+

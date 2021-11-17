@@ -36,7 +36,8 @@ public class DiscardOperation implements ClientOperation{
 				possibleBid.add(new BidMsg(client.getId(), BidType.CHOW, "ChowResponser", ((DiscardMsg)msg).getTileId(),m, null, false));
 			}
 		}
-		ArrayList<Sequence> possibleSequence = facadeChecker.check_if_win();
+//		ArrayList<Sequence> possibleSequence = facadeChecker.check_if_win(); //change here
+		boolean win = facadeChecker.checkWhetherWin();
 		Meld pong = PongChecker.checkPong(client.getWall(), new Tile(discardMsg.getTileId()));
 		Meld kong = KongChecker.checkKong(client.getWall(), new Tile(discardMsg.getTileId()));
 		if(pong != null) {
@@ -45,7 +46,8 @@ public class DiscardOperation implements ClientOperation{
 		if(kong != null) {
 			possibleBid.add(new BidMsg(client.getId(), BidType.KONG, "KongResponser", ((DiscardMsg)msg).getTileId(),kong, null, false));
 		}
-		if(possibleSequence.size()!=0) {
+//		if(possibleSequence.size()!=0) { //change here
+		if(win) {
 			possibleBid.add(new BidMsg(client.getId(), BidType.WIN, "WinResponser", ((DiscardMsg)msg).getTileId(),null, Tile.tileToIdList(client.getWall()), false));
 		}
 		if(possibleBid.size()==0) {

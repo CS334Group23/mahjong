@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import ai.AiUi;
 import gui.GameController;
 import ui.ClientInterface;
 import ui.TextUi;
@@ -43,7 +44,8 @@ public class Client implements Peer, ClientInterface{
 			GameController.getInstance().init(this); //should resolved later
 		}
 		else {
-			this.ui = new TextUi(this); //this may later need to change other ui options
+//			this.ui = new TextUi(this); //this may later need to change other ui options
+			this.ui = new AiUi(this);
 		}
 	}
 	

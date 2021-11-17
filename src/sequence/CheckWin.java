@@ -11,8 +11,21 @@ import utils.sorting;
 public class CheckWin {
 	private Combination comb;
 	public CheckWin() {
-		
 	}
+	
+	public boolean checkIsWin(ArrayList<Tile> hand, ArrayList<Meld> showed_hand) {//now use this added one
+		Combination comb=new Combination();
+		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
+		ArrayList<Sequence> sequence =new ArrayList<>();
+		System.out.printf("Set:%d\n",set.size());
+		if(set.size()>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		int score=0;
 		
