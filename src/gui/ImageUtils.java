@@ -91,16 +91,4 @@ public class ImageUtils {
 		return imgLabel;
 		
 	}
-	
-	private JLabel getSizedJLabel(String url, int width, int height) {
-		Image tempTileImg = null;
-		try {
-			tempTileImg = ImageIO.read(new File(url));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return label;
-	}
 }
