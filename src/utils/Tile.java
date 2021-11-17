@@ -26,6 +26,8 @@ public class Tile implements Comparable<Tile> {
 	public final static int TILE_HEIGHT_MELD = 70;
 	public final static int TILE_WIDTH_BOARD = 60;
 	public final static int TILE_HEIGHT_BOARD = 60;
+	public final static int TOTAL_TILES = 144;
+	public final static int TOTAL_TILES_WITHOUT_FLOWERS = 136;
 	
 	private static Map<Integer, String> engNameMap = new HashMap<Integer, String>();
 	private static Map<Integer, String> chnNameMap = new HashMap<Integer, String>();
