@@ -39,6 +39,8 @@ public class GamePanel extends JPanel{
 	private ArrayList<JButton> operationButtonList;
 	
 	private ClientInterface client;
+	private TileLabel lastDiscardTileLabel;
+	private int lastDiscardSenderId;
 	
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -159,7 +161,9 @@ public class GamePanel extends JPanel{
 		
 		// possibleBid == null means no other option could do
 		// only show the tile to the user's board deck
-		sender.discardTile(this, tile);
+		lastDiscardTileLabel = sender.discardTile(this, tile);
+		lastDiscardSenderId = sender.getUserId();
+		
 		if(possibleBid == null || possibleBid.size() == 0) { //need refactor later, solve the not display discard bug
 //			sender.discardTile(this, tile);
 		}
@@ -182,6 +186,8 @@ public class GamePanel extends JPanel{
 		Meld meld = bidMsg.getMeld();
 		System.out.println("call to putMeldToRight");
 		if(user != null && meld != null) {
+			this.remove(lastDiscardTileLabel);
+			users.get(lastDiscardSenderId).returnBoardLabelToLastPosition();
 			user.putMeldToRight(this, meld);
 			repaint();
 		}
@@ -203,7 +209,6 @@ public class GamePanel extends JPanel{
 		
 		// remove the previous new tile from panel
 		user.removeNewTile(this);
-		
 		// then display new tile in gamePanel, also record it
 		TileLabel tileLabel = ImageUtils.addTile(this, tile, tileWidth, tileHeight, point, userId);
 		

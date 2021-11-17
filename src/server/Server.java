@@ -5,6 +5,7 @@ import utils.DrawMsg;
 import utils.DrawNoticeMsg;
 import utils.Message;
 import utils.Peer;
+import utils.Tile;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -18,8 +19,6 @@ import client.Client;
 public class Server implements Peer{
 	public final static int INITIAL_HAND = 13;
 	public final static int CLIENT_NUM = 4;
-	public final static int TOTAL_TILES = 144;
-	public final static int TOTAL_TILES_WITHOUT_FLOWERS = 136;
 	
 	private Deque<Integer> cardlist;
 	private ArrayList<ArrayList<Integer>> client_hands;
@@ -55,7 +54,7 @@ public class Server implements Peer{
 	public Deque<Integer> shuffle() {
 		Deque<Integer> deque = new LinkedList<>();
 		ArrayList<Integer> IDs = new ArrayList<Integer>();
-		for(int i=0;i<TOTAL_TILES_WITHOUT_FLOWERS;i++) {
+		for(int i=0;i<Tile.TOTAL_TILES_WITHOUT_FLOWERS;i++) {
 			IDs.add(i);
 		}
 		Collections.shuffle(IDs);

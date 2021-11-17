@@ -45,7 +45,7 @@ public class UserBottom extends User{
 	}
 	
 	@Override
-	public void discardTile(GamePanel gamePanel, Tile tile) {
+	public TileLabel discardTile(GamePanel gamePanel, Tile tile) {
 		// parameter to add tile to gamepanel
 		int tileWidth = boardDeck.getTileWidth();
 		int tileHeight = boardDeck.getTileHeight();
@@ -93,6 +93,8 @@ public class UserBottom extends User{
 		Point handStartPoint = handDeck.getPoint();
 		handStartPoint.resetCoordinate();
 		handInit(gamePanel);
+		
+		return label;
 	}
 	
 	@Override

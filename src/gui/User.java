@@ -62,8 +62,9 @@ public class User {
 		
 	}
 	
-	public void discardTile(GamePanel gamePanel, Tile tile) {
-
+	public TileLabel discardTile(GamePanel gamePanel, Tile tile) {
+		
+		return null;
 	}
 	
 	public void putMeldToRight(GamePanel gamePanel, Meld meld) {
@@ -209,4 +210,9 @@ public class User {
 		for(TileLabel tileLabel : meldTileLabelList)
 			gamePanel.removeTileLabelFromPanel(tileLabel);
  	}
+	
+	public void returnBoardLabelToLastPosition() {
+		tileOnBoard--;
+		getBoardDeck().getPoint().returnToLastPosition();
+	}
 }

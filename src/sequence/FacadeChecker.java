@@ -47,6 +47,11 @@ public class FacadeChecker {
 	public ArrayList<Sequence> check_if_win(){
 		return checkwin.CheckScore(hand,showed_hand);
 	}
+	
+	public boolean checkWhetherWin() {
+		return checkwin.checkIsWin(hand, showed_hand);
+	}
+	
 	public void UpdateHand(ArrayList<Tile> hand, ArrayList<Meld> showed_hand, Tile a) {
 		this.hand=new ArrayList<>();
 		this.hand.addAll(hand);
