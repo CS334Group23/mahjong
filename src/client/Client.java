@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import ai.AiUi;
+import ai.Ai;
 import gui.GameController;
 import ui.ClientInterface;
 import ui.TextUi;

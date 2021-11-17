@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import server.Server;
 import utils.Tile;
 
 // Skim through cards in hand 
@@ -21,10 +22,11 @@ public class AiRecommender {
 	private List<Tile> cardsNotPlayed; // cards that may show up
 	
 	private AiRecommender() {
-		theAiRecommender = new AiRecommender();
 	}
 	
-	public AiRecommender callAiRecommender() {
+	public static AiRecommender callAiRecommender() {
+		if(theAiRecommender==null)
+			theAiRecommender= new AiRecommender();
 		return theAiRecommender;
 	}
 	
@@ -45,19 +47,19 @@ public class AiRecommender {
 		List<List<Tile>> triplets = new ArrayList<>();
 		List<List<Tile>> sequences = new ArrayList<>();
 		
-		// find all occurrences of each Tile based on value
+		// find all occurrences of each Tile based on Chinese name
 		// TODO: may need to add equals function in Tile for Collectors.counting to work
-		Map<Tile, Long> counts =
-			    cardsInHand.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+		Map<String, Long> counts =
+			    cardsInHand.stream().collect(Collectors.groupingBy(e -> e.getName(), Collectors.counting()));
 		
 		// find all eyes and triplets
-		for (Map.Entry<Tile, Long> entry : counts.entrySet()) {
+		for (Map.Entry<String, Long> entry : counts.entrySet()) {
 		    if(entry.getValue().intValue() == 2) {
-		    	List<Tile> eye = findTileWithValue(cardsInHand, entry.getKey().getId());
+		    	List<Tile> eye = findTileWithValue(cardsInHand, entry.getKey());
 		    	eyes.add(eye);
 		    }
 			if(entry.getValue().intValue() == 3) {
-				List<Tile> triplet = findTileWithValue(cardsInHand, entry.getKey().getId());
+				List<Tile> triplet = findTileWithValue(cardsInHand, entry.getKey());
 				triplets.add(triplet);
 			}
 		}
@@ -72,7 +74,7 @@ public class AiRecommender {
 			if(cardsInHand.get(i+1).getId() < cardsInHand.get(i+2).getId() - 1) {
 				continue;
 			}
-			if(cardsInHand.get(i).getType().isSameType(cardsInHand.get(i+2).getType())) {
+			if(!cardsInHand.get(i).getType().isSameType(cardsInHand.get(i+2).getType())) {
 				continue;
 			}
 			List<Tile> sequence = new ArrayList<>();
@@ -95,6 +97,10 @@ public class AiRecommender {
 		// simplified version: calculate the num of incoming cards that can pair up
 		// find the max among these
 		int[] markingBoard = new int[cardsInHand.size()];
+		for(int j=0; j<cardsInHand.size(); j++) {
+			Tile t = cardsInHand.get(j);
+			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
+		}
 		for(int j=0; j<cardsNotPlayed.size(); j++) {
 			Tile t = cardsNotPlayed.get(j);
 			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
@@ -109,10 +115,10 @@ public class AiRecommender {
 		return this.cardToPlay;
 	}
 	
-	public ArrayList<Tile> findTileWithValue(List<Tile> listToSearch, int idToFind) {
+	public ArrayList<Tile> findTileWithValue(List<Tile> listToSearch, String strToFind) {
 		ArrayList<Tile> group = new ArrayList<>();
 		for(Tile t: listToSearch) {
-			if(t.getId() == idToFind) {
+			if(t.getName().equals(strToFind)) {
 				group.add(t);
 			}
 		}
@@ -138,4 +144,34 @@ public class AiRecommender {
 		}
 		return value;
 	}
+	
+	public static void main(String[] args) {
+		AiRecommender theAiRecommender = AiRecommender.callAiRecommender();
+		List<Tile> cardsInHand = new ArrayList<>();
+		cardsInHand.add(new Tile(0));
+		cardsInHand.add(new Tile(0)); // eye
+		cardsInHand.add(new Tile(10));
+		cardsInHand.add(new Tile(11));
+		cardsInHand.add(new Tile(12)); // sequence
+		cardsInHand.add(new Tile(20));
+		cardsInHand.add(new Tile(20));
+		cardsInHand.add(new Tile(20)); // triplet
+		cardsInHand.add(new Tile(31)); 
+		cardsInHand.add(new Tile(32));
+		cardsInHand.add(new Tile(40));
+		cardsInHand.add(new Tile(41));
+		cardsInHand.add(new Tile(42));
+		cardsInHand.add(new Tile(50)); // should be played
+		List<Tile> cardsNotPlayed = new ArrayList<>();
+		cardsNotPlayed.add(new Tile(55));
+		cardsNotPlayed.add(new Tile(40));
+		cardsNotPlayed.add(new Tile(40));
+		cardsNotPlayed.add(new Tile(41));
+		cardsNotPlayed.add(new Tile(57));
+		cardsNotPlayed.add(new Tile(56));
+		theAiRecommender.uponCalled(cardsInHand, cardsNotPlayed);
+		Tile card = theAiRecommender.recommend();
+	}
 }
+
+
