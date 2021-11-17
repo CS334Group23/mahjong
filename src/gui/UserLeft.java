@@ -12,7 +12,7 @@ public class UserLeft extends User{
 		tileOnBoard = 0;
 		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.02, GameController.FRAME_HEIGHT*0.11), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
-		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.14, GameController.FRAME_HEIGHT*0.564), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
+		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.25, GameController.FRAME_HEIGHT*0.24), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
 	
 	@Override
@@ -43,7 +43,7 @@ public class UserLeft extends User{
 		
 		// move the show tile coordinate to the START POINT of next line if applicable
 		if(tileOnBoard != 0 && tileOnBoard % 8 == 0) {
-			coordinate.setX(coordinate.x + tileHeight);
+			coordinate.setX(coordinate.x - tileHeight);
 			coordinate.setY(coordinate.getInitialY());
 		}
 		
@@ -51,7 +51,7 @@ public class UserLeft extends User{
 		TileLabel label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, coordinate, -userId);
 		
 		// move the show tile coordinate to the right
-		coordinate.setY(coordinate.y - 38);
+		coordinate.setY(coordinate.y + 38);
 
 		// add tile to boardDeck, update the counter (indicate how many tiles on the same line)
 		ArrayList<TileLabel> boardTileLabelList = getBoardLabel();

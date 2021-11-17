@@ -12,6 +12,7 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.ClientInterface;
@@ -132,7 +133,6 @@ public class GamePanel extends JPanel{
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -144,7 +144,6 @@ public class GamePanel extends JPanel{
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -251,7 +250,9 @@ public class GamePanel extends JPanel{
 				
 				// update opIndex and repaint
 				opIndex = opId;
+				operationButtonStartPoint.resetCoordinate();
 				repaint();
+				
 				synchronized(GamePanel.this) { //solve not in the get the current bug
 					GamePanel.this.notifyAll();
 				}
@@ -312,7 +313,10 @@ public class GamePanel extends JPanel{
 			    public void mouseClicked(MouseEvent e) {
 			    	for(JButton jbtn : operationButtonList)
 						GamePanel.this.remove(jbtn);
+			    	
 			    	opIndex = opId;
+			    	operationButtonStartPoint.resetCoordinate();
+			    	
 					synchronized(GamePanel.this) { //solve not in the get the current bug
 						GamePanel.this.notifyAll();
 					}
@@ -366,7 +370,10 @@ public class GamePanel extends JPanel{
 			    public void mouseClicked(MouseEvent e) {
 			    	for(JButton jbtn : operationButtonList)
 						GamePanel.this.remove(jbtn);
+			    	
 			    	opIndex = opId;
+			    	operationButtonStartPoint.resetCoordinate();
+			    	
 					synchronized(GamePanel.this) { //solve not in the get the current bug
 						GamePanel.this.notifyAll();
 					}
@@ -419,7 +426,10 @@ public class GamePanel extends JPanel{
 			    public void mouseClicked(MouseEvent e) {
 			    	for(JButton jbtn : operationButtonList)
 						GamePanel.this.remove(jbtn);
+			    	
 			    	opIndex = opId;
+					operationButtonStartPoint.resetCoordinate();
+			    	
 					synchronized(GamePanel.this) { //solve not in the get the current bug
 						GamePanel.this.notifyAll();
 					}
@@ -429,7 +439,10 @@ public class GamePanel extends JPanel{
 			btn.addActionListener((e) -> {
 				for(JButton jbtn : operationButtonList)
 					this.remove(jbtn);
+				
 				opIndex = opId;
+				operationButtonStartPoint.resetCoordinate();
+				
 				synchronized(GamePanel.this) { //solve not in the get the current bug
 					GamePanel.this.notifyAll();
 				}
@@ -462,10 +475,7 @@ public class GamePanel extends JPanel{
 					resetTilePosition();
 					
 					tile.setBounds(originalX, originalY - 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
-					tile.setIsFirstClick(false);
-					
-					// TODO: add "discard" button if clicked
-					
+					tile.setIsFirstClick(false);					
 					
 				} else {
 					tile.setBounds(originalX, originalY + 40, Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);

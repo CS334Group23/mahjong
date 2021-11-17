@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,5 +63,32 @@ public class ImageUtils {
 		Tile faceDown = new Tile(144);
 		String newUrl = faceDown.getUrl();
 		tile.setUrl(newUrl);
+	}
+	
+	public static JLabel getImageLabel(JPanel panel, String url, int x, int y, int width, int height) {
+		JLabel imgLabel = null;
+		try {
+			Image tempImg = ImageIO.read(new File(url));
+			Image img = tempImg.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+			
+			
+			imgLabel = new JLabel() {
+				@Override
+				protected void paintComponent(Graphics g) {
+					super.paintComponent(g);
+					Graphics2D g2 = (Graphics2D) g;
+					g2.drawImage(img, 0, 0, null);
+				}
+			};
+			
+			
+			imgLabel.setBounds(x, y, width, height);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return imgLabel;
+		
 	}
 }
