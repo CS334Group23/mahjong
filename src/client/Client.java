@@ -129,6 +129,7 @@ public class Client implements Peer, ClientInterface{
 		
 	}
 	
+
 	
 	public ArrayList<Tile> getWall(){
 		return wall;
@@ -144,5 +145,9 @@ public class Client implements Peer, ClientInterface{
 	
 	public Ui getUi() {
 		return ui;
+	}
+	
+	public ArrayList<Meld> getOtherMeld(int clientId){
+		return meldWall.get(clientId);
 	}
 }
