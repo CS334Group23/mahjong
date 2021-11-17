@@ -8,7 +8,12 @@ public class AiRecommenderUtil {
 	
 	
 	public List<List<Tile>> findClosest(List<List<Tile>> eyes, List<List<Tile>> triplets, List<List<Tile>> sequences){
-		List<List<Tile>> allTiles = null;
+		// return if no eyes, no triplets, no sequences
+		if(eyes.size()==0 && triplets.size()==0 && sequences.size()==0) {
+			return new ArrayList<>();
+		}
+		
+		List<List<Tile>> allTiles = new ArrayList<>();
 		allTiles.addAll(eyes);
 		allTiles.addAll(triplets);
 		allTiles.addAll(sequences);
@@ -16,7 +21,7 @@ public class AiRecommenderUtil {
 		
 		// remove redundant combinations
 		int traversed = eyes.size(); // break the while loop
-		while(eyes.size()>2 && traversed>0) {
+		while(eyes.size()>1 && traversed>0) {
 			for(int i=0; i<eyes.size(); i++) {
 				List<Tile> eye = eyes.get(i);
 				if(duplicated(sortedListWithPossibleDuplicates, eye.get(0).getId()))
@@ -25,24 +30,10 @@ public class AiRecommenderUtil {
 			traversed--;
 		}
 		// remove the eyes randomly if no duplicates were found
-		while(eyes.size()>2) {
+		while(eyes.size()>1) {
 			eyes.remove(eyes.size()-1);
 		}
 		
-		// remove redundant triplets
-		traversed = triplets.size(); // break the while loop
-		while(triplets.size()>3 && traversed>0) {
-			for(int i=0; i<triplets.size(); i++) {
-				List<Tile> eye = triplets.get(i);
-				if(duplicated(sortedListWithPossibleDuplicates, eye.get(0).getId()))
-					triplets.remove(i);
-			}
-			traversed--;
-		}
-		// remove the eyes randomly if no duplicates were found
-		while(triplets.size()>3) {
-			triplets.remove(triplets.size()-1);
-		}
 		List<List<Tile>> sortedListWithoutDuplicates = new ArrayList<>();
 		sortedListWithoutDuplicates.addAll(eyes);
 		sortedListWithoutDuplicates.addAll(triplets);
