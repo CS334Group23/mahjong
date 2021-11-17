@@ -18,7 +18,7 @@ public class UserBottom extends User{
 		newTileFromServer = null;
 		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.11, GameController.FRAME_HEIGHT*0.8), Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
-		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.37, GameController.FRAME_HEIGHT*0.50), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
+		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.37, GameController.FRAME_HEIGHT*0.52), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
 	
 	@Override
