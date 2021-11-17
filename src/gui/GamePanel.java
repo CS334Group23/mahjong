@@ -273,7 +273,7 @@ public class GamePanel extends JPanel{
 			ArrayList<Tile> sameTileList = new ArrayList<>();
 			for(TileLabel tileLabel : tileLabelList) {
 				Tile tileFromHand = tileLabel.getTile();
-				if(Tile.isSameType(tile1, tileFromHand)) {
+				if(Tile.isSameTileFace(tile1, tileFromHand)) {
 	    			sameTileLabelList.add(tileLabel);
 	    			sameTileList.add(tileLabel.getTile());
 	    		}

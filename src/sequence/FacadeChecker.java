@@ -23,7 +23,7 @@ public class FacadeChecker {
 		
 	}	
 	public ArrayList<Meld> check_if_kong() {//this is not used, may be changed to this later
-		Tile temp=new Tile(-1);//initialize
+		Tile temp=new Tile(136);//initialize as flower , which must different to hands
 		ArrayList<Meld> result=new ArrayList<Meld>();
 		for(int i=0;i<hand.size();i++) {
 			if(hand.get(i).getRankIndex()==temp.getRankIndex() && hand.get(i).getType()==temp.getType()) { //only return kongs with distinct meld
@@ -58,7 +58,6 @@ public class FacadeChecker {
 		this.showed_hand=showed_hand;
 		this.a=a;
 		this.pos=FindTilePosition.FindPosition(hand, a);
-		System.out.println(pos);
 		this.hand.add(pos,a);
 		
 //		System.out.println("ID"+this.a.getId()+"  "+hand.get(12).getId());

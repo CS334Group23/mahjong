@@ -182,7 +182,7 @@ public class Tile implements Comparable<Tile> {
 		return s;
 	}
 	
-	public static boolean isSameType(Tile tile1, Tile tile2) {
+	public static boolean isSameTileFace(Tile tile1, Tile tile2) {
 		if(tile1.getType() == tile2.getType()) {
 			if(tile1.getRankIndex() == tile2.getRankIndex())
 				return true;
