@@ -12,7 +12,7 @@ public class Test_score{
 	public void test() {
 			
 			ArrayList<Tile> hand = new ArrayList<>();
-			Combination comb = new Combination();
+			GenerateWinningHand comb = new GenerateWinningHand();
 			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(1,0,2,4,5,6,8,9,10,13,14,15,16,17 ));
 			Tile t1= new Tile(a.get(0));
 			hand.add(t1);
@@ -65,7 +65,7 @@ public class Test_score{
 	public void test2() {
 			
 			ArrayList<Tile> hand = new ArrayList<>();
-			Combination comb = new Combination();
+			GenerateWinningHand comb = new GenerateWinningHand();
 			ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(1,0,2,4,5,6,8,9,10,13,14,18,16,17 ));
 			Tile t1= new Tile(a.get(0));
 			hand.add(t1);
@@ -116,7 +116,7 @@ public class Test_score{
 public void test3() {
 		
 		ArrayList<Tile> hand = new ArrayList<>();
-		Combination comb = new Combination();
+		GenerateWinningHand comb = new GenerateWinningHand();
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(1,2,3,41,42,43,61,62,63,108,109,81,82,83 ));
 		Tile t1= new Tile(a.get(0));
 		hand.add(t1);
@@ -167,7 +167,7 @@ public void test3() {
 public void test4() {
 		
 		ArrayList<Tile> hand = new ArrayList<>();
-		Combination comb = new Combination();
+		GenerateWinningHand comb = new GenerateWinningHand();
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(1,2,3,4,5,6,8,9,10,16,17,18,121,122 ));
 		Tile t1= new Tile(a.get(0));
 		hand.add(t1);
@@ -216,7 +216,7 @@ public void test4() {
 //@Test
 public void testv5() {
 	ArrayList<Tile> hand = new ArrayList<>();
-	Combination comb = new Combination();
+	GenerateWinningHand comb = new GenerateWinningHand();
 	ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(1,2,4,5,8,12,16,17,18,19,20,24,121 ));
 	Tile t1= new Tile(a.get(0));
 	hand.add(t1);

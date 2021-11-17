@@ -20,7 +20,7 @@ import utils.*;
 
 
 // the function may still buggy, and but at least it can check a winning hand, I will do it later.(or maybe do it on testing, have something write)
-public class Combination {
+public class GenerateWinningHand {
 	/*public int getmeldid(Meld t) {
 		if(t.getFirst().getType()==Type.BAMBOO)
 			if(t.getcomb_type()==2)
@@ -51,7 +51,7 @@ public class Combination {
 	//private ArrayList<Meld> all_temp=new ArrayList<>();
 	//Integer[] ponged = Collections.nCopies(144, 0).toArray(new Integer[0]);
 	private Integer[] formmeld=new Integer[70]; // 0-8 bamboo pong, 10-16 bambo chow || 20-28 character pong, 30-16 chow || 40-48 dot pong,50-56 chow || 60-62 dragon 63-67 wind
-	public Combination() {
+	public GenerateWinningHand() {
 		/*
 		for(int i=0;i<70;i++) {
 			

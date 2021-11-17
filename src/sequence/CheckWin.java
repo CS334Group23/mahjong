@@ -9,14 +9,14 @@ import utils.Type;
 import utils.sorting;
 
 public class CheckWin {
-	private Combination comb;
+	private GenerateWinningHand comb;
 	public CheckWin() {
 		
 	}
 	public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		int score=0;
 		
-		Combination comb=new Combination();
+		GenerateWinningHand comb=new GenerateWinningHand();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
 		ArrayList<Sequence> sequence =new ArrayList<>();
 		if(set.isEmpty()) {

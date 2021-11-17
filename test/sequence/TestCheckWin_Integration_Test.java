@@ -10,7 +10,7 @@ import org.junit.Test;
 import utils.Meld;
 import utils.Tile;
 public class TestCheckWin_Integration_Test {
-	
+
 
 	@Test
 	public void IntegrationTestCheckWinv1() { //test if can output score with meld
