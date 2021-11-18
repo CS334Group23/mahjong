@@ -200,13 +200,13 @@ public class Tile implements Comparable<Tile> {
 		return sortedTiles;
 	}
 	
-	public static ArrayList<TileLabel> sortTileLabelList(ArrayList<TileLabel> tileLabels) {
-		ArrayList<TileLabel> sortedTileLabels = null;
-		tileLabels.sort(new tileLabelComparator());
-		
-		sortedTileLabels = tileLabels;
-		return sortedTileLabels;
-	}
+//	public static ArrayList<TileLabel> sortTileLabelList(ArrayList<TileLabel> tileLabels) {
+//		ArrayList<TileLabel> sortedTileLabels = null;
+//		tileLabels.sort(new tileLabelComparator());
+//		
+//		sortedTileLabels = tileLabels;
+//		return sortedTileLabels;
+//	}
 }
 
 //class tileComparator implements Comparator<Tile>{
@@ -223,17 +223,17 @@ public class Tile implements Comparable<Tile> {
 //	
 //}
 
-class tileLabelComparator implements Comparator<TileLabel>{
-
-	@Override
-	public int compare(TileLabel o1, TileLabel o2) {
-		Tile tile1 = o1.getTile();
-		Tile tile2 = o2.getTile();
-		int o1Id = tile1.getId();
-		int o2Id = tile2.getId();
-		
-		if(o1Id == o2Id) return 0;
-		
-		return o1Id < o2Id ? -1 : 1;
-	}
-}
+//class tileLabelComparator implements Comparator<TileLabel>{
+//
+//	@Override
+//	public int compare(TileLabel o1, TileLabel o2) {
+//		Tile tile1 = o1.getTile();
+//		Tile tile2 = o2.getTile();
+//		int o1Id = tile1.getId();
+//		int o2Id = tile2.getId();
+//		
+//		if(o1Id == o2Id) return 0;
+//		
+//		return o1Id < o2Id ? -1 : 1;
+//	}
+//}
