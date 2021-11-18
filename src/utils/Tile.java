@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -192,8 +194,8 @@ public class Tile implements Comparable<Tile> {
 	
 	public static ArrayList<Tile> sortTileList(ArrayList<Tile> tiles) {
 		ArrayList<Tile> sortedTiles = null;
-		tiles.sort(new tileComparator());
-		
+//		tiles.sort(new tileComparator());
+		Collections.sort(tiles);
 		sortedTiles = tiles;
 		return sortedTiles;
 	}
@@ -207,19 +209,19 @@ public class Tile implements Comparable<Tile> {
 	}
 }
 
-class tileComparator implements Comparator<Tile>{
-
-	@Override
-	public int compare(Tile o1, Tile o2) {
-		int o1Id = o1.getId();
-		int o2Id = o2.getId();
-		
-		if(o1Id == o2Id) return 0;
-		
-		return o1Id < o2Id ? -1 : 1;
-	}
-	
-}
+//class tileComparator implements Comparator<Tile>{
+//
+//	@Override
+//	public int compare(Tile o1, Tile o2) {
+//		int o1Id = o1.getId();
+//		int o2Id = o2.getId();
+//		
+//		if(o1Id == o2Id) return 0;
+//		
+//		return o1Id < o2Id ? -1 : 1;
+//	}
+//	
+//}
 
 class tileLabelComparator implements Comparator<TileLabel>{
 
