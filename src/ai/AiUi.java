@@ -29,6 +29,12 @@ public class AiUi implements Ui{
 
 	@Override
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		aiRecommender.uponCalled(client.getWall(), drawMsg.getTileId());
 	}
 
@@ -51,9 +57,9 @@ public class AiUi implements Ui{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		Tile tile = aiRecommender.recommend();
-//		return FindTilePosition.FindPosition(client.getWall(), tile)+1;
-		return 1;
+		Tile tile = aiRecommender.recommend();
+		return FindTilePosition.FindPosition(client.getWall(), tile)+1;
+//		return 1;
 	}
 
 	@Override

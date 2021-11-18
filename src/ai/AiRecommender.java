@@ -88,8 +88,8 @@ public class AiRecommender {
 		// find all sequences
 		Collections.sort(cardsInHand, Comparator.comparing(t -> t.getId()));
 		int i = 0;
-		while(i < cardsInHand.size()) {
-			if(cardsInHand.get(i).getType().getTypeIndex()>=3) {
+		while(i < cardsInHand.size()-2) {
+			if(cardsInHand.get(i+2).getType().getTypeIndex()>=3) {
 				break;
 			}
 			if(cardsInHand.get(i).getId() < cardsInHand.get(i+1).getId() - 1) {
@@ -127,10 +127,10 @@ public class AiRecommender {
 			Tile t = cardsInHand.get(j);
 			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
 		}
-		for(int j=0; j<cardsNotPlayed.size(); j++) {
-			Tile t = cardsNotPlayed.get(j);
-			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
-		}
+//		for(int j=0; j<cardsNotPlayed.size(); j++) {
+//			Tile t = cardsNotPlayed.get(j);
+//			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
+//		}
 		
 		int maxAt = 0;
 		for (int j = 0; j < markingBoard.length; j++) {

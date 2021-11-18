@@ -69,7 +69,8 @@ public class GenerateWinningHand {
 			Combi_temp.clear();
 			
 		}
-		sorting.sortTile(hand);
+//		sorting.sortTile(hand);
+		Collections.sort(hand);
 		checkcombination(hand);
 		return combination_set;
 		
@@ -131,7 +132,8 @@ public class GenerateWinningHand {
 						hand.add(0,Mtemp.getFirst());
 						
 						Combi_temp.remove(Combi_temp.size()-1);
-						sorting.sortTile(hand);
+//						sorting.sortTile(hand);
+						Collections.sort(hand);
 				
 						
 						}else {
@@ -140,7 +142,8 @@ public class GenerateWinningHand {
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						Combi_temp.remove(Combi_temp.size()-1);
-						sorting.sortTile(hand);
+//						sorting.sortTile(hand);
+						Collections.sort(hand);
 						}
 					}
 
@@ -171,7 +174,8 @@ public class GenerateWinningHand {
 						hand.add(0,Mtemp.getThird());
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
-						sorting.sortTile(hand);
+//						sorting.sortTile(hand);
+						Collections.sort(hand);
 						Combi_temp.remove(Combi_temp.size()-1);
 
 				
@@ -181,7 +185,8 @@ public class GenerateWinningHand {
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						Combi_temp.remove(Combi_temp.size()-1);
-						sorting.sortTile(hand);
+//						sorting.sortTile(hand);
+						Collections.sort(hand);
 						//r=true;
 					}
 				
