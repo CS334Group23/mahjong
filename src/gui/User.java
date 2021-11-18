@@ -2,6 +2,9 @@ package gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JLabel;
 
 import utils.Meld;
 import utils.Tile;
@@ -214,5 +217,19 @@ public class User {
 	public void returnBoardLabelToLastPosition() {
 		tileOnBoard--;
 		getBoardDeck().getPoint().returnToLastPosition();
+	}
+	
+	public void showBidInfo(GamePanel gamePanel,String bidResponser) {
+		JLabel instruction = ImageUtils.getImageLabel(gamePanel, bidResponser, (int)(GameController.FRAME_WIDTH*0.5-40), (int)(GameController.FRAME_HEIGHT*0.8-40), 80, 80);
+		gamePanel.add(instruction);
+		gamePanel.repaint();
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		gamePanel.remove(instruction);
+		gamePanel.repaint();
 	}
 }

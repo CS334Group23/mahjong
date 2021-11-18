@@ -51,6 +51,12 @@ public class AiUi implements Ui{
 
 	@Override
 	public int getDiscard() {
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Tile tile = aiRecommender.recommend();
 		return FindTilePosition.FindPosition(client.getWall(), tile)+1;
 //		return 1;
