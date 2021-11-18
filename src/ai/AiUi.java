@@ -1,6 +1,7 @@
 package ai;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import ui.ClientInterface;
 import ui.Ui;
@@ -33,11 +34,23 @@ public class AiUi implements Ui{
 
 	@Override
 	public int getOpIndex() { //this need later check
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 1;
 	}
 
 	@Override
 	public int getDiscard() {
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		Tile tile = aiRecommender.recommend();
 //		return FindTilePosition.FindPosition(client.getWall(), tile)+1;
 		return 1;

@@ -178,10 +178,13 @@ public class GamePanel extends JPanel{
 	}
 	
 	public void infoBid(BidMsg bidMsg) {
+		String currentInfo = bidMsg.getResponserName();
+		
 		// clear the new tile label
 		
 		// move the input meld to the user's right
 		User user = users.get(bidMsg.getBidClient());
+		user.showBidInfo(this, currentInfo);
 		Meld meld = bidMsg.getMeld();
 		System.out.println("call to putMeldToRight");
 		if(user != null && meld != null) {
@@ -553,12 +556,12 @@ public class GamePanel extends JPanel{
 	}
 
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
-			if(drawNoticeMsg.getClientId() != User.USER_BOTTOM) {
-				User targetUser = users.get(drawNoticeMsg.getClientId());
-				Tile tempTile = new Tile(144);
-				this.addTileToPanel(targetUser, tempTile); //hard code to be changed later
-				repaint();
-			}
+		if(drawNoticeMsg.getClientId() != User.USER_BOTTOM) {
+			User targetUser = users.get(drawNoticeMsg.getClientId());
+			Tile tempTile = new Tile(144);
+			this.addTileToPanel(targetUser, tempTile); //hard code to be changed later
+			repaint();
+		}
 	}
 
 }

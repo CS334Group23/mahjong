@@ -1,6 +1,9 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JLabel;
 
 import utils.Meld;
 import utils.Tile;
@@ -121,5 +124,22 @@ public class UserLeft extends User{
 			// move meldStartPoint to the right
 			meldStartPoint.setY(meldStartPoint.y + 44);
 		}
+		
+	}
+	
+	@Override
+	public void showBidInfo(GamePanel gamePanel,String bidResponser) {
+		String filename = String.format("resource/static/others/%s.png",bidResponser);
+		JLabel instruction = ImageUtils.getImageLabel(gamePanel, filename, (int)(GameController.FRAME_WIDTH*0.03), (int)(GameController.FRAME_HEIGHT*0.5), 80, 80);
+		gamePanel.add(instruction);
+		gamePanel.repaint();
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		gamePanel.remove(instruction);
+		gamePanel.repaint();
 	}
 }
