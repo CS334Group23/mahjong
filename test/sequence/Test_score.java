@@ -147,7 +147,8 @@ public void test3() {
 		Tile t13= new Tile(a.get(12));
 		hand.add(t13);
 		Tile t14= new Tile(a.get(13));
-		sorting.sortTile(hand);
+//		sorting.sortTile(hand);
+		Collections.sort(hand);
 		ArrayList<Meld> showed_hand=new ArrayList<>();
 		FacadeChecker check= new FacadeChecker(hand, showed_hand, t14);
 		

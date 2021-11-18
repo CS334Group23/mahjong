@@ -3,6 +3,7 @@ package gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JButton;
 
@@ -89,7 +90,8 @@ public class UserBottom extends User{
 			gamePanel.removeTileLabelFromPanel(handTileLabelList.get(i));
 		}
 		handTileLabelList.clear();
-		sorting.sortTile(HandTileList);
+//		sorting.sortTile(HandTileList);
+		Collections.sort(HandTileList);
 		Point handStartPoint = handDeck.getPoint();
 		handStartPoint.resetCoordinate();
 		handInit(gamePanel);
