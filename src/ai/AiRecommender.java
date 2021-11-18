@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import utils.Meld;
 import server.Server;
 import utils.Tile;
 
@@ -14,30 +15,50 @@ import utils.Tile;
 // keep the cards that add up to the highest marks
 
 public class AiRecommender {
-	private static AiRecommender theAiRecommender; // singleton pattern
-	
-	private AiRecommenderUtil aiRecommenderUtil = new AiRecommenderUtil();
 	private Tile cardToPlay;
 	private List<Tile> cardsInHand; // cards in my hand
 	private List<Tile> cardsNotPlayed; // cards that may show up
+	private AiRecommenderUtil aiRecommenderUtil;
 	
-	private AiRecommender() {
-	}
-	
-	public static AiRecommender callAiRecommender() {
-		if(theAiRecommender==null)
-			theAiRecommender= new AiRecommender();
-		return theAiRecommender;
+	public AiRecommender() {
+		this.aiRecommenderUtil = new AiRecommenderUtil();
+		cardsNotPlayed  = new ArrayList<>();
+		for(int i=0; i<Tile.TOTAL_TILES_WITHOUT_FLOWERS; i++) {
+			cardsNotPlayed.add(new Tile(i));
+		}
 	}
 	
 	// register current situation
 	// and clear last card recommendation 
 	// each time upon called
-	public void uponCalled(List<Tile> cardsInHand, List<Tile> cardsNotPlayed) {
+	public void uponCalled(List<Tile> cardsInHand, int tileId) {
 		this.cardsInHand = new ArrayList<>(cardsInHand);
-		this.cardsNotPlayed = new ArrayList<>(cardsNotPlayed); // make two shallow copies for manipulation
+		this.cardsNotPlayed.removeIf(m -> m.getId()==tileId);
 		this.cardToPlay = null; 
 	}
+	
+	public void uponCalled(Meld meld) {
+		if(meld.getFirst() != null) {
+			this.cardsNotPlayed.removeIf(m -> m.getId()==meld.getFirst().getId());
+		}
+		if(meld.getSecond() != null) {
+			this.cardsNotPlayed.removeIf(m -> m.getId()==meld.getSecond().getId());
+		}
+		if(meld.getThird() != null) {
+			this.cardsNotPlayed.removeIf(m -> m.getId()==meld.getThird().getId());
+		}
+		if(meld.getForth() != null) {
+			this.cardsNotPlayed.removeIf(m -> m.getId()==meld.getForth().getId());
+		}
+	}
+	
+	public void uponCalled(List<Integer> dealList) {
+		for (int i : dealList) {
+			this.cardsNotPlayed.removeIf(m -> m.getId()==i);
+		}
+	}
+	
+	
 	
 	// simplified version
 	// only recommend to reach winning hand
@@ -68,10 +89,15 @@ public class AiRecommender {
 		Collections.sort(cardsInHand, Comparator.comparing(t -> t.getId()));
 		int i = 0;
 		while(i < cardsInHand.size()) {
+			if(cardsInHand.get(i).getType().getTypeIndex()>=3) {
+				break;
+			}
 			if(cardsInHand.get(i).getId() < cardsInHand.get(i+1).getId() - 1) {
+				i++;
 				continue;
 			}
 			if(cardsInHand.get(i+1).getId() < cardsInHand.get(i+2).getId() - 1) {
+				i++;
 				continue;
 			}
 			if(!cardsInHand.get(i).getType().isSameType(cardsInHand.get(i+2).getType())) {
@@ -145,33 +171,33 @@ public class AiRecommender {
 		return value;
 	}
 	
-	public static void main(String[] args) {
-		AiRecommender theAiRecommender = AiRecommender.callAiRecommender();
-		List<Tile> cardsInHand = new ArrayList<>();
-		cardsInHand.add(new Tile(0));
-		cardsInHand.add(new Tile(0)); // eye
-		cardsInHand.add(new Tile(10));
-		cardsInHand.add(new Tile(11));
-		cardsInHand.add(new Tile(12)); // sequence
-		cardsInHand.add(new Tile(20));
-		cardsInHand.add(new Tile(20));
-		cardsInHand.add(new Tile(20)); // triplet
-		cardsInHand.add(new Tile(31)); 
-		cardsInHand.add(new Tile(32));
-		cardsInHand.add(new Tile(40));
-		cardsInHand.add(new Tile(41));
-		cardsInHand.add(new Tile(42));
-		cardsInHand.add(new Tile(50)); // should be played
-		List<Tile> cardsNotPlayed = new ArrayList<>();
-		cardsNotPlayed.add(new Tile(55));
-		cardsNotPlayed.add(new Tile(40));
-		cardsNotPlayed.add(new Tile(40));
-		cardsNotPlayed.add(new Tile(41));
-		cardsNotPlayed.add(new Tile(57));
-		cardsNotPlayed.add(new Tile(56));
-		theAiRecommender.uponCalled(cardsInHand, cardsNotPlayed);
-		Tile card = theAiRecommender.recommend();
-	}
+//	public static void main(String[] args) {
+//		AiRecommender theAiRecommender = AiRecommender.callAiRecommender();
+//		List<Tile> cardsInHand = new ArrayList<>();
+//		cardsInHand.add(new Tile(0));
+//		cardsInHand.add(new Tile(0)); // eye
+//		cardsInHand.add(new Tile(10));
+//		cardsInHand.add(new Tile(11));
+//		cardsInHand.add(new Tile(12)); // sequence
+//		cardsInHand.add(new Tile(20));
+//		cardsInHand.add(new Tile(20));
+//		cardsInHand.add(new Tile(20)); // triplet
+//		cardsInHand.add(new Tile(31)); 
+//		cardsInHand.add(new Tile(32));
+//		cardsInHand.add(new Tile(40));
+//		cardsInHand.add(new Tile(41));
+//		cardsInHand.add(new Tile(42));
+//		cardsInHand.add(new Tile(50)); // should be played
+//		List<Tile> cardsNotPlayed = new ArrayList<>();
+//		cardsNotPlayed.add(new Tile(55));
+//		cardsNotPlayed.add(new Tile(40));
+//		cardsNotPlayed.add(new Tile(40));
+//		cardsNotPlayed.add(new Tile(41));
+//		cardsNotPlayed.add(new Tile(57));
+//		cardsNotPlayed.add(new Tile(56));
+//		theAiRecommender.uponCalled(cardsInHand, cardsNotPlayed);
+//		Tile card = theAiRecommender.recommend();
+//	}
 }
 
 
