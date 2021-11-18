@@ -9,7 +9,6 @@ import utils.DealMsg;
 import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.DrawNoticeMsg;
-import utils.TerminalIOUtils;
 import utils.Tile;
 
 public class TextUi implements Ui{
@@ -24,11 +23,11 @@ public class TextUi implements Ui{
 	@Override
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
 		System.out.printf("You are client%d\n", client.getId());
-		TerminalIOUtils.printIndex(client.getLength());
+		printIndex(client.getLength());
 		System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
 		System.out.printf("Client%d draws card %s\n", client.getId(),Tile.idToChnName((drawMsg).getTileId()));
 		if(possibleBid != null && possibleBid.size()>0) {
-			TerminalIOUtils.printIndex(possibleBid.size());
+			printIndex(possibleBid.size());
 			System.out.print("You have options:");
 			BidMsg.printBid(possibleBid);
 		}
@@ -71,7 +70,7 @@ public class TextUi implements Ui{
 		System.out.printf("You are client%d\n", client.getId());
 		System.out.printf("Client%d discards %s\n", discardMsg.getSenderId(),Tile.idToChnName(discardMsg.getTileId()));
 		if(possibleBid != null && possibleBid.size()>0) { //in the main logic part still need to check
-			TerminalIOUtils.printIndex(possibleBid.size());
+			printIndex(possibleBid.size());
 			System.out.print("You have options:");
 			BidMsg.printBid(possibleBid);
 			System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
@@ -83,7 +82,7 @@ public class TextUi implements Ui{
 		System.out.printf("client%d plays the operation %s\n", bidMsg.getBidClient(), bidMsg.getOperationName());
 		if(bidMsg.getBidType() == BidType.CHOW.getBidType() || bidMsg.getBidType() == BidType.PONG.getBidType()) {
 			//here getBidType later need more unity to save to may conversion
-			TerminalIOUtils.printIndex(client.getLength());
+			printIndex(client.getLength());
 			System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
 		}
 	}
@@ -103,6 +102,18 @@ public class TextUi implements Ui{
 	@Override
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
 		System.out.printf("server will send a draw to client: %d\n", drawNoticeMsg.getClientId());
+	}
+	
+	private static void printIndex(int length) {
+		String str = "";
+		for(int i=0;i<16;i++) {
+			str += " ";
+		}
+		for(int i=0;i<length;i++) {
+			str += "    ";
+			str += Integer.toString(i+1);
+		}
+		System.out.println(str);
 	}
 	
 }

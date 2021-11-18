@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import utils.BidMsg;
 import utils.DiscardMsg;
-import utils.TerminalIOUtils;
 
 public class ChowResponser implements BidResponser{
 
