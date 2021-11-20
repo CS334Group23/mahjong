@@ -10,6 +10,7 @@ import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.DrawNoticeMsg;
 import utils.Tile;
+import utils.WinMsg;
 
 public class TextUi implements Ui{
 	private ClientInterface client; //this client later need to try best to decouple out with input parameters
@@ -94,9 +95,11 @@ public class TextUi implements Ui{
 	}
 	
 	@Override
-	public void infoWin(BidMsg bidMsg) {
-		System.out.printf("client%d wins\n", bidMsg.getBidClient());
-		System.out.printf("The hand is %s\n", Tile.tileListToString(Tile.idToTileList(bidMsg.getWinHand())));
+	public void infoWin(WinMsg winMsg) {
+		System.out.printf("client%d wins\n", winMsg.getWinClientId());
+		for(ArrayList<Integer> hand : winMsg.getHandsList()) {
+			System.out.printf("The hand of client %d is %s\n", winMsg.getHandsList().indexOf(hand),Tile.tileListToString(Tile.idToTileList(hand)));
+		}
 	}
 
 	@Override

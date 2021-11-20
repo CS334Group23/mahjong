@@ -24,6 +24,7 @@ import utils.DrawMsg;
 import utils.DrawNoticeMsg;
 import utils.Meld;
 import utils.Tile;
+import utils.WinMsg;
 
 public class GamePanel extends JPanel{	
 	/**
@@ -195,7 +196,7 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
-	public void infoWin(BidMsg bidMsg) {
+	public void infoWin(WinMsg winMsg) {
 		
 	}
 	

@@ -12,6 +12,7 @@ import utils.DrawMsg;
 import utils.DrawNoticeMsg;
 import utils.FindTilePosition;
 import utils.Tile;
+import utils.WinMsg;
 
 public class AiUi implements Ui{
 	private ClientInterface client;
@@ -73,9 +74,9 @@ public class AiUi implements Ui{
 	}
 
 	@Override
-	public void infoWin(BidMsg bidMsg) {
+	public void infoWin(WinMsg winMsg) {
 		// TODO Auto-generated method stub
-		
+		//here need other check or reset to init state for aiUi
 	}
 
 	@Override
