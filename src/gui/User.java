@@ -232,4 +232,26 @@ public class User {
 		gamePanel.remove(instruction);
 		gamePanel.repaint();
 	}
+	
+	public void showAllTileLabel(GamePanel gamePanel, ArrayList<Integer> tileIdList) {
+		// clear all displayed tile label
+		removeAllDisplayedTileLabelFromPanel(gamePanel);
+		
+		// clear tile list and tile label list of the user
+		ArrayList<Tile> handTileList = getHand();
+		ArrayList<TileLabel> handTileLabelList = getHandLabel();
+		handTileList.clear();
+		handTileLabelList.clear();
+		
+		// reset display coordinate of hand label
+		getHandDeck().getPoint().resetCoordinate();
+		
+		// add tiles to users' tile arrayList
+		for(Integer tileId : tileIdList) {
+			handTileList.add(new Tile(tileId));
+		}
+		
+		// hand init for users, display tile label to panel
+		this.handInit(gamePanel);
+	}
 }

@@ -197,7 +197,14 @@ public class GamePanel extends JPanel{
 	}
 	
 	public void infoWin(WinMsg winMsg) {
+		ArrayList<ArrayList<Integer>> hands = winMsg.getHandsList();
 		
+		for(int i = 0; i < 4; i++) {
+			User user = users.get(i);
+			user.showAllTileLabel(this, hands.get(i));
+		}
+		
+		repaint();
 	}
 	
 	private TileLabel addTileToPanel(User user, Tile tile) {
