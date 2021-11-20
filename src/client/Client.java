@@ -40,12 +40,14 @@ public class Client implements Peer, ClientInterface{
 			
 		this.server = server;
 		if(id == 0) {
-			this.ui = GameController.getInstance();
+//			this.ui = GameController.getInstance();
+			setUi(GameController.getInstance());
 			GameController.getInstance().init(this); //should resolved later
 		}
 		else {
 //			this.ui = new TextUi(this); //this may later need to change other ui options
-			this.ui = new AiUi(this);
+//			this.ui = new AiUi(this);
+			setUi(new AiUi(this));
 		}
 	}
 	
@@ -151,5 +153,9 @@ public class Client implements Peer, ClientInterface{
 	
 	public ArrayList<Meld> getOtherMeld(int clientId){
 		return meldWall.get(clientId);
+	}
+	
+	public void setUi(Ui ui) {//more for testing reasons
+		this.ui = ui;
 	}
 }
