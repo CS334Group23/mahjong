@@ -121,22 +121,19 @@ public class AiRecommender {
 		// for each tile among those that can not pair up
 		// calculate its possibility to pair up with incoming cards
 		// simplified version: calculate the num of incoming cards that can pair up
-		// find the max among these
+		// find the min among these => this is the card to discard
 		int[] markingBoard = new int[cardsInHand.size()];
 		for(int j=0; j<cardsInHand.size(); j++) {
 			Tile t = cardsInHand.get(j);
-			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
+			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t) 
+			+ formSequence(cardsNotPlayed, t) + formEyesOrTriplets(cardsNotPlayed, t);
 		}
-//		for(int j=0; j<cardsNotPlayed.size(); j++) {
-//			Tile t = cardsNotPlayed.get(j);
-//			markingBoard[j] = formSequence(cardsInHand, t) + formEyesOrTriplets(cardsInHand, t);
-//		}
 		
-		int maxAt = 0;
+		int minAt = 0;
 		for (int j = 0; j < markingBoard.length; j++) {
-		    maxAt = markingBoard[j] > markingBoard[maxAt] ? j : maxAt;
+		    minAt = markingBoard[j] < markingBoard[minAt] ? j : minAt;
 		}
-		this.cardToPlay=cardsInHand.get(maxAt);
+		this.cardToPlay=cardsInHand.get(minAt);
 		
 		return this.cardToPlay;
 	}
@@ -154,9 +151,9 @@ public class AiRecommender {
 	public int formSequence(final List<Tile> list,  Tile tile){
 		int value = 0;
 	    for(Tile t:list) {
-	    	if(t.getId()==tile.getId()-1)
+	    	if(t.getId()==tile.getId()-1 && t.getType().equals(tile.getType()))
 	    		value++;
-	    	if(t.getId()==tile.getId()+1)
+	    	if(t.getId()==tile.getId()+1 && t.getType().equals(tile.getType()))
 	    		value++;
 	    }
 	    return value;
@@ -165,7 +162,7 @@ public class AiRecommender {
 	public int formEyesOrTriplets(final List<Tile> list, Tile tile) {
 		int value = 0;
 		for(Tile t: list) {
-			if(t.getName().equals(tile.getName()))
+			if(t.getName().equals(tile.getName()) && (t.getId()!=tile.getId()))
 				value++;
 		}
 		return value;
