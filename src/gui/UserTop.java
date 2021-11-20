@@ -129,7 +129,7 @@ public class UserTop extends User{
 	@Override
 	public void showBidInfo(GamePanel gamePanel,String bidResponser) {
 		String filename = String.format("resource/static/others/%s.png",bidResponser);
-		JLabel instruction = ImageUtils.getImageLabel(gamePanel, filename, (int)(GameController.FRAME_WIDTH*0.5-40), (int)(GameController.FRAME_HEIGHT*0.03), 80, 80);
+		JLabel instruction = ImageUtils.getImageLabel(gamePanel, filename, (int)(GameController.FRAME_WIDTH*0.5-40), (int)(GameController.FRAME_HEIGHT*0.13), 80, 80);
 		gamePanel.add(instruction);
 		gamePanel.repaint();
 		try {

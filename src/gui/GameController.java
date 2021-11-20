@@ -14,6 +14,7 @@ import utils.DealMsg;
 import utils.DiscardMsg;
 import utils.DrawMsg;
 import utils.Tile;
+import utils.WinMsg;
 
 public class GameController extends JFrame implements Ui{
 	private static final long serialVersionUID = 1L;
@@ -105,8 +106,8 @@ public class GameController extends JFrame implements Ui{
 	}
 	
 	@Override
-	public void infoWin(BidMsg bidMsg) {
-		gamePanel.infoWin(bidMsg);
+	public void infoWin(WinMsg winMsg) {
+		gamePanel.infoWin(winMsg);
 	}
 	
 	public void printUserDecks() {
