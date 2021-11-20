@@ -132,7 +132,7 @@ public class UserRight extends User{
 	@Override
 	public void showBidInfo(GamePanel gamePanel,String bidResponser) {
 		String filename = String.format("resource/static/others/%s.png",bidResponser);
-		JLabel instruction = ImageUtils.getImageLabel(gamePanel, filename, (int)(GameController.FRAME_WIDTH*0.75), (int)(GameController.FRAME_HEIGHT*0.5-40), 80, 80);
+		JLabel instruction = ImageUtils.getImageLabel(gamePanel, filename, (int)(GameController.FRAME_WIDTH*0.8), (int)(GameController.FRAME_HEIGHT*0.5-40), 80, 80);
 		gamePanel.add(instruction);
 		gamePanel.repaint();
 		try {
