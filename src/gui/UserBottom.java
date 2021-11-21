@@ -65,6 +65,7 @@ public class UserBottom extends User{
 		
 		// move the show tile boardStartPoint to the right
 		boardStartPoint.setX(boardStartPoint.x + 38);
+		boardStartPoint.setY(boardStartPoint.y);
 
 		// add tile to boardDeck, update the counter (indicate how many tiles on the same line)
 		ArrayList<TileLabel> boardTileLabelList = getBoardLabel();
@@ -72,6 +73,8 @@ public class UserBottom extends User{
 		boardTileLabelList.add(label);
 		boardTileList.add(tile);
 		tileOnBoard++;
+		
+		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
 		
 		// delete the tile from handDeck
 		// compare by tile Id

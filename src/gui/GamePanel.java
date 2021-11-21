@@ -192,9 +192,11 @@ public class GamePanel extends JPanel{
 	
 	public void infoBid(BidMsg bidMsg) {
 		String currentInfo = bidMsg.getResponserName();
+
 		// renew the indicator
 		renewIndicator(bidMsg.getBidClient());
 		// clear the new tile label
+
 		
 		// move the input meld to the user's right
 		User user = users.get(bidMsg.getBidClient());
@@ -203,14 +205,30 @@ public class GamePanel extends JPanel{
 		System.out.println("call to putMeldToRight");
 		if(user != null && meld != null) {
 			this.remove(lastDiscardTileLabel);
+			Point point = users.get(lastDiscardSenderId).getBoardDeck().getPoint();
+			System.out.println("------------");
+			System.out.println("Before - User: " + lastDiscardSenderId + ", point: " + point.x + "," + point.y);
+			System.out.println("------------");
 			users.get(lastDiscardSenderId).returnBoardLabelToLastPosition();
+			System.out.println("------------");
+			System.out.println("After - User: " + lastDiscardSenderId + ", point: " + point.x + "," + point.y);
+			System.out.println("------------");
+			
 			user.putMeldToRight(this, meld);
 			repaint();
 		}
 	}
 	
 	public void infoWin(WinMsg winMsg) {
+		ArrayList<ArrayList<Integer>> hands = winMsg.getHandsList();
+		int winUserId = winMsg.getWinClientId();
 		
+		for(int i = 0; i < 4; i++) {
+			User user = users.get(i);
+			user.showAllTileLabel(this, hands.get(i), winUserId, lastDiscardTileLabel);
+		}
+		
+		repaint();
 	}
 	
 	private TileLabel addTileToPanel(User user, Tile tile) {
@@ -220,8 +238,11 @@ public class GamePanel extends JPanel{
 		int userId = user.getUserId();
 		
 		// change tile to face down img, if it is AI
-		if(user.getUserId() != User.USER_BOTTOM)
+		if(user.getUserId() != User.USER_BOTTOM) {
 			ImageUtils.changeTileImgToFaceDown(tile);
+			
+			userId = -userId;
+		}
 		
 		// remove the previous new tile from panel
 		user.removeNewTile(this);
