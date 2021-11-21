@@ -26,6 +26,7 @@ public class CheckWin {
 		}
 	}
 	
+	
 	public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		int score=0;
 		
@@ -124,7 +125,7 @@ public class CheckWin {
 			//extra score eg ���e/��/��
 			if(showed_hand != null) {
 				if(CheckMC(showed_hand)) {
-					if(!CheckJLBD(winning_hand) &&!CheckQYJ(winning_hand)) {
+					if(!CheckJLBD(winning_hand) &&!CheckQYJ(winning_hand)&&!CheckKKH(winning_hand,showed_hand)) {
 					Sequence win_from_wall=new Win_From_Wall();
 					temp_sequence.add(win_from_wall);
 					}
