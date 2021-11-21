@@ -28,7 +28,7 @@ public class UserLeft extends User{
 		ArrayList<TileLabel> tileLabelList = getHandLabel();
 		TileLabel label;
 		for(Tile tile : hand) {
-			label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, userId);
+			label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, -userId);
 			point.setY(point.y + 44); // set new coordinate for the next tile
 			
 			tileLabelList.add(label);
@@ -55,6 +55,7 @@ public class UserLeft extends User{
 		
 		// move the show tile coordinate to the right
 		coordinate.setY(coordinate.y + 38);
+		coordinate.setX(coordinate.x);
 
 		// add tile to boardDeck, update the counter (indicate how many tiles on the same line)
 		ArrayList<TileLabel> boardTileLabelList = getBoardLabel();
@@ -62,6 +63,8 @@ public class UserLeft extends User{
 		boardTileLabelList.add(label);
 		boardTileList.add(tile);
 		tileOnBoard++;
+		
+		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
 
 		// simply delete the last tile from the hand, because for AIs, their tile is fake
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();

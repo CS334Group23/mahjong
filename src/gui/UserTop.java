@@ -55,6 +55,7 @@ public class UserTop extends User{
 		
 		// move the show tile coordinate to the right
 		coordinate.setX(coordinate.x - 38);
+		coordinate.setY(coordinate.y);
 
 		// add tile to boardDeck, update the counter (indicate how many tiles on the same line)
 		ArrayList<TileLabel> boardTileLabelList = getBoardLabel();
@@ -62,6 +63,8 @@ public class UserTop extends User{
 		boardTileLabelList.add(label);
 		boardTileList.add(tile);
 		tileOnBoard++;
+		
+		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
 		
 		// simply delete the last tile from the hand, because for AIs, their tiles are fake
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();

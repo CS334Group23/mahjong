@@ -8,11 +8,8 @@ public class Point {
 	private double lastX;
 	private double lastY;
 	
-	private int row;
-	private int lastRow;
-	
 	public Point() {
-		x = 0; y = 0; row = 0; lastRow = 0;
+		x = 0; y = 0;
 	}
 	
 	public Point(double x, double y) {
@@ -22,8 +19,6 @@ public class Point {
 		this.initialY = y;
 		this.lastX = x;
 		this.lastY = y;
-		this.row = 0;
-		this.lastRow = 0;
 	}
 	
 	public Point(double x, double y, int row) {
@@ -33,8 +28,6 @@ public class Point {
 		this.initialY = y;
 		this.lastX = x;
 		this.lastY = y;
-		this.row = row;
-		this.lastRow = row;
 	}
 	
 	public void setX(double x) {
@@ -45,11 +38,6 @@ public class Point {
 	public void setY(double y) {
 		this.lastY = this.y;
 		this.y = y;
-	}
-	
-	public void setRow(int row) {
-		this.lastRow = this.row;
-		this.row = row;
 	}
 	
 	public void resetCoordinate() {
@@ -65,7 +53,6 @@ public class Point {
 	public void returnToLastPosition() {
 		x = lastX;
 		y = lastY;
-		row = lastRow;
 	}
 
 	public double getInitialX() {

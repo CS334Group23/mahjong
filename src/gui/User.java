@@ -215,7 +215,9 @@ public class User {
  	}
 	
 	public void returnBoardLabelToLastPosition() {
+		System.out.println("User " +userId + " tileOnBoard before:" + tileOnBoard);
 		tileOnBoard--;
+		System.out.println("User " +userId + " tileOnBoard after:" + tileOnBoard);
 		getBoardDeck().getPoint().returnToLastPosition();
 	}
 	
@@ -233,24 +235,35 @@ public class User {
 		gamePanel.repaint();
 	}
 	
-	public void showAllTileLabel(GamePanel gamePanel, ArrayList<Integer> tileIdList) {
-		// clear all displayed tile label
-		removeAllDisplayedTileLabelFromPanel(gamePanel);
+	public void showAllTileLabel(GamePanel gamePanel, ArrayList<Integer> tileIdList, int winUserId, TileLabel lastDiscardTileLabel) {
+		ArrayList<TileLabel> handTileLabelList = getHandLabel();
+		for(TileLabel tileLabel : handTileLabelList)
+			gamePanel.removeTileLabelFromPanel(tileLabel);
 		
 		// clear tile list and tile label list of the user
 		ArrayList<Tile> handTileList = getHand();
-		ArrayList<TileLabel> handTileLabelList = getHandLabel();
 		handTileList.clear();
 		handTileLabelList.clear();
 		
 		// reset display coordinate of hand label
-		getHandDeck().getPoint().resetCoordinate();
+		if(userId == User.USER_LEFT)
+			getHandDeck().getPoint().resetCoordinate(0, -88);
+		else if(userId == User.USER_RIGHT)
+			getHandDeck().getPoint().resetCoordinate(0, 88); 
+		else 
+			getHandDeck().getPoint().resetCoordinate();
 		
 		// add tiles to users' tile arrayList
 		for(Integer tileId : tileIdList) {
 			handTileList.add(new Tile(tileId));
 		}
 		
+		// if it is win user
+		// add the lastDiscardTile to users' hand list
+		if(userId == winUserId) {
+			Tile lastDiscardTile = lastDiscardTileLabel.getTile();
+			handTileList.add(lastDiscardTile);
+		}
 		// hand init for users, display tile label to panel
 		this.handInit(gamePanel);
 	}

@@ -13,7 +13,7 @@ public class UserRight extends User{
 	public UserRight(ArrayList<Tile> hand) {
 		userId = User.USER_RIGHT;
 		tileOnBoard = 0;
-		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.9, GameController.FRAME_HEIGHT*0.75), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
+		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.9, GameController.FRAME_HEIGHT*0.76), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.696, GameController.FRAME_HEIGHT*0.57), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
@@ -28,7 +28,7 @@ public class UserRight extends User{
 		ArrayList<TileLabel> tileLabelList = getHandLabel();
 		TileLabel label;
 		for(Tile tile : hand) {
-			label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, userId);
+			label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, -userId);
 			point.setY(point.y - 44); // set new coordinate for the next tile
 			
 			tileLabelList.add(label);
@@ -55,6 +55,7 @@ public class UserRight extends User{
 		
 		// move the show tile coordinate to the right
 		coordinate.setY(coordinate.y - 38);
+		coordinate.setX(coordinate.x);
 
 		// add tile to boardDeck, update the counter (indicate how many tiles on the same line)
 		ArrayList<TileLabel> boardTileLabelList = getBoardLabel();
@@ -62,6 +63,9 @@ public class UserRight extends User{
 		boardTileLabelList.add(label);
 		boardTileList.add(tile);
 		tileOnBoard++;
+		
+		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
+
 		
 		// simply delete the last tile from the hand, because for AIs, their tile is fake
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
