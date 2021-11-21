@@ -13,24 +13,16 @@ import utils.DealMsg;
 
 public class TestGameController {
 //	@Test
-//	public void testGetGameController() {
-//		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        PrintStream ps = new PrintStream(baos);
-//        System.setOut(ps);
-//		
-//        GameController gameController = GameController.getInstance();
-//        assertEquals("Get gameController instance", baos.toString());
-//	}
-//	
-//	@Test
 //	public void testGameControllerInit() {
 //		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 //        PrintStream ps = new PrintStream(baos);
 //        System.setOut(ps);
 //		
+//        Client client = new Client(1, new Server());
 //        GameController gameController = GameController.getInstance();
-//        gameController.init(new Client(0, new Server()));
-//        assertEquals("Get gameController instance", baos.toString());
+//        gameController.init(client);
+//        
+//        //assertEquals("Get gameController instance", baos.toString());
 //	}
 	
 	@Test
@@ -40,15 +32,25 @@ public class TestGameController {
 		System.setOut(ps);
 		
 		// set up client for gamePanel
-		Client client = new Client(0, new Server());
+		Client client = new Client(1, new Server());
 		ArrayList<Integer> tileIds = new ArrayList<>();
 		for(int i = 0; i < 13; i++) {
 			tileIds.add(1);
 		}
 		client.initWall(tileIds);
 		
-		GamePanel gamePanel = new GamePanel(client);
-		gamePanel.infoDeal(new DealMsg(tileIds));
+		GameController gameController = GameController.getInstance();
+		gameController.init(client);
+		
+		
+//		synchronized(gameController) {
+//			try {
+//				gameController.wait();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+
 		
 		assertEquals("GamePanel infoDeal", baos.toString());
 	}	
