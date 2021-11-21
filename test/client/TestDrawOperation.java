@@ -42,6 +42,7 @@ class TestDrawOperation {
 		}
 		DrawOperation drawOp = new DrawOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
 		drawOp.operate(client,new DrawMsg(3));
@@ -64,6 +65,7 @@ class TestDrawOperation {
 		}
 		DrawOperation drawOp = new DrawOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
 		drawOp.operate(client,new DrawMsg(3));
@@ -85,6 +87,7 @@ class TestDrawOperation {
 		}
 		DrawOperation drawOp = new DrawOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
 		drawOp.operate(client,new DrawMsg(3));
@@ -106,6 +109,7 @@ class TestDrawOperation {
 		}
 		DrawOperation drawOp = new DrawOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
 		drawOp.operate(client,new DrawMsg(5));
@@ -127,6 +131,7 @@ class TestDrawOperation {
 		}
 		DrawOperation drawOp = new DrawOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
 		drawOp.operate(client,new DrawMsg(3));
@@ -148,6 +153,7 @@ class TestDrawOperation {
 		}
 		DrawOperation drawOp = new DrawOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
 		drawOp.operate(client,new DrawMsg(25));
@@ -169,6 +175,7 @@ class TestDrawOperation {
 		}
 		DrawOperation drawOp = new DrawOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
 		drawOp.operate(client,new DrawMsg(3));

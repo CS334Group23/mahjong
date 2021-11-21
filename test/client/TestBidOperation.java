@@ -9,6 +9,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import server.Server;
+import ui.TextUi;
 import utils.BidMsg;
 import utils.BidType;
 import utils.DiscardMsg;
@@ -34,6 +35,7 @@ class TestBidOperation {
 		}
 		BidOperation bid = new BidOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,8,9,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		Meld chow = new Meld(new Tile(0),new Tile(4),new Tile(8),null);
@@ -55,6 +57,7 @@ class TestBidOperation {
 		}
 		BidOperation bid = new BidOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,8,9,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		Meld pong = new Meld(new Tile(0),new Tile(1),new Tile(2),null);
@@ -65,6 +68,7 @@ class TestBidOperation {
 	void testKong1() throws Exception {
 		BidOperation bid = new BidOperation();
 		Client client = new Client(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,9,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		Meld kong = new Meld(new Tile(0),new Tile(1),new Tile(2),new Tile(3));

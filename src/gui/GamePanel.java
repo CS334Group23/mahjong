@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import server.Server;
 import ui.ClientInterface;
 import utils.BidMsg;
 import utils.BidType;
@@ -44,6 +45,9 @@ public class GamePanel extends JPanel{
 	private TileLabel lastDiscardTileLabel;
 	private int lastDiscardSenderId;
 	
+	private ArrayList<JLabel> indicators;
+	private int lastNoticeId;
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -59,6 +63,12 @@ public class GamePanel extends JPanel{
 			this.client = client;
 			
 			bgImage = ImageIO.read(new File("resource/static/others/table_new.jpg"));
+			this.indicators = new ArrayList<>();
+			for(int i=0;i<Server.CLIENT_NUM;i++) {
+				String filename = String.format("resource/static/others/indicator%d.png",i+1);
+				JLabel temp = ImageUtils.getImageLabel(this, filename, (int)(GameController.FRAME_WIDTH/2-40), (int)(GameController.FRAME_HEIGHT/2-80), 80, 80);
+				indicators.add(temp);
+			}
 			setLayout(null);
 			
 		} catch (IOException e) {
@@ -87,6 +97,7 @@ public class GamePanel extends JPanel{
 		users.add(user_top); // index 2
 		users.add(user_left); // index 3
 		
+		lastNoticeId = -1;
 		handInit();
 	}
 	
@@ -99,6 +110,7 @@ public class GamePanel extends JPanel{
 	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
 		Tile tile = null;
 		if(msg != null) {
+			renewIndicator(0);
 			tile = new Tile(msg.getTileId());
 		}
 		
@@ -180,6 +192,11 @@ public class GamePanel extends JPanel{
 	
 	public void infoBid(BidMsg bidMsg) {
 		String currentInfo = bidMsg.getResponserName();
+
+		// renew the indicator
+		renewIndicator(bidMsg.getBidClient());
+		// clear the new tile label
+
 		
 		// move the input meld to the user's right
 		User user = users.get(bidMsg.getBidClient());
@@ -575,11 +592,19 @@ public class GamePanel extends JPanel{
 
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
 		if(drawNoticeMsg.getClientId() != User.USER_BOTTOM) {
+			renewIndicator(drawNoticeMsg.getClientId());
 			User targetUser = users.get(drawNoticeMsg.getClientId());
 			Tile tempTile = new Tile(144);
 			this.addTileToPanel(targetUser, tempTile); //hard code to be changed later
 			repaint();
 		}
+	}
+	
+	public void renewIndicator(int clientId) {
+		if(lastNoticeId != -1)
+			this.remove(indicators.get(lastNoticeId));
+		this.add(indicators.get(clientId));
+		lastNoticeId = clientId;
 	}
 
 }
