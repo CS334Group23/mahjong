@@ -9,6 +9,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import server.Server;
+import ui.TextUi;
 import utils.BidMsg;
 import utils.DiscardMsg;
 import utils.DrawMsg;
@@ -32,6 +33,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,4,8,12,16,20,24,28,32,33,34,36));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(40,2));
@@ -53,6 +55,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,4,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(44,0));
@@ -74,6 +77,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,4,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(44,0));
@@ -95,6 +99,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,8,9,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(2,2));
@@ -116,6 +121,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,8,9,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(2,2));
@@ -137,6 +143,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(3,2));
@@ -158,6 +165,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(3,2));
@@ -179,6 +187,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(3,2));
@@ -200,6 +209,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(3,2));
@@ -221,6 +231,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(3,2));
@@ -242,6 +253,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(3,2));
@@ -263,6 +275,7 @@ class TestDiscardOperation {
 		}
 		DiscardOperation discardOp = new DiscardOperation();
 		StubClient client = new StubClient(1,new Server());
+		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
 		discardOp.operate(client,new DiscardMsg(3,1));
