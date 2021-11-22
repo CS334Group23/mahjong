@@ -48,6 +48,10 @@ public class FacadeChecker {
 		return checkwin.CheckScore(hand,showed_hand);
 	}
 	
+	public int getScore() {
+		return checkwin.getScore(hand,showed_hand);
+	}
+	
 	public boolean checkWhetherWin() {
 		return checkwin.checkIsWin(hand, showed_hand);
 	}

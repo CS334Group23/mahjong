@@ -31,12 +31,12 @@ public class DrawOperation implements ClientOperation{
 		if(kong!=null || isWin) {
 			ArrayList<BidMsg> possibleBid = new ArrayList<>();
 			if(kong != null) {
-				possibleBid.add(new BidMsg(client.getId(), BidType.KONG, "KongResponser", drawMsg.getTileId(),kong, null, true));
+				possibleBid.add(new BidMsg(client.getId(),client.getId(), BidType.KONG, "KongResponser", drawMsg.getTileId(),kong, null, true));
 			}
 			if(isWin) {
-				possibleBid.add(new BidMsg(client.getId(), BidType.WIN, "WinResponser", (drawMsg).getTileId(),null, Tile.tileToIdList(client.getWall()), true));
+				possibleBid.add(new BidMsg(client.getId(),client.getId(), BidType.WIN, "WinResponser", (drawMsg).getTileId(),null, Tile.tileToIdList(client.getWall()), true));
 			}
-			possibleBid.add(new BidMsg(client.getId(), BidType.EMPTY, "EmptyResponser", (drawMsg).getTileId(),null, null, true));//here pay attention
+			possibleBid.add(new BidMsg(client.getId(),client.getId(), BidType.EMPTY, "EmptyResponser", (drawMsg).getTileId(),null, null, true));//here pay attention
 //			TerminalIOUtils.printIndex(possibleBid.size());
 //			System.out.print("You have options:");
 //			BidMsg.printBid(possibleBid);
