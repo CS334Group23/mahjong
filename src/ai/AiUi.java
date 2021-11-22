@@ -20,7 +20,7 @@ public class AiUi implements Ui{
 	
 	public AiUi(ClientInterface client) {
 		this.client = client;
-		this.aiRecommender = new AiRecommender();
+//		this.aiRecommender = new AiRecommender();
 	}
 
 	@Override
@@ -30,12 +30,12 @@ public class AiUi implements Ui{
 
 	@Override
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			TimeUnit.SECONDS.sleep(1);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		aiRecommender.uponCalled(client.getWall(), drawMsg.getTileId());
 	}
 
@@ -83,6 +83,13 @@ public class AiUi implements Ui{
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void init(ClientInterface client) {
+		// TODO Auto-generated method stub
+		this.aiRecommender = new AiRecommender();
+		System.out.println("AIUI init");
 	}
 
 }

@@ -42,7 +42,8 @@ public class Client implements Peer, ClientInterface{
 		if(id == 0) {
 //			this.ui = GameController.getInstance();
 			setUi(GameController.getInstance());
-			GameController.getInstance().init(this); //should resolved later
+//			GameController.getInstance().init(this); //should resolved later
+//			setUi(new AiUi(this));
 		}
 		else {
 //			this.ui = new TextUi(this); //this may later need to change other ui options

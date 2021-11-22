@@ -3,6 +3,7 @@ package server;
 import utils.DealMsg;
 import utils.DrawMsg;
 import utils.DrawNoticeMsg;
+import utils.InitMsg;
 import utils.Message;
 import utils.Peer;
 import utils.Tile;
@@ -32,14 +33,19 @@ public class Server implements Peer{
 		cardlist = new LinkedList<>();
 	}
 	
-	public void init() {
-		gameStart = true;
+	public void formRoom() {
 		allClients = new ArrayList<Peer>(CLIENT_NUM);
-		cardlist = shuffle();
 		for(int i = 0;i<CLIENT_NUM;i++) {
 			allClients.add(new Client(i,this));
 		}
+	}
+	
+	public void init() {
+		gameStart = true;
+		cardlist = shuffle();
 		client_hands = deal();
+		//init the each ui
+		sendAll(new InitMsg(), 0);
 		//send initial hands to the clients
 		for(int i = 0;i<CLIENT_NUM;i++) {
 			send(allClients.get(i),new DealMsg(client_hands.get(i)));

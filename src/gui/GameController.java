@@ -108,6 +108,7 @@ public class GameController extends JFrame implements Ui{
 	@Override
 	public void infoWin(WinMsg winMsg) {
 		gamePanel.infoWin(winMsg);
+		remove(gamePanel);
 	}
 	
 	public void printUserDecks() {
