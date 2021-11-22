@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import server.Server;
@@ -33,6 +34,7 @@ public class GamePanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+
 	private Image bgImage;
 	private ArrayList<User> users;
 	
@@ -226,6 +228,7 @@ public class GamePanel extends JPanel{
 		for(int i = 0; i < 4; i++) {
 			User user = users.get(i);
 			user.showAllTileLabel(this, hands.get(i), winUserId, lastDiscardTileLabel);
+			System.out.printf("Client %d score: %d\n", i,winMsg.getScores().get(i));
 		}
 		
 		repaint();

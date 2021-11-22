@@ -1,5 +1,7 @@
 package server;
 
+import utils.BidMsg;
+import utils.BidType;
 import utils.DealMsg;
 import utils.DrawMsg;
 import utils.DrawNoticeMsg;
@@ -102,7 +104,7 @@ public class Server implements Peer{
 		if(!cardlist.isEmpty())
 			send(allClients.get(sendTarget),new DrawMsg(cardlist.pollFirst()));
 		else {
-			setGameOver();
+			sendAll(new BidMsg(-1,-1,BidType.WIN,"WinResponser",-1,null,null,false),0);
 		}	
 	}
 	
