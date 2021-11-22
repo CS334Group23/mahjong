@@ -23,6 +23,7 @@ public class User {
 	// count how many tiles are discarded by user, also is a line indicator to show which line should the discarded tile be placed
 	protected int tileOnBoard;
 	protected TileLabel newTileFromServer;
+	protected boolean boardTileIsReturnedToLastPosition;
 	
 	protected void changeTileImgToFaceDown(ArrayList<Tile> hand) {
 		for(Tile tile : hand) 
@@ -217,6 +218,7 @@ public class User {
 	public void returnBoardLabelToLastPosition() {
 		System.out.println("User " +userId + " tileOnBoard before:" + tileOnBoard);
 		tileOnBoard--;
+		boardTileIsReturnedToLastPosition = true;
 		System.out.println("User " +userId + " tileOnBoard after:" + tileOnBoard);
 		getBoardDeck().getPoint().returnToLastPosition();
 	}
@@ -247,9 +249,9 @@ public class User {
 		
 		// reset display coordinate of hand label
 		if(userId == User.USER_LEFT)
-			getHandDeck().getPoint().resetCoordinate(0, -88);
+			getHandDeck().getPoint().resetCoordinate(0, -44);
 		else if(userId == User.USER_RIGHT)
-			getHandDeck().getPoint().resetCoordinate(0, 88); 
+			getHandDeck().getPoint().resetCoordinate(0, 44); 
 		else 
 			getHandDeck().getPoint().resetCoordinate();
 		

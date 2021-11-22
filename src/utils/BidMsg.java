@@ -6,6 +6,7 @@ public class BidMsg implements Message, Comparable{
 	public static final int BID_NUM = 5;
 	
 	private int clientId;
+	private int previousClientId;
 	private String opName;
 	private int bidType;
 	private String responserName;
@@ -15,8 +16,9 @@ public class BidMsg implements Message, Comparable{
 	private ArrayList<Integer> winHand;
 	private boolean selfDrawn;
 	
-	public BidMsg(int clientId, BidType bidType, String responserName, int tileId, Meld meld, ArrayList<Integer> winHand, boolean selfDrawn) {
+	public BidMsg(int clientId,int previous, BidType bidType, String responserName, int tileId, Meld meld, ArrayList<Integer> winHand, boolean selfDrawn) {
 		this.clientId = clientId;
+		this.previousClientId = previous;
 		this.opName = "BidOperation";
 		this.bidType = bidType.getBidType();
 		this.responserName = responserName;
@@ -80,5 +82,13 @@ public class BidMsg implements Message, Comparable{
 	
 	public boolean isSelfDrawn() {
 		return selfDrawn;
+	}
+	
+	public int getTileId() {
+		return tileId;
+	}
+	
+	public int getPreviousClient() {
+		return previousClientId;
 	}
 }
