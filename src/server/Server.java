@@ -14,6 +14,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import ai.AiUi;
 import client.Client;
 
 public class Server implements Peer{
@@ -23,7 +24,7 @@ public class Server implements Peer{
 	private Deque<Integer> cardlist;
 	private ArrayList<ArrayList<Integer>> client_hands;
 	private ServerOperation op; //need to later add exception handling
-	private ArrayList<Client> allClients;
+	private ArrayList<Peer> allClients; //here may need to store a Peer instead of client list
 	private int nextClient;
 	private boolean gameStart = false;
 
@@ -33,7 +34,7 @@ public class Server implements Peer{
 	
 	public void init() {
 		gameStart = true;
-		allClients = new ArrayList<Client>(CLIENT_NUM);
+		allClients = new ArrayList<Peer>(CLIENT_NUM);
 		cardlist = shuffle();
 		for(int i = 0;i<CLIENT_NUM;i++) {
 			allClients.add(new Client(i,this));
@@ -110,6 +111,7 @@ public class Server implements Peer{
 		System.out.println("Game Over!!!");
 		gameStart = false;
 	}
+	
 	
 	@Override
 	public void send(Peer target, Message msg) {
