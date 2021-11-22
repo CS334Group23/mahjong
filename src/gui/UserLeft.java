@@ -13,6 +13,7 @@ public class UserLeft extends User{
 	public UserLeft(ArrayList<Tile> hand) {
 		userId = User.USER_LEFT;
 		tileOnBoard = 0;
+		boardTileIsReturnedToLastPosition = false;
 		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.02, GameController.FRAME_HEIGHT*0.11), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.25, GameController.FRAME_HEIGHT*0.24), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
@@ -45,7 +46,7 @@ public class UserLeft extends User{
 		Point coordinate = boardDeck.getPoint();
 		
 		// move the show tile coordinate to the START POINT of next line if applicable
-		if(tileOnBoard != 0 && tileOnBoard % 8 == 0) {
+		if(tileOnBoard != 0 && tileOnBoard % 8 == 0 && !boardTileIsReturnedToLastPosition) {
 			coordinate.setX(coordinate.x - tileHeight);
 			coordinate.setY(coordinate.getInitialY());
 		}
@@ -74,6 +75,8 @@ public class UserLeft extends User{
 			handTileLabelList.remove(handTileLabelList.size() - 1);
 			handTileList.remove(handTileList.size() - 1);
 		}
+		
+		boardTileIsReturnedToLastPosition = false;
 		return label;
 	}
 	
@@ -94,7 +97,7 @@ public class UserLeft extends User{
 		
 		// 4. reset handStartPoint 
 		Point handStartPoint = handDeck.getPoint();
-		handStartPoint.resetCoordinate(0, -88); // reset it by moving up 88 pixel (y = initialY - 88)
+		handStartPoint.resetCoordinate(0, -44); // reset it by moving up 88 pixel (y = initialY - 88)
 		
 		// 5. display tile label to panel
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
@@ -109,7 +112,7 @@ public class UserLeft extends User{
 		}
 		
 		// 6. move the newTileShowPoint to the right of handStartPoint
-		newTileShowPoint.setY(handStartPoint.y + tileWidth / 2);
+		newTileShowPoint.setY(handStartPoint.y - 44 + tileWidth / 2);
 		
 		// 7. move the meldStartPoint to the right of newTileShowPoint
 		Point meldStartPoint = meldDeck.getPoint();

@@ -18,6 +18,7 @@ public class UserBottom extends User{
 	public UserBottom(ArrayList<Tile> hand) {
 		userId = User.USER_BOTTOM;
 		tileOnBoard = 0;
+		boardTileIsReturnedToLastPosition = false;
 		newTileFromServer = null;
 		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.11, GameController.FRAME_HEIGHT*0.8), Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
@@ -55,7 +56,7 @@ public class UserBottom extends User{
 		Point boardStartPoint = boardDeck.getPoint();
 		
 		// move the show tile boardStartPoint to the START POINT of next line if applicable
-		if(tileOnBoard != 0 && tileOnBoard % 8 == 0) {
+		if(tileOnBoard != 0 && tileOnBoard % 8 == 0 && !boardTileIsReturnedToLastPosition) {
 			boardStartPoint.setX(boardStartPoint.getInitialX());
 			boardStartPoint.setY(boardStartPoint.y + tileHeight);
 		}
@@ -101,6 +102,7 @@ public class UserBottom extends User{
 		handStartPoint.resetCoordinate();
 		handInit(gamePanel);
 		
+		boardTileIsReturnedToLastPosition = false;
 		return label;
 	}
 	
@@ -140,7 +142,7 @@ public class UserBottom extends User{
 		
 		// 7. move the meldStartPoint to the right of newTileShowPoint
 		Point meldStartPoint = meldDeck.getPoint();
-		meldStartPoint.setX(newTileShowPoint.x + 57 + tileWidth / 2);
+		meldStartPoint.setX(newTileShowPoint.x + tileWidth / 2);
 		meldStartPoint.setY(newTileShowPoint.y);
 		
 		// 8. display meld in the meld deck, move the meldStartPoint to the right
