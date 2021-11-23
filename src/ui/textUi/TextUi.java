@@ -1,4 +1,4 @@
-package ui;
+package ui.textUi;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,6 +9,8 @@ import network.DiscardMsg;
 import network.DrawMsg;
 import network.DrawNoticeMsg;
 import network.WinMsg;
+import ui.ClientInterface;
+import ui.Ui;
 import utils.BidType;
 import utils.Tile;
 

@@ -14,7 +14,7 @@ import network.DrawMsg;
 import network.Message;
 import network.Peer;
 import server.Server;
-import ui.TextUi;
+import ui.textUi.TextUi;
 
 class TestDiscardOperation {
 

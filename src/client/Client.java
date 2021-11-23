@@ -11,8 +11,8 @@ import gui.GameController;
 import network.Message;
 import network.Peer;
 import ui.ClientInterface;
-import ui.TextUi;
 import ui.Ui;
+import ui.textUi.TextUi;
 import utils.Tile;
 import utils.Meld;
 

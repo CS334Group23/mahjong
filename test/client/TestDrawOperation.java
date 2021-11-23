@@ -18,7 +18,7 @@ import network.Message;
 import network.Peer;
 import server.Server;
 import ui.ClientInterface;
-import ui.TextUi;
+import ui.textUi.TextUi;
 import utils.BidType;
 import utils.Meld;
 import utils.Tile;
