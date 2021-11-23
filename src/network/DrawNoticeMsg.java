@@ -1,4 +1,4 @@
-package utils;
+package network;
 
 public class DrawNoticeMsg implements Message{
 	private String opName;

@@ -1,6 +1,9 @@
-package utils;
+package network;
 
 import java.util.ArrayList;
+
+import utils.BidType;
+import utils.Meld;
 
 public class BidMsg implements Message, Comparable{
 	public static final int BID_NUM = 5;

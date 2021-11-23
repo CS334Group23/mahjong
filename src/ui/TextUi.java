@@ -3,14 +3,14 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import utils.BidMsg;
+import network.BidMsg;
+import network.DealMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.DrawNoticeMsg;
+import network.WinMsg;
 import utils.BidType;
-import utils.DealMsg;
-import utils.DiscardMsg;
-import utils.DrawMsg;
-import utils.DrawNoticeMsg;
 import utils.Tile;
-import utils.WinMsg;
 
 public class TextUi implements Ui{
 	private ClientInterface client; //this client later need to try best to decouple out with input parameters

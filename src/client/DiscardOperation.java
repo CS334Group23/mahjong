@@ -3,16 +3,16 @@ package client;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import network.BidMsg;
+import network.DiscardMsg;
+import network.Message;
 import sequence.KongChecker;
 import sequence.PongChecker;
 import sequence.Sequence;
 import sequence.ChowChecker;
 import sequence.FacadeChecker;
-import utils.BidMsg;
 import utils.BidType;
-import utils.DiscardMsg;
 import utils.Meld;
-import utils.Message;
 import utils.Tile;
 
 public class DiscardOperation implements ClientOperation{

@@ -1,6 +1,6 @@
 package server;
 
-import utils.BidMsg;
+import network.BidMsg;
 
 public class ChowResponser implements BidResponser{
 

@@ -1,13 +1,6 @@
 package server;
 
-import utils.BidMsg;
 import utils.BidType;
-import utils.DealMsg;
-import utils.DrawMsg;
-import utils.DrawNoticeMsg;
-import utils.InitMsg;
-import utils.Message;
-import utils.Peer;
 import utils.Tile;
 
 import java.lang.reflect.Constructor;
@@ -19,6 +12,13 @@ import java.util.LinkedList;
 
 import ai.AiUi;
 import client.Client;
+import network.BidMsg;
+import network.DealMsg;
+import network.DrawMsg;
+import network.DrawNoticeMsg;
+import network.InitMsg;
+import network.Message;
+import network.Peer;
 
 public class Server implements Peer{
 	public final static int INITIAL_HAND = 13;

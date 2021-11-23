@@ -3,16 +3,16 @@ package ai;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import network.BidMsg;
+import network.DealMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.DrawNoticeMsg;
+import network.WinMsg;
 import ui.ClientInterface;
 import ui.Ui;
-import utils.BidMsg;
-import utils.DealMsg;
-import utils.DiscardMsg;
-import utils.DrawMsg;
-import utils.DrawNoticeMsg;
 import utils.FindTilePosition;
 import utils.Tile;
-import utils.WinMsg;
 
 public class AiUi implements Ui{
 	private ClientInterface client;

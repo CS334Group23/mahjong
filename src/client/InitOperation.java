@@ -1,7 +1,7 @@
 package client;
 
-import utils.DealMsg;
-import utils.Message;
+import network.DealMsg;
+import network.Message;
 
 public class InitOperation implements ClientOperation{
 	@Override

@@ -7,13 +7,13 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import network.BidMsg;
+import network.DiscardMsg;
+import network.Message;
+import network.Peer;
 import server.Server;
-import utils.BidMsg;
 import utils.BidType;
-import utils.DiscardMsg;
 import utils.Meld;
-import utils.Message;
-import utils.Peer;
 import utils.Tile;
 
 class ClientTest {

@@ -1,14 +1,14 @@
 package client;
 
-import utils.BidMsg;
 import utils.BidType;
-import utils.DiscardMsg;
-import utils.DrawMsg;
 import utils.Meld;
-import utils.Message;
 import utils.Tile;
 import java.util.*;
 
+import network.BidMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.Message;
 import sequence.FacadeChecker;
 import sequence.KongChecker;
 import sequence.Sequence;

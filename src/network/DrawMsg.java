@@ -1,4 +1,4 @@
-package utils;
+package network;
 
 public class DrawMsg implements Message{
 	private String opName;

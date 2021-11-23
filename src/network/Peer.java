@@ -1,4 +1,4 @@
-package utils;
+package network;
 
 public interface Peer {
 	public void send(Peer target, Message msg);

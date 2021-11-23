@@ -1,4 +1,4 @@
-package utils;
+package network;
 
 
 public class InitMsg implements Message{
