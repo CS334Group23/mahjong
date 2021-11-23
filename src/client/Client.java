@@ -2,6 +2,7 @@ package client;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -25,6 +26,7 @@ public class Client implements Peer, ClientInterface{
 	private int id;
 	private Peer server;
 	private Ui ui;
+	private ArrayList<Integer> scores;
 	
 	public Client(int aid, Peer server) {
 		this.id = aid;
@@ -49,6 +51,7 @@ public class Client implements Peer, ClientInterface{
 //			this.ui = new AiUi(this);
 			setUi(new AiUi(this));
 		}
+		this.scores = new ArrayList<Integer>(Arrays.asList(0,0,0,0));
 	}
 	
 	public int getId() {
@@ -157,5 +160,17 @@ public class Client implements Peer, ClientInterface{
 	
 	public void setUi(Ui ui) {//more for testing reasons
 		this.ui = ui;
+	}
+	
+	@Override
+	public void renewScore(ArrayList<Integer> gameScore) {
+		for(int i=0;i<scores.size();i++) {
+			scores.set(i, scores.get(i)+gameScore.get(i));
+		}
+	}
+	
+	@Override
+	public int getScore(int clientId) {
+		return scores.get(clientId);
 	}
 }
