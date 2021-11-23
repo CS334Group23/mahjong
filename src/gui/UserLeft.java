@@ -155,7 +155,7 @@ public class UserLeft extends User{
 	@Override
 	public void showScore(GamePanel gamePanel, int score) {
 		JLabel scoreLabel = new JLabel();
-		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='blue'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
+		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='fuchsia'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
 		scoreLabel.setOpaque(true);
 //		Border blackLine = BorderFactory.createLineBorder(Color.BLACK);
 //		scoreLabel.setBorder(blackLine);

@@ -145,7 +145,7 @@ public class UserBottom extends User{
 		
 		// 7. move the meldStartPoint to the right of newTileShowPoint
 		Point meldStartPoint = meldDeck.getPoint();
-		meldStartPoint.setX(newTileShowPoint.x + tileWidth / 2);
+		meldStartPoint.setX(newTileShowPoint.x + 57 + tileWidth / 2);
 		meldStartPoint.setY(newTileShowPoint.y);
 		
 		// 8. display meld in the meld deck, move the meldStartPoint to the right

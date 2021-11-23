@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 
 import utils.Meld;
 import utils.Tile;
+import network.WinMsg;
 
 public class User {
 	public static final int USER_BOTTOM = 0;
@@ -240,7 +241,7 @@ public class User {
 		gamePanel.repaint();
 	}
 	
-	public void showAllTileLabel(GamePanel gamePanel, ArrayList<Integer> tileIdList, int winUserId, TileLabel lastDiscardTileLabel) {
+	public void showAllTileLabel(GamePanel gamePanel, ArrayList<Integer> tileIdList, int winUserId, int winType, TileLabel lastDiscardTileLabel) {
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
 		for(TileLabel tileLabel : handTileLabelList)
 			gamePanel.removeTileLabelFromPanel(tileLabel);
@@ -258,14 +259,14 @@ public class User {
 		else 
 			getHandDeck().getPoint().resetCoordinate();
 		
-		// add tiles to users' tile arrayList
+		// add tiles to users' tile arrayList 
 		for(Integer tileId : tileIdList) {
 			handTileList.add(new Tile(tileId));
 		}
 		
 		// if it is win user
-		// add the lastDiscardTile to users' hand list
-		if(userId == winUserId) {
+		// add the lastDiscardTile to users' hand list if win by getting other players' tile
+		if(userId == winUserId && winType == WinMsg.WINBYDISCARD) {
 			Tile lastDiscardTile = lastDiscardTileLabel.getTile();
 			handTileList.add(lastDiscardTile);
 		}
