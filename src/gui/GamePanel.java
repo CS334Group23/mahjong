@@ -224,11 +224,12 @@ public class GamePanel extends JPanel{
 	public void infoWin(WinMsg winMsg) {
 		ArrayList<ArrayList<Integer>> hands = winMsg.getHandsList();
 		int winUserId = winMsg.getWinClientId();
+		client.renewScore(winMsg.getScores());
 		
 		for(int i = 0; i < 4; i++) {
 			User user = users.get(i);
 			user.showAllTileLabel(this, hands.get(i), winUserId, lastDiscardTileLabel);
-			System.out.printf("Client %d score: %d\n", i,winMsg.getScores().get(i));
+			user.showScore(this, client.getScore(i));
 		}
 		
 		repaint();

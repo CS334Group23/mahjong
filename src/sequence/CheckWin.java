@@ -28,7 +28,7 @@ public class CheckWin {
 	
 	
 	public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
-		int score=0;
+		int score=1;
 		
 		GenerateWinningHand comb=new GenerateWinningHand();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
@@ -159,7 +159,7 @@ public class CheckWin {
 	}
 	
 public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
-	int score=0;
+	int score=1;
 		
 		GenerateWinningHand comb=new GenerateWinningHand();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
