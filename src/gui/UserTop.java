@@ -1,9 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.border.Border;
 
 import utils.Meld;
 import utils.Tile;
@@ -146,5 +149,18 @@ public class UserTop extends User{
 		}
 		gamePanel.remove(instruction);
 		gamePanel.repaint();
+	}
+	
+	@Override
+	public void showScore(GamePanel gamePanel, int score) {
+		JLabel scoreLabel = new JLabel();
+		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='yellow'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
+		scoreLabel.setOpaque(true);
+//		Border blackLine = BorderFactory.createLineBorder(Color.BLACK);
+//		scoreLabel.setBorder(blackLine);
+		scoreLabel.setText(text);
+		scoreLabel.setBounds(1000,100,60,50);
+		scoreLabel.setBackground(Color.DARK_GRAY);
+		gamePanel.add(scoreLabel);
 	}
 }

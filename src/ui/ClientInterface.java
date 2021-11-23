@@ -9,4 +9,6 @@ public interface ClientInterface {
 	public int getLength();
 //	public String printWall(); //this may later need to change name
 	public ArrayList<Tile> getWall();
+	public void renewScore(ArrayList<Integer> gameScore);
+	public int getScore(int clientId);
 }
