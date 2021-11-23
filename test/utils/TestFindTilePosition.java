@@ -2,7 +2,7 @@ package utils;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import sequence.GenerateWinningHand;
+import checker.GenerateWinningHand;
 import utils.*;
 import java.util.*;
 

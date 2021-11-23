@@ -3,9 +3,9 @@ package client;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import checker.FacadeChecker;
 import network.BidMsg;
 import network.WinMsg;
-import sequence.FacadeChecker;
 import server.Server;
 import utils.Tile;
 

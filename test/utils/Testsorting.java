@@ -2,8 +2,8 @@ package utils;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import sequence.CheckWin;
-import sequence.GenerateWinningHand;
+import checker.CheckWin;
+import checker.GenerateWinningHand;
 import utils.*;
 import java.util.*;
 public class Testsorting {

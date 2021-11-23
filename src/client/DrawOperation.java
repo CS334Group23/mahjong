@@ -5,13 +5,13 @@ import utils.Meld;
 import utils.Tile;
 import java.util.*;
 
+import checker.FacadeChecker;
+import checker.KongChecker;
+import checker.sequence.Sequence;
 import network.BidMsg;
 import network.DiscardMsg;
 import network.DrawMsg;
 import network.Message;
-import sequence.FacadeChecker;
-import sequence.KongChecker;
-import sequence.Sequence;
 
 public class DrawOperation implements ClientOperation{
 
