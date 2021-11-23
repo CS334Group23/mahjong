@@ -11,7 +11,7 @@ import javax.swing.border.Border;
 
 import utils.Meld;
 import utils.Tile;
-import utils.WinMsg;
+import network.WinMsg;
 
 public class User {
 	public static final int USER_BOTTOM = 0;
