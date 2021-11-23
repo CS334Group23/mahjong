@@ -26,7 +26,7 @@ public class Client implements Peer, ClientInterface{
 	private Peer server;
 	private Ui ui;
 	
-	public Client(int aid, Peer server) {
+	public Client(int aid, Peer server, String ui) {
 		this.id = aid;
 //		this.wall = new ArrayList<>();
 		this.meldWall = new ArrayList<ArrayList<Meld>>(CLIENT_NUM);
@@ -39,11 +39,23 @@ public class Client implements Peer, ClientInterface{
 		}
 			
 		this.server = server;
+		chooseUi(ui);
+	}
+	
+	public void chooseUi(String ui) {
 		if(id == 0) {
 //			this.ui = GameController.getInstance();
-			setUi(GameController.getInstance());
+//			setUi(GameController.getInstance());
 //			GameController.getInstance().init(this); //should resolved later
-//			setUi(new AiUi(this));
+			if(ui.equals("AI")) {
+				setUi(new AiUi(this));
+			}
+			else if(ui.equals("TEXT")) {
+				setUi(new TextUi(this));
+			}
+			else {
+				setUi(GameController.getInstance());
+			}
 		}
 		else {
 //			this.ui = new TextUi(this); //this may later need to change other ui options

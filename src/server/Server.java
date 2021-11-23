@@ -35,10 +35,10 @@ public class Server implements Peer{
 		cardlist = new LinkedList<>();
 	}
 	
-	public void formRoom() {
+	public void formRoom(String ui) {
 		allClients = new ArrayList<Peer>(CLIENT_NUM);
 		for(int i = 0;i<CLIENT_NUM;i++) {
-			allClients.add(new Client(i,this));
+			allClients.add(new Client(i,this, ui));
 		}
 	}
 	
