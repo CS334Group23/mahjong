@@ -31,16 +31,9 @@ public class Client implements Peer, ClientInterface{
 	public Client(int aid, Peer server, String ui) {
 		this.id = aid;
 //		this.wall = new ArrayList<>();
-		this.meldWall = new ArrayList<ArrayList<Meld>>(CLIENT_NUM);
-		for(int i=0; i<CLIENT_NUM; i++) {
-			meldWall.add(new ArrayList<Meld>());
-		}
-		this.tileLength = new ArrayList<Integer>(CLIENT_NUM);
-		for(int i=0;i<CLIENT_NUM;i++) {
-			tileLength.add(13);
-		}
 			
 		this.server = server;
+		this.scores = new ArrayList<Integer>(Arrays.asList(0,0,0,0));
 		chooseUi(ui);
 	}
 	
@@ -64,7 +57,6 @@ public class Client implements Peer, ClientInterface{
 //			this.ui = new AiUi(this);
 			setUi(new AiUi(this));
 		}
-		this.scores = new ArrayList<Integer>(Arrays.asList(0,0,0,0));
 	}
 	
 	public int getId() {
@@ -98,6 +90,15 @@ public class Client implements Peer, ClientInterface{
 //			wall.add(new Tile(id));
 //		}
 		wall = Tile.idToTileList(initCards);
+		this.meldWall = new ArrayList<ArrayList<Meld>>(CLIENT_NUM);
+		for(int i=0; i<CLIENT_NUM; i++) {
+			meldWall.add(new ArrayList<Meld>());
+		}
+		this.tileLength = new ArrayList<Integer>(CLIENT_NUM);
+		for(int i=0;i<CLIENT_NUM;i++) {
+			tileLength.add(13);
+		}
+		System.out.println(meldWall.get(0).size());
 	}
 	
 //	public String printWall() {
