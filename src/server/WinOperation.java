@@ -3,8 +3,8 @@ package server;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import utils.Message;
-import utils.WinMsg;
+import network.Message;
+import network.WinMsg;
 
 public class WinOperation implements ServerOperation{
 	private static int msgCount = 0;

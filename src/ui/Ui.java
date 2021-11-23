@@ -2,12 +2,12 @@ package ui;
 
 import java.util.ArrayList;
 
-import utils.BidMsg;
-import utils.DealMsg;
-import utils.DiscardMsg;
-import utils.DrawMsg;
-import utils.DrawNoticeMsg;
-import utils.WinMsg;
+import network.BidMsg;
+import network.DealMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.DrawNoticeMsg;
+import network.WinMsg;
 
 public interface Ui {
 	public void infoDeal(DealMsg dealMsg); 

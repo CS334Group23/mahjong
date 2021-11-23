@@ -4,8 +4,8 @@ import java.lang.reflect.Constructor;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import utils.BidMsg;
-import utils.Message;
+import network.BidMsg;
+import network.Message;
 
 public class BidOperation implements ServerOperation{
 	private static Queue<BidMsg> msgQueue = new PriorityQueue<>();

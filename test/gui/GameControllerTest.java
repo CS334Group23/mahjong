@@ -9,14 +9,14 @@ import java.util.Random;
 import org.junit.Test;
 
 import client.Client;
+import network.BidMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.Peer;
 import server.Server;
 import ui.ClientInterface;
-import utils.BidMsg;
 import utils.BidType;
-import utils.DiscardMsg;
-import utils.DrawMsg;
 import utils.Meld;
-import utils.Peer;
 import utils.Tile;
 import utils.Type;
 

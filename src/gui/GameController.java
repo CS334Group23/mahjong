@@ -7,15 +7,15 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
-import utils.DrawNoticeMsg;
+import network.BidMsg;
+import network.DealMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.DrawNoticeMsg;
+import network.WinMsg;
 import ui.ClientInterface;
 import ui.Ui;
-import utils.BidMsg;
-import utils.DealMsg;
-import utils.DiscardMsg;
-import utils.DrawMsg;
 import utils.Tile;
-import utils.WinMsg;
 
 public class GameController extends JFrame implements Ui{
 	private static final long serialVersionUID = 1L;

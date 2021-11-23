@@ -2,8 +2,8 @@ package client;
 
 import java.util.Scanner;
 
-import utils.BidMsg;
-import utils.DiscardMsg;
+import network.BidMsg;
+import network.DiscardMsg;
 
 public class KongResponser implements BidResponser{
 	

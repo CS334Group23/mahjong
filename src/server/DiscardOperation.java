@@ -1,7 +1,7 @@
 package server;
 
-import utils.DiscardMsg;
-import utils.Message;
+import network.DiscardMsg;
+import network.Message;
 
 public class DiscardOperation implements ServerOperation{
 

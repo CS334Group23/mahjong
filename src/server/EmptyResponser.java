@@ -1,7 +1,7 @@
 package server;
 
-import utils.BidMsg;
-import utils.DrawNoticeMsg;
+import network.BidMsg;
+import network.DrawNoticeMsg;
 
 public class EmptyResponser implements BidResponser{
 

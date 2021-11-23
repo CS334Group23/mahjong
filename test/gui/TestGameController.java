@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import client.Client;
+import network.DealMsg;
 import server.Server;
-import utils.DealMsg;
 
 public class TestGameController {
 //	@Test

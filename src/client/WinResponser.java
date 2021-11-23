@@ -3,11 +3,11 @@ package client;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import sequence.FacadeChecker;
+import checker.FacadeChecker;
+import network.BidMsg;
+import network.WinMsg;
 import server.Server;
-import utils.BidMsg;
 import utils.Tile;
-import utils.WinMsg;
 
 public class WinResponser implements BidResponser{
 

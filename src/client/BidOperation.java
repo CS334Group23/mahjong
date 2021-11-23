@@ -4,10 +4,10 @@ import java.lang.reflect.Constructor;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import network.BidMsg;
+import network.Message;
 import server.Server;
 import server.ServerOperation;
-import utils.BidMsg;
-import utils.Message;
 
 public class BidOperation implements ClientOperation{
 	
