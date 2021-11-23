@@ -38,6 +38,8 @@ public class WinResponser implements BidResponser{
 				client.send(client.getServer(), new WinMsg(client.getId(), msg.getBidClient(), Tile.tileToIdList(client.getWall()),scores,WinMsg.WINBYDISCARD));
 			}
 		}
-		client.send(client.getServer(), new WinMsg(client.getId(), msg.getBidClient(), Tile.tileToIdList(client.getWall()),new ArrayList<Integer> (Arrays.asList(0,0,0,0)),WinMsg.TIE));
+		else {
+			client.send(client.getServer(), new WinMsg(client.getId(), msg.getBidClient(), Tile.tileToIdList(client.getWall()),new ArrayList<Integer> (Arrays.asList(0,0,0,0)),WinMsg.TIE));
+		}
 	}
 }

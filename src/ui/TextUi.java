@@ -118,5 +118,10 @@ public class TextUi implements Ui{
 		}
 		System.out.println(str);
 	}
+
+	@Override
+	public void init(ClientInterface client) {
+		System.out.println("text ui init");
+	}
 	
 }

@@ -3,6 +3,7 @@ package gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
@@ -108,6 +109,13 @@ public class GameController extends JFrame implements Ui{
 	@Override
 	public void infoWin(WinMsg winMsg) {
 		gamePanel.infoWin(winMsg);
+		try {
+			TimeUnit.SECONDS.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		remove(gamePanel);
 	}
 	
 	public void printUserDecks() {
