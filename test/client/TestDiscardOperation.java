@@ -23,8 +23,8 @@ class TestDiscardOperation {
 	void test1() {
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -32,7 +32,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,4,8,12,16,20,24,28,32,33,34,36));
 		client.initWall(a);
@@ -45,8 +45,8 @@ class TestDiscardOperation {
 		setInput("1");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -54,7 +54,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,4,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
@@ -67,8 +67,8 @@ class TestDiscardOperation {
 		setInput("2");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server, ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -76,7 +76,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,4,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
@@ -89,8 +89,8 @@ class TestDiscardOperation {
 		setInput("1");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -98,7 +98,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,8,9,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
@@ -111,8 +111,8 @@ class TestDiscardOperation {
 		setInput("2");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -120,7 +120,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,8,9,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
@@ -133,8 +133,8 @@ class TestDiscardOperation {
 		setInput("2");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -142,7 +142,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
@@ -155,8 +155,8 @@ class TestDiscardOperation {
 		setInput("1");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -164,7 +164,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
@@ -177,8 +177,8 @@ class TestDiscardOperation {
 		setInput("3");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -186,7 +186,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,8,12,16,20,24,28,32,33,36,40));
 		client.initWall(a);
@@ -199,8 +199,8 @@ class TestDiscardOperation {
 		setInput("3");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server, ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -208,7 +208,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
@@ -221,8 +221,8 @@ class TestDiscardOperation {
 		setInput("8");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -230,7 +230,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
@@ -243,8 +243,8 @@ class TestDiscardOperation {
 		setInput("-3");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -252,7 +252,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
@@ -265,8 +265,8 @@ class TestDiscardOperation {
 	void test12() {
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -274,7 +274,7 @@ class TestDiscardOperation {
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);

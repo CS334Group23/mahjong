@@ -32,8 +32,8 @@ class TestDrawOperation {
 		setInput("1");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -41,7 +41,7 @@ class TestDrawOperation {
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
@@ -55,8 +55,8 @@ class TestDrawOperation {
 		setInput("2");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -64,7 +64,7 @@ class TestDrawOperation {
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
@@ -77,8 +77,8 @@ class TestDrawOperation {
 		setInput("1");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -86,7 +86,7 @@ class TestDrawOperation {
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
@@ -99,8 +99,8 @@ class TestDrawOperation {
 		setInput("1");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -108,7 +108,7 @@ class TestDrawOperation {
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
 		client.initWall(a);
@@ -121,8 +121,8 @@ class TestDrawOperation {
 		setInput("2\n"+"13\n");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -130,7 +130,7 @@ class TestDrawOperation {
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
@@ -143,8 +143,8 @@ class TestDrawOperation {
 		setInput("13");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -152,7 +152,7 @@ class TestDrawOperation {
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
@@ -165,8 +165,8 @@ class TestDrawOperation {
 		setInput("-1\n"+"13");
 		class StubClient extends Client{
 
-			public StubClient(int aid, Peer server) {
-				super(aid, server);
+			public StubClient(int aid, Peer server, String ui) {
+				super(aid, server,ui);
 			}
 			
 			public void send(Peer target, Message msg) {
@@ -174,7 +174,7 @@ class TestDrawOperation {
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
-		StubClient client = new StubClient(1,new Server());
+		StubClient client = new StubClient(1,new Server(),"TEXT");
 		client.setUi(new TextUi(client));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,36));
 		client.initWall(a);
