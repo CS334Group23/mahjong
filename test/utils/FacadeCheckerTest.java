@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import sequence.FacadeChecker;
-import sequence.Sequence;
+import checker.FacadeChecker;
+import checker.sequence.Sequence;
 
 public class FacadeCheckerTest {
 	@Test

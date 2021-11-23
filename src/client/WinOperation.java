@@ -1,7 +1,7 @@
 package client;
 
-import utils.Message;
-import utils.WinMsg;
+import network.Message;
+import network.WinMsg;
 
 public class WinOperation implements ClientOperation{
 

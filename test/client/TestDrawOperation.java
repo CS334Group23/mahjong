@@ -11,16 +11,16 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import network.BidMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.Message;
+import network.Peer;
 import server.Server;
 import ui.ClientInterface;
-import ui.TextUi;
-import utils.BidMsg;
+import ui.textUi.TextUi;
 import utils.BidType;
-import utils.DiscardMsg;
-import utils.DrawMsg;
 import utils.Meld;
-import utils.Message;
-import utils.Peer;
 import utils.Tile;
 
 class TestDrawOperation {

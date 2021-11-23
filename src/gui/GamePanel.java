@@ -16,17 +16,17 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import network.BidMsg;
+import network.DealMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.DrawNoticeMsg;
+import network.WinMsg;
 import server.Server;
 import ui.ClientInterface;
-import utils.BidMsg;
 import utils.BidType;
-import utils.DealMsg;
-import utils.DiscardMsg;
-import utils.DrawMsg;
-import utils.DrawNoticeMsg;
 import utils.Meld;
 import utils.Tile;
-import utils.WinMsg;
 
 public class GamePanel extends JPanel{	
 	/**

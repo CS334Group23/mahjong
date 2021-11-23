@@ -1,7 +1,7 @@
 package client;
 
-import utils.DrawNoticeMsg;
-import utils.Message;
+import network.DrawNoticeMsg;
+import network.Message;
 
 public class DrawNoticeOperation implements ClientOperation{
 

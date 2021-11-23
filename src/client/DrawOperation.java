@@ -1,17 +1,17 @@
 package client;
 
-import utils.BidMsg;
 import utils.BidType;
-import utils.DiscardMsg;
-import utils.DrawMsg;
 import utils.Meld;
-import utils.Message;
 import utils.Tile;
 import java.util.*;
 
-import sequence.FacadeChecker;
-import sequence.KongChecker;
-import sequence.Sequence;
+import checker.FacadeChecker;
+import checker.KongChecker;
+import checker.sequence.Sequence;
+import network.BidMsg;
+import network.DiscardMsg;
+import network.DrawMsg;
+import network.Message;
 
 public class DrawOperation implements ClientOperation{
 
