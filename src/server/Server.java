@@ -10,7 +10,6 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import ai.AiUi;
 import client.Client;
 import network.BidMsg;
 import network.DealMsg;
@@ -19,6 +18,7 @@ import network.DrawNoticeMsg;
 import network.InitMsg;
 import network.Message;
 import network.Peer;
+import ui.aiUi.AiUi;
 
 public class Server implements Peer{
 	public final static int INITIAL_HAND = 13;

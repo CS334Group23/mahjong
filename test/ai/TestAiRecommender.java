@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import ui.aiUi.AiRecommender;
 import utils.Tile;
 
 class TestAiRecommender {

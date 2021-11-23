@@ -1,4 +1,4 @@
-package ai;
+package ui.aiUi;
 
 import java.util.ArrayList;
 import java.util.Collections;

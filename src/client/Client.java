@@ -6,12 +6,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-import ai.AiUi;
 import gui.GameController;
 import network.Message;
 import network.Peer;
 import ui.ClientInterface;
 import ui.Ui;
+import ui.aiUi.AiUi;
 import ui.textUi.TextUi;
 import utils.Tile;
 import utils.Meld;
