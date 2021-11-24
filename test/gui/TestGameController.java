@@ -10,6 +10,7 @@ import org.junit.Test;
 import client.Client;
 import network.DealMsg;
 import server.Server;
+import ui.gui.GameController;
 
 public class TestGameController {
 //	@Test

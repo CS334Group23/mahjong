@@ -15,6 +15,8 @@ import network.DrawMsg;
 import network.Peer;
 import server.Server;
 import ui.ClientInterface;
+import ui.gui.GameController;
+import ui.gui.User;
 import utils.BidType;
 import utils.Meld;
 import utils.Tile;
