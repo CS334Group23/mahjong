@@ -98,7 +98,6 @@ public class Client implements Peer, ClientInterface{
 		for(int i=0;i<CLIENT_NUM;i++) {
 			tileLength.add(13);
 		}
-		System.out.println(meldWall.get(0).size());
 	}
 	
 //	public String printWall() {
