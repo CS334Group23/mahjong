@@ -82,7 +82,7 @@ public class TextUi implements Ui{
 
 	@Override
 	public void infoBid(BidMsg bidMsg) {
-		System.out.printf("client%d plays the operation %s\n", bidMsg.getBidClient(), bidMsg.getOperationName());
+		System.out.printf("client%d plays the operation %s\n", bidMsg.getBidClient(), bidMsg.getChnName());
 		if(bidMsg.getBidType() == BidType.CHOW.getBidType() || bidMsg.getBidType() == BidType.PONG.getBidType()) {
 			//here getBidType later need more unity to save to may conversion
 			printIndex(client.getLength());
