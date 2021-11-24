@@ -11,12 +11,14 @@ import network.BidMsg;
 import network.DiscardMsg;
 import network.Message;
 import network.Peer;
+import network.WinMsg;
 import server.Server;
+import ui.Ui;
 import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
-class ClientTest {
+class TestClient {
 	
 	@Test
 	public void testConstructor() {
@@ -44,6 +46,53 @@ class ClientTest {
 		client.onRecv(new BidMsg(0,3, BidType.KONG, "KongResponser", 3,kong,null, false));
 		assertEquals(1,client.getMeld().size());
 		assertEquals("Kong",client.getMeld().get(0).getName());
+	}
+	
+	@Test
+	void testSetUi1() {
+		Client client = new Client(0,new Server(),"AI");
+		Ui ui = client.getUi();
+		assertEquals("class ui.aiUi.AiUi",ui.getClass().toString());
+	}
+	
+	@Test
+	void testSetUi2() {
+		Client client = new Client(0,new Server(),"GUI");
+		Ui ui = client.getUi();
+		assertEquals("class gui.GameController",ui.getClass().toString());
+	}
+	
+	@Test
+	void testRenewScore() {
+		Client client = new Client(0,new Server(),"TEXT");
+		ArrayList<Integer> scores = new ArrayList<Integer> (Arrays.asList(1,-1,0,0));
+		client.renewScore(scores);
+		int result1 = client.getScore(0);
+		int result2 = client.getScore(1);
+		int result3 = client.getScore(2);
+		int result4 = client.getScore(3);
+		assertEquals(1,result1);
+		assertEquals(-1,result2);
+		assertEquals(0,result3);
+		assertEquals(0,result4);
+	}
+	
+	@Test
+	void testSend() {
+		class StubServer extends Server{
+
+			public StubServer() {
+				super();
+			}
+			
+			public void onRecv(Message msg) {
+				assertEquals(((DiscardMsg)msg).getTileId(), 8);
+				assertEquals("DiscardOperation",((DiscardMsg)msg).getOperationName());
+			}
+		}
+		StubServer server = new StubServer();
+		Client client = new Client(0,server,"TEXT");
+		client.send(server, new DiscardMsg(8,client.getId()));
 	}
 
 }
