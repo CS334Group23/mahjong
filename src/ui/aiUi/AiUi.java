@@ -70,7 +70,7 @@ public class AiUi implements Ui{
 
 	@Override
 	public void infoBid(BidMsg bidMsg) {
-		aiRecommender.uponCalled(bidMsg.getMeld());
+		aiRecommender.uponCalled(client.getWall(), bidMsg.getMeld());
 	}
 
 	@Override
