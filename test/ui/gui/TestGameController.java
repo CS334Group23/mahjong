@@ -1,4 +1,4 @@
-package gui;
+package ui.gui;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
