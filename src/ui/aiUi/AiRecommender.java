@@ -102,6 +102,7 @@ public class AiRecommender {
 				continue;
 			}
 			if(!cardsInHand.get(i).getType().isSameType(cardsInHand.get(i+2).getType())) {
+				i++;
 				continue;
 			}
 			List<Tile> sequence = new ArrayList<>();
