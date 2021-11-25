@@ -75,8 +75,8 @@ public class Client implements Peer, ClientInterface{
 	@Override
 	public void onRecv(Message msg) {
 		try {
-			Class c = Class.forName("client."+msg.getOperationName()); //this hard code need to be solved later
-			Constructor constructor = c.getConstructor(); //this warning need to be solved later
+			Class<?> c = Class.forName("client."+msg.getOperationName());
+			Constructor<?> constructor = c.getConstructor();
 			op = (ClientOperation)constructor.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();

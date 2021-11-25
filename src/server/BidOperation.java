@@ -18,8 +18,8 @@ public class BidOperation implements ServerOperation{
 			try {
 				BidMsg peek = msgQueue.peek();
 				msgQueue.clear();
-				Class c = Class.forName("server."+peek.getResponserName());
-				Constructor constructor = c.getConstructor(); //this warning need to be solved later
+				Class<?> c = Class.forName("server."+peek.getResponserName());
+				Constructor<?> constructor = c.getConstructor();
 				BidResponser re = (BidResponser)constructor.newInstance();
 				re.response(server, peek);
 			} catch (Exception e) {
