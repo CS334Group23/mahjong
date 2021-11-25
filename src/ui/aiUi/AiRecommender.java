@@ -37,7 +37,7 @@ public class AiRecommender {
 		this.cardToPlay = null; 
 	}
 	
-	public void uponCalled(Meld meld) {
+	public void uponCalled(List<Tile> cardsInHand, Meld meld) {
 		if(meld.getFirst() != null) {
 			this.cardsNotPlayed.removeIf(m -> m.getId()==meld.getFirst().getId());
 		}
@@ -50,6 +50,7 @@ public class AiRecommender {
 		if(meld.getForth() != null) {
 			this.cardsNotPlayed.removeIf(m -> m.getId()==meld.getForth().getId());
 		}
+		this.cardsInHand = new ArrayList<>(cardsInHand);
 	}
 	
 	public void uponCalled(List<Integer> dealList) {
@@ -101,6 +102,7 @@ public class AiRecommender {
 				continue;
 			}
 			if(!cardsInHand.get(i).getType().isSameType(cardsInHand.get(i+2).getType())) {
+				i++;
 				continue;
 			}
 			List<Tile> sequence = new ArrayList<>();

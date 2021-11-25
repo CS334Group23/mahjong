@@ -1,31 +1,25 @@
-package gui;
+package ui.gui;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
 
 import utils.Meld;
 import utils.Tile;
-import utils.sorting;
 
-public class UserBottom extends User{
+public class UserRight extends User{
 
-	public UserBottom(ArrayList<Tile> hand) {
-		userId = User.USER_BOTTOM;
+	public UserRight(ArrayList<Tile> hand) {
+		userId = User.USER_RIGHT;
 		tileOnBoard = 0;
 		boardTileIsReturnedToLastPosition = false;
-		newTileFromServer = null;
-		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.11, GameController.FRAME_HEIGHT*0.8), Tile.TILE_WIDTH_USER, Tile.TILE_HEIGHT_USER);
+		handDeck = new Deck(hand, new Point(GameController.FRAME_WIDTH*0.9, GameController.FRAME_HEIGHT*0.76), Tile.TILE_WIDTH_AI, Tile.TILE_HEIGHT_AI);
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
-		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.37, GameController.FRAME_HEIGHT*0.52), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
+		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.696, GameController.FRAME_HEIGHT*0.57), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
 	
 	@Override
@@ -35,20 +29,16 @@ public class UserBottom extends User{
 		int tileWidth = handDeck.getTileWidth();
 		int tileHeight = handDeck.getTileHeight();
 		
-		TileLabel label;
 		ArrayList<TileLabel> tileLabelList = getHandLabel();
+		TileLabel label;
 		for(Tile tile : hand) {
-			label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, userId);
-			gamePanel.handTileEventInit(label, this);
+			label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, point, -userId);
+			point.setY(point.y - 44); // set new coordinate for the next tile
 			
-			point.setX(point.x + 57); // set new boardStartPoint for the next tile
-			
-			tileLabelList.add(label); // add tileLabel to the handDeck: tileLabelList
+			tileLabelList.add(label);
 		}
 		
-		// init the boardStartPoint of the new tile
-		// boardStartPoint = (the x of the last hand mile + some distance, the y of the last hand mile)
-		newTileShowPoint = new Point(point.x + tileWidth / 2, point.y);
+		newTileShowPoint = new Point(point.x, point.y - Tile.TILE_HEIGHT_AI / 2);
 	}
 	
 	@Override
@@ -56,20 +46,20 @@ public class UserBottom extends User{
 		// parameter to add tile to gamepanel
 		int tileWidth = boardDeck.getTileWidth();
 		int tileHeight = boardDeck.getTileHeight();
-		Point boardStartPoint = boardDeck.getPoint();
+		Point coordinate = boardDeck.getPoint();
 		
-		// move the show tile boardStartPoint to the START POINT of next line if applicable
+		// move the show tile coordinate to the START POINT of next line if applicable
 		if(tileOnBoard != 0 && tileOnBoard % 8 == 0 && !boardTileIsReturnedToLastPosition) {
-			boardStartPoint.setX(boardStartPoint.getInitialX());
-			boardStartPoint.setY(boardStartPoint.y + tileHeight);
+			coordinate.setX(coordinate.x + tileHeight);
+			coordinate.setY(coordinate.getInitialY());
 		}
 		
 		// add tile to the board
-		TileLabel label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, boardStartPoint, userId);
+		TileLabel label = ImageUtils.addTile(gamePanel, tile, tileWidth, tileHeight, coordinate, -userId);
 		
-		// move the show tile boardStartPoint to the right
-		boardStartPoint.setX(boardStartPoint.x + 38);
-		boardStartPoint.setY(boardStartPoint.y);
+		// move the show tile coordinate to the right
+		coordinate.setY(coordinate.y - 38);
+		coordinate.setX(coordinate.x);
 
 		// add tile to boardDeck, update the counter (indicate how many tiles on the same line)
 		ArrayList<TileLabel> boardTileLabelList = getBoardLabel();
@@ -79,31 +69,17 @@ public class UserBottom extends User{
 		tileOnBoard++;
 		
 		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
+
 		
-		// delete the tile from handDeck
-		// compare by tile Id
-		// premise: tile in both array should be arranged in the same position
+		// simply delete the last tile from the hand, because for AIs, their tile is fake
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
-		ArrayList<Tile> HandTileList = getHand();
-		for(int i = 0; i < HandTileList.size(); i++) {
-			if(HandTileList.get(i).getId() == tile.getId()) {
-				HandTileList.remove(i);
-				gamePanel.removeTileLabelFromPanel(handTileLabelList.get(i));
-				handTileLabelList.remove(i);
-				break;
-			}
+		ArrayList<Tile> handTileList = getHand();
+		if(!handTileLabelList.isEmpty()){
+			gamePanel.removeTileLabelFromPanel(handTileLabelList.get(handTileLabelList.size() - 1));
+			gamePanel.repaint();
+			handTileLabelList.remove(handTileLabelList.size() - 1);
+			handTileList.remove(handTileList.size() - 1);
 		}
-		
-		//here is the solve to the not display of draw card, use renew method, may be later changed to remove method
-		for(int i = 0; i < HandTileList.size(); i++) {
-			gamePanel.removeTileLabelFromPanel(handTileLabelList.get(i));
-		}
-		handTileLabelList.clear();
-//		sorting.sortTile(HandTileList);
-		Collections.sort(HandTileList);
-		Point handStartPoint = handDeck.getPoint();
-		handStartPoint.resetCoordinate();
-		handInit(gamePanel);
 		
 		boardTileIsReturnedToLastPosition = false;
 		return label;
@@ -126,45 +102,47 @@ public class UserBottom extends User{
 		
 		// 4. reset handStartPoint 
 		Point handStartPoint = handDeck.getPoint();
-		handStartPoint.resetCoordinate();
+		handStartPoint.resetCoordinate(0, 44); // reset it by moving down 88 pixel (y = initialY + 88)
 		
 		// 5. display tile label to panel
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
 		for(TileLabel handTileLabel : handTileLabelList) {
+			System.out.println("paint a tile");
 			handTileLabel.setBounds((int)handStartPoint.x, (int)handStartPoint.y, tileWidth, tileHeight);
 			
 			// display it to the panel
 			gamePanel.add(handTileLabel);
 			
 			// move handStartPoint to right
-			handStartPoint.setX(handStartPoint.x + 57);
+			handStartPoint.setY(handStartPoint.y - 44);
 		}
 		
 		// 6. move the newTileShowPoint to the right of handStartPoint
-		newTileShowPoint.setX(handStartPoint.x + tileWidth / 2);
+		newTileShowPoint.setY(handStartPoint.y + 44 - tileWidth / 2);
 		
 		// 7. move the meldStartPoint to the right of newTileShowPoint
 		Point meldStartPoint = meldDeck.getPoint();
-		meldStartPoint.setX(newTileShowPoint.x + 57 + tileWidth / 2);
-		meldStartPoint.setY(newTileShowPoint.y);
+		meldStartPoint.setX(newTileShowPoint.x);
+		meldStartPoint.setY(newTileShowPoint.y - 44 - tileWidth / 2);
 		
 		// 8. display meld in the meld deck, move the meldStartPoint to the right
 		ArrayList<TileLabel> meldTileLabelList = getMeldLabel();
 		for(TileLabel meldTileLabel : meldTileLabelList) {
+			System.out.println("paint a meld");
 			meldTileLabel.setBounds((int)meldStartPoint.x, (int)meldStartPoint.y, tileWidth, tileHeight);
 
 			// display it to the panel
 			gamePanel.add(meldTileLabel);
 			
 			// move meldStartPoint to the right
-			meldStartPoint.setX(meldStartPoint.x + 57);
+			meldStartPoint.setY(meldStartPoint.y - 44);
 		}
 	}
 	
 	@Override
 	public void showBidInfo(GamePanel gamePanel,String bidResponser) {
 		String filename = String.format("resource/static/others/%s.png",bidResponser);
-		JLabel instruction = ImageUtils.getImageLabel(gamePanel, filename, (int)(GameController.FRAME_WIDTH*0.5-40), (int)(GameController.FRAME_HEIGHT*0.7), 80, 80);
+		JLabel instruction = ImageUtils.getImageLabel(gamePanel, filename, (int)(GameController.FRAME_WIDTH*0.8), (int)(GameController.FRAME_HEIGHT*0.5-40), 80, 80);
 		gamePanel.add(instruction);
 		gamePanel.repaint();
 		try {
@@ -180,12 +158,12 @@ public class UserBottom extends User{
 	@Override
 	public void showScore(GamePanel gamePanel, int score) {
 		JLabel scoreLabel = new JLabel();
-		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
+		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='orange'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
 		scoreLabel.setOpaque(true);
 //		Border blackLine = BorderFactory.createLineBorder(Color.BLACK);
 //		scoreLabel.setBorder(blackLine);
 		scoreLabel.setText(text);
-		scoreLabel.setBounds(180,570,60,50);
+		scoreLabel.setBounds(1070,570,60,50);
 		scoreLabel.setBackground(Color.DARK_GRAY);
 		gamePanel.add(scoreLabel);
 	}

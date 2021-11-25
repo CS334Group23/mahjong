@@ -1,4 +1,4 @@
-package gui;
+package ui.gui;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
@@ -10,6 +10,7 @@ import org.junit.Test;
 import client.Client;
 import network.DealMsg;
 import server.Server;
+import ui.gui.GameController;
 
 public class TestGameController {
 //	@Test

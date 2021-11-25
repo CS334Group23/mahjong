@@ -7,10 +7,10 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Deque;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import client.Client;
+
 import network.BidMsg;
 import network.DealMsg;
 import network.DrawMsg;
@@ -18,18 +18,16 @@ import network.DrawNoticeMsg;
 import network.InitMsg;
 import network.Message;
 import network.Peer;
-import ui.aiUi.AiUi;
 
 public class Server implements Peer{
 	public final static int INITIAL_HAND = 13;
 	public final static int CLIENT_NUM = 4;
 	
 	private Deque<Integer> cardlist;
-	private ArrayList<ArrayList<Integer>> client_hands;
+	private ArrayList<ArrayList<Integer>> clientHands;
 	private ServerOperation op; //need to later add exception handling
-	private ArrayList<Peer> allClients; //here may need to store a Peer instead of client list
+	private ArrayList<Peer> allClients;
 	private int nextClient;
-	private boolean gameStart = false;
 
 	public Server() {
 		cardlist = new LinkedList<>();
@@ -43,14 +41,13 @@ public class Server implements Peer{
 	}
 	
 	public void init() {
-		gameStart = true;
 		cardlist = shuffle();
-		client_hands = deal();
+		clientHands = deal();
 		//init the each ui
 		sendAll(new InitMsg(), 0);
 		//send initial hands to the clients
 		for(int i = 0;i<CLIENT_NUM;i++) {
-			send(allClients.get(i),new DealMsg(client_hands.get(i)));
+			send(allClients.get(i),new DealMsg(clientHands.get(i)));
 		}
 	}
 	
@@ -105,7 +102,7 @@ public class Server implements Peer{
 	}
 	
 	public void sendNextDraw() {
-		int sendTarget = nextClient; //use this to edit before send
+		int sendTarget = nextClient;
 		nextClient ++;
 		nextClient %= CLIENT_NUM;
 		if(!cardlist.isEmpty())
@@ -117,7 +114,6 @@ public class Server implements Peer{
 	
 	public void setGameOver() {
 		System.out.println("Game Over!!!");
-		gameStart = false;
 	}
 	
 	
@@ -129,8 +125,8 @@ public class Server implements Peer{
 	@Override
 	public void onRecv(Message msg) {
 		try {// this part may be extracted later
-			Class c = Class.forName("server."+msg.getOperationName());
-			Constructor constructor = c.getConstructor(); //this warning need to be solved later
+			Class<?> c = Class.forName("server."+msg.getOperationName());
+			Constructor<?> constructor = c.getConstructor();
 			op = (ServerOperation)constructor.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();

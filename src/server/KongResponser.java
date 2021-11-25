@@ -9,9 +9,9 @@ public class KongResponser implements BidResponser{
 	public void response(Server server, BidMsg msg) {
 		server.sendAll(msg, msg.getBidClient());
 
-		server.sendAll(new DrawNoticeMsg(server.getNextClient()), 0); //here pay attention
+		server.sendAll(new DrawNoticeMsg(server.getNextClient()), 0);
 		server.setNextClient(msg.getBidClient());
-		server.sendNextDraw(); //may be changed later to retrieve one from the queue tail
+		server.sendNextDraw();
 	}
 
 }

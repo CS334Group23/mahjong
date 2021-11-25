@@ -6,12 +6,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-import gui.GameController;
 import network.Message;
 import network.Peer;
 import ui.ClientInterface;
 import ui.Ui;
 import ui.aiUi.AiUi;
+import ui.gui.GameController;
 import ui.textUi.TextUi;
 import utils.Tile;
 import utils.Meld;
@@ -75,8 +75,8 @@ public class Client implements Peer, ClientInterface{
 	@Override
 	public void onRecv(Message msg) {
 		try {
-			Class c = Class.forName("client."+msg.getOperationName()); //this hard code need to be solved later
-			Constructor constructor = c.getConstructor(); //this warning need to be solved later
+			Class<?> c = Class.forName("client."+msg.getOperationName());
+			Constructor<?> constructor = c.getConstructor();
 			op = (ClientOperation)constructor.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();

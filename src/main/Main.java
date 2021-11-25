@@ -13,11 +13,19 @@ public class Main {
 		if(uiArgs == null || uiArgs.length != 1) {
 			System.exit(1);
 		}
-		Server server = new Server();
-		server.formRoom(uiArgs[0]);
-		for(int i=0; i<4; i++) {// this number can be changed later
-			server.init();
-			server.startGame();
+		String[] numArgs = clp.getArgumentValue("num");
+		if(numArgs == null || numArgs.length != 1) {
+			System.exit(1);
+		}
+		String ui = uiArgs[0];
+		int gameNum = Integer.parseInt(numArgs[0]);
+		if(gameNum > 0) {
+			Server server = new Server();
+			server.formRoom(ui);
+			for(int i=0; i<gameNum; i++) {
+				server.init();
+				server.startGame();
+			}
 		}
 	}
 
