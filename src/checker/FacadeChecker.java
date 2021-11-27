@@ -47,11 +47,16 @@ public class FacadeChecker {
 		
 	}
 	public ArrayList<Sequence> check_if_win(){
+		
 		return checkwin.CheckScore(hand,showed_hand);
 	}
 	
 	public int getScore() {
-		return checkwin.getScore(hand,showed_hand);
+		ArrayList<Sequence> temp=checkwin.CheckScore(hand,showed_hand);
+		int sum=0;
+		for(Sequence s:temp)
+			sum+=s.getScore();
+		return sum;
 	}
 	
 	public boolean checkWhetherWin() {
