@@ -59,7 +59,7 @@ class TestClient {
 	void testSetUi2() {
 		Client client = new Client(0,new Server(),"GUI");
 		Ui ui = client.getUi();
-		assertEquals("class gui.GameController",ui.getClass().toString());
+		assertEquals("class ui.gui.GameController",ui.getClass().toString());
 	}
 	
 	@Test
