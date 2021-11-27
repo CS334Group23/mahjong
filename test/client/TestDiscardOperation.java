@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestDiscardOperation.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,8 +21,15 @@ import network.Peer;
 import server.Server;
 import ui.textUi.TextUi;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestDiscardOperation.
+ */
 class TestDiscardOperation {
 
+	/**
+	 * Test 1.
+	 */
 	@Test
 	//No condition, send Empty
 	void test1() {
@@ -39,6 +51,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(40,2));
 	}
 	
+	/**
+	 * Test 2.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Chow, Choose Chow
 	void test2() throws Exception {
@@ -61,6 +78,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(44,0));
 	}
 	
+	/**
+	 * Test 3.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Chow, Choose pass
 	void test3() throws Exception {
@@ -83,6 +105,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(44,0));
 	}
 	
+	/**
+	 * Test 4.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Pong, Choose Pong
 	void test4() throws Exception {
@@ -105,6 +132,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(2,2));
 	}
 	
+	/**
+	 * Test 5.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Pong, Choose Pass
 	void test5() throws Exception {
@@ -127,6 +159,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(2,2));
 	}
 	
+	/**
+	 * Test 6.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong, Pong, Choose Kong
 	void test6() throws Exception {
@@ -149,6 +186,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(3,2));
 	}
 	
+	/**
+	 * Test 7.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong, Pong, Choose Pong
 	void test7() throws Exception {
@@ -171,6 +213,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(3,2));
 	}
 	
+	/**
+	 * Test 8.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong, Pong, Choose Pass
 	void test8() throws Exception {
@@ -193,6 +240,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(3,2));
 	}
 	
+	/**
+	 * Test 9.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Win,Pong,Kong, Choose Win
 	void test9() throws Exception {
@@ -215,6 +267,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(3,2));
 	}
 	
+	/**
+	 * Test 10.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Win,Pong,Kong, Invalid Operation
 	void test10() throws Exception {
@@ -237,6 +294,11 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(3,2));
 	}
 	
+	/**
+	 * Test 11.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Win,Pong,Kong, Invalid Operation
 	void test11() throws Exception {
@@ -260,6 +322,9 @@ class TestDiscardOperation {
 	}
 	
 	
+	/**
+	 * Test 12.
+	 */
 	@Test
 	//Condition the client is the message sender, default send empty
 	void test12() {
@@ -281,8 +346,15 @@ class TestDiscardOperation {
 		discardOp.operate(client,new DiscardMsg(3,1));
 	}
 	
+	/** The bos. */
 	ByteArrayInputStream bos;
 	
+	/**
+	 * Sets the input.
+	 *
+	 * @param s the new input
+	 * @throws Exception the exception
+	 */
 	private void setInput(String s) throws Exception {
 		bos = new ByteArrayInputStream(s.getBytes());
 		System.setIn(bos);

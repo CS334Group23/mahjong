@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: Testsorting.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -6,6 +11,11 @@ import checker.CheckWin;
 import checker.GenerateWinningHand;
 import utils.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class Testsorting.
+ */
 public class Testsorting {
 //	@Test
 //	public void UnitTestsortTilev1() { //test if can sort
@@ -53,6 +63,9 @@ public class Testsorting {
 //		assertEquals(true,result);
 //		
 //		
+/**
+ * Unit testsort meld.
+ */
 //	}
 	@Test 
 	public void UnitTestsort_Meld() {

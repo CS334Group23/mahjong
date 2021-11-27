@@ -1,7 +1,24 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: FindTilePosition.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class FindTilePosition.
+ */
 public class  FindTilePosition {
 	
+	/**
+	 * Next different tile.
+	 *
+	 * @param hand the hand
+	 * @param a the a
+	 * @return the int
+	 */
 	public static int NextDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
 		//System.out.println(a.getId()+" "+pos);
@@ -14,6 +31,14 @@ public class  FindTilePosition {
 		}
 		return -1;
 	}
+	
+	/**
+	 * Previous different tile.
+	 *
+	 * @param hand the hand
+	 * @param a the a
+	 * @return the int
+	 */
 	public static int PreviousDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
 		//System.out.println(a.getId()+" "+pos);
@@ -27,7 +52,14 @@ public class  FindTilePosition {
 		return -1;
 	}
 	
-	   public static int FindPosition(ArrayList<Tile> hand, Tile a) {
+	   /**
+   	 * Find position.
+   	 *
+   	 * @param hand the hand
+   	 * @param a the a
+   	 * @return the int
+   	 */
+   	public static int FindPosition(ArrayList<Tile> hand, Tile a) {
 
 		   int low=0;
 		   int high=hand.size()-1;

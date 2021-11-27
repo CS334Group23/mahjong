@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestCheckWin_Unit_Test.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -5,7 +10,16 @@ import org.junit.Test;
 import checker.CheckWin;
 import utils.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestCheckWin_Unit_Test.
+ */
 public class TestCheckWin_Unit_Test {
+	
+	/**
+	 * Unit test P hv 1.
+	 */
 	@Test
 	public void UnitTestPHv1() { //commonhand/ph test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -34,6 +48,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test P hv 2.
+	 */
 	@Test
 	public void UnitTestPHv2() { //commonhand/ph test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -62,6 +80,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 1.
+	 */
 	@Test
 	public void UnitTestPHHv1() { //All_Pongs/ Pong pong hu test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -91,6 +113,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 2.
+	 */
 	@Test
 	public void UnitTestPHHv2() { ///All_Pongs/ Pong pong hu test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -121,6 +147,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test PH hv 3.
+	 */
 	@Test
 	public void UnitTestPHHv3() { ///All_Pongs/ Pong pong hu test false if all_honour with dragon
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -151,6 +180,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test PH hv 4.
+	 */
 	@Test
 	public void UnitTestPHHv4() { ///All_Pongs/ Pong pong hu test false if all_honour with wind at start
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -180,6 +213,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 5.
+	 */
 	@Test
 	public void UnitTestPHHv5() { //All_Pongs/ Pong pong hu test false as mc
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -209,6 +246,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 6.
+	 */
 	@Test
 	public void UnitTestPHHv6() { //All_Pongs/ Pong pong hu test false as all_kongs
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -243,6 +284,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 1.
+	 */
 	@Test
 	public void UnitTestHYSv1() { ///Mixed_One_suit test false : if this is All_One_Suit return false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -271,6 +316,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 2.
+	 */
 	@Test
 	public void UnitTestHYSv2() { ///Mixed_One_suit test false : if this is all honour return false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -299,6 +348,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 3.
+	 */
 	@Test
 	public void UnitTestHYSv3() { ///Mixed_One_suit test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -327,6 +380,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 4.
+	 */
 	@Test
 	public void UnitTestHYSv4() { ///Mixed_One_suit test false if two type
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -355,6 +412,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test QY sv 1.
+	 */
 	@Test
 	public void UnitTestQYSv1() { ///All_One_suit test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -383,6 +444,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test QY sv 2.
+	 */
 	@Test
 	public void UnitTestQYSv2() { ///All_One_suit test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -411,6 +476,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test QY sv 3.
+	 */
 	@Test
 	public void UnitTestQYSv3() { ///All_One_suit test false if all honour
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -439,6 +508,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 1.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv1() { //test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -467,6 +540,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 2.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv2() { //test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -495,6 +572,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 3.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv3() { //test false if chow exist
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -523,6 +604,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 4.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv4() { //test false for all terminals 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -551,6 +636,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 5.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv5() { //test false for no terminals 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -579,6 +668,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test M cv 1.
+	 */
 	@Test
 	public void UnitTestMCv1() { ///MC test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -591,6 +684,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test M cv 2.
+	 */
 	@Test
 	public void UnitTestMCv2() { ///MC test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -599,18 +696,30 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check same typev 1.
+	 */
 	@Test
 	public void UnitTestCheckSameTypev1() { //test false
 		CheckWin checkwin=new CheckWin();
 		checkwin.CheckSameType(new Tile(0), new Tile(1));
 		
 	}
+	
+	/**
+	 * Unit test check same typev 2.
+	 */
 	@Test
 	public void UnitTestCheckSameTypev2() { //test true
 		CheckWin checkwin=new CheckWin();
 		checkwin.CheckSameType(new Tile(0), new Tile(36));
 		
 	}
+	
+	/**
+	 * Unit test check red dragonv 1.
+	 */
 	@Test
 	public void UnitTestCheckRedDragonv1() { ///test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -623,6 +732,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check red dragonv 2.
+	 */
 	@Test
 	public void UnitTestCheckRedDragonv2() { ///test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -635,6 +748,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check green dragonv 1.
+	 */
 	@Test
 	public void UnitTestCheckGreenDragonv1() { ///test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -647,6 +764,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check green dragonv 2.
+	 */
 	@Test
 	public void UnitTestCheckGreenDragonv2() { ///test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -659,6 +780,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check white dragonv 1.
+	 */
 	@Test
 	public void UnitTestCheckWhiteDragonv1() { ///test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -671,6 +796,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check white dragonv 2.
+	 */
 	@Test
 	public void UnitTestCheckWhiteDragonv2() { ///test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -683,6 +812,10 @@ public class TestCheckWin_Unit_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Integration test check KK hv 1.
+	 */
 	@Test
 	public void IntegrationTestCheckKKHv1() { //check four concealed triplets if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -714,6 +847,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check KK hv 1.
+	 */
 	@Test
 	public void UnitTestCheckKKHv1() { //check four concealed triplets if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -745,6 +881,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check KK hv 2.
+	 */
 	@Test
 	public void UnitTestCheckKKHv2() { //check four concealed triplets if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -775,6 +914,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check KK hv 3.
+	 */
 	@Test
 	public void UnitTestCheckKKHv3() { //check four concealed triplets if false with not win from wall
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -807,6 +950,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS yv 1.
+	 */
 	@Test
 	public void UnitTestCheckXSYv1() { //check small dragon if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -837,6 +983,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS yv 2.
+	 */
 	@Test
 	public void UnitTestCheckXSYv2() { //check small dragon if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -867,6 +1016,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS yv 3.
+	 */
 	@Test
 	public void UnitTestCheckXSYv3() { //check small dragon if false as great dragons
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -897,6 +1049,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS xv 1.
+	 */
 	@Test
 	public void UnitTestCheckXSXv1() { //check small wind if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -927,6 +1082,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS xv 2.
+	 */
 	@Test
 	public void UnitTestCheckXSXv2() { //check small wind if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -956,6 +1114,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check XS xv 3.
+	 */
 	@Test
 	public void UnitTestCheckXSXv3() { //check small wind if false as great wind
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -986,6 +1148,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check ZY sv 1.
+	 */
 	@Test
 	public void UnitTestCheckZYSv1() { //check all honour if true 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1016,6 +1181,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check ZY sv 2.
+	 */
 	@Test
 	public void UnitTestCheckZYSv2() { //check all honour if false 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1046,6 +1214,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check QY jv 1.
+	 */
 	@Test
 	public void UnitTestCheckQYJv1() { //check all terminals if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1076,6 +1247,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check QY jv 2.
+	 */
 	@Test
 	public void UnitTestCheckQYJv2() { //check all terminals if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1106,6 +1280,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check QY jv 3.
+	 */
 	@Test
 	public void UnitTestCheckQYJv3() {// check all terminals if false with honour
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1136,6 +1313,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS yv 1.
+	 */
 	@Test
 	public void UnitTestCheckDSYv1() {// check great dragon if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1166,6 +1346,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS yv 2.
+	 */
 	@Test
 	public void UnitTestCheckDSYv2() {// check great dragon if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1196,6 +1379,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS xv 1.
+	 */
 	@Test
 	public void UnitTestCheckDSXv1() {// check great wind if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1226,6 +1412,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS xv 2.
+	 */
 	@Test
 	public void UnitTestCheckDSXv2() {// check great wind if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1256,6 +1445,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check JLB dv 1.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv1() {// check nine gate if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1286,6 +1478,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check JLB dv 2.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv2() {// check nine gate if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1315,6 +1510,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check JLB dv 3.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv3() {// check nine gate if true with one of 2-8 has 2
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1344,6 +1543,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check JLB dv 4.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv4() {// check nine gate if true with one of 2-8 has 2
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1373,6 +1576,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check JLB dv 5.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv5() {// check nine gate if false with first exceed 4
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1403,6 +1610,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check JLB dv 6.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv6() {// check nine gate if false with not same type
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1432,6 +1642,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check JLB dv 7.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv7() {// check nine gate if false 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1463,6 +1677,9 @@ public class TestCheckWin_Unit_Test {
 	}
 	
 	
+	/**
+	 * Unit test check SS yv 1.
+	 */
 	@Test 
 	public void UnitTestCheckSSYv1() {// check SSY
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1502,6 +1719,9 @@ public class TestCheckWin_Unit_Test {
 		
 	}
 	
+	/**
+	 * Unit test check SS yv 2.
+	 */
 	@Test 
 	public void UnitTestCheckSSYv2() {// check SSY if false if all also terminal tile except one
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1540,6 +1760,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check SS yv 3.
+	 */
 	@Test 
 	public void UnitTestCheckSSYv3() {// check SSY if false 
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1578,6 +1802,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check AK sv 1.
+	 */
 	@Test 
 	public void UnitTestCheckAKSv1() {// check all kongs if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -1611,6 +1839,10 @@ public class TestCheckWin_Unit_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check AK sv 2.
+	 */
 	@Test 
 	public void UnitTestCheckAKSv2() {// check all kongs if false
 		ArrayList<Meld> hand = new ArrayList<>();

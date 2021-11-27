@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: DrawOperation.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import utils.BidType;
@@ -13,8 +18,18 @@ import network.DiscardMsg;
 import network.DrawMsg;
 import network.Message;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DrawOperation.
+ */
 public class DrawOperation implements ClientOperation{
 
+	/**
+	 * Operate.
+	 *
+	 * @param client the client
+	 * @param msg the msg
+	 */
 	@Override
 	public void operate(Client client, Message msg) {
 		DrawMsg drawMsg = (DrawMsg)msg;

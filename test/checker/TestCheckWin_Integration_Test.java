@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestCheckWin_Integration_Test.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 
 import static org.junit.Assert.assertEquals;
@@ -30,9 +35,17 @@ import checker.sequence.White_Dragon;
 import checker.sequence.Win_From_Wall;
 import utils.Meld;
 import utils.Tile;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestCheckWin_Integration_Test.
+ */
 public class TestCheckWin_Integration_Test {
 
 
+	/**
+	 * Integration test check winv 1.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv1() { //test if can output score with meld
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -80,6 +93,9 @@ public class TestCheckWin_Integration_Test {
 	}
 	
 	
+	/**
+	 * Integration test check winv 2.
+	 */
 	// for score, first check all individual scoring method, all method should be true, false, and true with meld
 	@Test
 	public void IntegrationTestCheckWinv2() { //test if command hand  
@@ -128,6 +144,9 @@ public class TestCheckWin_Integration_Test {
 	}
 	
 	
+	/**
+	 * Integration test check winv 3.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv3() { //test if not command hand 
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -173,6 +192,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 4.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv4() { //test if all in triplet (must be with showed hand)
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -216,6 +239,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 5.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv5() { //test if not all in triplet
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -259,6 +286,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 6.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv6() { //test if all one suit
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -304,6 +335,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 7.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv7() { //test if not all one suit
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -350,6 +385,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 8.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv8() { //test if mixed one suit
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -396,6 +434,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 9.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv9() { //test if not mixed one suit
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -442,6 +483,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 10.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv10() { //test if  mixed terminals
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -487,6 +531,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 11.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv11() { //test if not mixed terminals
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -533,6 +581,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 12.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv12() { //test if  small Dragons
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -578,6 +629,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 13.
+	 */
 	@Test
 		public void IntegrationTestCheckWinv13() { //test if not small Dragons
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -623,6 +678,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}
+		
+		/**
+		 * Integration test check winv 14.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv14() { //test if  small winds
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -669,6 +728,9 @@ public class TestCheckWin_Integration_Test {
 			
 		}
 		
+		/**
+		 * Integration test check winv 15.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv15() { //test if not small winds
 					ArrayList<Tile> hand = new ArrayList<>();
@@ -714,6 +776,10 @@ public class TestCheckWin_Integration_Test {
 					
 					
 	}
+		
+		/**
+		 * Integration test check winv 16.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv16() { //test if  all honours
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -760,6 +826,9 @@ public class TestCheckWin_Integration_Test {
 			
 		}	
 
+		/**
+		 * Integration test check winv 17.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv17() { //test if  not all honours
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -806,6 +875,9 @@ public class TestCheckWin_Integration_Test {
 			
 		}	
 		
+		/**
+		 * Integration test check winv 18.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv18() { //test if  all terminals
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -852,6 +924,9 @@ public class TestCheckWin_Integration_Test {
 			
 		}	
 
+		/**
+		 * Integration test check winv 19.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv19() { //test if not all terminals
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -898,6 +973,9 @@ public class TestCheckWin_Integration_Test {
 			
 		}
 		
+		/**
+		 * Integration test check winv 20.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv20() { //test if Great Dragons
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -943,6 +1021,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}
+		
+		/**
+		 * Integration test check winv 21.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv21() { //test if not Great Dragons
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -988,6 +1070,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}
+		
+		/**
+		 * Integration test check winv 22.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv22() { //test if Great Wind
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1033,6 +1119,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}	
+		
+		/**
+		 * Integration test check winv 23.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv23() { //test if not  Great Wind
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1078,6 +1168,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}	
+		
+		/**
+		 * Integration test check winv 24.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv24() { //test if   nine gate
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1124,6 +1218,9 @@ public class TestCheckWin_Integration_Test {
 			
 		}
 		
+		/**
+		 * Integration test check winv 25.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv25() { //test if not  nine gate
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1170,6 +1267,9 @@ public class TestCheckWin_Integration_Test {
 			
 		}	
 		
+		/**
+		 * Integration test check winv 26.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv26() { //test if thirteen orphans
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1215,6 +1315,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}	
+		
+		/**
+		 * Integration test check winv 27.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv27() { //test if not thirteen orphans
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1260,6 +1364,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}	
+		
+		/**
+		 * Integration test check winv 28.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv28() { //if it is four triplets
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1305,6 +1413,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}
+		
+		/**
+		 * Integration test check winv 29.
+		 */
 		@Test
 		public void IntegrationTestCheckWinv29() { //if it is four triplets
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -1350,6 +1462,10 @@ public class TestCheckWin_Integration_Test {
 			
 			
 		}
+	
+	/**
+	 * Integration test check winv 30.
+	 */
 	//test extra score
 	@Test
 	public void IntegrationTestCheckWinv30() { //test if  win from wall
@@ -1396,6 +1512,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 31.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv31() { //test if not win from wall
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1440,6 +1560,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 32.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv32() { //test if Red Dragon
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1484,6 +1607,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 33.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv33() { //test if not Red Dragon
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1528,6 +1654,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 34.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv34() { //test if Green Dragon
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1572,6 +1701,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 35.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv35() { //test if not green Dragon
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1616,6 +1748,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 36.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv36() { //test if White Dragon
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1660,6 +1795,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 37.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv37() { //test if not white Dragon
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1707,6 +1845,9 @@ public class TestCheckWin_Integration_Test {
 	//Test exception list now
 	
 	
+	/**
+	 * Integration test check winv 38.
+	 */
 	//Test with all in triplets
 	@Test
 	
@@ -1763,6 +1904,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 39.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv39() { //if it is all honours, cannot be all in triplets
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1806,6 +1951,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Integration test check winv 40.
+	 */
 	@Test
 	public void IntegrationTestCheckWinv40() { //if it is all kongs, cannot be all in triplets
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -1851,6 +2000,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Integration test check winv 46.
+	 */
 	/*
 
 	@Test
@@ -2127,6 +2279,9 @@ public class TestCheckWin_Integration_Test {
 	
 	
 	//<---------------------------------------------------------------------------------->
+	/**
+	 * Unit test P hv 1.
+	 */
 	// Unit Test for function in class CheckWin
 	@Test
 	public void UnitTestPHv1() { //commonhand/ph test true
@@ -2156,6 +2311,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test P hv 2.
+	 */
 	@Test
 	public void UnitTestPHv2() { //commonhand/ph test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2184,6 +2343,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 1.
+	 */
 	@Test
 	public void UnitTestPHHv1() { //All_Pongs/ Pong pong hu test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2213,6 +2376,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 2.
+	 */
 	@Test
 	public void UnitTestPHHv2() { ///All_Pongs/ Pong pong hu test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2243,6 +2410,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test PH hv 3.
+	 */
 	@Test
 	public void UnitTestPHHv3() { ///All_Pongs/ Pong pong hu test false if all_honour with dragon
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2273,6 +2443,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test PH hv 4.
+	 */
 	@Test
 	public void UnitTestPHHv4() { ///All_Pongs/ Pong pong hu test false if all_honour with wind at start
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2302,6 +2476,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 5.
+	 */
 	@Test
 	public void UnitTestPHHv5() { //All_Pongs/ Pong pong hu test false as mc
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2331,6 +2509,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test PH hv 6.
+	 */
 	@Test
 	public void UnitTestPHHv6() { //All_Pongs/ Pong pong hu test false as all_kongs
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2365,6 +2547,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 1.
+	 */
 	@Test
 	public void UnitTestHYSv1() { ///Mixed_One_suit test false : if this is All_One_Suit return false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2393,6 +2579,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 2.
+	 */
 	@Test
 	public void UnitTestHYSv2() { ///Mixed_One_suit test false : if this is all honour return false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2421,6 +2611,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 3.
+	 */
 	@Test
 	public void UnitTestHYSv3() { ///Mixed_One_suit test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2449,6 +2643,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test HY sv 4.
+	 */
 	@Test
 	public void UnitTestHYSv4() { ///Mixed_One_suit test false if two type
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2477,6 +2675,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test QY sv 1.
+	 */
 	@Test
 	public void UnitTestQYSv1() { ///All_One_suit test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2505,6 +2707,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test QY sv 2.
+	 */
 	@Test
 	public void UnitTestQYSv2() { ///All_One_suit test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2533,6 +2739,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test QY sv 3.
+	 */
 	@Test
 	public void UnitTestQYSv3() { ///All_One_suit test false if all honour
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2561,6 +2771,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 1.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv1() { //test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2589,6 +2803,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 2.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv2() { //test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2617,6 +2835,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 3.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv3() { //test false if chow exist
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2645,6 +2867,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 4.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv4() { //test false for all terminals 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2673,6 +2899,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check HY jv 5.
+	 */
 	@Test 
 	public void UnitTestCheckHYJv5() { //test false for no terminals 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2701,6 +2931,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test M cv 1.
+	 */
 	@Test
 	public void UnitTestMCv1() { ///MC test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2713,6 +2947,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test M cv 2.
+	 */
 	@Test
 	public void UnitTestMCv2() { ///MC test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2721,18 +2959,30 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check same typev 1.
+	 */
 	@Test
 	public void UnitTestCheckSameTypev1() { //test false
 		CheckWin checkwin=new CheckWin();
 		checkwin.CheckSameType(new Tile(0), new Tile(1));
 		
 	}
+	
+	/**
+	 * Unit test check same typev 2.
+	 */
 	@Test
 	public void UnitTestCheckSameTypev2() { //test true
 		CheckWin checkwin=new CheckWin();
 		checkwin.CheckSameType(new Tile(0), new Tile(36));
 		
 	}
+	
+	/**
+	 * Unit test check red dragonv 1.
+	 */
 	@Test
 	public void UnitTestCheckRedDragonv1() { ///test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2745,6 +2995,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check red dragonv 2.
+	 */
 	@Test
 	public void UnitTestCheckRedDragonv2() { ///test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2757,6 +3011,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check green dragonv 1.
+	 */
 	@Test
 	public void UnitTestCheckGreenDragonv1() { ///test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2769,6 +3027,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check green dragonv 2.
+	 */
 	@Test
 	public void UnitTestCheckGreenDragonv2() { ///test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2781,6 +3043,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Unit test check white dragonv 1.
+	 */
 	@Test
 	public void UnitTestCheckWhiteDragonv1() { ///test false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2793,6 +3059,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(false,result);
 		
 	}
+	
+	/**
+	 * Unit test check white dragonv 2.
+	 */
 	@Test
 	public void UnitTestCheckWhiteDragonv2() { ///test true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2805,6 +3075,10 @@ public class TestCheckWin_Integration_Test {
 		assertEquals(true,result);
 		
 	}
+	
+	/**
+	 * Integration test check KK hv 1.
+	 */
 	@Test
 	public void IntegrationTestCheckKKHv1() { //check four concealed triplets if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2836,6 +3110,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check KK hv 1.
+	 */
 	@Test
 	public void UnitTestCheckKKHv1() { //check four concealed triplets if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2867,6 +3144,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check KK hv 2.
+	 */
 	@Test
 	public void UnitTestCheckKKHv2() { //check four concealed triplets if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2897,6 +3177,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check KK hv 3.
+	 */
 	@Test
 	public void UnitTestCheckKKHv3() { //check four concealed triplets if false with not win from wall
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2929,6 +3213,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS yv 1.
+	 */
 	@Test
 	public void UnitTestCheckXSYv1() { //check small dragon if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2959,6 +3246,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS yv 2.
+	 */
 	@Test
 	public void UnitTestCheckXSYv2() { //check small dragon if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -2989,6 +3279,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS yv 3.
+	 */
 	@Test
 	public void UnitTestCheckXSYv3() { //check small dragon if false as great dragons
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3019,6 +3312,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS xv 1.
+	 */
 	@Test
 	public void UnitTestCheckXSXv1() { //check small wind if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3049,6 +3345,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check XS xv 2.
+	 */
 	@Test
 	public void UnitTestCheckXSXv2() { //check small wind if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3078,6 +3377,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check XS xv 3.
+	 */
 	@Test
 	public void UnitTestCheckXSXv3() { //check small wind if false as great wind
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3108,6 +3411,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check ZY sv 1.
+	 */
 	@Test
 	public void UnitTestCheckZYSv1() { //check all honour if true 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3138,6 +3444,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check ZY sv 2.
+	 */
 	@Test
 	public void UnitTestCheckZYSv2() { //check all honour if false 
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3168,6 +3477,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check QY jv 1.
+	 */
 	@Test
 	public void UnitTestCheckQYJv1() { //check all terminals if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3198,6 +3510,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check QY jv 2.
+	 */
 	@Test
 	public void UnitTestCheckQYJv2() { //check all terminals if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3228,6 +3543,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check QY jv 3.
+	 */
 	@Test
 	public void UnitTestCheckQYJv3() {// check all terminals if false with honour
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3258,6 +3576,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS yv 1.
+	 */
 	@Test
 	public void UnitTestCheckDSYv1() {// check great dragon if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3288,6 +3609,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS yv 2.
+	 */
 	@Test
 	public void UnitTestCheckDSYv2() {// check great dragon if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3318,6 +3642,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS xv 1.
+	 */
 	@Test
 	public void UnitTestCheckDSXv1() {// check great wind if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3348,6 +3675,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check DS xv 2.
+	 */
 	@Test
 	public void UnitTestCheckDSXv2() {// check great wind if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3378,6 +3708,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check JLB dv 1.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv1() {// check nine gate if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3408,6 +3741,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check JLB dv 2.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv2() {// check nine gate if false
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3437,6 +3773,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check JLB dv 3.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv3() {// check nine gate if true with one of 2-8 has 2
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3467,6 +3807,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check JLB dv 4.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv4() {// check nine gate if false with first exceed 4
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3497,6 +3840,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check JLB dv 5.
+	 */
 	@Test
 	public void UnitTestCheckJLBDv5() {// check nine gate if false with not same type
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3528,6 +3874,9 @@ public class TestCheckWin_Integration_Test {
 	}
 
 	
+	/**
+	 * Unit test check SS yv 1.
+	 */
 	@Test 
 	public void UnitTestCheckSSYv1() {// check SSY if true
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -3567,6 +3916,9 @@ public class TestCheckWin_Integration_Test {
 		
 	}
 	
+	/**
+	 * Unit test check SS yv 2.
+	 */
 	@Test 
 	public void UnitTestCheckSSYv2() {// check SSY if false if all also terminal tile except one
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -3605,6 +3957,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check SS yv 3.
+	 */
 	@Test 
 	public void UnitTestCheckSSYv3() {// check SSY if false 
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -3643,6 +3999,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check AK sv 1.
+	 */
 	@Test 
 	public void UnitTestCheckAKSv1() {// check all kongs if true
 		ArrayList<Meld> hand = new ArrayList<>();
@@ -3676,6 +4036,10 @@ public class TestCheckWin_Integration_Test {
 		
 		
 	}
+	
+	/**
+	 * Unit test check AK sv 2.
+	 */
 	@Test 
 	public void UnitTestCheckAKSv2() {// check all kongs if false
 		ArrayList<Meld> hand = new ArrayList<>();

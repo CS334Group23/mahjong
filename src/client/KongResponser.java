@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: KongResponser.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import java.util.Scanner;
@@ -5,8 +10,18 @@ import java.util.Scanner;
 import network.BidMsg;
 import network.DiscardMsg;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KongResponser.
+ */
 public class KongResponser implements BidResponser{
 	
+	/**
+	 * Response.
+	 *
+	 * @param client the client
+	 * @param msg the msg
+	 */
 	@Override
 	public void response(Client client, BidMsg msg) {
 		BidMsg kongMsg = (BidMsg)msg;

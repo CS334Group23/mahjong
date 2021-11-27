@@ -1,8 +1,25 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: Checker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Checker.
+ */
 public class Checker {
+	
+	/**
+	 * Check chow.
+	 *
+	 * @param wall the wall
+	 * @param another the another
+	 * @return the array list
+	 */
 	public static ArrayList<Meld> checkChow(ArrayList<Tile> wall, Tile another) {
 		ArrayList<Meld> result = new ArrayList<>();
 		if(another.getType()!=Type.BAMBOO && another.getType()!=Type.CHARACTER && another.getType()!=Type.DOT) {
@@ -47,6 +64,13 @@ public class Checker {
 	}
 		
 		
+	/**
+	 * Check pong.
+	 *
+	 * @param wall the wall
+	 * @param another the another
+	 * @return the meld
+	 */
 	public static Meld checkPong(ArrayList<Tile> wall, Tile another) {	
 		int insertPosition = 0;
 		for(; insertPosition<wall.size(); insertPosition++) {
@@ -76,6 +100,13 @@ public class Checker {
 		return null;
 	}
 		
+	/**
+	 * Check kong.
+	 *
+	 * @param wall the wall
+	 * @param another the another
+	 * @return the meld
+	 */
 	public static Meld checkKong(ArrayList<Tile> wall, Tile another) {
 		int insertPosition = 0;
 		for(; insertPosition<wall.size(); insertPosition++) {

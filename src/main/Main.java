@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: Main.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package main;
 
 import server.Server;
@@ -5,6 +10,11 @@ import utils.CommandLineParser;
 
 public class Main {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		// parse the command line argument
 		CommandLineParser clp = new CommandLineParser(args);

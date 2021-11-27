@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: UserRight.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.gui;
 
 import java.awt.Color;
@@ -11,8 +16,17 @@ import javax.swing.border.Border;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserRight.
+ */
 public class UserRight extends User{
 
+	/**
+	 * Instantiates a new user right.
+	 *
+	 * @param hand the hand
+	 */
 	public UserRight(ArrayList<Tile> hand) {
 		userId = User.USER_RIGHT;
 		tileOnBoard = 0;
@@ -22,6 +36,11 @@ public class UserRight extends User{
 		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.696, GameController.FRAME_HEIGHT*0.57), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
 	
+	/**
+	 * Hand init.
+	 *
+	 * @param gamePanel the game panel
+	 */
 	@Override
 	public void handInit(GamePanel gamePanel) {
 		ArrayList<Tile> hand = getHand();
@@ -41,6 +60,13 @@ public class UserRight extends User{
 		newTileShowPoint = new Point(point.x, point.y - Tile.TILE_HEIGHT_AI / 2);
 	}
 	
+	/**
+	 * Discard tile.
+	 *
+	 * @param gamePanel the game panel
+	 * @param tile the tile
+	 * @return the tile label
+	 */
 	@Override
 	public TileLabel discardTile(GamePanel gamePanel, Tile tile) {
 		// parameter to add tile to gamepanel
@@ -85,6 +111,12 @@ public class UserRight extends User{
 		return label;
 	}
 	
+	/**
+	 * Put meld to right.
+	 *
+	 * @param gamePanel the game panel
+	 * @param meld the meld
+	 */
 	@Override
 	public void putMeldToRight(GamePanel gamePanel, Meld meld) {
 		int tileWidth = getHandDeck().getTileWidth();
@@ -139,6 +171,12 @@ public class UserRight extends User{
 		}
 	}
 	
+	/**
+	 * Show bid info.
+	 *
+	 * @param gamePanel the game panel
+	 * @param bidResponser the bid responser
+	 */
 	@Override
 	public void showBidInfo(GamePanel gamePanel,String bidResponser) {
 		String filename = String.format("resource/static/others/%s.png",bidResponser);
@@ -155,6 +193,12 @@ public class UserRight extends User{
 		gamePanel.repaint();
 	}
 	
+	/**
+	 * Show score.
+	 *
+	 * @param gamePanel the game panel
+	 * @param score the score
+	 */
 	@Override
 	public void showScore(GamePanel gamePanel, int score) {
 		JLabel scoreLabel = new JLabel();

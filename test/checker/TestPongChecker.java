@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestPongChecker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -7,7 +12,16 @@ import checker.GenerateWinningHand;
 import checker.PongChecker;
 import utils.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestPongChecker.
+ */
 public class TestPongChecker {
+	
+	/**
+	 * Unit testcheck pongv 1.
+	 */
 	@Test
 	public void UnitTestcheckPongv1() {//sorted list to test if can't Pong
 	ArrayList<Tile> hand = new ArrayList<>();
@@ -43,6 +57,10 @@ public class TestPongChecker {
 	Meld result = PongChecker.checkPong(hand,t14);
 	assertEquals(null,result);
 	}
+	
+	/**
+	 * Unit testcheck pongv 2.
+	 */
 	@Test
 	public void UnitTestcheckPongv2() { //sorted list to test if can Pong
 		ArrayList<Tile> hand = new ArrayList<>();

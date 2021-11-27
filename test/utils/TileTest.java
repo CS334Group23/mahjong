@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TileTest.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 
 import static org.junit.Assert.assertEquals;
@@ -8,8 +13,15 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TileTest.
+ */
 class TileTest {
 
+	/**
+	 * Test id to rank index.
+	 */
 	@Test
 	void testIdToRankIndex() {
 		Tile t = new Tile(1);
@@ -18,6 +30,9 @@ class TileTest {
 		assertEquals(0,idx);
 	}
 	
+	/**
+	 * Test id to type.
+	 */
 	@Test
 	void testIdToType() {
 		Tile t = new Tile(1);
@@ -26,6 +41,9 @@ class TileTest {
 		assertEquals(Type.BAMBOO,type);
 	}
 
+	/**
+	 * Test id to name.
+	 */
 	@Test
 	void testIdToName() {
 		Tile t = new Tile(138);
@@ -35,6 +53,9 @@ class TileTest {
 		
 	}
 	
+	/**
+	 * Test get url.
+	 */
 	@Test
 	void testGetUrl() {
 		Tile t = new Tile(144);
@@ -45,6 +66,9 @@ class TileTest {
 		assertEquals("resource/static/tiles/facedown-1.png", url);
 	}
 	
+	/**
+	 * Test tile to id list.
+	 */
 	@Test
 	void testTileToIdList() {
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -57,6 +81,9 @@ class TileTest {
 		assertEquals(result,a);
 	}
 	
+	/**
+	 * Test tile list to string.
+	 */
 	@Test 
 	void testTileListToString(){
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,8,12,16,20,24,28,32,33,34));
@@ -66,6 +93,9 @@ class TileTest {
 		assertEquals(s,result);
 	}
 	
+	/**
+	 * Test is same type 1.
+	 */
 	@Test
 	void testIsSameType1() {
 		Tile tile1 = new Tile(0);
@@ -74,6 +104,9 @@ class TileTest {
 		assertEquals(result, true);
 	}
 	
+	/**
+	 * Test is same type 2.
+	 */
 	@Test
 	void testIsSameType2() {
 		Tile tile1 = new Tile(0);
@@ -82,6 +115,9 @@ class TileTest {
 		assertEquals(result, false);
 	}
 	
+	/**
+	 * Test is same type 3.
+	 */
 	@Test
 	void testIsSameType3() {
 		Tile tile1 = new Tile(0);

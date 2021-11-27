@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: FacadeCheckerTest.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 
 import static org.junit.Assert.assertEquals;
@@ -9,7 +14,15 @@ import org.junit.Test;
 import checker.FacadeChecker;
 import checker.sequence.Sequence;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FacadeCheckerTest.
+ */
 public class FacadeCheckerTest {
+	
+	/**
+	 * Test facade checker.
+	 */
 	@Test
 	public void testFacadeChecker() {
 		//check Kong
@@ -34,6 +47,9 @@ public class FacadeCheckerTest {
 		assertEquals(3,result.size());
 	}
 	
+	/**
+	 * Test facade checker 2.
+	 */
 	@Test
 	public void testFacadeChecker2() {
 		//check PPH
@@ -58,6 +74,9 @@ public class FacadeCheckerTest {
 		assertEquals(1,possibleSequence.size());
 	}
 	
+	/**
+	 * Test facade checker 3.
+	 */
 	@Test
 	public void testFacadeChecker3() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -81,6 +100,9 @@ public class FacadeCheckerTest {
 		assertEquals(1,possibleSequence.size());
 	}
 	
+	/**
+	 * Test facade checker 4.
+	 */
 	@Test
 	public void testFacadeChecker4() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -104,6 +126,9 @@ public class FacadeCheckerTest {
 		assertEquals(1,possibleSequence.size());
 	}
 	
+	/**
+	 * Test facade checker 5.
+	 */
 	@Test
 	public void testFacadeChecker5() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -127,6 +152,9 @@ public class FacadeCheckerTest {
 		assertEquals(1,possibleSequence.size());
 	}
 	
+	/**
+	 * Test facade checker 6.
+	 */
 	@Test
 	public void testFacadeChecker6() {
 		ArrayList<Tile> arr = new ArrayList<>();

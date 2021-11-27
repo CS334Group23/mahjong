@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestTextUi.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.textUi;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,8 +28,17 @@ import utils.Meld;
 import utils.Tile;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestTextUi.
+ */
 class TestTextUi {
 
+	/**
+	 * Test info draw.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDraw() throws Exception {
 		setOutput();
@@ -39,6 +53,11 @@ class TestTextUi {
 				+ "Client1 draws card 幺鸡\n",getOutput());
 	}
 	
+	/**
+	 * Test info draw kong.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDrawKong() throws Exception {
 		setOutput();
@@ -59,6 +78,11 @@ class TestTextUi {
 				+"You have options:杠 一万 一万 一万 一万 /过 /\n",getOutput());
 	}
 	
+	/**
+	 * Test info draw win.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDrawWin() throws Exception {
 		setOutput();
@@ -78,6 +102,11 @@ class TestTextUi {
 				+"You have options:胡 /过 /\n",getOutput());
 	}
 	
+	/**
+	 * Test info draw kong win.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDrawKongWin() throws Exception {
 		setOutput();
@@ -99,6 +128,11 @@ class TestTextUi {
 				+"You have options:杠 一万 一万 一万 一万 /胡 /过 /\n",getOutput());
 	}
 	
+	/**
+	 * Test info draw empty.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDrawEmpty() throws Exception {
 		setOutput();
@@ -114,6 +148,11 @@ class TestTextUi {
 				+ "Client1 draws card 幺鸡\n",getOutput());
 	}
 	
+	/**
+	 * Test get op index.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test 
 	void testGetOpIndex() throws Exception{
 		setOutput();
@@ -125,6 +164,11 @@ class TestTextUi {
 		assertEquals(0,result);
 	}
 	
+	/**
+	 * Test get op index 2.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test 
 	void testGetOpIndex2() throws Exception{
 		setOutput();
@@ -136,6 +180,11 @@ class TestTextUi {
 		assertEquals(-1,result);
 	}
 	
+	/**
+	 * Test get discard 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testGetDiscard1() throws Exception {
 		setOutput();
@@ -150,6 +199,11 @@ class TestTextUi {
 		assertEquals(1,result);
 	}
 	
+	/**
+	 * Test get discard 2.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testGetDiscard2() throws Exception {
 		setOutput();
@@ -164,6 +218,11 @@ class TestTextUi {
 		assertEquals(14,result);
 	}
 	
+	/**
+	 * Test get discard 3.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testGetDiscard3() throws Exception {
 		setOutput();
@@ -179,6 +238,11 @@ class TestTextUi {
 		assertEquals(1,result);
 	}
 	
+	/**
+	 * Test get discard 4.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testGetDiscard4() throws Exception {
 		setOutput();
@@ -194,6 +258,11 @@ class TestTextUi {
 		assertEquals(1,result);
 	}
 	
+	/**
+	 * Test info discard.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDiscard() throws Exception {
 		setOutput();
@@ -213,6 +282,11 @@ class TestTextUi {
 				+"Client1 has cards: 六条 /八条 /一万 /一万 /一万 /三万 /六万 /六万 /九万 /九万 /一筒 /二筒 /四筒 /\n",getOutput());
 	}
 	
+	/**
+	 * Test info discard null.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDiscardNull() throws Exception {
 		setOutput();
@@ -229,6 +303,11 @@ class TestTextUi {
 				+ "Client3 discards 一万\n",getOutput());
 	}
 	
+	/**
+	 * Test info discard empty.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDiscardEmpty() throws Exception {
 		setOutput();
@@ -243,6 +322,11 @@ class TestTextUi {
 				+ "Client3 discards 一万\n",getOutput());
 	}
 	
+	/**
+	 * Test info bid 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoBid1() throws Exception {
 		setOutput();
@@ -258,6 +342,11 @@ class TestTextUi {
 					+ "Client1 has cards: 六条 /八条 /一万 /一万 /一万 /三万 /六万 /六万 /九万 /九万 /一筒 /二筒 /四筒 /\n",getOutput());
 	}
 	
+	/**
+	 * Test info bid 2.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoBid2() throws Exception {
 		setOutput();
@@ -271,6 +360,11 @@ class TestTextUi {
 		assertEquals("client0 plays the operation 杠\n",getOutput());
 	}
 	
+	/**
+	 * Test info bid 3.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoBid3() throws Exception {
 		setOutput();
@@ -286,6 +380,11 @@ class TestTextUi {
 					+ "Client1 has cards: 六条 /八条 /一万 /一万 /一万 /三万 /六万 /六万 /九万 /九万 /一筒 /二筒 /四筒 /\n",getOutput());
 	}
 	
+	/**
+	 * Test info deal.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoDeal() throws Exception {
 		setOutput();
@@ -297,6 +396,11 @@ class TestTextUi {
 		assertEquals("Client1 has cards: 六条 /八条 /一万 /一万 /一万 /三万 /六万 /六万 /九万 /九万 /一筒 /二筒 /四筒 /\n",getOutput());
 	}
 	
+	/**
+	 * Test info win.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoWin() throws Exception {
 		setOutput();
@@ -321,6 +425,11 @@ class TestTextUi {
 				+ "The hand of client 3 is 二条 /二条 /五条 /一万 /一万 /七万 /七万 /九万 /三筒 /六筒 /红中 /红中 /白板 /\n",getOutput());
 	}
 	
+	/**
+	 * Test infor draw notice.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInforDrawNotice() throws Exception {
 		setOutput();
@@ -331,6 +440,11 @@ class TestTextUi {
 		assertEquals("server will send a draw to client: 2\n",getOutput());
 	}
 	
+	/**
+	 * Test init.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInit() throws Exception {
 		setOutput();
@@ -344,25 +458,42 @@ class TestTextUi {
 	
 	
 	
-	/**************************************
-	 * Note: Do not modify the following part
-	 ***************************************/
+	/** ************************************ Note: Do not modify the following part *************************************. */
 	PrintStream oldPrintStream;
+	
+	/** The bos. */
 	ByteArrayOutputStream bos;
 
+	/**
+	 * Sets the output.
+	 *
+	 * @throws Exception the exception
+	 */
 	private void setOutput() throws Exception {
 		oldPrintStream = System.out;
 		bos = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(bos));
 	}
 
+	/**
+	 * Gets the output.
+	 *
+	 * @return the output
+	 */
 	private String getOutput() { // throws Exception
 		System.setOut(oldPrintStream);
 		return bos.toString();
 	}
 	
+	/** The input. */
 	ByteArrayInputStream input;
 	
+	/**
+	 * Sets the input.
+	 *
+	 * @param s the new input
+	 * @throws Exception the exception
+	 */
 	private void setInput(String s) throws Exception {
 		input = new ByteArrayInputStream(s.getBytes());
 		System.setIn(input);
