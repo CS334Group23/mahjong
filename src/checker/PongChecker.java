@@ -10,7 +10,19 @@ import java.util.ArrayList;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PongChecker.
+ */
 public class PongChecker {
+	
+	/**
+	 * Check pong.
+	 *
+	 * @param wall the wall
+	 * @param another the another
+	 * @return the meld
+	 */
 	public static Meld checkPong(ArrayList<Tile> wall, Tile another) {	
 		int insertPosition = 0;
 		for(; insertPosition<wall.size(); insertPosition++) {
