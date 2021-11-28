@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestBidOperation.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +23,17 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestBidOperation.
+ */
 class TestBidOperation {
 
+	/**
+	 * Test chow 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testChow1() throws Exception {
 		setInput("2");
@@ -42,6 +56,11 @@ class TestBidOperation {
 		bid.operate(client, new BidMsg(1,0, BidType.CHOW, "ChowResponser", 2,chow,null, false));
 	}
 	
+	/**
+	 * Test pong 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testPong1() throws Exception {
 		setInput("1");
@@ -64,6 +83,11 @@ class TestBidOperation {
 		bid.operate(client, new BidMsg(1,3, BidType.PONG, "PongResponser", 2,pong,null, false));
 	}
 	
+	/**
+	 * Test kong 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testKong1() throws Exception {
 		BidOperation bid = new BidOperation();
@@ -91,8 +115,15 @@ class TestBidOperation {
 //	}
 	
 	
-	ByteArrayInputStream bos;
+	/** The bos. */
+ByteArrayInputStream bos;
 	
+	/**
+	 * Sets the input.
+	 *
+	 * @param s the new input
+	 * @throws Exception the exception
+	 */
 	private void setInput(String s) throws Exception {
 		bos = new ByteArrayInputStream(s.getBytes());
 		System.setIn(bos);

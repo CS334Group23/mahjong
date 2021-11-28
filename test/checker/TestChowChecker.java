@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestChowChecker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -7,7 +12,16 @@ import checker.ChowChecker;
 import checker.GenerateWinningHand;
 import utils.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestChowChecker.
+ */
 public class TestChowChecker {
+	
+	/**
+	 * Unit testcheck chowv 1.
+	 */
 	@Test
 	public void UnitTestcheckChowv1() {//sorted list to test if can't Chow with different type
 	ArrayList<Tile> hand = new ArrayList<>();
@@ -43,6 +57,10 @@ public class TestChowChecker {
 	ArrayList<Meld> result = (new ChowChecker()).checkChow(hand,t14);
 	assertEquals(true,result.isEmpty());
 	}
+	
+	/**
+	 * Unit testcheck chowv 2.
+	 */
 	@Test
 	public void UnitTestcheckChowv2() {//sorted list to test if can't Chow with dragon/wind
 	ArrayList<Tile> hand = new ArrayList<>();
@@ -80,6 +98,10 @@ public class TestChowChecker {
 	result = ChowChecker.checkChow(hand,new Tile(120));
 	assertEquals(true,result.isEmpty());
 	}
+	
+	/**
+	 * Unit testcheck chowv 3.
+	 */
 	@Test
 	public void UnitTestcheckChowv3() {//sorted list to test if can't Chow with same type
 	ArrayList<Tile> hand = new ArrayList<>();
@@ -115,6 +137,10 @@ public class TestChowChecker {
 	ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 	assertEquals(true,result.isEmpty());
 	}
+	
+	/**
+	 * Unit testcheck chowv 4.
+	 */
 	@Test
 	public void UnitTestcheckChowv4() { //sorted list to test if can Chow as A _ _
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -150,6 +176,10 @@ public class TestChowChecker {
 		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 		assertEquals(1,result.size());
 	}
+	
+	/**
+	 * Unit testcheck chowv 5.
+	 */
 	@Test
 	public void UnitTestcheckChowv5() { //sorted list to test if can Chow as  _ A _
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -185,6 +215,10 @@ public class TestChowChecker {
 		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 		assertEquals(1,result.size());
 	}
+	
+	/**
+	 * Unit testcheck chowv 6.
+	 */
 	@Test
 	public void UnitTestcheckChowv6() { //sorted list to test if can Chow as  _  _ A
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -220,6 +254,10 @@ public class TestChowChecker {
 		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 		assertEquals(1,result.size());
 	}
+	
+	/**
+	 * Unit testcheck chowv 7.
+	 */
 	@Test
 	public void UnitTestcheckChowv7() { //sorted list to test if can Chow as  _  _ A + _ A _
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -255,6 +293,10 @@ public class TestChowChecker {
 		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 		assertEquals(2,result.size());
 	}
+	
+	/**
+	 * Unit testcheck chowv 8.
+	 */
 	@Test
 	public void UnitTestcheckChowv8() { //sorted list to test if can Chow as  A _  _  + _ A _
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -290,6 +332,10 @@ public class TestChowChecker {
 		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 		assertEquals(2,result.size());
 	}
+	
+	/**
+	 * Unit testcheck chowv 9.
+	 */
 	@Test
 	public void UnitTestcheckChowv9() { //sorted list to test if can Chow as    A _ _  + _ _ A + _ A _
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -326,6 +372,9 @@ public class TestChowChecker {
 		assertEquals(3,result.size());
 	}
 	
+	/**
+	 * Unit testcheck chowv 10.
+	 */
 	@Test
 	public void UnitTestcheckChowv10() { //empty list, cover for loop
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -334,6 +383,10 @@ public class TestChowChecker {
 		ArrayList<Meld> result = ChowChecker.checkChow(hand,t14);
 		assertEquals(0,result.size());
 	}
+	
+	/**
+	 * Unit testcheck chowv 11.
+	 */
 	@Test
 	public void UnitTestcheckChowv11() { //1 in hand, cover for loop
 		ArrayList<Tile> hand = new ArrayList<>();

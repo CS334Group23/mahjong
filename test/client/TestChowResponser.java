@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestChowResponser.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +23,17 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestChowResponser.
+ */
 class TestChowResponser {
 
+	/**
+	 * Test 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void test1() throws Exception {
 		setInput("2");
@@ -42,6 +56,11 @@ class TestChowResponser {
 		chowResponser.response(client, new BidMsg(1,0, BidType.CHOW, "ChowResponser", 2,chow,null, false));
 	}
 	
+	/**
+	 * Test 2.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void test2() throws Exception {
 		ChowResponser chowResponser = new ChowResponser();
@@ -60,8 +79,15 @@ class TestChowResponser {
 		assertEquals("Chow",client1Meld.get(0).getName());
 	}
 
+	/** The bos. */
 	ByteArrayInputStream bos;
 	
+	/**
+	 * Sets the input.
+	 *
+	 * @param s the new input
+	 * @throws Exception the exception
+	 */
 	private void setInput(String s) throws Exception {
 		bos = new ByteArrayInputStream(s.getBytes());
 		System.setIn(bos);

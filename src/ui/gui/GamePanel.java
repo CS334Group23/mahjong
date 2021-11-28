@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: GamePanel.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.gui;
 
 import java.awt.Graphics;
@@ -28,34 +33,65 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GamePanel.
+ */
 public class GamePanel extends JPanel{	
-	/**
-	 * 
-	 */
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
 
+	/** The bg image. */
 	private Image bgImage;
+	
+	/** The users. */
 	private ArrayList<User> users;
 	
+	/** The op index. */
 	private int opIndex;
+	
+	/** The card index. */
 	private int cardIndex;
+	
+	/** The operation button start point. */
 	private Point operationButtonStartPoint;
+	
+	/** The operation button list. */
 	private ArrayList<JButton> operationButtonList;
 	
+	/** The client. */
 	private ClientInterface client;
+	
+	/** The last discard tile label. */
 	private TileLabel lastDiscardTileLabel;
+	
+	/** The last discard sender id. */
 	private int lastDiscardSenderId;
 	
+	/** The indicators. */
 	private ArrayList<JLabel> indicators;
+	
+	/** The last notice id. */
 	private int lastNoticeId;
 	
+	/**
+	 * Paint component.
+	 *
+	 * @param g the g
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(bgImage, 0, 0, GameController.FRAME_WIDTH, GameController.FRAME_HEIGHT, this);
 	}
 	
+	/**
+	 * Instantiates a new game panel.
+	 *
+	 * @param client the client
+	 */
 	public GamePanel(ClientInterface client){
 		try {
 			users = new ArrayList<>();
@@ -78,6 +114,11 @@ public class GamePanel extends JPanel{
 		}
 	}
 
+	/**
+	 * Info deal.
+	 *
+	 * @param msg the msg
+	 */
 	public void infoDeal(DealMsg msg) {
 		// list<tile> for the other three AIs
 		ArrayList<ArrayList<Tile>> tileListForAI = new ArrayList<>();
@@ -103,12 +144,21 @@ public class GamePanel extends JPanel{
 		handInit();
 	}
 	
+	/**
+	 * Hand init.
+	 */
 	private void handInit() {
 		for(User user : users) {
 			user.handInit(this);
 		}
 	}
 	
+	/**
+	 * Info draw.
+	 *
+	 * @param msg the msg
+	 * @param possibleBid the possible bid
+	 */
 	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
 		Tile tile = null;
 		if(msg != null) {
@@ -143,6 +193,11 @@ public class GamePanel extends JPanel{
 		repaint(); //solve not display draw bug
 	}
 
+	/**
+	 * Gets the op index.
+	 *
+	 * @return the op index
+	 */
 	public int getOpIndex() {
 		synchronized(this) {
 			try {
@@ -154,6 +209,11 @@ public class GamePanel extends JPanel{
 		return opIndex;
 	}
 
+	/**
+	 * Gets the discard.
+	 *
+	 * @return the discard
+	 */
 	public int getDiscard() {
 		synchronized(this) {
 			try {
@@ -165,6 +225,12 @@ public class GamePanel extends JPanel{
 		return cardIndex;
 	}
 
+	/**
+	 * Info discard.
+	 *
+	 * @param msg the msg
+	 * @param possibleBid the possible bid
+	 */
 	public void infoDiscard(DiscardMsg msg, ArrayList<BidMsg> possibleBid) {
 		Tile tile = null;
 		User sender = null;
@@ -192,6 +258,11 @@ public class GamePanel extends JPanel{
 		repaint(); //solve not display discard bug
 	}
 	
+	/**
+	 * Info bid.
+	 *
+	 * @param bidMsg the bid msg
+	 */
 	public void infoBid(BidMsg bidMsg) {
 		String currentInfo = bidMsg.getResponserName();
 
@@ -221,6 +292,11 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Info win.
+	 *
+	 * @param winMsg the win msg
+	 */
 	public void infoWin(WinMsg winMsg) {
 		ArrayList<ArrayList<Integer>> hands = winMsg.getHandsList();
 		int winUserId = winMsg.getWinClientId();
@@ -236,6 +312,13 @@ public class GamePanel extends JPanel{
 		repaint();
 	}
 	
+	/**
+	 * Adds the tile to panel.
+	 *
+	 * @param user the user
+	 * @param tile the tile
+	 * @return the tile label
+	 */
 	private TileLabel addTileToPanel(User user, Tile tile) {
 		int tileWidth = user.getHandDeck().getTileWidth();
 		int tileHeight = user.getHandDeck().getTileHeight();
@@ -266,6 +349,12 @@ public class GamePanel extends JPanel{
 		return tileLabel;
 	}
 	
+	/**
+	 * Operation button init.
+	 *
+	 * @param msg the msg
+	 * @param opId the op id
+	 */
 	private void operationButtonInit(BidMsg msg, int opId) { //pass opId for later use
 		// add button
 		if(msg.getOperationName() != null) {
@@ -285,6 +374,14 @@ public class GamePanel extends JPanel{
 		operationButtonStartPoint.setY(operationButtonStartPoint.y);
 	}
 	
+	/**
+	 * Operation button event init.
+	 *
+	 * @param btn the btn
+	 * @param btnName the btn name
+	 * @param msg the msg
+	 * @param opId the op id
+	 */
 	private void operationButtonEventInit(JButton btn, String btnName, BidMsg msg, int opId) { //pass opId for later use, the tile may use the same methdo
 		if(btnName.equals("过")) {
 			btn.addActionListener((e) -> {
@@ -493,6 +590,12 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Hand tile event init.
+	 *
+	 * @param tile the tile
+	 * @param user the user
+	 */
 	public void handTileEventInit(TileLabel tile, User user) {
 		tile.addMouseListener(new MouseAdapter() {
 			Deck handDeck = user.getHandDeck();
@@ -537,6 +640,9 @@ public class GamePanel extends JPanel{
 		});
 	}
 	
+	/**
+	 * Prints the user decks.
+	 */
 	// for testing
 	public void printUserDecks() {
 		User user = users.get(2);
@@ -590,11 +696,21 @@ public class GamePanel extends JPanel{
 		System.out.println(opIndex);
 	}
 	
+	/**
+	 * Removes the tile label from panel.
+	 *
+	 * @param tileLabel the tile label
+	 */
 	public void removeTileLabelFromPanel(TileLabel tileLabel) {
 		if(tileLabel != null)
 			this.remove(tileLabel);
 	}
 
+	/**
+	 * Info draw notice.
+	 *
+	 * @param drawNoticeMsg the draw notice msg
+	 */
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
 		if(drawNoticeMsg.getClientId() != User.USER_BOTTOM) {
 			renewIndicator(drawNoticeMsg.getClientId());
@@ -605,6 +721,11 @@ public class GamePanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Renew indicator.
+	 *
+	 * @param clientId the client id
+	 */
 	public void renewIndicator(int clientId) {
 		if(lastNoticeId != -1)
 			this.remove(indicators.get(lastNoticeId));

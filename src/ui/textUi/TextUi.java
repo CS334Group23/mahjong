@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TextUi.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.textUi;
 
 import java.util.ArrayList;
@@ -14,15 +19,34 @@ import ui.Ui;
 import utils.BidType;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TextUi.
+ */
 public class TextUi implements Ui{
+	
+	/** The client. */
 	private ClientInterface client; //this client later need to try best to decouple out with input parameters
+	
+	/** The scan. */
 	private Scanner scan;
 	
+	/**
+	 * Instantiates a new text ui.
+	 *
+	 * @param client the client
+	 */
 	public TextUi(ClientInterface client) { //this may later change to singleton
 		this.client = client;
 		scan = new Scanner(System.in);
 	}
 
+	/**
+	 * Info draw.
+	 *
+	 * @param drawMsg the draw msg
+	 * @param possibleBid the possible bid
+	 */
 	@Override
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
 		System.out.printf("You are client%d\n", client.getId());
@@ -37,6 +61,11 @@ public class TextUi implements Ui{
 	}
 
 
+	/**
+	 * Gets the op index.
+	 *
+	 * @return the op index
+	 */
 	@Override
 	public int getOpIndex() {
 		System.out.print("Please input the index of the operation: ");
@@ -47,6 +76,11 @@ public class TextUi implements Ui{
         return opIndex;
 	}
 
+	/**
+	 * Gets the discard.
+	 *
+	 * @return the discard
+	 */
 	@Override
 	public int getDiscard() {
 		//this may add if to make two parts unity
@@ -68,6 +102,12 @@ public class TextUi implements Ui{
 		return tileIndex;
 	}
 
+	/**
+	 * Info discard.
+	 *
+	 * @param discardMsg the discard msg
+	 * @param possibleBid the possible bid
+	 */
 	@Override
 	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
 		System.out.printf("You are client%d\n", client.getId());
@@ -80,6 +120,11 @@ public class TextUi implements Ui{
 		}
 	}
 
+	/**
+	 * Info bid.
+	 *
+	 * @param bidMsg the bid msg
+	 */
 	@Override
 	public void infoBid(BidMsg bidMsg) {
 		System.out.printf("client%d plays the operation %s\n", bidMsg.getBidClient(), bidMsg.getChnName());
@@ -90,12 +135,22 @@ public class TextUi implements Ui{
 		}
 	}
 	
+	/**
+	 * Info deal.
+	 *
+	 * @param dealMsg the deal msg
+	 */
 	@Override
 	public void infoDeal(DealMsg dealMsg) {//this need later change to send a tile list instead of index list, or use get wall interface
 		//this may later need to change to extract with other info method with a print method
 		System.out.printf("Client%d has cards: %s\n", client.getId(),Tile.tileListToString(client.getWall()));
 	}
 	
+	/**
+	 * Info win.
+	 *
+	 * @param winMsg the win msg
+	 */
 	@Override
 	public void infoWin(WinMsg winMsg) {
 		System.out.printf("client%d wins\n", winMsg.getWinClientId());
@@ -104,11 +159,21 @@ public class TextUi implements Ui{
 		}
 	}
 
+	/**
+	 * Info draw notice.
+	 *
+	 * @param drawNoticeMsg the draw notice msg
+	 */
 	@Override
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
 		System.out.printf("server will send a draw to client: %d\n", drawNoticeMsg.getClientId());
 	}
 	
+	/**
+	 * Prints the index.
+	 *
+	 * @param length the length
+	 */
 	private static void printIndex(int length) {
 		String str = "";
 		for(int i=0;i<16;i++) {
@@ -121,6 +186,11 @@ public class TextUi implements Ui{
 		System.out.println(str);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @param client the client
+	 */
 	@Override
 	public void init(ClientInterface client) {
 		System.out.println("text ui init");

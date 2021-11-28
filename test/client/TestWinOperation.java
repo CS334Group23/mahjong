@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestWinOperation.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,8 +18,17 @@ import network.WinMsg;
 import server.Server;
 import ui.textUi.TextUi;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestWinOperation.
+ */
 class TestWinOperation {
 
+	/**
+	 * Test info win.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testInfoWin() throws Exception {
 		setOutput();
@@ -39,15 +53,28 @@ class TestWinOperation {
 				+ "The hand of client 3 is 二条 /二条 /五条 /一万 /一万 /七万 /七万 /九万 /三筒 /六筒 /红中 /红中 /白板 /\n",getOutput());
 	}
 	
+	/** The old print stream. */
 	PrintStream oldPrintStream;
+	
+	/** The bos. */
 	ByteArrayOutputStream bos;
 
+	/**
+	 * Sets the output.
+	 *
+	 * @throws Exception the exception
+	 */
 	private void setOutput() throws Exception {
 		oldPrintStream = System.out;
 		bos = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(bos));
 	}
 
+	/**
+	 * Gets the output.
+	 *
+	 * @return the output
+	 */
 	private String getOutput() { // throws Exception
 		System.setOut(oldPrintStream);
 		return bos.toString();

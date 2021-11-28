@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: Server.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package server;
 
 import utils.BidType;
@@ -19,20 +24,45 @@ import network.InitMsg;
 import network.Message;
 import network.Peer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Server.
+ */
 public class Server implements Peer{
+	
+	/** The Constant INITIAL_HAND. */
 	public final static int INITIAL_HAND = 13;
+	
+	/** The Constant CLIENT_NUM. */
 	public final static int CLIENT_NUM = 4;
 	
+	/** The cardlist. */
 	private Deque<Integer> cardlist;
+	
+	/** The client hands. */
 	private ArrayList<ArrayList<Integer>> clientHands;
+	
+	/** The op. */
 	private ServerOperation op; //need to later add exception handling
+	
+	/** The all clients. */
 	private ArrayList<Peer> allClients;
+	
+	/** The next client. */
 	private int nextClient;
 
+	/**
+	 * Instantiates a new server.
+	 */
 	public Server() {
 		cardlist = new LinkedList<>();
 	}
 	
+	/**
+	 * Form room.
+	 *
+	 * @param ui the ui
+	 */
 	public void formRoom(String ui) {
 		allClients = new ArrayList<Peer>(CLIENT_NUM);
 		for(int i = 0;i<CLIENT_NUM;i++) {
@@ -40,6 +70,9 @@ public class Server implements Peer{
 		}
 	}
 	
+	/**
+	 * Inits the.
+	 */
 	public void init() {
 		cardlist = shuffle();
 		clientHands = deal();
@@ -51,12 +84,20 @@ public class Server implements Peer{
 		}
 	}
 	
+	/**
+	 * Start game.
+	 */
 	public void startGame() {
 		nextClient = 0;
 		sendAll(new DrawNoticeMsg(nextClient), 0);
 		sendNextDraw();
 	}
 	
+	/**
+	 * Shuffle.
+	 *
+	 * @return the deque
+	 */
 	public Deque<Integer> shuffle() {
 		Deque<Integer> deque = new LinkedList<>();
 		ArrayList<Integer> IDs = new ArrayList<Integer>();
@@ -70,6 +111,11 @@ public class Server implements Peer{
 		return deque;	
 	}
 	
+	/**
+	 * Deal.
+	 *
+	 * @return the array list
+	 */
 	private ArrayList<ArrayList<Integer>> deal(){
 		ArrayList<ArrayList<Integer>> client_hands = new ArrayList<ArrayList<Integer>>(CLIENT_NUM);
 		for(int i=0; i<CLIENT_NUM; i++) {
@@ -86,6 +132,12 @@ public class Server implements Peer{
 		return client_hands;
 	}
 	
+	/**
+	 * Send all.
+	 *
+	 * @param msg the msg
+	 * @param endClient the end client
+	 */
 	public void sendAll(Message msg, int endClient) {
 		for(int i = 0;i<CLIENT_NUM;i++) {
 			int target = (endClient+i+1)%CLIENT_NUM;
@@ -93,14 +145,27 @@ public class Server implements Peer{
 		}
 	}
 	
+	/**
+	 * Sets the next client.
+	 *
+	 * @param clientId the new next client
+	 */
 	public void setNextClient(int clientId) {
 		this.nextClient = clientId;
 	}
 	
+	/**
+	 * Gets the next client.
+	 *
+	 * @return the next client
+	 */
 	public int getNextClient() {
 		return nextClient;
 	}
 	
+	/**
+	 * Send next draw.
+	 */
 	public void sendNextDraw() {
 		int sendTarget = nextClient;
 		nextClient ++;
@@ -112,16 +177,30 @@ public class Server implements Peer{
 		}	
 	}
 	
+	/**
+	 * Sets the game over.
+	 */
 	public void setGameOver() {
 		System.out.println("Game Over!!!");
 	}
 	
 	
+	/**
+	 * Send.
+	 *
+	 * @param target the target
+	 * @param msg the msg
+	 */
 	@Override
 	public void send(Peer target, Message msg) {
 		target.onRecv(msg);
 	}
 
+	/**
+	 * On recv.
+	 *
+	 * @param msg the msg
+	 */
 	@Override
 	public void onRecv(Message msg) {
 		try {// this part may be extracted later

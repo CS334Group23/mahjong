@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: GameControllerTest.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.gui;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,6 +27,10 @@ import utils.Meld;
 import utils.Tile;
 import utils.Type;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GameControllerTest.
+ */
 public class GameControllerTest {
 //	@Test
 //	public void testGameController1() {
@@ -81,7 +90,12 @@ public class GameControllerTest {
 //		}
 //	}
 	
-	@Test
+	/**
+ * Test game controller 4.
+ *
+ * @throws InterruptedException the interrupted exception
+ */
+@Test
 	public void testGameController4() throws InterruptedException {
 		GameController gameController = GameController.getInstance();
 		
@@ -194,6 +208,11 @@ public class GameControllerTest {
 		}
 	}
 	
+	/**
+	 * Gets the hands.
+	 *
+	 * @return the hands
+	 */
 	public ArrayList<ArrayList<Tile>> getHands() {
 		ArrayList<ArrayList<Tile>> hands = new ArrayList<>();
 		
@@ -220,6 +239,11 @@ public class GameControllerTest {
 		return hands;
 	}
 	
+	/**
+	 * Gets the deisgned hand.
+	 *
+	 * @return the deisgned hand
+	 */
 	public ArrayList<Integer> getDeisgnedHand(){
 		ArrayList<Integer> hand = new ArrayList<>();
 		hand.add(48);

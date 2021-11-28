@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestWinResponser.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +23,15 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestWinResponser.
+ */
 class TestWinResponser {
 
+	/**
+	 * Test 1.
+	 */
 	@Test
 	//self drawn win
 	void test1() {
@@ -41,6 +53,9 @@ class TestWinResponser {
 		winResponser.response(client, new BidMsg(1,1, BidType.WIN, "WinResponser", 44,null,Tile.tileToIdList(client.getWall()), true));
 	}
 	
+	/**
+	 * Test 2.
+	 */
 	@Test
 	//win by discard
 	void test2() {
@@ -62,6 +77,9 @@ class TestWinResponser {
 		winResponser.response(client, new BidMsg(1,0, BidType.WIN, "WinResponser", 44,null,Tile.tileToIdList(client.getWall()), false));
 	}
 	
+	/**
+	 * Test 3.
+	 */
 	@Test
 	//not win
 	void test3() {
