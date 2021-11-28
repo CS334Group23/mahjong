@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: CheckWin.java </p> 
+ * @author TeamCS3343 </a>
+ */
 
 package checker;
 
@@ -28,11 +33,28 @@ import utils.Tile;
 import utils.Type;
 import utils.sorting;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CheckWin.
+ */
 public class CheckWin {
+	
+	/** The comb. */
 	private GenerateWinningHand comb;
+	
+	/**
+	 * Instantiates a new check win.
+	 */
 	public CheckWin() {
 	}
 	
+	/**
+	 * Check is win.
+	 *
+	 * @param hand the hand
+	 * @param showed_hand the showed hand
+	 * @return true, if successful
+	 */
 	public boolean checkIsWin(ArrayList<Tile> hand, ArrayList<Meld> showed_hand) {//now use this added one
 		GenerateWinningHand comb=new GenerateWinningHand();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
@@ -47,6 +69,13 @@ public class CheckWin {
 	}
 	
 	
+	/**
+	 * Check score.
+	 *
+	 * @param hand the hand
+	 * @param showed_hand the showed hand
+	 * @return the array list
+	 */
 	public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		int score=1;
 		
@@ -178,6 +207,13 @@ public class CheckWin {
 		
 	}
 	
+/**
+ * Gets the score.
+ *
+ * @param hand the hand
+ * @param showed_hand the showed hand
+ * @return the score
+ */
 public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 	int score=1;
 		
@@ -310,6 +346,13 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 	}
 	
 	
+	/**
+	 * Check same type.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @return true, if successful
+	 */
 	public boolean CheckSameType(Tile a, Tile b) {
 		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FLOWER(5, 136), WIND(4, 120);
 		if(a.getType().equals(b.getType())
@@ -320,6 +363,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 	}
 	
 	
+	/**
+	 * Check PH.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckPH(ArrayList<Meld> hand) {//���w
 		for(int i=0;i<hand.size();i++){
 			if(hand.get(i).getcomb_type() !=1 &&hand.get(i).getcomb_type() !=0) {
@@ -329,6 +378,14 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		}
 		return true;
 	}
+	
+	/**
+	 * Check PPH.
+	 *
+	 * @param hand the hand
+	 * @param showed_hand the showed hand
+	 * @return true, if successful
+	 */
 	public boolean CheckPPH(ArrayList<Meld> hand,ArrayList<Meld>showed_hand) {//���k
 		if(showed_hand.isEmpty())
 			return false; // exception for 
@@ -355,6 +412,13 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 			return false;
 		return true;
 	}
+	
+	/**
+	 * Check HYJ.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckHYJ(ArrayList<Meld> hand) {
 		boolean withYJ=false;
 		boolean onlyYJ=true;
@@ -382,6 +446,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		
 	}
 	
+	/**
+	 * Check HYS.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckHYS(ArrayList<Meld> hand) {//�K�@��
 	
 		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
@@ -407,6 +477,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 			return false; // exception on qys
 	}
 	
+	/**
+	 * Check QYS.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckQYS(ArrayList<Meld> hand) {//�M�@��
 		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
 		
@@ -422,6 +498,14 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		}
 		return true;
 	}
+	
+	/**
+	 * Check KKH.
+	 *
+	 * @param hand the hand
+	 * @param showed_hand the showed hand
+	 * @return true, if successful
+	 */
 	public boolean CheckKKH(ArrayList<Meld> hand, ArrayList<Meld> showed_hand) { // four concealed triplet
 			if(!showed_hand.isEmpty())
 				return false; // exception for pph
@@ -433,6 +517,13 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 
 			return true;
 	}
+	
+	/**
+	 * Check AKS.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckAKS(ArrayList<Meld> hand) { // all kongs
 		for(Meld m:hand) {
 			if(m.getcomb_type()!=0)
@@ -442,11 +533,25 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		return true;
 		
 	}
+	
+	/**
+	 * Check MC.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckMC(ArrayList<Meld> hand) {
 		if(hand.isEmpty())
 			return true;
 		return false;
 	}
+	
+	/**
+	 * Check red dragon.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckRedDragon(ArrayList<Meld> hand) {
 		for(int i=0;i<hand.size();i++) {
 			if(hand.get(i).getFirst().getId()/4==27)
@@ -454,6 +559,13 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		}
 		return false;
 	}
+	
+	/**
+	 * Check green dragon.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckGreenDragon(ArrayList<Meld> hand) {
 		for(int i=0;i<hand.size();i++) {
 			if(hand.get(i).getFirst().getId()/4==28)
@@ -462,6 +574,13 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		return false;
 		
 	}
+	
+	/**
+	 * Check white dragon.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckWhiteDragon(ArrayList<Meld> hand) {
 		for(int i=0;i<hand.size();i++) {
 			if(hand.get(i).getFirst().getId()/4==29)
@@ -471,6 +590,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 	
 	}
 	
+	/**
+	 * Check XSY.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckXSY(ArrayList<Meld> hand) {//小三元
 		int dragon=0;
 		int dra_eye=0;
@@ -488,6 +613,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		return false;
 	}
 	
+	/**
+	 * Check XSX.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckXSX(ArrayList<Meld> hand){//小四喜
 		int wind=0;
 		boolean wind_eye=false;
@@ -504,6 +635,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		return false;
 	}
 		
+	/**
+	 * Check ZYS.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckZYS(ArrayList<Meld> hand){//字一色
 		
 		for(int i=0;i<hand.size();i++){
@@ -515,6 +652,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		return true;
 	}
 	
+	/**
+	 * Check QYJ.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckQYJ(ArrayList<Meld> hand){//清幺九
 		
 		for(int i=0;i<hand.size();i++){
@@ -527,6 +670,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		return true;
 	}
 	
+	/**
+	 * Check DSY.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckDSY(ArrayList<Meld> hand){//大三元
 		
 		int dragon=0;
@@ -542,6 +691,13 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		}
 		return false;
 	}
+	
+	/**
+	 * Check DSX.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckDSX(ArrayList<Meld> hand){//大四喜	
 		
 		int wind=0;
@@ -557,6 +713,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		return false;
 	}
 	
+	/**
+	 * Check JLBD.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckJLBD(ArrayList<Meld> hand) {//九莲宝灯
 		int sum=0;
 		Tile first_hand= hand.get(0).getFirst();
@@ -620,6 +782,12 @@ public int getScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 			return false;
 	}
 	
+	/**
+	 * Check SSY.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckSSY(ArrayList<Tile> hand) {//十三幺
 		if(hand.size()==14 ) {
 			int[] list = {0,0,0,0,0,0,0,0,0,0,0,0,0}; 

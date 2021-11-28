@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: PongChecker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 
 import java.util.ArrayList;
