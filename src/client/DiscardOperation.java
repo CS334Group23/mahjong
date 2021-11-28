@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: DiscardOperation.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import java.util.ArrayList;
@@ -15,8 +20,18 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DiscardOperation.
+ */
 public class DiscardOperation implements ClientOperation{
 
+	/**
+	 * Operate.
+	 *
+	 * @param client the client
+	 * @param msg the msg
+	 */
 	@Override
 	public void operate(Client client, Message msg) {
 		DiscardMsg discardMsg = ((DiscardMsg)msg);

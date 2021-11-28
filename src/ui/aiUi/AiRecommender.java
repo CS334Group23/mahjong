@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: AiRecommender.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.aiUi;
 
 import java.util.ArrayList;
@@ -11,15 +16,30 @@ import utils.Meld;
 import server.Server;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
 // Skim through cards in hand 
 // keep the cards that add up to the highest marks
 
+/**
+ * The Class AiRecommender.
+ */
 public class AiRecommender {
+	
+	/** The card to play. */
 	private Tile cardToPlay;
+	
+	/** The cards in hand. */
 	private List<Tile> cardsInHand; // cards in my hand
+	
+	/** The cards not played. */
 	private List<Tile> cardsNotPlayed; // cards that may show up
+	
+	/** The ai recommender util. */
 	private AiRecommenderUtil aiRecommenderUtil;
 	
+	/**
+	 * Instantiates a new ai recommender.
+	 */
 	public AiRecommender() {
 		this.aiRecommenderUtil = new AiRecommenderUtil();
 		cardsNotPlayed  = new ArrayList<>();
@@ -30,6 +50,12 @@ public class AiRecommender {
 	
 	// register current situation
 	// and clear last card recommendation 
+	/**
+	 * Upon called.
+	 *
+	 * @param cardsInHand the cards in hand
+	 * @param tileId the tile id
+	 */
 	// each time upon called
 	public void uponCalled(List<Tile> cardsInHand, int tileId) {
 		this.cardsInHand = new ArrayList<>(cardsInHand);
@@ -37,6 +63,12 @@ public class AiRecommender {
 		this.cardToPlay = null; 
 	}
 	
+	/**
+	 * Upon called.
+	 *
+	 * @param cardsInHand the cards in hand
+	 * @param meld the meld
+	 */
 	public void uponCalled(List<Tile> cardsInHand, Meld meld) {
 		if(meld.getFirst() != null) {
 			this.cardsNotPlayed.removeIf(m -> m.getId()==meld.getFirst().getId());
@@ -53,6 +85,11 @@ public class AiRecommender {
 		this.cardsInHand = new ArrayList<>(cardsInHand);
 	}
 	
+	/**
+	 * Upon called.
+	 *
+	 * @param dealList the deal list
+	 */
 	public void uponCalled(List<Integer> dealList) {
 		for (int i : dealList) {
 			this.cardsNotPlayed.removeIf(m -> m.getId()==i);
@@ -62,6 +99,11 @@ public class AiRecommender {
 	
 	
 	// simplified version
+	/**
+	 * Recommend.
+	 *
+	 * @return the tile
+	 */
 	// only recommend to reach winning hand
 	public Tile recommend() {
 		
@@ -140,6 +182,13 @@ public class AiRecommender {
 		return this.cardToPlay;
 	}
 	
+	/**
+	 * Find tile with value.
+	 *
+	 * @param listToSearch the list to search
+	 * @param strToFind the str to find
+	 * @return the array list
+	 */
 	public ArrayList<Tile> findTileWithValue(List<Tile> listToSearch, String strToFind) {
 		ArrayList<Tile> group = new ArrayList<>();
 		for(Tile t: listToSearch) {
@@ -150,6 +199,13 @@ public class AiRecommender {
 		return group;
 	}
 	
+	/**
+	 * Form sequence.
+	 *
+	 * @param list the list
+	 * @param tile the tile
+	 * @return the int
+	 */
 	public int formSequence(final List<Tile> list,  Tile tile){
 		int value = 0;
 	    for(Tile t:list) {
@@ -161,6 +217,13 @@ public class AiRecommender {
 	    return value;
 	}
 	
+	/**
+	 * Form eyes or triplets.
+	 *
+	 * @param list the list
+	 * @param tile the tile
+	 * @return the int
+	 */
 	public int formEyesOrTriplets(final List<Tile> list, Tile tile) {
 		int value = 0;
 		for(Tile t: list) {

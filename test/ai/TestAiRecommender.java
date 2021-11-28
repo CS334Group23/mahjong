@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestAiRecommender.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ai;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,8 +15,15 @@ import org.junit.jupiter.api.Test;
 import ui.aiUi.AiRecommender;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestAiRecommender.
+ */
 class TestAiRecommender {
 
+	/**
+	 * Test.
+	 */
 	@Test
 	void test() {
 		AiRecommender theAiRecommender = AiRecommender.callAiRecommender();

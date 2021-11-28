@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: ImageUtils.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.gui;
 
 import java.awt.Dimension;
@@ -18,8 +23,24 @@ import javax.swing.JPanel;
 
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ImageUtils.
+ */
 @SuppressWarnings("all")
 public class ImageUtils {
+	
+	/**
+	 * Adds the tile.
+	 *
+	 * @param panel the panel
+	 * @param tile the tile
+	 * @param tileWidth the tile width
+	 * @param tileHeight the tile height
+	 * @param point the point
+	 * @param userId the user id
+	 * @return the tile label
+	 */
 	public static TileLabel addTile(JPanel panel, Tile tile, int tileWidth, int tileHeight, Point point, int userId) {
 		TileLabel jl = null;
 		jl = getTileLabelBySize(tile, tileWidth, tileHeight, userId);
@@ -29,6 +50,15 @@ public class ImageUtils {
 		return jl;	
 	}
 	
+	/**
+	 * Gets the tile label by size.
+	 *
+	 * @param tile the tile
+	 * @param width the width
+	 * @param height the height
+	 * @param orientation the orientation
+	 * @return the tile label by size
+	 */
 	public static TileLabel getTileLabelBySize(Tile tile, int width, int height, int orientation){	
 		Image tempTileImg = null;
 		try {
@@ -59,12 +89,28 @@ public class ImageUtils {
 		return jl;
 	}
 
+	/**
+	 * Change tile img to face down.
+	 *
+	 * @param tile the tile
+	 */
 	public static void changeTileImgToFaceDown(Tile tile) {
 		Tile faceDown = new Tile(144);
 		String newUrl = faceDown.getUrl();
 		tile.setUrl(newUrl);
 	}
 	
+	/**
+	 * Gets the image label.
+	 *
+	 * @param panel the panel
+	 * @param url the url
+	 * @param x the x
+	 * @param y the y
+	 * @param width the width
+	 * @param height the height
+	 * @return the image label
+	 */
 	public static JLabel getImageLabel(JPanel panel, String url, int x, int y, int width, int height) {
 		JLabel imgLabel = null;
 		try {

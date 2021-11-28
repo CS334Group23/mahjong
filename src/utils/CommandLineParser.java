@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: CommandLineParser.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 
 import java.util.HashMap;
@@ -7,17 +12,37 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CommandLineParser.
+ */
 public class CommandLineParser {
+    
+    /** The args. */
     List <String> args = new ArrayList<>();
+    
+    /** The map. */
     HashMap<String, List<String>> map = new HashMap<>();
+    
+    /** The flags. */
     Set<String> flags = new HashSet<>();
 
+    /**
+     * Instantiates a new command line parser.
+     *
+     * @param arguments the arguments
+     */
     public CommandLineParser(String arguments[])
     {
         this.args = Arrays.asList(arguments);
         map();
     }
 
+    /**
+     * Gets the argument names.
+     *
+     * @return the argument names
+     */
     // Return argument names
     public Set<String> getArgumentNames()
     {
@@ -27,6 +52,12 @@ public class CommandLineParser {
         return argumentNames;
     }
     
+    /**
+     * Gets the flag.
+     *
+     * @param flagName the flag name
+     * @return the flag
+     */
     // Check if flag is given
     public boolean getFlag(String flagName)
     {
@@ -35,6 +66,12 @@ public class CommandLineParser {
         return false;
     }
 
+    /**
+     * Gets the argument value.
+     *
+     * @param argumentName the argument name
+     * @return the argument value
+     */
     // Return argument value for particular argument name
     public String[] getArgumentValue(String argumentName)
     {
@@ -44,6 +81,9 @@ public class CommandLineParser {
             return null;
     }
 
+    /**
+     * Map.
+     */
     // Map the flags and argument names with the values 
     public void map()
     {

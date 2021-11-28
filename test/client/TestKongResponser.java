@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestKongResponser.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +23,17 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestKongResponser.
+ */
 class TestKongResponser {
 
+	/**
+	 * Test 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void test1() throws Exception {
 		KongResponser kongResponser = new KongResponser();
@@ -33,6 +47,11 @@ class TestKongResponser {
 		assertEquals("Kong",client.getMeld().get(0).getName());
 	}
 	
+	/**
+	 * Test 2.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void test2() throws Exception {
 		KongResponser kongResponser = new KongResponser();

@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: Checker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 
 import java.util.*;
@@ -10,13 +15,33 @@ import checker.sequence.Sequence;
 import checker.sequence.Win_From_Wall;
 import utils.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Checker.
+ */
 public class Checker {
+	
+	/** The instance. */
 	private static Checker instance = new Checker();
+	
+	/**
+	 * Gets the single instance of Checker.
+	 *
+	 * @return single instance of Checker
+	 */
 	public static Checker getInstance() {
 		
 		return instance;
 	}
 	
+/**
+ * Check chow.
+ *
+ * @param a the a
+ * @param b the b
+ * @param c the c
+ * @return true, if successful
+ */
 public boolean CheckChow(Tile a, Tile b, Tile c) {
 
 		if(a.getRankIndex() == b.getRankIndex()-1 && b.getRankIndex()== c.getRankIndex()-1 && a.getType().equals(c.getType()))
@@ -28,6 +53,14 @@ public boolean CheckChow(Tile a, Tile b, Tile c) {
 		return false;
 	}
 
+	/**
+	 * Check pong.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @param c the c
+	 * @return true, if successful
+	 */
 	public boolean CheckPong(Tile a, Tile b, Tile c) {
 		if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() && a.getType()==c.getType() &&b.getType()==c.getType())
 		{
@@ -37,6 +70,16 @@ public boolean CheckChow(Tile a, Tile b, Tile c) {
 		
 		return false;
 	}
+
+/**
+ * Check kong.
+ *
+ * @param a the a
+ * @param b the b
+ * @param c the c
+ * @param d the d
+ * @return true, if successful
+ */
 public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
 	if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() &&c.getRankIndex() == d.getRankIndex()&&b.getType()==c.getType())
 	{
@@ -45,6 +88,15 @@ public boolean CheckKong(Tile a,Tile b, Tile c, Tile d) {
 	}
 	return false;
 }
+
+/**
+ * Check PCK.
+ *
+ * @param hand the hand
+ * @param showed_hand the showed hand
+ * @param a the a
+ * @return the array list
+ */
 public ArrayList<Meld> CheckPCK(ArrayList<Tile> hand, ArrayList<Meld> showed_hand,Tile a){//hand+showed_hand size= 13/ more tiles ( for kong only),  a size=1 tiles
 	
 	ArrayList<Meld> allPCK=new ArrayList<>();
@@ -113,6 +165,14 @@ public ArrayList<Meld> CheckPCK(ArrayList<Tile> hand, ArrayList<Meld> showed_han
 	
 	return allPCK;
 }
+
+/**
+ * Check score.
+ *
+ * @param hand the hand
+ * @param showed_hand the showed hand
+ * @return the array list
+ */
 public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> showed_hand ) {
 		int score=0;
 		
@@ -163,6 +223,14 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		
 		
 	}
+	
+	/**
+	 * Next different tile.
+	 *
+	 * @param hand the hand
+	 * @param a the a
+	 * @return the int
+	 */
 	public int NextDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
 		//System.out.println(a.getId()+" "+pos);
@@ -174,6 +242,14 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		}
 		return -1;
 	}
+	
+	/**
+	 * Previous different tile.
+	 *
+	 * @param hand the hand
+	 * @param a the a
+	 * @return the int
+	 */
 	public int PreviousDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
 		//System.out.println(a.getId()+" "+pos);
@@ -185,6 +261,14 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		}
 		return -1;
 	}
+	
+	/**
+	 * Check same type.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @return true, if successful
+	 */
 	public boolean CheckSameType(Tile a, Tile b) {
 		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FLOWER(5, 136), WIND(4, 120);
 		if( a.getType().equals(b.getType())
@@ -193,6 +277,13 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		return false;
 		
 	}
+	
+	/**
+	 * Check PH.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckPH(ArrayList<Meld> hand) {//���w
 		for(int i=0;i<hand.size();i++){
 			if(hand.get(i).getcomb_type() !=1 ||hand.get(i).getcomb_type() !=0) {
@@ -202,6 +293,13 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		}
 		return true;
 	}
+	
+	/**
+	 * Check PPH.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckPPH(ArrayList<Meld> hand) {//���k
 		if(hand.get(0).getFirst().getType() == Type.DRAGON) {
 			return false; // exception of �r�@��
@@ -214,6 +312,13 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		}
 		return true;
 	}
+	
+	/**
+	 * Check HYS.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckHYS(ArrayList<Meld> hand) {//�K�@��
 	
 		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
@@ -239,6 +344,12 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 			return false; // exception on qys
 	}
 	
+	/**
+	 * Check QYS.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckQYS(ArrayList<Meld> hand) {//�M�@��
 		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
 		
@@ -254,6 +365,13 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 		}
 		return true;
 	}
+	
+	/**
+	 * Check MC.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean CheckMC(ArrayList<Meld> hand) {
 		if(hand.isEmpty())
 			return true;
@@ -261,11 +379,24 @@ public ArrayList<Sequence> CheckScore(ArrayList<Tile> hand, ArrayList<Meld> show
 	}
 	
 	
+	/**
+	 * Check MF.
+	 *
+	 * @param hand the hand
+	 * @return the int
+	 */
 	public int CheckMF(ArrayList<Meld> hand) { //����   will change later
 	
 	
 		return 1;
 	}
+	
+	/**
+	 * Check JF.
+	 *
+	 * @param hand the hand
+	 * @return the int
+	 */
 	public int CheckJF(ArrayList<Meld> hand) {//����
 		
 		return 1;

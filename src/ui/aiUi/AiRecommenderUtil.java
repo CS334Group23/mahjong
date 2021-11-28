@@ -1,12 +1,29 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: AiRecommenderUtil.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.aiUi;
 
 import java.util.*;
 
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AiRecommenderUtil.
+ */
 public class AiRecommenderUtil {
 	
 	
+	/**
+	 * Find closest.
+	 *
+	 * @param eyes the eyes
+	 * @param triplets the triplets
+	 * @param sequences the sequences
+	 * @return the list
+	 */
 	public List<List<Tile>> findClosest(List<List<Tile>> eyes, List<List<Tile>> triplets, List<List<Tile>> sequences){
 		// return if no eyes, no triplets, no sequences
 		if(eyes.size()==0 && triplets.size()==0 && sequences.size()==0) {
@@ -44,6 +61,12 @@ public class AiRecommenderUtil {
 		return optimized;
 	}
 	
+	/**
+	 * Find max numof compatible combinations.
+	 *
+	 * @param sortedList the sorted list
+	 * @return the list
+	 */
 	// find max num of compatible combinations to form a winning hand
 	public List<List<Tile>> findMaxNumofCompatibleCombinations(List<List<Tile>> sortedList){
 		List<List<Tile>> result = new ArrayList<>();
@@ -63,6 +86,12 @@ public class AiRecommenderUtil {
 		
 	}
 	
+	/**
+	 * Sort tiles.
+	 *
+	 * @param tilesToSort the tiles to sort
+	 * @return the list
+	 */
 	public List<List<Tile>> sortTiles(List<List<Tile>> tilesToSort){
 		Collections.sort(tilesToSort, new Comparator<List<Tile>>() {
 			@Override
@@ -77,12 +106,26 @@ public class AiRecommenderUtil {
 		return tilesToSort;
 	}
 	
+	/**
+	 * Checks if is compatible.
+	 *
+	 * @param former the former
+	 * @param latter the latter
+	 * @return true, if is compatible
+	 */
 	public boolean isCompatible(List<Tile> former, List<Tile> latter) {
 		if(former.get(former.size()-1).getId() < latter.get(0).getId())
 			return true;
 		return false;
 	}
 	
+	/**
+	 * Duplicated.
+	 *
+	 * @param list the list
+	 * @param id the id
+	 * @return true, if successful
+	 */
 	public boolean duplicated(List<List<Tile>> list, int id) {
 		for(List<Tile> l: list) {
 			if(containsId(l, id))
@@ -91,6 +134,13 @@ public class AiRecommenderUtil {
 		return false;
 	}
 	
+	/**
+	 * Contains id.
+	 *
+	 * @param tilesToCheck the tiles to check
+	 * @param id the id
+	 * @return true, if successful
+	 */
 	public boolean containsId(List<Tile> tilesToCheck, int id) {
 		for(Tile t : tilesToCheck) {
 			if(t.getId()==id)

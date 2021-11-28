@@ -1,7 +1,25 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: ChowChecker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import java.util.*;
 import utils.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ChowChecker.
+ */
 public class ChowChecker {
+	
+	/**
+	 * Check chow.
+	 *
+	 * @param wall the wall
+	 * @param another the another
+	 * @return the array list
+	 */
 	public static ArrayList<Meld> checkChow(ArrayList<Tile> wall, Tile another) {
 		ArrayList<Meld> result = new ArrayList<>();
 		if(another.getType()==Type.WIND || another.getType()==Type.DRAGON) {

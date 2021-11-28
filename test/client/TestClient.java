@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestClient.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +23,15 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestClient.
+ */
 class TestClient {
 	
+	/**
+	 * Test constructor.
+	 */
 	@Test
 	public void testConstructor() {
 		Client client = new Client(0, null,"TEXT");
@@ -27,6 +39,9 @@ class TestClient {
 		assertEquals(client.getServer(), null);
 	}
 
+	/**
+	 * Test init wall.
+	 */
 	@Test
 	void testInitWall() {
 		Client client = new Client(1,new Server(),"TEXT");
@@ -37,6 +52,9 @@ class TestClient {
 		assertEquals(s,result);
 	}
 	
+	/**
+	 * Test on recv.
+	 */
 	@Test
 	void testOnRecv() {
 		Client client = new Client(0,new Server(),"TEXT");
@@ -48,6 +66,9 @@ class TestClient {
 		assertEquals("Kong",client.getMeld().get(0).getName());
 	}
 	
+	/**
+	 * Test set ui 1.
+	 */
 	@Test
 	void testSetUi1() {
 		Client client = new Client(0,new Server(),"AI");
@@ -55,6 +76,9 @@ class TestClient {
 		assertEquals("class ui.aiUi.AiUi",ui.getClass().toString());
 	}
 	
+	/**
+	 * Test set ui 2.
+	 */
 	@Test
 	void testSetUi2() {
 		Client client = new Client(0,new Server(),"GUI");
@@ -62,6 +86,9 @@ class TestClient {
 		assertEquals("class ui.gui.GameController",ui.getClass().toString());
 	}
 	
+	/**
+	 * Test renew score.
+	 */
 	@Test
 	void testRenewScore() {
 		Client client = new Client(0,new Server(),"TEXT");
@@ -77,6 +104,9 @@ class TestClient {
 		assertEquals(0,result4);
 	}
 	
+	/**
+	 * Test send.
+	 */
 	@Test
 	void testSend() {
 		class StubServer extends Server{

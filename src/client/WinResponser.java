@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: WinResponser.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import java.util.ArrayList;
@@ -9,8 +14,18 @@ import network.WinMsg;
 import server.Server;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WinResponser.
+ */
 public class WinResponser implements BidResponser{
 
+	/**
+	 * Response.
+	 *
+	 * @param client the client
+	 * @param msg the msg
+	 */
 	@Override
 	public void response(Client client, BidMsg msg) {
 		if(client.getId() == msg.getBidClient()){

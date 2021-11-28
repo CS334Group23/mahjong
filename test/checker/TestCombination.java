@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestCombination.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -6,7 +11,16 @@ import checker.CheckWin;
 import checker.GenerateWinningHand;
 import utils.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestCombination.
+ */
 public class TestCombination {
+	
+	/**
+	 * Unit test check chowv 1.
+	 */
 	@Test
 	public void UnitTestCheckChowv1() {//test false
 		Tile t1= new Tile(0);
@@ -16,6 +30,10 @@ public class TestCombination {
 		boolean result = testCombination.CheckChow(t1, t2, t3);
 		assertEquals(false,result);
 	}
+	
+	/**
+	 * Unit test check chowv 2.
+	 */
 	@Test
 	public void UnitTestCheckChowv2() {//test true
 		Tile t1= new Tile(0);
@@ -27,6 +45,10 @@ public class TestCombination {
 		
 		
 	}
+	
+	/**
+	 * Unit test check pongv 1.
+	 */
 	@Test
 	public void UnitTestCheckPongv1() {
 		Tile t1= new Tile(0);
@@ -38,6 +60,10 @@ public class TestCombination {
 		
 		
 	}
+	
+	/**
+	 * Unit test check pongv 2.
+	 */
 	@Test
 	public void UnitTestCheckPongv2() {
 		Tile t1= new Tile(0);
@@ -50,6 +76,9 @@ public class TestCombination {
 		
 	}
 	
+	/**
+	 * Unit testget combinationv 1.
+	 */
 	@Test 
 	public void UnitTestgetCombinationv1() { //testing  false
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -90,6 +119,10 @@ public class TestCombination {
 		
 		
 	}
+	
+	/**
+	 * Unit testget combinationv 2.
+	 */
 	@Test 
 	public void UnitTestgetCombinationv2() { //testing  false
 		ArrayList<Tile> hand = new ArrayList<>();

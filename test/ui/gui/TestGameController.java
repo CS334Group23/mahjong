@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestGameController.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package ui.gui;
 import static org.junit.Assert.assertEquals;
 
@@ -12,6 +17,10 @@ import network.DealMsg;
 import server.Server;
 import ui.gui.GameController;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestGameController.
+ */
 public class TestGameController {
 //	@Test
 //	public void testGameControllerInit() {
@@ -26,7 +35,10 @@ public class TestGameController {
 //        //assertEquals("Get gameController instance", baos.toString());
 //	}
 	
-	@Test
+	/**
+ * Test info deal.
+ */
+@Test
 	public void testInfoDeal() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		PrintStream ps = new PrintStream(baos);
@@ -60,6 +72,9 @@ public class TestGameController {
 //		assertEquals("GamePanel infoDeal", baos.toString());
 	}	
 	
+	/**
+	 * Test info draw.
+	 */
 	@Test
 	public void testInfoDraw() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();

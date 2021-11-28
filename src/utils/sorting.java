@@ -1,8 +1,23 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: sorting.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class sorting.
+ */
 public final class sorting {
+    
+    /**
+     * Sort meld.
+     *
+     * @param showed_hand the showed hand
+     */
     public static void sort_Meld(ArrayList<Meld> showed_hand){
     	Meld temp;
     	boolean sorted=false;

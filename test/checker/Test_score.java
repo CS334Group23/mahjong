@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: Test_score.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -9,11 +14,18 @@ import checker.sequence.Sequence;
 import utils.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Test_score.
+ */
 // this is for testing , so please ignore it
 public class Test_score{
 	//@Test
 	
 	
+	/**
+	 * Test.
+	 */
 	public void test() {
 			
 			ArrayList<Tile> hand = new ArrayList<>();
@@ -67,7 +79,10 @@ public class Test_score{
 //@Test
 	
 	
-	public void test2() {
+	/**
+ * Test 2.
+ */
+public void test2() {
 			
 			ArrayList<Tile> hand = new ArrayList<>();
 			GenerateWinningHand comb = new GenerateWinningHand();
@@ -118,6 +133,9 @@ public class Test_score{
 //@Test
 
 
+/**
+ * Test 3.
+ */
 public void test3() {
 		
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -167,6 +185,9 @@ public void test3() {
 	
 }
 
+/**
+ * Test 4.
+ */
 @Test
 
 
@@ -219,6 +240,10 @@ public void test4() {
 		assertEquals(4, score);
 	
 }
+
+/**
+ * Test 5.
+ */
 //@Test
 public void testv5() {
 	ArrayList<Tile> hand = new ArrayList<>();

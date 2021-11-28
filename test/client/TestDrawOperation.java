@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestDrawOperation.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,8 +28,17 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TestDrawOperation.
+ */
 class TestDrawOperation {
 
+	/**
+	 * Test 1.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong and Win, Choose Kong
 	void test1() throws Exception {
@@ -49,6 +63,11 @@ class TestDrawOperation {
 		
 	}
 	
+	/**
+	 * Test 2.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong and Win, Choose Win
 	void test2() throws Exception {
@@ -71,6 +90,11 @@ class TestDrawOperation {
 		drawOp.operate(client,new DrawMsg(3));
 	}
 	
+	/**
+	 * Test 3.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong, Choose Kong
 	void test3() throws Exception {
@@ -93,6 +117,11 @@ class TestDrawOperation {
 		drawOp.operate(client,new DrawMsg(3));
 	}
 	
+	/**
+	 * Test 4.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Win, Choose Win
 	void test4() throws Exception {
@@ -115,6 +144,11 @@ class TestDrawOperation {
 		drawOp.operate(client,new DrawMsg(5));
 	}
 	
+	/**
+	 * Test 5.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong, Choose Pass, discard 36
 	void test5() throws Exception {
@@ -137,6 +171,11 @@ class TestDrawOperation {
 		drawOp.operate(client,new DrawMsg(3));
 	}
 	
+	/**
+	 * Test 6.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//No special condition, discard 36
 	void test6() throws Exception {
@@ -159,6 +198,11 @@ class TestDrawOperation {
 		drawOp.operate(client,new DrawMsg(25));
 	}
 	
+	/**
+	 * Test 7.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	//Condition Kong, Invalid operation, default choose pass, discard 36
 	void test7() throws Exception {
@@ -181,8 +225,15 @@ class TestDrawOperation {
 		drawOp.operate(client,new DrawMsg(3));
 	}
 	
+	/** The bos. */
 	ByteArrayInputStream bos;
 	
+	/**
+	 * Sets the input.
+	 *
+	 * @param s the new input
+	 * @throws Exception the exception
+	 */
 	private void setInput(String s) throws Exception {
 		bos = new ByteArrayInputStream(s.getBytes());
 		System.setIn(bos);
