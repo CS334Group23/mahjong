@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: CheckerTest.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package utils;
 
 import static org.junit.Assert.assertEquals;
@@ -6,8 +11,15 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CheckerTest.
+ */
 public class CheckerTest {
 	
+	/**
+	 * Test check chow 1.
+	 */
 	@Test
 	public void testCheckChow1() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -29,6 +41,9 @@ public class CheckerTest {
 		assertEquals(3,result);
 	}
 	
+	/**
+	 * Test check chow 2.
+	 */
 	@Test
 	public void testCheckChow2() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -50,6 +65,9 @@ public class CheckerTest {
 		assertEquals(0,result);
 	}
 	
+	/**
+	 * Test check chow 3.
+	 */
 	@Test
 	public void testCheckChow3() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -72,6 +90,9 @@ public class CheckerTest {
 	}
 	
 	
+	/**
+	 * Test check chow 4.
+	 */
 	@Test
 	public void testCheckChow4() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -93,6 +114,9 @@ public class CheckerTest {
 		assertEquals(1,result);
 	}
 	
+	/**
+	 * Test check chow 5.
+	 */
 	@Test
 	public void testCheckChow5() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -114,6 +138,9 @@ public class CheckerTest {
 		assertEquals(0,result);
 	}
 	
+	/**
+	 * Test check pong 1.
+	 */
 	@Test
 	public void testCheckPong1() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -135,6 +162,9 @@ public class CheckerTest {
 		assertEquals(null, result);
 	}
 	
+	/**
+	 * Test check pong 2.
+	 */
 	@Test
 	public void testCheckPong2() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -156,6 +186,9 @@ public class CheckerTest {
 		assertEquals(null, result);
 	}
 	
+	/**
+	 * Test check pong 3.
+	 */
 	@Test
 	public void testCheckPong3() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -177,6 +210,9 @@ public class CheckerTest {
 		assertEquals("Pong", result);
 	}
 	
+	/**
+	 * Test check pong 4.
+	 */
 	@Test
 	public void testCheckPong4() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -198,6 +234,9 @@ public class CheckerTest {
 		assertEquals(null, result);
 	}
 	
+	/**
+	 * Test check pong 5.
+	 */
 	@Test
 	public void testCheckPong5() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -219,6 +258,9 @@ public class CheckerTest {
 		assertEquals(null, result);
 	}
 	
+	/**
+	 * Test check kong 1.
+	 */
 	@Test
 	public void testCheckKong1() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -240,6 +282,9 @@ public class CheckerTest {
 		assertEquals(null, result);
 	}
 	
+	/**
+	 * Test check kong 2.
+	 */
 	@Test
 	public void testCheckKong2() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -261,6 +306,9 @@ public class CheckerTest {
 		assertEquals(null, result);
 	}
 	
+	/**
+	 * Test check kong 3.
+	 */
 	@Test
 	public void testCheckKong3() {
 		ArrayList<Tile> arr = new ArrayList<>();
@@ -282,6 +330,9 @@ public class CheckerTest {
 		assertEquals("Kong", result);
 	}
 	
+	/**
+	 * Test check kong 4.
+	 */
 	@Test
 	public void testCheckKong4() {
 		ArrayList<Tile> arr = new ArrayList<>();

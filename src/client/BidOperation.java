@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: BidOperation.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package client;
 
 import java.lang.reflect.Constructor;
@@ -11,6 +16,12 @@ import server.ServerOperation;
 
 public class BidOperation implements ClientOperation{
 	
+	/**
+	 * Operate.
+	 *
+	 * @param client the client
+	 * @param msg the msg
+	 */
 	@Override
 	public void operate(Client client, Message msg) {
 		try {

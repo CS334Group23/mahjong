@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestFacadeChecker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -5,7 +10,16 @@ import org.junit.Test;
 import checker.FacadeChecker;
 import utils.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestFacadeChecker.
+ */
 public class TestFacadeChecker {
+	
+	/**
+	 * Test check if scorev 1.
+	 */
 	@Test
 	public void TestCheck_if_Scorev1() { //check if return empty
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -43,6 +57,10 @@ public class TestFacadeChecker {
 		assertEquals(check.check_if_win().isEmpty(),true);
 		
 	}
+	
+	/**
+	 * Test check if scorev 2.
+	 */
 	@Test
 	public void TestCheck_if_Scorev2() { //check if return sequence
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -80,6 +98,10 @@ public class TestFacadeChecker {
 		assertEquals(check.check_if_win().isEmpty(),false);
 		
 	}
+	
+	/**
+	 * Testcheck if pongv 1.
+	 */
 	@Test 
 	public void Testcheck_if_pongv1() { //test can pong
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -118,6 +140,10 @@ public class TestFacadeChecker {
 		assertEquals(result.getcomb_type(),2);
 		
 	}
+	
+	/**
+	 * Testcheck if pongv 2.
+	 */
 	@Test 
 	public void Testcheck_if_pongv2() {
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -157,6 +183,9 @@ public class TestFacadeChecker {
 		
 	}
 	
+	/**
+	 * Testcheck if chowv 1.
+	 */
 	@Test 
 	public void Testcheck_if_chowv1() { //true,
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -196,6 +225,9 @@ public class TestFacadeChecker {
 		
 	}
 	
+	/**
+	 * Testcheck if chowv 2.
+	 */
 	@Test 
 	public void Testcheck_if_chowv2() { //false,
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -234,6 +266,10 @@ public class TestFacadeChecker {
 		assertEquals(result.size(),0);
 		
 	}
+	
+	/**
+	 * Testcheck if kongv 1.
+	 */
 	@Test
 	public void Testcheck_if_kongv1() { //true 
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -273,6 +309,9 @@ public class TestFacadeChecker {
 		
 	}
 	
+	/**
+	 * Testcheck if kongv 2.
+	 */
 	@Test 
 	public void Testcheck_if_kongv2() { //false
 		ArrayList<Tile> hand = new ArrayList<>();
@@ -313,6 +352,9 @@ public class TestFacadeChecker {
 	}
 	
 	
+	/**
+	 * Test update handv 1.
+	 */
 	@Test 
 	public void TestUpdateHandv1() { //test if can update, using stub to create a get hand functino to know if hand is update inside checker
 		ArrayList<Tile> hand = new ArrayList<>();

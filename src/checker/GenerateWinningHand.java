@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: GenerateWinningHand.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package  checker;
 
 import java.util.ArrayList;
@@ -5,6 +10,7 @@ import java.util.*;
 
 import utils.*;
 
+// TODO: Auto-generated Javadoc
 //The logic is to find out all the combination set to check the score, count the highest.
 
 //To find the combination, I will use backtracking
@@ -19,8 +25,13 @@ import utils.*;
 
 
 
+/**
+ * The Class GenerateWinningHand.
+ */
 // the function may still buggy, and but at least it can check a winning hand, I will do it later.(or maybe do it on testing, have something write)
 public class GenerateWinningHand {
+	
+	/** The combination set. */
 	/*public int getmeldid(Meld t) {
 		if(t.getFirst().getType()==Type.BAMBOO)
 			if(t.getcomb_type()==2)
@@ -47,10 +58,17 @@ public class GenerateWinningHand {
 			return -1;
 	}*/
 	private ArrayList<ArrayList<Meld>> combination_set = new ArrayList<>();
+	
+	/** The Combi temp. */
 	private ArrayList<Meld> Combi_temp = new ArrayList<>();
 	//private ArrayList<Meld> all_temp=new ArrayList<>();
+	/** The formmeld. */
 	//Integer[] ponged = Collections.nCopies(144, 0).toArray(new Integer[0]);
 	private Integer[] formmeld=new Integer[70]; // 0-8 bamboo pong, 10-16 bambo chow || 20-28 character pong, 30-16 chow || 40-48 dot pong,50-56 chow || 60-62 dragon 63-67 wind
+	
+	/**
+	 * Instantiates a new generate winning hand.
+	 */
 	public GenerateWinningHand() {
 		/*
 		for(int i=0;i<70;i++) {
@@ -59,7 +77,16 @@ public class GenerateWinningHand {
 		}
 		*/
 	};
+	
+	/** The count. */
 	public int count=0;
+	
+	/**
+	 * Gets the combination.
+	 *
+	 * @param hand the hand
+	 * @return the combination
+	 */
 	public ArrayList<ArrayList<Meld>> getCombination(ArrayList<Tile> hand) {
 		if(!combination_set.isEmpty()) {
 			combination_set.clear();
@@ -76,6 +103,12 @@ public class GenerateWinningHand {
 		
 	}
 	
+	/**
+	 * Checkcombination.
+	 *
+	 * @param hand the hand
+	 * @return true, if successful
+	 */
 	public boolean checkcombination(ArrayList<Tile> hand) {
 		if (hand.size() ==0) {
 			return true;
@@ -209,6 +242,15 @@ public class GenerateWinningHand {
 				return true;
 			return false;
 		}
+	
+	/**
+	 * Check chow.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @param c the c
+	 * @return true, if successful
+	 */
 	public boolean CheckChow(Tile a, Tile b, Tile c) {
 
 		if(a.getRankIndex() == b.getRankIndex()-1 && b.getRankIndex()== c.getRankIndex()-1 && a.getType().equals(c.getType()))
@@ -220,6 +262,14 @@ public class GenerateWinningHand {
 		return false;
 	}
 
+	/**
+	 * Check pong.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @param c the c
+	 * @return true, if successful
+	 */
 	public boolean CheckPong(Tile a, Tile b, Tile c) {
 		if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() && a.getType()==c.getType() &&b.getType()==c.getType())
 		{
@@ -230,6 +280,9 @@ public class GenerateWinningHand {
 		return false;
 	}
 
+		/**
+		 * List.
+		 */
 		public void list() {//debug and also use for result
 			
 			for(ArrayList<Meld> m: combination_set) {
@@ -242,6 +295,12 @@ public class GenerateWinningHand {
 				System.out.println("Hello");
 			}
 		}
+		
+		/**
+		 * List.
+		 *
+		 * @param h the h
+		 */
 		public void list(ArrayList<Tile> h) {//debug and also use for result
 			
 			for(Tile m: h) {

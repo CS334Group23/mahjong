@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: KongChecker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import java.util.*;
 import utils.*;

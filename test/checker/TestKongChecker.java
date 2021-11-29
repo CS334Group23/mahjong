@@ -1,3 +1,8 @@
+/*
+ * <p>Project: mahjong-dev </p> 
+ * <p>File Name: TestKongChecker.java </p> 
+ * @author TeamCS3343 </a>
+ */
 package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -7,7 +12,16 @@ import checker.GenerateWinningHand;
 import checker.KongChecker;
 import utils.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class TestKongChecker.
+ */
 public class TestKongChecker {
+	
+	/**
+	 * Unit testcheck kongv 1.
+	 */
 	@Test
 	public void UnitTestcheckKongv1() {//sorted list to test if can't kong
 	ArrayList<Tile> hand = new ArrayList<>();
@@ -43,6 +57,10 @@ public class TestKongChecker {
 	Meld result = KongChecker.checkKong(hand,t14);
 	assertEquals(null,result);
 	}
+	
+	/**
+	 * Unit testcheck kongv 2.
+	 */
 	@Test
 	public void UnitTestcheckKongv2() { //sorted list to test if can kong
 		ArrayList<Tile> hand = new ArrayList<>();
