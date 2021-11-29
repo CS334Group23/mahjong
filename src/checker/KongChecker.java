@@ -6,7 +6,20 @@
 package checker;
 import java.util.*;
 import utils.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class KongChecker.
+ */
 public class KongChecker {
+	
+	/**
+	 * Check kong.
+	 *
+	 * @param wall the wall
+	 * @param another the another
+	 * @return the meld
+	 */
 	public static Meld checkKong(ArrayList<Tile> wall, Tile another) {
 		int insertPosition = 0;
 		for(; insertPosition<wall.size(); insertPosition++) {
