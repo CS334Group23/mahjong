@@ -37,9 +37,10 @@ public class DrawOperation implements ClientOperation{
 //		TerminalIOUtils.printIndex(client.getLength());
 //		System.out.printf("Client%d has cards: %s\n", client.getId(),client.printWall());
 //		System.out.printf("Client%d draws card %s\n", client.getId(),Tile.idToChnName((drawMsg).getTileId()));
-		Meld kong = KongChecker.checkKong(client.getWall(), new Tile(drawMsg.getTileId()));
+//		Meld kong = KongChecker.checkKong(client.getWall(), new Tile(drawMsg.getTileId()));
 //		ArrayList<Sequence> possibleSequence = new ArrayList<>();
 		FacadeChecker facadeChecker = new FacadeChecker(client.getWall(),client.getMeld(),new Tile(drawMsg.getTileId()));
+		Meld kong = facadeChecker.check_if_kong();
 //		possibleSequence = facadeChecker.check_if_win();
 //		boolean isWin = possibleSequence.size()!=0;
 		boolean isWin = facadeChecker.checkWhetherWin();
