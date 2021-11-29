@@ -45,4 +45,8 @@ public class BidOperation implements ServerOperation{
 			}
 		}
 	} 
+	
+	public static void clean() {// for test reason only
+		msgQueue.clear();
+	}
 }

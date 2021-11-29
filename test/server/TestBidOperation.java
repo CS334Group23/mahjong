@@ -110,6 +110,7 @@ public class TestBidOperation {
 		op.operate(new Server(), new BidMsg(0, 1, BidType.CHOW, "BidResponserStub", 1,null, null, false));
 		op.operate(new Server(), new BidMsg(0, 1, BidType.EMPTY, "BidResponserStub", 1,null, null, false));
 		op.operate(new Server(), new BidMsg(0, 1, BidType.EMPTY, "BidResponserStub", 1,null, null, false));
+		BidOperation.clean();
 	}
 	
 	/**
@@ -123,5 +124,6 @@ public class TestBidOperation {
 		op.operate(new Server(), new BidMsg(0, 1, BidType.KONG, "BidResponserStub", 1,null, null, false));
 		op.operate(new Server(), new BidMsg(0, 1, BidType.EMPTY, "BidResponserStub", 1,null, null, false));
 		op.operate(new Server(), new BidMsg(0, 1, BidType.EMPTY, "BidResponserStub", 1,null, null, false));
+		BidOperation.clean();
 	}
 }
