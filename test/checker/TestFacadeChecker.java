@@ -55,6 +55,8 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		assertEquals(check.check_if_win().isEmpty(),true);
+		assertEquals(check.getScore()==0,true);
+		assertEquals(check.checkWhetherWin(),false);
 		
 	}
 	
@@ -96,7 +98,8 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		assertEquals(check.check_if_win().isEmpty(),false);
-		
+		assertEquals(check.getScore()==0,false);
+		assertEquals(check.checkWhetherWin(),true);
 	}
 	
 	/**
@@ -304,8 +307,8 @@ public class TestFacadeChecker {
 		hand.add(t12);
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
-		ArrayList<Meld> result=check.check_if_kong();
-		assertEquals(result.size(),3);
+		Meld result=check.check_if_kong();
+		assertEquals(result.getcomb_type(),3);
 		
 	}
 	
@@ -346,8 +349,8 @@ public class TestFacadeChecker {
 		hand.add(t12);
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
-		ArrayList<Meld> result=check.check_if_kong();
-		assertEquals(result.size(),0);
+		Meld result=check.check_if_kong();
+		assertEquals(result,null);
 		
 	}
 	
@@ -359,7 +362,7 @@ public class TestFacadeChecker {
 	public void TestUpdateHandv1() { //test if can update, using stub to create a get hand functino to know if hand is update inside checker
 		ArrayList<Tile> hand = new ArrayList<>();
 		ArrayList<Meld> showed_hand = new ArrayList<>();
-		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,5,6,8,9,10,12,13,40,41,42 ));
+		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(0,1,2,4,5,6,8,9,10,12,40,41,42,43 ));
 
 		Tile t1= new Tile(a.get(0));
 		Tile t2= new Tile(a.get(1));
@@ -388,23 +391,14 @@ public class TestFacadeChecker {
 		hand.add(t11);
 		hand.add(t12);
 		hand.add(t13);
-		class stubchecker extends FacadeChecker{
-
-			public stubchecker(ArrayList<Tile> hand, ArrayList<Meld> showed_hand, Tile a) {
-				super(hand, showed_hand, a);
-			}
-			
-			public ArrayList<Tile> getHand(){
-				return this.hand;
-				}
-		}
-		stubchecker check=new stubchecker(hand,showed_hand,t14);
+		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		hand.remove(0);
 		hand.add(t14);
 		Tile t15=new Tile(51);
+		boolean resulta=check.check_if_pong().getcomb_type()==2;
 		check.UpdateHand(hand, showed_hand, t15);
-		boolean result= check.getHand().contains(t15)&& !check.getHand().contains(t1);
-		assertEquals(result,true);
+		boolean resultb= check.check_if_pong() == null;
+		assertEquals(resulta && resultb,true);
 		
 	}
 }
