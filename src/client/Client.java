@@ -163,14 +163,6 @@ public class Client implements Peer, ClientInterface{
 			tileLength.add(13);
 		}
 	}
-	
-//	public String printWall() {
-//		String s = "";
-//		for(Tile t:wall) {
-//			s = s+(t.getChnName()+" /");
-//		}
-//		return s;
-//	}
 
 	/**
  * Gets the tile.

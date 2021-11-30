@@ -6,13 +6,9 @@
 package client;
 
 import java.lang.reflect.Constructor;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 import network.BidMsg;
 import network.Message;
-import server.Server;
-import server.ServerOperation;
 
 public class BidOperation implements ClientOperation{
 	

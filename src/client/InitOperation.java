@@ -5,7 +5,6 @@
  */
 package client;
 
-import network.DealMsg;
 import network.Message;
 
 // TODO: Auto-generated Javadoc
