@@ -432,9 +432,13 @@ public class User {
 		
 		// if it is win user
 		// add the lastDiscardTile to users' hand list if win by getting other players' tile
-		if(userId == winUserId && winType == WinMsg.WINBYDISCARD) {
-			Tile lastDiscardTile = lastDiscardTileLabel.getTile();
-			handTileList.add(lastDiscardTile);
+		if(userId == winUserId) {
+			if(winType == WinMsg.WINBYDISCARD) {
+				Tile lastDiscardTile = lastDiscardTileLabel.getTile();
+				handTileList.add(lastDiscardTile);
+			} else if(winType == WinMsg.SELFDRAWN) {
+				handTileList.add(newTileFromServer.getTile());
+			}
 		}
 		// hand init for users, display tile label to panel
 		this.handInit(gamePanel);

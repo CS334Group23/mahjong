@@ -187,7 +187,7 @@ class TestDrawOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 36);
+				assertEquals(36,((DiscardMsg)msg).getTileId());
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
@@ -214,7 +214,7 @@ class TestDrawOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 36);
+				assertEquals(36,((DiscardMsg)msg).getTileId());
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
