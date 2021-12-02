@@ -35,22 +35,4 @@ public final class sorting {
     	}
     	
     }
-    
-    
-//    public static void sortTile(ArrayList<Tile> hand) { //just us bubble sort for temp testing, can change later
-//    	Tile temp;
-//    	boolean sorted=false;
-//    	while(!sorted) {
-//    		 sorted = true;
-//    	        for (int i = 0; i < hand.size()-1; i++) { 
-//    	            if (hand.get(i).compareTo(hand.get(i + 1)) > 0) {
-//    	                temp = hand.get(i);
-//    	                hand.set(i, hand.get(i + 1));
-//    	                hand.set(i + 1, temp);
-//    	                sorted = false;
-//    	            }
-//    	        }
-//    		
-//    	}
-//    }
 }

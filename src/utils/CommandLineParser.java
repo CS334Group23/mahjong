@@ -39,34 +39,6 @@ public class CommandLineParser {
     }
 
     /**
-     * Gets the argument names.
-     *
-     * @return the argument names
-     */
-    // Return argument names
-    public Set<String> getArgumentNames()
-    {
-        Set<String> argumentNames = new HashSet<>();
-        argumentNames.addAll(flags);
-        argumentNames.addAll(map.keySet());
-        return argumentNames;
-    }
-    
-    /**
-     * Gets the flag.
-     *
-     * @param flagName the flag name
-     * @return the flag
-     */
-    // Check if flag is given
-    public boolean getFlag(String flagName)
-    {
-        if(flags.contains(flagName))
-            return true;
-        return false;
-    }
-
-    /**
      * Gets the argument value.
      *
      * @param argumentName the argument name
