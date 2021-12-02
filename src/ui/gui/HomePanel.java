@@ -74,11 +74,13 @@ public class HomePanel extends JPanel {
 		exit.setBounds(GameController.FRAME_WIDTH/22*13, GameController.FRAME_HEIGHT/4*3, GameController.FRAME_WIDTH/11, GameController.FRAME_HEIGHT/12);
 		
 		ImageIcon icon1 = new ImageIcon("resource/static/others/gameStart.png");
-		Image temp1 = icon1.getImage().getScaledInstance(gameStart.getWidth(), gameStart.getHeight(), icon1.getImage().SCALE_DEFAULT);
+		icon1.getImage();
+		Image temp1 = icon1.getImage().getScaledInstance(gameStart.getWidth(), gameStart.getHeight(), Image.SCALE_DEFAULT);
 		icon1 = new ImageIcon(temp1);
 		
 		ImageIcon icon2 = new ImageIcon("resource/static/others/exit.png");
-		Image temp2 = icon2.getImage().getScaledInstance(gameStart.getWidth(), gameStart.getHeight(), icon2.getImage().SCALE_DEFAULT);
+		icon2.getImage();
+		Image temp2 = icon2.getImage().getScaledInstance(gameStart.getWidth(), gameStart.getHeight(), Image.SCALE_DEFAULT);
 		icon2 = new ImageIcon(temp2);
 		
 		

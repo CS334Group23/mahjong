@@ -9,9 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.border.Border;
 
 import utils.Meld;
 import utils.Tile;
@@ -94,7 +92,6 @@ public class UserRight extends User{
 		boardTileList.add(tile);
 		tileOnBoard++;
 		
-		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
 
 		
 		// simply delete the last tile from the hand, because for AIs, their tile is fake

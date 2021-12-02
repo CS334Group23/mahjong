@@ -38,7 +38,6 @@ public class AiUi implements Ui{
 	 */
 	public AiUi(ClientInterface client) {
 		this.client = client;
-//		this.aiRecommender = new AiRecommender();
 	}
 
 	/**

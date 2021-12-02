@@ -51,12 +51,8 @@ public class Deck {
 	 * @param tileHeight the tile height
 	 */
 	public Deck(ArrayList<Tile> tiles, Point point, int tileWidth, int tileHeight) {
-		this.tiles = new ArrayList<>();
+		this.tiles = new ArrayList<>(tiles);
 		this.tileLabels = new ArrayList<>();
-//		this.tiles = tiles; //here directly use the client's wall has some problem
-		for(Tile t : tiles) {
-			this.tiles.add(t);
-		}
 		this.point = point;
 		this.tileWidth = tileWidth;
 		this.tileHeight = tileHeight;

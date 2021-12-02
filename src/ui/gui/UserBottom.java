@@ -6,20 +6,15 @@
 package ui.gui;
 
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+
 import javax.swing.JLabel;
-import javax.swing.border.Border;
 
 import utils.Meld;
 import utils.Tile;
-import utils.sorting;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -104,7 +99,6 @@ public class UserBottom extends User{
 		boardTileList.add(tile);
 		tileOnBoard++;
 		
-		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
 		
 		// delete the tile from handDeck
 		// compare by tile Id

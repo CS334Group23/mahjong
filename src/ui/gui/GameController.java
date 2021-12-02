@@ -20,7 +20,6 @@ import network.DrawNoticeMsg;
 import network.WinMsg;
 import ui.ClientInterface;
 import ui.Ui;
-import utils.Tile;
 
 // TODO: Auto-generated Javadoc
 /**
