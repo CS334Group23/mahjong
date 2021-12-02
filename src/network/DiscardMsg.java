@@ -5,8 +5,6 @@
  */
 package network;
 
-import client.Client;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class DiscardMsg.

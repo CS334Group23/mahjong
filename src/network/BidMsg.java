@@ -14,7 +14,7 @@ import utils.Meld;
 /**
  * The Class BidMsg.
  */
-public class BidMsg implements Message, Comparable{
+public class BidMsg implements Message, Comparable<BidMsg>{
 	
 	/** The Constant BID_NUM. */
 	public static final int BID_NUM = 5;
@@ -98,8 +98,8 @@ public class BidMsg implements Message, Comparable{
 	 * @return the int
 	 */
 	@Override
-	public int compareTo(Object another) {
-		return ((BidMsg)another).bidType-this.bidType;
+	public int compareTo(BidMsg another) {
+		return another.bidType-this.bidType;
 	}
 	
 	/**
