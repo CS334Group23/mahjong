@@ -7,9 +7,6 @@ package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import checker.CheckWin;
-import checker.GenerateWinningHand;
-import checker.PongChecker;
 import utils.*;
 import java.util.*;
 // TODO: Auto-generated Javadoc
@@ -100,5 +97,125 @@ public class TestPongChecker {
 		}
 		assertEquals(true,bresult);
 		}
+	
+	/**
+	 * Test check pong 1.
+	 */
+	@Test
+	public void testCheckPong1() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(10));
+		arr.add(new Tile(12));
+		arr.add(new Tile(20));
+		arr.add(new Tile(30));
+		arr.add(new Tile(32));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(108));
+		arr.add(new Tile(112));
+		arr.add(new Tile(116));
+	
+		Meld result = PongChecker.checkPong(arr, new Tile(0));
+		assertEquals(null, result);
+	}
+	
+	/**
+	 * Test check pong 2.
+	 */
+	@Test
+	public void testCheckPong2() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(10));
+		arr.add(new Tile(12));
+		arr.add(new Tile(20));
+		arr.add(new Tile(30));
+		arr.add(new Tile(32));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(108));
+		arr.add(new Tile(112));
+		arr.add(new Tile(116));
+	
+		Meld result = PongChecker.checkPong(arr, new Tile(120));
+		assertEquals(null, result);
+	}
+	
+	/**
+	 * Test check pong 3.
+	 */
+	@Test
+	public void testCheckPong3() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(10));
+		arr.add(new Tile(12));
+		arr.add(new Tile(20));
+		arr.add(new Tile(30));
+		arr.add(new Tile(32));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(108));
+		arr.add(new Tile(112));
+		arr.add(new Tile(116));
+	
+		String result = PongChecker.checkPong(arr, new Tile(11)).getName();
+		assertEquals("Pong", result);
+	}
+	
+	/**
+	 * Test check pong 4.
+	 */
+	@Test
+	public void testCheckPong4() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(12));
+		arr.add(new Tile(13));
+		arr.add(new Tile(20));
+		arr.add(new Tile(30));
+		arr.add(new Tile(33));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(108));
+		arr.add(new Tile(112));
+		arr.add(new Tile(116));
+	
+		Meld result = PongChecker.checkPong(arr, new Tile(34));
+		assertEquals(null, result);
+	}
+	
+	/**
+	 * Test check pong 5.
+	 */
+	@Test
+	public void testCheckPong5() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(12));
+		arr.add(new Tile(13));
+		arr.add(new Tile(20));
+		arr.add(new Tile(28));
+		arr.add(new Tile(33));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(108));
+		arr.add(new Tile(112));
+		arr.add(new Tile(116));
+	
+		Meld result = PongChecker.checkPong(arr, new Tile(29));
+		assertEquals(null, result);
+	}
 
 }
