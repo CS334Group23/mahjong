@@ -58,8 +58,6 @@ public class CheckWin {
 	public boolean checkIsWin(ArrayList<Tile> hand, ArrayList<Meld> showed_hand) {//now use this added one
 		GenerateWinningHand comb=new GenerateWinningHand();
 		ArrayList<ArrayList<Meld>> set=comb.getCombination(hand);
-		ArrayList<Sequence> sequence =new ArrayList<>();
-		System.out.printf("Set:%d\n",set.size());
 		if(set.size()>0) {
 			return true;
 		}

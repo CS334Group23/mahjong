@@ -71,15 +71,5 @@ public class PongChecker {
 		} 
 		return null;
 	}
-	
-	public static boolean CheckPong(Tile a, Tile b, Tile c) {
-		if(a.getRankIndex() == b.getRankIndex() && b.getRankIndex() == c.getRankIndex() && a.getType()==c.getType() &&b.getType()==c.getType())
-		{
-			
-			return true;
-		}
-		
-		return false;
-	}
 	*/
 }
