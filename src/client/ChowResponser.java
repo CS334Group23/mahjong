@@ -22,8 +22,8 @@ public class ChowResponser implements BidResponser{
 	 */
 	@Override
 	public void response(Client client, BidMsg msg) {
-		BidMsg chowMsg = (BidMsg)msg; //here later need refactoring
-		if(client.getId()== chowMsg.getBidClient()) { //here now omit this if in the text ui design
+		BidMsg chowMsg = msg;
+		if(client.getId()== chowMsg.getBidClient()) {
 			client.updateWall(chowMsg.getMeld());
 			client.getUi().infoBid(msg);
 			int tileIndex = client.getUi().getDiscard();

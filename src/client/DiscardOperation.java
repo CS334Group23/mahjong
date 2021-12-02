@@ -7,11 +7,7 @@ package client;
 
 import java.util.ArrayList;
 
-import checker.ChowChecker;
 import checker.FacadeChecker;
-import checker.KongChecker;
-import checker.PongChecker;
-import checker.sequence.Sequence;
 import network.BidMsg;
 import network.DiscardMsg;
 import network.Message;
@@ -42,17 +38,13 @@ public class DiscardOperation implements ClientOperation{
 			return;
 		}
 		else if(discardMsg.getSenderId()==(client.getId()+3)%4) {
-//			ArrayList<Meld> possibleMeld = ChowChecker.checkChow(client.getWall(), new Tile(discardMsg.getTileId()));
 			ArrayList<Meld> possibleMeld = facadeChecker.check_if_chow();
 			for(Meld m:possibleMeld) {
 				possibleBid.add(new BidMsg(client.getId(),discardMsg.getSenderId(), BidType.CHOW, "ChowResponser", ((DiscardMsg)msg).getTileId(),m, null, false));
 			}
 		}
-//		ArrayList<Sequence> possibleSequence = facadeChecker.check_if_win(); //change here
 		boolean win = facadeChecker.checkWhetherWin();
-//		Meld pong = Checker.checkPong(client.getWall(), new Tile(discardMsg.getTileId()));
 		Meld pong = facadeChecker.check_if_pong();
-//		Meld kong = KongChecker.checkKong(client.getWall(), new Tile(discardMsg.getTileId()));
 		Meld kong = facadeChecker.check_if_kong();
 		if(pong != null) {
 			possibleBid.add(new BidMsg(client.getId(),discardMsg.getSenderId(), BidType.PONG, "PongResponser", ((DiscardMsg)msg).getTileId(),pong,null, false));
@@ -60,7 +52,6 @@ public class DiscardOperation implements ClientOperation{
 		if(kong != null) {
 			possibleBid.add(new BidMsg(client.getId(),discardMsg.getSenderId(), BidType.KONG, "KongResponser", ((DiscardMsg)msg).getTileId(),kong, null, false));
 		}
-//		if(possibleSequence.size()!=0) { //change here
 		if(win) {
 			possibleBid.add(new BidMsg(client.getId(),discardMsg.getSenderId(), BidType.WIN, "WinResponser", ((DiscardMsg)msg).getTileId(),null, Tile.tileToIdList(client.getWall()), false));
 		}
