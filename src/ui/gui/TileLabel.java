@@ -15,6 +15,11 @@ import utils.Tile;
  */
 public class TileLabel extends JLabel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The is first click. */
 	private boolean isFirstClick;
 	

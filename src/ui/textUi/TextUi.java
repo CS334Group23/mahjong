@@ -26,7 +26,7 @@ import utils.Tile;
 public class TextUi implements Ui{
 	
 	/** The client. */
-	private ClientInterface client; //this client later need to try best to decouple out with input parameters
+	private ClientInterface client;
 	
 	/** The scan. */
 	private Scanner scan;

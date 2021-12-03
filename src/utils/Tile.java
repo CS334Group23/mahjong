@@ -9,14 +9,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
-
-import ui.gui.TileLabel;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -364,46 +360,10 @@ public class Tile implements Comparable<Tile> {
 	 */
 	public static ArrayList<Tile> sortTileList(ArrayList<Tile> tiles) {
 		ArrayList<Tile> sortedTiles = null;
-//		tiles.sort(new tileComparator());
 		Collections.sort(tiles);
 		sortedTiles = tiles;
 		return sortedTiles;
 	}
 	
-//	public static ArrayList<TileLabel> sortTileLabelList(ArrayList<TileLabel> tileLabels) {
-//		ArrayList<TileLabel> sortedTileLabels = null;
-//		tileLabels.sort(new tileLabelComparator());
-//		
-//		sortedTileLabels = tileLabels;
-//		return sortedTileLabels;
-//	}
 }
 
-//class tileComparator implements Comparator<Tile>{
-//
-//	@Override
-//	public int compare(Tile o1, Tile o2) {
-//		int o1Id = o1.getId();
-//		int o2Id = o2.getId();
-//		
-//		if(o1Id == o2Id) return 0;
-//		
-//		return o1Id < o2Id ? -1 : 1;
-//	}
-//	
-//}
-
-//class tileLabelComparator implements Comparator<TileLabel>{
-//
-//	@Override
-//	public int compare(TileLabel o1, TileLabel o2) {
-//		Tile tile1 = o1.getTile();
-//		Tile tile2 = o2.getTile();
-//		int o1Id = tile1.getId();
-//		int o2Id = tile2.getId();
-//		
-//		if(o1Id == o2Id) return 0;
-//		
-//		return o1Id < o2Id ? -1 : 1;
-//	}
-//}

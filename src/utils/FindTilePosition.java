@@ -21,7 +21,6 @@ public class  FindTilePosition {
 	 */
 	public static int NextDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
-		//System.out.println(a.getId()+" "+pos);
 		for(int i=pos;i<hand.size();i++) {
 			if(hand.get(pos).getRankIndex()!=  hand.get(i).getRankIndex()) {
 				return i;
@@ -41,7 +40,6 @@ public class  FindTilePosition {
 	 */
 	public static int PreviousDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
-		//System.out.println(a.getId()+" "+pos);
 		for(int i=pos;i>=0;i--) {
 			if(hand.get(pos).getRankIndex()!=  hand.get(i).getRankIndex()) {
 				return i;
@@ -60,25 +58,23 @@ public class  FindTilePosition {
    	 * @return the int
    	 */
    	public static int FindPosition(ArrayList<Tile> hand, Tile a) {
-
-		   int low=0;
-		   int high=hand.size()-1;
-		   while(high>=low) {
-			   int mid=(low+high)/2;
-			   //System.out.println(low+" l "+high+" h  "+ mid+ "   "+a.getId()+ "   "+hand.get(mid).getId());
-			   if(a.getId()>hand.get(mid).getId()) {
-				
-				   low=mid+1;
-				   
-			   }else if(a.getId()<hand.get(mid).getId()) {
-				   high=mid-1;
-				   
-			   }else return mid;
+	   int low=0;
+	   int high=hand.size()-1;
+	   while(high>=low) {
+		   int mid=(low+high)/2;
+		   if(a.getId()>hand.get(mid).getId()) {
+			
+			   low=mid+1;
 			   
-		   }
-		   return low;
+		   }else if(a.getId()<hand.get(mid).getId()) {
+			   high=mid-1;
+			   
+		   }else return mid;
 		   
 	   }
+	   return low;
+	   
+   }
 	   
 }
 

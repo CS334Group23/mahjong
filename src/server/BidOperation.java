@@ -30,7 +30,6 @@ public class BidOperation implements ServerOperation{
 	@Override
 	public void operate(Server server, Message msg) {
 		msgQueue.add((BidMsg)msg);
-		System.out.printf("receive bid msg from client%d\n", ((BidMsg)msg).getBidClient());
 		if(((BidMsg)msg).isSelfDrawn() || msgQueue.size() >= Server.CLIENT_NUM) {
 			try {
 				BidMsg peek = msgQueue.peek();
@@ -45,4 +44,8 @@ public class BidOperation implements ServerOperation{
 			}
 		}
 	} 
+	
+	public static void clean() {// for test reason only
+		msgQueue.clear();
+	}
 }

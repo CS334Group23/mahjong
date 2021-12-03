@@ -63,7 +63,6 @@ public class Client implements Peer, ClientInterface{
 	 */
 	public Client(int aid, Peer server, String ui) {
 		this.id = aid;
-//		this.wall = new ArrayList<>();
 			
 		this.server = server;
 		this.scores = new ArrayList<Integer>(Arrays.asList(0,0,0,0));
@@ -77,9 +76,6 @@ public class Client implements Peer, ClientInterface{
 	 */
 	public void chooseUi(String ui) {
 		if(id == 0) {
-//			this.ui = GameController.getInstance();
-//			setUi(GameController.getInstance());
-//			GameController.getInstance().init(this); //should resolved later
 			if(ui.equals("AI")) {
 				setUi(new AiUi(this));
 			}
@@ -91,8 +87,6 @@ public class Client implements Peer, ClientInterface{
 			}
 		}
 		else {
-//			this.ui = new TextUi(this); //this may later need to change other ui options
-//			this.ui = new AiUi(this);
 			setUi(new AiUi(this));
 		}
 	}
@@ -150,9 +144,6 @@ public class Client implements Peer, ClientInterface{
 	 * @param initCards the init cards
 	 */
 	public void initWall(ArrayList<Integer> initCards) {
-//		for(Integer id : initCards) {
-//			wall.add(new Tile(id));
-//		}
 		wall = Tile.idToTileList(initCards);
 		this.meldWall = new ArrayList<ArrayList<Meld>>(CLIENT_NUM);
 		for(int i=0; i<CLIENT_NUM; i++) {
@@ -163,14 +154,6 @@ public class Client implements Peer, ClientInterface{
 			tileLength.add(13);
 		}
 	}
-	
-//	public String printWall() {
-//		String s = "";
-//		for(Tile t:wall) {
-//			s = s+(t.getChnName()+" /");
-//		}
-//		return s;
-//	}
 
 	/**
  * Gets the tile.

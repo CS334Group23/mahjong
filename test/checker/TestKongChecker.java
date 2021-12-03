@@ -7,9 +7,6 @@ package checker;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import checker.CheckWin;
-import checker.GenerateWinningHand;
-import checker.KongChecker;
 import utils.*;
 import java.util.*;
 // TODO: Auto-generated Javadoc
@@ -101,4 +98,99 @@ public class TestKongChecker {
 		assertEquals(true,bresult);
 		}
 
+	/**
+	 * Test check kong 1.
+	 */
+	@Test
+	public void testCheckKong1() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(12));
+		arr.add(new Tile(13));
+		arr.add(new Tile(20));
+		arr.add(new Tile(28));
+		arr.add(new Tile(33));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(108));
+		arr.add(new Tile(112));
+		arr.add(new Tile(116));
+	
+		Meld result = KongChecker.checkKong(arr, new Tile(125));
+		assertEquals(null, result);
+	}
+	
+	/**
+	 * Test check kong 2.
+	 */
+	@Test
+	public void testCheckKong2() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(12));
+		arr.add(new Tile(13));
+		arr.add(new Tile(20));
+		arr.add(new Tile(28));
+		arr.add(new Tile(33));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(108));
+		arr.add(new Tile(112));
+		arr.add(new Tile(116));
+	
+		Meld result = KongChecker.checkKong(arr, new Tile(5));
+		assertEquals(null, result);
+	}
+	
+	/**
+	 * Test check kong 3.
+	 */
+	@Test
+	public void testCheckKong3() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(12));
+		arr.add(new Tile(13));
+		arr.add(new Tile(20));
+		arr.add(new Tile(28));
+		arr.add(new Tile(33));
+		arr.add(new Tile(72));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(112));
+		arr.add(new Tile(114));
+		arr.add(new Tile(115));
+	
+		String result = KongChecker.checkKong(arr, new Tile(113)).getName();
+		assertEquals("Kong", result);
+	}
+	
+	/**
+	 * Test check kong 4.
+	 */
+	@Test
+	public void testCheckKong4() {
+		ArrayList<Tile> arr = new ArrayList<>();
+		arr.add(new Tile(4));
+		arr.add(new Tile(8));
+		arr.add(new Tile(12));
+		arr.add(new Tile(13));
+		arr.add(new Tile(20));
+		arr.add(new Tile(28));
+		arr.add(new Tile(31));
+		arr.add(new Tile(32));
+		arr.add(new Tile(76));
+		arr.add(new Tile(84));
+		arr.add(new Tile(112));
+		arr.add(new Tile(114));
+		arr.add(new Tile(115));
+	
+		Meld result = KongChecker.checkKong(arr, new Tile(29));
+		assertEquals(null, result);
+	}
 }

@@ -12,13 +12,10 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import network.BidMsg;
@@ -29,7 +26,6 @@ import network.DrawNoticeMsg;
 import network.WinMsg;
 import server.Server;
 import ui.ClientInterface;
-import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
@@ -275,17 +271,10 @@ public class GamePanel extends JPanel{
 		User user = users.get(bidMsg.getBidClient());
 		user.showBidInfo(this, currentInfo);
 		Meld meld = bidMsg.getMeld();
-		System.out.println("call to putMeldToRight");
 		if(user != null && meld != null) {
 			this.remove(lastDiscardTileLabel);
-			Point point = users.get(lastDiscardSenderId).getBoardDeck().getPoint();
-			System.out.println("------------");
-			System.out.println("Before - User: " + lastDiscardSenderId + ", point: " + point.x + "," + point.y);
-			System.out.println("------------");
+			
 			users.get(lastDiscardSenderId).returnBoardLabelToLastPosition();
-			System.out.println("------------");
-			System.out.println("After - User: " + lastDiscardSenderId + ", point: " + point.x + "," + point.y);
-			System.out.println("------------");
 			
 			user.putMeldToRight(this, meld);
 			repaint();

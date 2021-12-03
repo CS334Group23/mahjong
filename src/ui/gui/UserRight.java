@@ -9,9 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.border.Border;
 
 import utils.Meld;
 import utils.Tile;
@@ -94,7 +92,6 @@ public class UserRight extends User{
 		boardTileList.add(tile);
 		tileOnBoard++;
 		
-		System.out.println("User " +userId + " tileOnBoard:" + tileOnBoard);
 
 		
 		// simply delete the last tile from the hand, because for AIs, their tile is fake
@@ -139,7 +136,6 @@ public class UserRight extends User{
 		// 5. display tile label to panel
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
 		for(TileLabel handTileLabel : handTileLabelList) {
-			System.out.println("paint a tile");
 			handTileLabel.setBounds((int)handStartPoint.x, (int)handStartPoint.y, tileWidth, tileHeight);
 			
 			// display it to the panel
@@ -160,7 +156,6 @@ public class UserRight extends User{
 		// 8. display meld in the meld deck, move the meldStartPoint to the right
 		ArrayList<TileLabel> meldTileLabelList = getMeldLabel();
 		for(TileLabel meldTileLabel : meldTileLabelList) {
-			System.out.println("paint a meld");
 			meldTileLabel.setBounds((int)meldStartPoint.x, (int)meldStartPoint.y, tileWidth, tileHeight);
 
 			// display it to the panel

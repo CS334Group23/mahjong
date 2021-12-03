@@ -15,15 +15,6 @@ import utils.*;
  */
 public class FacadeChecker {
 	
-	/** The chowchecker. */
-	private ChowChecker chowchecker;
-	
-	/** The pongchecker. */
-	private PongChecker pongchecker;
-	
-	/** The kongchecker. */
-	private KongChecker kongchecker;
-	
 	/** The combination. */
 	private GenerateWinningHand combination;
 	
@@ -55,9 +46,6 @@ public class FacadeChecker {
 	public FacadeChecker(ArrayList<Tile> hand,ArrayList<Meld> showed_hand,Tile a) {
 		this.hand = new ArrayList<>(hand);
 		UpdateHand(hand,showed_hand,a);
-		chowchecker=new ChowChecker();
-		pongchecker=new PongChecker();
-		kongchecker=new KongChecker();
 		checkwin=new CheckWin();
 	}
 	
@@ -67,7 +55,7 @@ public class FacadeChecker {
 	 * @return the meld
 	 */
 	public Meld check_if_pong() {
-		return pongchecker.checkPong(hand, a);
+		return PongChecker.checkPong(hand, a);
 		
 	}	
 	
@@ -93,7 +81,7 @@ public class FacadeChecker {
 	 * @return the meld
 	 */
 	public Meld check_if_kong() {
-			return kongchecker.checkKong(hand, a);
+			return KongChecker.checkKong(hand, a);
 		}
 	
 	
@@ -103,7 +91,7 @@ public class FacadeChecker {
 	 * @return the array list
 	 */
 	public ArrayList<Meld> check_if_chow(){
-		return chowchecker.checkChow(hand, a);
+		return ChowChecker.checkChow(hand, a);
 		
 		
 		
@@ -155,8 +143,6 @@ public class FacadeChecker {
 		this.a=a;
 		this.pos=FindTilePosition.FindPosition(hand, a);
 		this.updatedHand.add(pos,a);
-		
-//		System.out.println("ID"+this.a.getId()+"  "+hand.get(12).getId());
 	}
 	
 }

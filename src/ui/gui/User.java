@@ -6,7 +6,6 @@
 package ui.gui;
 
 import java.awt.Color;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -371,10 +370,8 @@ public class User {
 	 * Return board label to last position.
 	 */
 	public void returnBoardLabelToLastPosition() {
-		System.out.println("User " +userId + " tileOnBoard before:" + tileOnBoard);
 		tileOnBoard--;
 		boardTileIsReturnedToLastPosition = true;
-		System.out.println("User " +userId + " tileOnBoard after:" + tileOnBoard);
 		getBoardDeck().getPoint().returnToLastPosition();
 	}
 	
