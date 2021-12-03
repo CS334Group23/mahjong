@@ -136,7 +136,6 @@ public class UserRight extends User{
 		// 5. display tile label to panel
 		ArrayList<TileLabel> handTileLabelList = getHandLabel();
 		for(TileLabel handTileLabel : handTileLabelList) {
-			System.out.println("paint a tile");
 			handTileLabel.setBounds((int)handStartPoint.x, (int)handStartPoint.y, tileWidth, tileHeight);
 			
 			// display it to the panel
@@ -157,7 +156,6 @@ public class UserRight extends User{
 		// 8. display meld in the meld deck, move the meldStartPoint to the right
 		ArrayList<TileLabel> meldTileLabelList = getMeldLabel();
 		for(TileLabel meldTileLabel : meldTileLabelList) {
-			System.out.println("paint a meld");
 			meldTileLabel.setBounds((int)meldStartPoint.x, (int)meldStartPoint.y, tileWidth, tileHeight);
 
 			// display it to the panel
