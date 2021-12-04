@@ -21,14 +21,6 @@ public class Thirteen_Orphans extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Thirteen Orphans";
-	}
+
 	
 }

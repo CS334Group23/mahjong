@@ -20,13 +20,4 @@ public class Win_From_Wall extends Sequence {
 		return 1;
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Win From Wall";
-	}
 }

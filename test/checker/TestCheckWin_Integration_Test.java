@@ -1308,7 +1308,8 @@ public class TestCheckWin_Integration_Test {
 			boolean result=false;
 			for(Sequence s:seq) {
 				if(s.getClass()== (new Thirteen_Orphans()).getClass())
-					result= true;
+					result= s.getScore()==13 &&true ;
+				
 				
 			}
 			assertEquals(true,result);

@@ -21,13 +21,5 @@ public class Mixed_One_Suit extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Mixed One Suit";
-	}
+	
 }

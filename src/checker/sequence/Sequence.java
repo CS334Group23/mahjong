@@ -18,10 +18,5 @@ public abstract class Sequence {
 	 */
 	public abstract int getScore();
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public abstract String getName();
+	
 }

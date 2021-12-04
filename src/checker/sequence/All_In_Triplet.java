@@ -21,14 +21,5 @@ public class All_In_Triplet extends Sequence{
 		
 	}
 
-/**
- * Gets the name.
- *
- * @return the name
- */
-public String getName() {
-		
-		return "All In Triplet";
-	}
 
 }

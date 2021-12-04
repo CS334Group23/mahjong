@@ -21,13 +21,5 @@ public class Nine_Gates extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Nine Gates";
-	}
+	
 }

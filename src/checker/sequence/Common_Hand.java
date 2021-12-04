@@ -21,13 +21,4 @@ public class Common_Hand extends Sequence{
 		
 	}
 
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Common Hand";
-	}
 }

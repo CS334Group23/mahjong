@@ -21,14 +21,5 @@ public class Great_Dragons extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Great Dragons";
-	}
 
 }
