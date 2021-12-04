@@ -201,9 +201,6 @@ public class CheckWin {
 		return sequence;
 		
 	}
-
-	
-
 	
 	
 	/**

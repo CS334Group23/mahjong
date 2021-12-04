@@ -154,6 +154,7 @@ public class GamePanel extends JPanel{
 	 *
 	 * @param msg the msg
 	 * @param possibleBid the possible bid
+	 * only for real user
 	 */
 	public void infoDraw(DrawMsg msg, ArrayList<BidMsg> possibleBid) {
 		Tile tile = null;
@@ -163,9 +164,7 @@ public class GamePanel extends JPanel{
 		}
 		
 		if(tile != null) {
-//			int userId = possibleBid.get(0).getBidClient(); //solve not display draw bug and adjust the logic
-//			User user = users.get(userId);
-			User user = users.get(0); //this hard code should be changed later
+			User user = users.get(0);
 			// display tile to the gamePanel
 			TileLabel tileLabel = addTileToPanel(user, tile); 
 			
@@ -175,18 +174,12 @@ public class GamePanel extends JPanel{
 			handTileEventInit(tileLabel, user);
 			if(possibleBid != null && possibleBid.size() != 0) {
 				for(int i=0; i<possibleBid.size(); i++) {
-					// add event to the tile label, if the tile is for real user
-					// also display relative button(s), e.g. kong, skip
-//					if(userId == User.USER_BOTTOM) {
-//					handTileEventInit(tileLabel, user);
-					
 					// button init
 					operationButtonInit(possibleBid.get(i), i);
-//					}
 				}
 			}
 		}
-		repaint(); //solve not display draw bug
+		repaint();
 	}
 
 	/**
@@ -234,24 +227,17 @@ public class GamePanel extends JPanel{
 			tile = new Tile(msg.getTileId());
 			sender = users.get(msg.getSenderId());
 		}
-		
-		// possibleBid == null means no other option could do
-		// only show the tile to the user's board deck
+
 		lastDiscardTileLabel = sender.discardTile(this, tile);
 		lastDiscardSenderId = sender.getUserId();
-		
-		if(possibleBid == null || possibleBid.size() == 0) { //need refactor later, solve the not display discard bug
-//			sender.discardTile(this, tile);
-		}
-		else { // not null, means need to deal with all possibleBid option
-			for(int i=0; i<possibleBid.size(); i++) {
-				if(possibleBid.get(i).getBidClient() == User.USER_BOTTOM) {
-					// button init
-					operationButtonInit(possibleBid.get(i), i);
-				}
+
+		for(int i=0; i<possibleBid.size(); i++) {
+			if(possibleBid.get(i).getBidClient() == User.USER_BOTTOM) {
+				// button init
+				operationButtonInit(possibleBid.get(i), i);
 			}
 		}
-		repaint(); //solve not display discard bug
+		repaint();
 	}
 	
 	/**
@@ -264,8 +250,6 @@ public class GamePanel extends JPanel{
 
 		// renew the indicator
 		renewIndicator(bidMsg.getBidClient());
-		// clear the new tile label
-
 		
 		// move the input meld to the user's right
 		User user = users.get(bidMsg.getBidClient());
@@ -627,62 +611,6 @@ public class GamePanel extends JPanel{
 				}
 			}
 		});
-	}
-	
-	/**
-	 * Prints the user decks.
-	 */
-	// for testing
-	public void printUserDecks() {
-		User user = users.get(2);
-		Deck handDeck = user.getHandDeck();
-		Deck meldDeck = user.getMeldDeck();
-		Deck boardDeck = user.getBoardDeck();
-		ArrayList<Tile> hand = handDeck.getTiles();
-		ArrayList<TileLabel> handLabel = handDeck.getTileLabels();
-		ArrayList<Tile> meld = meldDeck.getTiles();
-		ArrayList<TileLabel> meldLabel = meldDeck.getTileLabels();
-		ArrayList<Tile> borad = boardDeck.getTiles();
-		ArrayList<TileLabel> boradLabel = boardDeck.getTileLabels();
-		
-		System.out.println("--------------------------------------------------------------");
-		
-		System.out.print("User hand: ");
-		for(Tile tile : hand) {
-			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
-		}
-		System.out.println();
-		
-		System.out.print("User handLabel: ");
-		for(TileLabel tile : handLabel) {
-			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
-		}
-		System.out.println();
-		
-		System.out.print("User meld: ");
-		for(Tile tile : meld) {
-			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
-		}
-		System.out.println();
-		
-		System.out.print("User meldLabel: ");
-		for(TileLabel tile : meldLabel) {
-			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
-		}
-		System.out.println();
-		
-//		System.out.print("User borad: ");
-//		for(Tile tile : borad) {
-//			System.out.print(tile.getChnName() + "(" + tile.getId() + ") ");
-//		}
-//		System.out.println();
-//		
-//		System.out.print("User boradLabel: ");
-//		for(TileLabel tile : boradLabel) {
-//			System.out.print(tile.getTile().getChnName() + "(" + tile.getTile().getId() + ") ");
-//		}
-//		System.out.println();
-		System.out.println(opIndex);
 	}
 	
 	/**
