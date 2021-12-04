@@ -64,9 +64,6 @@ public class HomePanel extends JPanel {
 	 * Sets the scene.
 	 */
 	private void setScene() {
-		// TODO: set button image, add game logo
-		
-		//gameStart = new JButton("Game Start");
 		gameStart = new JButton();
 		exit = new JButton();
 		

@@ -78,30 +78,21 @@ public class GameController extends JFrame implements Ui{
 		
 		add(homePanel);
 		
-		// violate law of demeter, may need to change later
 		homePanel.getGameStartButton().addActionListener((e) -> {
 			remove(homePanel);
 			add(gamePanel);
 			repaint();
 			validate();
-			synchronized(this) { //solve not in the get the current bug
+			synchronized(this) {
 				this.notifyAll();
 			}
 		});
-		
-		// for testing coordinate, will be deleted later
-		gamePanel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				System.out.println(e.getX() + "," + e.getY());
-			}
-		});
-		setVisible(true); //solve not seen bug
+
+		setVisible(true); 
 		synchronized(this) {
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -184,13 +175,6 @@ public class GameController extends JFrame implements Ui{
 			e.printStackTrace();
 		}
 		remove(gamePanel);
-	}
-	
-	/**
-	 * Prints the user decks.
-	 */
-	public void printUserDecks() {
-		gamePanel.printUserDecks();
 	}
 
 	/**
