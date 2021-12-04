@@ -59,7 +59,7 @@ public class GenerateWinningHand {
 	
 	/**
 	 * Checkcombination.
-	 *
+	 * Pass a hand, and generate different combination that can form 4 meld with one eye
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
