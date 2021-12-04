@@ -39,8 +39,6 @@ import utils.sorting;
  */
 public class CheckWin {
 	
-	/** The comb. */
-	private GenerateWinningHand comb;
 	
 	/**
 	 * Instantiates a new check win.
@@ -90,7 +88,6 @@ public class CheckWin {
 			if(showed_hand!=null)
 				winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
 			sorting.sort_Meld(winning_hand);
-			//sort winning all by first of each meld, put eye at last
 			int local_score=0;
 			sorting.sort_Meld(winning_hand);
 			if(CheckPH(winning_hand)) {
@@ -217,7 +214,7 @@ public class CheckWin {
 	 * @return true, if successful
 	 */
 	public boolean CheckSameType(Tile a, Tile b) {
-		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FLOWER(5, 136), WIND(4, 120);
+
 		if(a.getType().equals(b.getType())
 				) {return true;}
 		
@@ -253,9 +250,9 @@ public class CheckWin {
 
 	public boolean CheckPPH(ArrayList<Meld> hand,ArrayList<Meld>showed_hand) {//
 		if(showed_hand.isEmpty())
-			return false; // exception for 
+			return false; 
 		boolean OnlyDragonOrWind = true;
-		boolean AllKongs=true; //exception for all kong
+		boolean AllKongs=true; 
 		for(int i=0;i<hand.size();i++){ 
 			if(hand.get(i).getcomb_type() ==1) {
 				return false;
@@ -320,12 +317,11 @@ public class CheckWin {
 	 */
 
 
-	public boolean CheckHYS(ArrayList<Meld> hand) {//�������
+	public boolean CheckHYS(ArrayList<Meld> hand) {
 
 	
-		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
+		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type 
 		
-		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72),
 		if(!(first_hand.getType()== Type.BAMBOO || first_hand.getType()== Type.CHARACTER ||first_hand.getType()== Type.DOT )) {
 			
 			return false; // it should be check for ZYS , which is exception to HYS
