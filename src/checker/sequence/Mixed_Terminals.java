@@ -21,14 +21,6 @@ public class Mixed_Terminals extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Mixed Terminals";
-	}
+	
 
 }

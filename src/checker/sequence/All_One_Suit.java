@@ -20,15 +20,6 @@ public class All_One_Suit extends Sequence{
 		return 7 ;  
 		
 	}
-	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "All One Suit";
-	}
+
 
 }

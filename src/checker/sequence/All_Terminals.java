@@ -21,14 +21,6 @@ public class All_Terminals extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "All Terminals";
-	}
+	
 
 }

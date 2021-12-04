@@ -21,14 +21,6 @@ public class Four_Concealed_Triplets extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Four Concealed Triplets";
-	}
+	
 
 }

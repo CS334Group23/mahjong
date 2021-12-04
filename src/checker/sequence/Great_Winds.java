@@ -21,14 +21,6 @@ public class Great_Winds extends Sequence{
 		
 	}
 	
-	/**
-	 * Gets the name.
-	 *
-	 * @return the name
-	 */
-	public String getName() {
-		
-		return "Great Winds";
-	}
+
 
 }
