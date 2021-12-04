@@ -64,7 +64,6 @@ public class ImageUtils {
 		try {
 			tempTileImg = ImageIO.read(new File(tile.getUrl()));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Image tileImg;
