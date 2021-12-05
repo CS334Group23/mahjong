@@ -21,40 +21,18 @@ import network.WinMsg;
 import ui.ClientInterface;
 import ui.Ui;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class GameController.
- */
 public class GameController extends JFrame implements Ui{
 	
-	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
-	/** The Constant FRAME_WIDTH. */
 	public static final int FRAME_WIDTH = 1280; 
-	
-	/** The Constant FRAME_HEIGHT. */
 	public static final int FRAME_HEIGHT = 800;  
-	
-	/** The home panel. */
+
 	private HomePanel homePanel;
-	
-	/** The game panel. */
 	private GamePanel gamePanel;
 	
-	/** The instance. */
 	private static GameController instance = new GameController();
-	
-	/**
-	 * Gets the single instance of GameController.
-	 *
-	 * @return single instance of GameController
-	 */
 	public static GameController getInstance() {return instance;}
-	
-	/**
-	 * Instantiates a new game controller.
-	 */
+
 	private GameController() {
 		super("Mahjong Legend");
 		
@@ -67,9 +45,10 @@ public class GameController extends JFrame implements Ui{
 	}
 	
 	/**
-	 * Inits the.
+	 * Init method. Called by server
+	 * initialization: set home page as the default panel
 	 *
-	 * @param client the client
+	 * @param client 
 	 */
 	// get 4 sets of hands from server, initialize
 	public void init(ClientInterface client) {
@@ -100,8 +79,9 @@ public class GameController extends JFrame implements Ui{
 	
 	/**
 	 * Info deal.
+	 * Api for server to start the game, initialize the tiles for 4 users
 	 *
-	 * @param dealMsg the deal msg
+	 * @param dealMsg: object with the tile id list for the real user
 	 */
 	@Override
 	public void infoDeal(DealMsg dealMsg) {
@@ -110,7 +90,8 @@ public class GameController extends JFrame implements Ui{
 	
 	/**
 	 * Info draw.
-	 *
+	 * Api for server to send a tile to the user, only for real user
+	 * 
 	 * @param msg the msg
 	 * @param possibleBid the possible bid
 	 */
@@ -121,8 +102,10 @@ public class GameController extends JFrame implements Ui{
 	
 	/**
 	 * Gets the op index.
+	 * Api for server to get the operation index. When Pong/Kong/Chow/Win/Skip button is clicked,
+	 * the op index would change
 	 *
-	 * @return the op index
+	 * @return the operation index
 	 */
 	@Override
 	public int getOpIndex() {
@@ -131,8 +114,8 @@ public class GameController extends JFrame implements Ui{
 	
 	/**
 	 * Gets the discard.
-	 *
-	 * @return the discard
+	 * Api for server
+	 * @return the discarded tile index of the user's tile list
 	 */
 	@Override
 	public int getDiscard() {
@@ -141,7 +124,8 @@ public class GameController extends JFrame implements Ui{
 	
 	/**
 	 * Info discard.
-	 *
+	 * Api for server. This method is called when the user could really discard a tile to the board
+	 * 
 	 * @param discardMsg the discard msg
 	 * @param possibleBid the possible bid
 	 */
@@ -162,7 +146,7 @@ public class GameController extends JFrame implements Ui{
 	
 	/**
 	 * Info win.
-	 *
+	 * Api for server. This method is called when someone win the game
 	 * @param winMsg the win msg
 	 */
 	@Override
@@ -171,7 +155,6 @@ public class GameController extends JFrame implements Ui{
 		try {
 			TimeUnit.SECONDS.sleep(10);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		remove(gamePanel);
@@ -179,7 +162,8 @@ public class GameController extends JFrame implements Ui{
 
 	/**
 	 * Info draw notice.
-	 *
+	 * Api for server. This method is called when no one win
+	 * 
 	 * @param drawNoticeMsg the draw notice msg
 	 */
 	@Override

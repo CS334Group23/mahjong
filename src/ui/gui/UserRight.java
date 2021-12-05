@@ -14,17 +14,11 @@ import javax.swing.JLabel;
 import utils.Meld;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class UserRight.
  */
 public class UserRight extends User{
 
-	/**
-	 * Instantiates a new user right.
-	 *
-	 * @param hand the hand
-	 */
 	public UserRight(ArrayList<Tile> hand) {
 		userId = User.USER_RIGHT;
 		tileOnBoard = 0;
@@ -33,12 +27,7 @@ public class UserRight extends User{
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.696, GameController.FRAME_HEIGHT*0.57), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
-	
-	/**
-	 * Hand init.
-	 *
-	 * @param gamePanel the game panel
-	 */
+
 	@Override
 	public void handInit(GamePanel gamePanel) {
 		ArrayList<Tile> hand = getHand();
@@ -110,7 +99,7 @@ public class UserRight extends User{
 	
 	/**
 	 * Put meld to right.
-	 *
+	 * This method is called when Pong/Kong/Chow
 	 * @param gamePanel the game panel
 	 * @param meld the meld
 	 */
@@ -181,7 +170,6 @@ public class UserRight extends User{
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		gamePanel.remove(instruction);
@@ -199,8 +187,7 @@ public class UserRight extends User{
 		JLabel scoreLabel = new JLabel();
 		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='orange'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
 		scoreLabel.setOpaque(true);
-//		Border blackLine = BorderFactory.createLineBorder(Color.BLACK);
-//		scoreLabel.setBorder(blackLine);
+
 		scoreLabel.setText(text);
 		scoreLabel.setBounds(1070,570,60,50);
 		scoreLabel.setBackground(Color.DARK_GRAY);

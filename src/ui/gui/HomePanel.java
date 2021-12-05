@@ -15,38 +15,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HomePanel.
  */
 public class HomePanel extends JPanel {
-	
-	/** The Constant serialVersionUID. */
+
 	private static final long serialVersionUID = 1L;
-	
-	/** The bg image. */
 	private Image bgImage;
-	
-	/** The game start. */
 	private JButton gameStart;
-	
-	/** The exit. */
 	private JButton exit;
-	
-	/**
-	 * Paint component.
-	 *
-	 * @param g the g
-	 */
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(bgImage, 0, 0, GameController.FRAME_WIDTH, GameController.FRAME_HEIGHT, this);
 	}
 
-	/**
-	 * Instantiates a new home panel.
-	 */
 	public HomePanel(){
 		try {
 			bgImage = ImageIO.read(new File("resource/static/others/background.jpg"));
@@ -90,12 +74,7 @@ public class HomePanel extends JPanel {
 		this.add(gameStart);
 		this.add(exit);
 	}
-	
-	/**
-	 * Gets the game start button.
-	 *
-	 * @return the game start button
-	 */
+
 	public JButton getGameStartButton() {
 		return gameStart;
 	}

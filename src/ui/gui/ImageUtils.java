@@ -23,7 +23,6 @@ import javax.swing.JPanel;
 
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ImageUtils.
  */
@@ -31,7 +30,7 @@ import utils.Tile;
 public class ImageUtils {
 	
 	/**
-	 * Adds the tile.
+	 * Adds the tile to game panel.
 	 *
 	 * @param panel the panel
 	 * @param tile the tile
@@ -51,7 +50,7 @@ public class ImageUtils {
 	}
 	
 	/**
-	 * Gets the tile label by size.
+	 * Gets the tile label by relative size.
 	 *
 	 * @param tile the tile
 	 * @param width the width
@@ -90,7 +89,8 @@ public class ImageUtils {
 
 	/**
 	 * Change tile img to face down.
-	 *
+	 * This method is called when AI users get a new tile/ game start
+	 * 
 	 * @param tile the tile
 	 */
 	public static void changeTileImgToFaceDown(Tile tile) {
