@@ -19,16 +19,16 @@ import ui.Ui;
 import utils.BidType;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class TextUi.
+ * The Class TextUi which implements the Ui interface and do terminal IO.
  */
 public class TextUi implements Ui{
 	
 	/** The client. */
 	private ClientInterface client;
 	
-	/** The scan. */
+	/** The scan to read terminal input. */
 	private Scanner scan;
 	
 	/**
@@ -42,10 +42,10 @@ public class TextUi implements Ui{
 	}
 
 	/**
-	 * Info draw.
+	 * Info the ui about draw message and print accordance information on the terminal.
 	 *
-	 * @param drawMsg the draw msg
-	 * @param possibleBid the possible bid
+	 * @param drawMsg the draw message
+	 * @param possibleBid the possible bid represented as BidMsg list
 	 */
 	@Override
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
@@ -62,9 +62,9 @@ public class TextUi implements Ui{
 
 
 	/**
-	 * Gets the op index.
+	 * Gets the operation index of the user from the terminal.
 	 *
-	 * @return the op index
+	 * @return the operation index
 	 */
 	@Override
 	public int getOpIndex() {
@@ -77,9 +77,9 @@ public class TextUi implements Ui{
 	}
 
 	/**
-	 * Gets the discard.
+	 * Gets the discard index of the user from the terminal.
 	 *
-	 * @return the discard
+	 * @return the discard index
 	 */
 	@Override
 	public int getDiscard() {
@@ -103,10 +103,10 @@ public class TextUi implements Ui{
 	}
 
 	/**
-	 * Info discard.
-	 *
-	 * @param discardMsg the discard msg
-	 * @param possibleBid the possible bid
+	 * Info the ui about discard message and print accordance information on the terminal.
+	 * 
+	 * @param discardMsg the discard message
+	 * @param possibleBid the possible bid represented as BidMsg list
 	 */
 	@Override
 	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
@@ -121,9 +121,9 @@ public class TextUi implements Ui{
 	}
 
 	/**
-	 * Info bid.
+	 * Info the ui about bid message and print accordance information on the terminal.
 	 *
-	 * @param bidMsg the bid msg
+	 * @param bidMsg the bid message
 	 */
 	@Override
 	public void infoBid(BidMsg bidMsg) {
@@ -136,9 +136,9 @@ public class TextUi implements Ui{
 	}
 	
 	/**
-	 * Info deal.
+	 * Inform the ui about deal message and print accordance information on the terminal.
 	 *
-	 * @param dealMsg the deal msg
+	 * @param dealMsg the deal message
 	 */
 	@Override
 	public void infoDeal(DealMsg dealMsg) {//this need later change to send a tile list instead of index list, or use get wall interface
@@ -147,9 +147,9 @@ public class TextUi implements Ui{
 	}
 	
 	/**
-	 * Info win.
+	 * Info the ui about win message and print accordance information on the terminal.
 	 *
-	 * @param winMsg the win msg
+	 * @param winMsg the win message
 	 */
 	@Override
 	public void infoWin(WinMsg winMsg) {
@@ -160,9 +160,9 @@ public class TextUi implements Ui{
 	}
 
 	/**
-	 * Info draw notice.
+	 * Info the ui about draw notice message and print accordance information on the terminal.
 	 *
-	 * @param drawNoticeMsg the draw notice msg
+	 * @param drawNoticeMsg the draw notice message
 	 */
 	@Override
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
@@ -170,9 +170,9 @@ public class TextUi implements Ui{
 	}
 	
 	/**
-	 * Prints the index.
+	 * Auxiliary function to prints the index of the Tile list for user convenience.
 	 *
-	 * @param length the length
+	 * @param length the length of the Tile list
 	 */
 	private static void printIndex(int length) {
 		String str = "";
@@ -187,7 +187,7 @@ public class TextUi implements Ui{
 	}
 
 	/**
-	 * Inits the.
+	 * Inits the text ui and print accordance information on the terminal.
 	 *
 	 * @param client the client
 	 */
