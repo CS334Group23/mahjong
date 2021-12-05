@@ -16,15 +16,15 @@ import utils.Tile;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class WinResponser.
+ * The Class WinResponser handles when some players play the winning bid.
  */
 public class WinResponser implements BidResponser{
 
 	/**
-	 * Response.
+	 * Response when some players play the winning bid.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client receives the bid message
+	 * @param msg the bid message this client receives
 	 */
 	@Override
 	public void response(Client client, BidMsg msg) {

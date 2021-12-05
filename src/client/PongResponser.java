@@ -10,15 +10,15 @@ import network.DiscardMsg;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PongResponser.
+ * The Class PongResponser handles when some players play the Pong bid.
  */
 public class PongResponser implements BidResponser{
 
 	/**
-	 * Response.
+	 * Response when some players play the Pong bid.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client receives the bid message
+	 * @param msg the bid message this client receives
 	 */
 	@Override
 	public void response(Client client, BidMsg msg) {

@@ -10,15 +10,15 @@ import network.WinMsg;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class WinOperation.
+ * The Class WinOperation is the class deals the received winning message.
  */
 public class WinOperation implements ClientOperation{
 
 	/**
-	 * Operate.
+	 * Operate the winning message.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client who operates the message
+	 * @param msg the message the client receives
 	 */
 	@Override
 	public void operate(Client client, Message msg) {

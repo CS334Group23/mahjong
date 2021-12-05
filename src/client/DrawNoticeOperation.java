@@ -10,15 +10,15 @@ import network.Message;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DrawNoticeOperation.
+ * The Class DrawNoticeOperation is the class deals the received draw notice message.
  */
 public class DrawNoticeOperation implements ClientOperation{
 
 	/**
-	 * Operate.
+	 * Operate the drawNotice message.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client who operates the message
+	 * @param msg the message the client receives
 	 */
 	@Override
 	public void operate(Client client, Message msg) {

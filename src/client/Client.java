@@ -23,43 +23,43 @@ import utils.Meld;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Client.
+ * The Class Client is the class which stores the client related information and perform operations on the client side.
  */
 public class Client implements Peer, ClientInterface{
 	
-	/** The Constant CLIENT_NUM. */
+	/** The Constant CLIENT_NUM is the total number of the clients in a game. */
 	public final static int CLIENT_NUM = 4;
 	
-	/** The op. */
+	/** The op is the client operation which is built with Java reflection mechanism. */
 	private ClientOperation op; //need to later add exception handling
 	
-	/** The wall. */
+	/** The wall is an array list of tiles this client currently has. */
 	private ArrayList<Tile> wall;
 	
-	/** The meld wall. */
+	/** The meld wall is a 2-dimensional array list storing the meld list of all four clients. */
 	private ArrayList<ArrayList<Meld>> meldWall;
 	
-	/** The tile length. */
+	/** The tile length is an array list storing how many tiles all four clients' currently have in hand . */
 	private ArrayList<Integer> tileLength;
 	
-	/** The id. */
+	/** The id is the unique identification of client. */
 	private int id;
 	
-	/** The server. */
+	/** The server is the server this client will communicate with in this round of game. */
 	private Peer server;
 	
-	/** The ui. */
+	/** The ui is the user interface the client will invoke in this game. */
 	private Ui ui;
 	
-	/** The scores. */
+	/** The scores is an array list storing the scores of all four clients. */
 	private ArrayList<Integer> scores;
 	
 	/**
 	 * Instantiates a new client.
 	 *
-	 * @param aid the aid
-	 * @param server the server
-	 * @param ui the ui
+	 * @param aid the unique client ID
+	 * @param server the server this client will communicate with in this round of game
+	 * @param ui the user interface the client will invoke in this game
 	 */
 	public Client(int aid, Peer server, String ui) {
 		this.id = aid;
@@ -70,9 +70,9 @@ public class Client implements Peer, ClientInterface{
 	}
 	
 	/**
-	 * Choose ui.
+	 * Choose the user interface this client will interact with.
 	 *
-	 * @param ui the ui
+	 * @param ui the user interface the client will invoke in this game.
 	 */
 	public void chooseUi(String ui) {
 		if(id == 0) {
@@ -92,28 +92,28 @@ public class Client implements Peer, ClientInterface{
 	}
 	
 	/**
-	 * Gets the id.
+	 * Gets the client unique ID.
 	 *
-	 * @return the id
+	 * @return the client ID
 	 */
 	public int getId() {
 		return id;
 	}
 	
 	/**
-	 * Gets the server.
+	 * Gets the server the client communicate with.
 	 *
-	 * @return the server
+	 * @return the server the client communicate with
 	 */
 	public Peer getServer() {
 		return server;
 	}
 	
 	/**
-	 * Send.
+	 * Sends the message.
 	 *
-	 * @param target the target
-	 * @param msg the msg
+	 * @param target the receiver of the message
+	 * @param msg the message that is going to be sent
 	 */
 	@Override
 	public void send(Peer target, Message msg) {
@@ -121,9 +121,10 @@ public class Client implements Peer, ClientInterface{
 	}
 
 	/**
-	 * On recv.
+	 * Deals with the received Message.
+	 * Uses Java reflection mechanism to construct the corresponding operation class.
 	 *
-	 * @param msg the msg
+	 * @param msg the message the client receives
 	 */
 	@Override
 	public void onRecv(Message msg) {
@@ -139,9 +140,9 @@ public class Client implements Peer, ClientInterface{
 	}
 	
 	/**
-	 * Inits the wall.
+	 * Initiates the tile wall.
 	 *
-	 * @param initCards the init cards
+	 * @param initCards the array list of tiles the client receives at the beginning a game
 	 */
 	public void initWall(ArrayList<Integer> initCards) {
 		wall = Tile.idToTileList(initCards);
@@ -156,28 +157,28 @@ public class Client implements Peer, ClientInterface{
 	}
 
 	/**
- * Gets the tile.
- *
- * @param index the index
- * @return the tile
- */
-public Tile getTile(int index) {
+	 * Gets the tile according to the index.
+	 *
+	 * @param index the index of the locations of the tile
+	 * @return the tile needed
+	 */
+	public Tile getTile(int index) {
 		return wall.get(index);
 	}
 	
 	/**
-	 * Adds the tile.
+	 * Adds the tile to the client's tile wall.
 	 *
-	 * @param id the id
+	 * @param id the unique ID of the tile
 	 */
 	public void addTile(int id) {
 		wall.add(new Tile(id));
 	}
 	
 	/**
-	 * Discard tile.
+	 * Discard tile and remove the tile from the client's tile wall according to the index.
 	 *
-	 * @param index the index
+	 * @param index the index of the tile needed to be removed
 	 */
 	public void discardTile(int index) {
 		wall.remove(index);
@@ -185,7 +186,7 @@ public Tile getTile(int index) {
 	}
 	
 	/**
-	 * Re sort.
+	 * Sorts the tile wall according to the tile ID from small to big.
 	 */
 	public void reSort() {
 		Collections.sort(wall,new Comparator<Tile>() {
@@ -198,10 +199,10 @@ public Tile getTile(int index) {
 	}
 	
 	/**
-	 * Adds the meld.
+	 * Adds the meld to the meld wall.
 	 *
-	 * @param clientId the client id
-	 * @param meld the meld
+	 * @param clientId the client ID the meld belongs to
+	 * @param meld the meld that is going to be added
 	 */
 	public void addMeld(int clientId, Meld meld) {
 		meldWall.get(clientId).add(meld);
@@ -210,9 +211,9 @@ public Tile getTile(int index) {
 	}
 	
 	/**
-	 * Update wall.
+	 * Remove the tile in the meld from the tile wall.
 	 *
-	 * @param meld the meld
+	 * @param meld the meld the client forms
 	 */
 	public void updateWall(Meld meld) {
 		wall.removeIf(m -> m.getId()==meld.getFirst().getId());
@@ -226,67 +227,66 @@ public Tile getTile(int index) {
 		
 	}
 	
-
 	
 	/**
-	 * Gets the wall.
+	 * Gets the client's own tile wall.
 	 *
-	 * @return the wall
+	 * @return the client's own tile wall
 	 */
 	public ArrayList<Tile> getWall(){
 		return wall;
 	}
 	
 	/**
-	 * Gets the meld.
+	 * Gets the client's own meld wall.
 	 *
-	 * @return the meld
+	 * @return the client's own meld wall
 	 */
 	public ArrayList<Meld> getMeld(){
 		return meldWall.get(id);
 	}
 	
 	/**
-	 * Gets the length.
+	 * Gets how many tiles the client has in hand currently.
 	 *
-	 * @return the length
+	 * @return the number of tiles the client has in hand currently
 	 */
 	public int getLength() {
 		return wall.size();
 	}
 	
 	/**
-	 * Gets the ui.
+	 * Gets the user interface this client will interact with.
 	 *
-	 * @return the ui
+	 * @return the user interface this client will interact with
 	 */
 	public Ui getUi() {
 		return ui;
 	}
 	
 	/**
-	 * Gets the other meld.
+	 * Gets other client's meld according to the client ID.
 	 *
-	 * @param clientId the client id
-	 * @return the other meld
+	 * @param clientId the other client's id
+	 * @return the meld wall of the chosen client
 	 */
 	public ArrayList<Meld> getOtherMeld(int clientId){
 		return meldWall.get(clientId);
 	}
 	
 	/**
-	 * Sets the ui.
+	 * Sets the user interface this client will interact with.
 	 *
-	 * @param ui the new ui
+	 * @param ui the new user interface this client will interact with
 	 */
 	public void setUi(Ui ui) {//more for testing reasons
 		this.ui = ui;
 	}
 	
 	/**
-	 * Renew score.
+	 * Renew scores of four clients after finishing a game.
 	 *
-	 * @param gameScore the game score
+	 * @param gameScore the game score of the single round of game
 	 */
 	@Override
 	public void renewScore(ArrayList<Integer> gameScore) {
@@ -296,10 +296,10 @@ public Tile getTile(int index) {
 	}
 	
 	/**
-	 * Gets the score.
+	 * Gets the score according to the client ID.
 	 *
-	 * @param clientId the client id
-	 * @return the score
+	 * @param clientId the client ID
+	 * @return the score of the specified client
 	 */
 	@Override
 	public int getScore(int clientId) {

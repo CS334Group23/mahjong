@@ -10,15 +10,15 @@ import network.DiscardMsg;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class ChowResponser.
+ * The Class ChowResponser handles when some players play the Chow bid.
  */
 public class ChowResponser implements BidResponser{
 
 	/**
-	 * Response.
+	 * Response when some players play the Chow bid.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client receives the bid message
+	 * @param msg the bid message this client receives
 	 */
 	@Override
 	public void response(Client client, BidMsg msg) {
