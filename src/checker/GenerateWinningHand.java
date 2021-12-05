@@ -11,24 +11,12 @@ import java.util.*;
 import utils.*;
 
 // TODO: Auto-generated Javadoc
-//The logic is to find out all the combination set to check the score, count the highest.
-
-//To find the combination, I will use backtracking
-//To initialize, there must be a sorted hand
-//then check if there is pong or chow ( no need check kong as kong must be in show hand to win.)
-//if so, remove three tile and put it in temp
-//call checkcombination again, check the remain card,
-// if the hand size only two, just check if it is pair ( only do this step when hand size is two, as for any winning hand, it must be pair, except 13, that will be check in another function)
-// after remove a pair, the hand size is 0, then put the temp into the combination set arraylist
-// then return, return , and put back the hand into list, then we can find the remain tile if can form meld again.
-
 
 
 
 /**
  * The Class GenerateWinningHand.
  */
-// the function may still buggy, and but at least it can check a winning hand, I will do it later.(or maybe do it on testing, have something write)
 public class GenerateWinningHand {
 	
 	/** The combination set. */
