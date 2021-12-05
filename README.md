@@ -1,4 +1,4 @@
-# CS3343 Group 22
+# CS3343 Group 23
 
 Mahjong Legend - Single Player Mahjong Game
 
@@ -23,11 +23,13 @@ to quickly start a gui game which plays four rounds of game.
 
 Expert Users:
 use command line argument to control the game ui mode and the number of rounds
-The -ui option can be used to set ui, it has GUI or TEXT two user options, the AI option is for developing tests only. The -num option is used to set the number of rounds, it receives one >0 integer value as input.
+The `-ui` option can be used to set ui, it has GUI or TEXT two user options, the AI option is for developing tests only. 
+
+The `-num` option is used to set the number of rounds, it receives one >0 integer value as input.
 The example is as follows:
 
 ```
-java -jar mahjongLegend.jar --ui GUI -num 4
+java -jar mahjongLegend.jar -ui GUI -num 4
 ```
 
 ### How to play
