@@ -11,16 +11,28 @@ import java.util.*;
 import utils.*;
 
 // TODO: Auto-generated Javadoc
+//The logic is to find out all the combination set to check the score, count the highest.
+
+//To find the combination, I will use backtracking
+//To initialize, there must be a sorted hand
+//then check if there is pong or chow ( no need check kong as kong must be in show hand to win.)
+//if so, remove three tile and put it in temp
+//call checkcombination again, check the remain card,
+// if the hand size only two, just check if it is pair ( only do this step when hand size is two, as for any winning hand, it must be pair, except 13, that will be check in another function)
+// after remove a pair, the hand size is 0, then put the temp into the combination set arraylist
+// then return, return , and put back the hand into list, then we can find the remain tile if can form meld again.
+
+
 
 
 /**
  * The Class GenerateWinningHand.
  */
-
+// the function may still buggy, and but at least it can check a winning hand, I will do it later.(or maybe do it on testing, have something write)
 public class GenerateWinningHand {
 	
 	/** The combination set. */
-	
+
 	private ArrayList<ArrayList<Meld>> combination_set = new ArrayList<>();
 	
 	/** The Combi temp. */
@@ -59,7 +71,7 @@ public class GenerateWinningHand {
 	
 	/**
 	 * Checkcombination.
-	 * Pass a hand, and generate different combination that can form 4 meld with one eye
+	 *
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -98,20 +110,19 @@ public class GenerateWinningHand {
 				
 				if(CheckPong(hand.get(i),hand.get(i+1),hand.get(i+2))) {
 					Meld Mtemp= new Meld(hand.get(i),hand.get(i+1),hand.get(i+2),null);
-					
+
 						Combi_temp.add(Mtemp);
 						hand.remove(i);
 						hand.remove(i);
 						hand.remove(i);
 					
 						if(checkcombination(hand)) {
-
+			
 						hand.add(0,Mtemp.getThird());
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						
 						Combi_temp.remove(Combi_temp.size()-1);
-
 						Collections.sort(hand);
 				
 						
@@ -121,10 +132,10 @@ public class GenerateWinningHand {
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						Combi_temp.remove(Combi_temp.size()-1);
-
 						Collections.sort(hand);
 						}
 					}
+
 
 				int b_pos=  FindTilePosition.NextDifferentTile(hand,hand.get(i));
 				int c_pos=-1;
@@ -134,6 +145,7 @@ public class GenerateWinningHand {
 				if(CheckChow(hand.get(i),hand.get(b_pos),hand.get(c_pos))) {
 				
 					Meld Mtemp= new Meld(hand.get(i),hand.get(b_pos),hand.get(c_pos),null);
+					Combi_temp.add(Mtemp);
 					hand.remove(i);
 					hand.remove(b_pos-1);
 					hand.remove(c_pos-2);
@@ -143,21 +155,21 @@ public class GenerateWinningHand {
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						Collections.sort(hand);
-						Combi_temp.remove(Combi_temp.size()-1);
-
-				
+						Combi_temp.remove(Combi_temp.size()-1);	
 						
 					}else {
 						hand.add(0,Mtemp.getThird());
 						hand.add(0,Mtemp.getSecond());
 						hand.add(0,Mtemp.getFirst());
 						Combi_temp.remove(Combi_temp.size()-1);
+						Collections.sort(hand);
 					}
 				
 					
 				}
 				}
-								
+		
+				
 			  }
 				
 			}
@@ -205,6 +217,6 @@ public class GenerateWinningHand {
 	}
 
 		
+		
+		
 }
-
-
