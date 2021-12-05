@@ -9,15 +9,15 @@ import network.BidMsg;
 
 
 /**
- * The Interface BidResponser.
+ * The Interface BidResponser handles bid operations with different types of bid.
  */
 public interface BidResponser {
 	
 	/**
-	 * Response.
+	 * Response the bid played by others according to the bid.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client receives the bid message
+	 * @param msg the bid message this client receives
 	 */
 	public void response(Client client, BidMsg msg);
 }

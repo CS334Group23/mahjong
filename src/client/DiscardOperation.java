@@ -15,17 +15,16 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class DiscardOperation.
+ * The Class DiscardOperation is the class deals the received discard message.
  */
 public class DiscardOperation implements ClientOperation{
 
 	/**
-	 * Operate.
+	 * Operate the discard message.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client who operates the message
+	 * @param msg the message the client receives
 	 */
 	@Override
 	public void operate(Client client, Message msg) {
