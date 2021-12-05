@@ -5,22 +5,21 @@
  */
 package network;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DrawNoticeMsg.
  */
 public class DrawNoticeMsg implements Message{
 	
-	/** The op name. */
+	/** The operation name. */
 	private String opName;
 	
-	/** The client id. */
+	/** The client id to send a draw in next round. */
 	private int clientId;
 	
 	/**
 	 * Instantiates a new draw notice msg.
 	 *
-	 * @param id the id
+	 * @param id The client id to send a draw in next round
 	 */
 	public DrawNoticeMsg(int id) {
 		this.clientId = id;
@@ -28,7 +27,7 @@ public class DrawNoticeMsg implements Message{
 	}
 	
 	/**
-	 * Gets the client id.
+	 * Gets The client id to send a draw in next round.
 	 *
 	 * @return the client id
 	 */

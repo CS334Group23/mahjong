@@ -7,28 +7,27 @@ package network;
 
 import java.util.ArrayList;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WinMsg.
  */
 public class WinMsg implements Message{
 	
-	/** The op name. */
+	/** The operation name. */
 	private String opName;
 	
-	/** The client id. */
+	/** The message sender client id. */
 	private int clientId;
 	
 	/** The win client id. */
 	private int winClientId;
 	
-	/** The hand. */
+	/** The hand of the send client. */
 	private ArrayList<Integer> hand;
 	
-	/** The hands. */
+	/** The hands list of all the clients. */
 	private ArrayList<ArrayList<Integer>> hands;
 	
-	/** The scores. */
+	/** The scores list of all the clients. */
 	private ArrayList<Integer> scores;
 	
 	/** The win type. */
@@ -46,10 +45,10 @@ public class WinMsg implements Message{
 	/**
 	 * Instantiates a new win msg.
 	 *
-	 * @param clientId the client id
+	 * @param clientId the sender client id
 	 * @param winClientId the win client id
-	 * @param hand the hand
-	 * @param scores the scores
+	 * @param hand the hand of the client
+	 * @param scores the scores of all the client
 	 * @param winType the win type
 	 */
 	public WinMsg(int clientId, int winClientId, ArrayList<Integer> hand, ArrayList<Integer> scores, int winType) {
@@ -58,7 +57,7 @@ public class WinMsg implements Message{
 		this.hand = hand;
 		this.opName = "WinOperation";
 		this.hands = new ArrayList<>();
-		for(int i=0; i<4; i++) {//here is a hard code which needed to be removed later
+		for(int i=0; i<4; i++) {
 			hands.add(null);
 		}
 		this.scores = scores;
@@ -77,17 +76,17 @@ public class WinMsg implements Message{
 	}
 	
 	/**
-	 * Adds the hand.
+	 * Adds the hand of a client to the all client hands list.
 	 *
-	 * @param clientId the client id
-	 * @param hand the hand
+	 * @param clientId the client id to be added
+	 * @param hand the hand to be added
 	 */
 	public void addHand(int clientId, ArrayList<Integer> hand) {
 		hands.set(clientId, hand);
 	}
 	
 	/**
-	 * Gets the hand list.
+	 * Gets the hand list of the sender client.
 	 *
 	 * @return the hand list
 	 */
@@ -96,7 +95,7 @@ public class WinMsg implements Message{
 	}
 	
 	/**
-	 * Gets the hands list.
+	 * Gets the hands list of the clients.
 	 *
 	 * @return the hands list
 	 */
@@ -105,7 +104,7 @@ public class WinMsg implements Message{
 	}
 	
 	/**
-	 * Gets the client id.
+	 * Gets the client id of the sender.
 	 *
 	 * @return the client id
 	 */
@@ -123,7 +122,7 @@ public class WinMsg implements Message{
 	}
 	
 	/**
-	 * Gets the scores.
+	 * Gets the scores of all the clients.
 	 *
 	 * @return the scores
 	 */
@@ -132,7 +131,7 @@ public class WinMsg implements Message{
 	}
 	
 	/**
-	 * Sets the scores.
+	 * Sets the scores of all the clients.
 	 *
 	 * @param scores the new scores
 	 */
