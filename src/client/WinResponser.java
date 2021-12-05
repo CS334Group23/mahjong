@@ -14,7 +14,6 @@ import network.WinMsg;
 import server.Server;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WinResponser handles when some players play the winning bid.
  */

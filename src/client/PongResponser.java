@@ -8,7 +8,6 @@ package client;
 import network.BidMsg;
 import network.DiscardMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PongResponser handles when some players play the Pong bid.
  */

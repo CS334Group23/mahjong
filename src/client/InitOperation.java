@@ -7,7 +7,6 @@ package client;
 
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class InitOperation is the class deals the received init message.
  */

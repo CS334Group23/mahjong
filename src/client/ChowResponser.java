@@ -8,7 +8,6 @@ package client;
 import network.BidMsg;
 import network.DiscardMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ChowResponser handles when some players play the Chow bid.
  */

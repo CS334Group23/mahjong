@@ -15,7 +15,6 @@ import utils.BidType;
 import utils.Meld;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DiscardOperation is the class deals the received discard message.
  */

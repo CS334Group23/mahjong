@@ -8,7 +8,6 @@ package client;
 import network.DrawNoticeMsg;
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DrawNoticeOperation is the class deals the received draw notice message.
  */

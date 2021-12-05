@@ -7,7 +7,6 @@ package client;
 
 import network.BidMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class KongResponser handles when some players play the Kong bid.
  */

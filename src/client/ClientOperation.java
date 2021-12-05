@@ -7,7 +7,6 @@ package client;
 
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface ClientOperation handles the message received by the client.
  */

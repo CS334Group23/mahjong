@@ -8,7 +8,6 @@ package client;
 import network.DealMsg;
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DealOperation is the class deals the received deal message.
  */

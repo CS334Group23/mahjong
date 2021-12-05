@@ -16,7 +16,6 @@ import network.DiscardMsg;
 import network.DrawMsg;
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DrawOperation is the class deals the received draw message.
  */

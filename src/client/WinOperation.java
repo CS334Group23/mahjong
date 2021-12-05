@@ -8,7 +8,6 @@ package client;
 import network.Message;
 import network.WinMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WinOperation is the class deals the received winning message.
  */

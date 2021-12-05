@@ -21,7 +21,6 @@ import ui.textUi.TextUi;
 import utils.Tile;
 import utils.Meld;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Client is the class which stores the client related information and perform operations on the client side.
  */
