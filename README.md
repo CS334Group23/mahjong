@@ -61,9 +61,14 @@ Release 1 - Release CMD version
 
 ## Credit
 
-ZHOU Yukun                Project Manager
-YAO Shenglong            Assistant Project Manager
-WANG Yucheng           Developer
+ZHOU Yukun @Anyethan  Project Manager
+
+YAO Shenglong         Assistant Project Manager
+
+WANG Yucheng          Developer
+
 TAM Kam Chuen         Developer
-CHAN Hiu Leong         Developer
-QI Xintong                    Developer 
+
+CHAN Hiu Leong        Developer
+
+QI Xintong            Developer 
