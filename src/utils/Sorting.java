@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * The Class sorting.
  */
-public final class sorting {
+public final class Sorting {
     
     /**
      * Sort meld.
