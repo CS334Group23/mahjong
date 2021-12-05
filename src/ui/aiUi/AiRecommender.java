@@ -15,23 +15,21 @@ import java.util.stream.Collectors;
 import utils.Meld;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
-// Skim through cards in hand 
-// keep the cards that add up to the highest marks
-
 /**
  * The Class AiRecommender.
+ * Skim through cards in hand  
+ * keep the cards that add up to the highest marks
  */
 public class AiRecommender {
 	
 	/** The card to play. */
 	private Tile cardToPlay;
 	
-	/** The cards in hand. */
-	private List<Tile> cardsInHand; // cards in my hand
+	/** The cards cards in my hand. */
+	private List<Tile> cardsInHand;
 	
-	/** The cards not played. */
-	private List<Tile> cardsNotPlayed; // cards that may show up
+	/** The cards not played including my hands. */
+	private List<Tile> cardsNotPlayed;
 	
 	/** The ai recommender util. */
 	private AiRecommenderUtil aiRecommenderUtil;
@@ -47,15 +45,13 @@ public class AiRecommender {
 		}
 	}
 	
-	// register current situation
-	// and clear last card recommendation 
 	/**
-	 * Upon called.
+	 * Upon called when there are status change on the board
+	 * register current situation and clear last card recommendation 
 	 *
-	 * @param cardsInHand the cards in hand
-	 * @param tileId the tile id
+	 * @param cardsInHand the cards in hand of the user
+	 * @param tileId the tile id be discarded or drawn
 	 */
-	// each time upon called
 	public void uponCalled(List<Tile> cardsInHand, int tileId) {
 		this.cardsInHand = new ArrayList<>(cardsInHand);
 		this.cardsNotPlayed.removeIf(m -> m.getId()==tileId);
@@ -63,10 +59,11 @@ public class AiRecommender {
 	}
 	
 	/**
-	 * Upon called.
+	 * Upon called when there are status change on the board
+	 * register current situation and clear last card recommendation 
 	 *
-	 * @param cardsInHand the cards in hand
-	 * @param meld the meld
+	 * @param cardsInHand the cards in hand of the user
+	 * @param meld the meld bided on the board
 	 */
 	public void uponCalled(List<Tile> cardsInHand, Meld meld) {
 		if(meld.getFirst() != null) {
@@ -85,9 +82,10 @@ public class AiRecommender {
 	}
 	
 	/**
-	 * Upon called.
+	 * Upon called when there are status change on the board
+	 * register current situation and clear last card recommendation 
 	 *
-	 * @param dealList the deal list
+	 * @param dealList the deal list when user get initial deal
 	 */
 	public void uponCalled(List<Integer> dealList) {
 		for (int i : dealList) {
@@ -96,14 +94,12 @@ public class AiRecommender {
 	}
 	
 	
-	
-	// simplified version
 	/**
-	 * Recommend.
+	 * Recommend the tile to play according to the current hand and Tile not played.
+	 * only recommend to reach winning hand
 	 *
 	 * @return the tile
 	 */
-	// only recommend to reach winning hand
 	public Tile recommend() {
 		
 		List<List<Tile>> eyes = new ArrayList<>();
@@ -186,7 +182,7 @@ public class AiRecommender {
 	 *
 	 * @param listToSearch the list to search
 	 * @param strToFind the str to find
-	 * @return the array list
+	 * @return the array list of Tile
 	 */
 	public ArrayList<Tile> findTileWithValue(List<Tile> listToSearch, String strToFind) {
 		ArrayList<Tile> group = new ArrayList<>();
@@ -199,11 +195,11 @@ public class AiRecommender {
 	}
 	
 	/**
-	 * Form sequence.
+	 * Form a sequence with input Tile and Tile list.
 	 *
-	 * @param list the list
+	 * @param list the Tile list
 	 * @param tile the tile
-	 * @return the int
+	 * @return the position of the sequence
 	 */
 	public int formSequence(final List<Tile> list,  Tile tile){
 		int value = 0;
@@ -217,11 +213,11 @@ public class AiRecommender {
 	}
 	
 	/**
-	 * Form eyes or triplets.
+	 * Form eyes or triplets with input Tile and Tile list.
 	 *
-	 * @param list the list
+	 * @param list the Tile list
 	 * @param tile the tile
-	 * @return the int
+	 * @return the the position of the sequence
 	 */
 	public int formEyesOrTriplets(final List<Tile> list, Tile tile) {
 		int value = 0;
@@ -231,34 +227,6 @@ public class AiRecommender {
 		}
 		return value;
 	}
-	
-//	public static void main(String[] args) {
-//		AiRecommender theAiRecommender = AiRecommender.callAiRecommender();
-//		List<Tile> cardsInHand = new ArrayList<>();
-//		cardsInHand.add(new Tile(0));
-//		cardsInHand.add(new Tile(0)); // eye
-//		cardsInHand.add(new Tile(10));
-//		cardsInHand.add(new Tile(11));
-//		cardsInHand.add(new Tile(12)); // sequence
-//		cardsInHand.add(new Tile(20));
-//		cardsInHand.add(new Tile(20));
-//		cardsInHand.add(new Tile(20)); // triplet
-//		cardsInHand.add(new Tile(31)); 
-//		cardsInHand.add(new Tile(32));
-//		cardsInHand.add(new Tile(40));
-//		cardsInHand.add(new Tile(41));
-//		cardsInHand.add(new Tile(42));
-//		cardsInHand.add(new Tile(50)); // should be played
-//		List<Tile> cardsNotPlayed = new ArrayList<>();
-//		cardsNotPlayed.add(new Tile(55));
-//		cardsNotPlayed.add(new Tile(40));
-//		cardsNotPlayed.add(new Tile(40));
-//		cardsNotPlayed.add(new Tile(41));
-//		cardsNotPlayed.add(new Tile(57));
-//		cardsNotPlayed.add(new Tile(56));
-//		theAiRecommender.uponCalled(cardsInHand, cardsNotPlayed);
-//		Tile card = theAiRecommender.recommend();
-//	}
 }
 
 

@@ -19,9 +19,9 @@ import ui.Ui;
 import utils.FindTilePosition;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AiUi.
+ * The Class AiUi which implements the Ui interface and do ai recommendation.
  */
 public class AiUi implements Ui{
 	
@@ -41,9 +41,9 @@ public class AiUi implements Ui{
 	}
 
 	/**
-	 * Info deal.
+	 * Inform the ui about deal message and update internal state of ai recommender.
 	 *
-	 * @param dealMsg the deal msg
+	 * @param dealMsg the deal message
 	 */
 	@Override
 	public void infoDeal(DealMsg dealMsg) {
@@ -51,61 +51,53 @@ public class AiUi implements Ui{
 	}
 
 	/**
-	 * Info draw.
+	 * Inform the ui about draw message and update internal state of ai recommender.
 	 *
-	 * @param drawMsg the draw msg
-	 * @param possibleBid the possible bid
+	 * @param drawMsg the draw message
+	 * @param possibleBid the possible bid represented as BidMsg list
 	 */
 	@Override
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid) {
-//		try {
-//			TimeUnit.SECONDS.sleep(1);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		aiRecommender.uponCalled(client.getWall(), drawMsg.getTileId());
 	}
 
 	/**
-	 * Gets the op index.
+	 * Gets the operation index from the ai.
+	 * As the operations are sorted according to the priority, so just return 1
 	 *
-	 * @return the op index
+	 * @return the operation index
 	 */
 	@Override
-	public int getOpIndex() { //this need later check
+	public int getOpIndex() {
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return 1;
 	}
 
 	/**
-	 * Gets the discard.
+	 * Gets the discard tile index form the ai.
 	 *
-	 * @return the discard
+	 * @return the discard tile index
 	 */
 	@Override
 	public int getDiscard() {
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Tile tile = aiRecommender.recommend();
 		return FindTilePosition.FindPosition(client.getWall(), tile)+1;
-//		return 1;
 	}
 
 	/**
-	 * Info discard.
+	 * Inform the ui about discard message and update internal state of ai recommender.
 	 *
 	 * @param discardMsg the discard msg
-	 * @param possibleBid the possible bid
+	 * @param possibleBid the possible bid represented as BidMsg list
 	 */
 	@Override
 	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
@@ -113,9 +105,9 @@ public class AiUi implements Ui{
 	}
 
 	/**
-	 * Info bid.
+	 * Inform the ui about bid message and update internal state of ai recommender.
 	 *
-	 * @param bidMsg the bid msg
+	 * @param bidMsg the bid message
 	 */
 	@Override
 	public void infoBid(BidMsg bidMsg) {
@@ -123,35 +115,32 @@ public class AiUi implements Ui{
 	}
 
 	/**
-	 * Info win.
+	 * Inform the ui about win message.
+	 * No operation for AI
 	 *
-	 * @param winMsg the win msg
+	 * @param winMsg the win message
 	 */
 	@Override
 	public void infoWin(WinMsg winMsg) {
-		// TODO Auto-generated method stub
-		//here need other check or reset to init state for aiUi
 	}
 
 	/**
-	 * Info draw notice.
+	 * Inform the ui about draw notice message.
+	 * No operation for AI
 	 *
-	 * @param drawNoticeMsg the draw notice msg
+	 * @param drawNoticeMsg the draw notice message
 	 */
 	@Override
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
-	 * Inits the.
+	 * Inits the ai in a new round of game.
 	 *
 	 * @param client the client
 	 */
 	@Override
 	public void init(ClientInterface client) {
-		// TODO Auto-generated method stub
 		this.aiRecommender = new AiRecommender();
 		System.out.println("AIUI init");
 	}

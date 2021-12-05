@@ -9,7 +9,6 @@ import java.util.*;
 
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AiRecommenderUtil.
  */
@@ -17,7 +16,7 @@ public class AiRecommenderUtil {
 	
 	
 	/**
-	 * Find closest.
+	 * Find closest combinations.
 	 *
 	 * @param eyes the eyes
 	 * @param triplets the triplets
@@ -62,12 +61,11 @@ public class AiRecommenderUtil {
 	}
 	
 	/**
-	 * Find max numof compatible combinations.
+	 * Find max number of compatible combinations to form a winning hand
 	 *
-	 * @param sortedList the sorted list
+	 * @param sortedList the sorted list of combinations
 	 * @return the list
 	 */
-	// find max num of compatible combinations to form a winning hand
 	public List<List<Tile>> findMaxNumofCompatibleCombinations(List<List<Tile>> sortedList){
 		List<List<Tile>> result = new ArrayList<>();
 		result.add(sortedList.get(0));
@@ -87,10 +85,10 @@ public class AiRecommenderUtil {
 	}
 	
 	/**
-	 * Sort tiles.
+	 * Sort combinations list.
 	 *
-	 * @param tilesToSort the tiles to sort
-	 * @return the list
+	 * @param tilesToSort the combination list to sort
+	 * @return the sorted list
 	 */
 	public List<List<Tile>> sortTiles(List<List<Tile>> tilesToSort){
 		Collections.sort(tilesToSort, new Comparator<List<Tile>>() {
@@ -107,7 +105,7 @@ public class AiRecommenderUtil {
 	}
 	
 	/**
-	 * Checks if is compatible.
+	 * Checks if two combinations are compatible.
 	 *
 	 * @param former the former
 	 * @param latter the latter
@@ -120,11 +118,11 @@ public class AiRecommenderUtil {
 	}
 	
 	/**
-	 * Duplicated.
+	 * Check if a list of combinations has duplicated Tile ids.
 	 *
 	 * @param list the list
 	 * @param id the id
-	 * @return true, if successful
+	 * @return true, if duplicated
 	 */
 	public boolean duplicated(List<List<Tile>> list, int id) {
 		for(List<Tile> l: list) {
@@ -135,7 +133,7 @@ public class AiRecommenderUtil {
 	}
 	
 	/**
-	 * Contains id.
+	 * Checker if a list of Tile contains a Tile id.
 	 *
 	 * @param tilesToCheck the tiles to check
 	 * @param id the id
