@@ -44,7 +44,7 @@ class TestChowResponser {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 9);
+				assertEquals(9,((DiscardMsg)msg).getTileId());
 			}
 		}
 		ChowResponser chowResponser = new ChowResponser();

@@ -35,8 +35,8 @@ class TestClient {
 	@Test
 	public void testConstructor() {
 		Client client = new Client(0, null,"TEXT");
-		assertEquals(client.getId(), 0);
-		assertEquals(client.getServer(), null);
+		assertEquals(0,client.getId());
+		assertEquals(null, client.getServer());
 	}
 
 	/**
@@ -116,7 +116,7 @@ class TestClient {
 			}
 			
 			public void onRecv(Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 8);
+				assertEquals(8, ((DiscardMsg)msg).getTileId());
 				assertEquals("DiscardOperation",((DiscardMsg)msg).getOperationName());
 			}
 		}

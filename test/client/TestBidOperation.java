@@ -44,7 +44,7 @@ class TestBidOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 9);
+				assertEquals(9,((DiscardMsg)msg).getTileId());
 			}
 		}
 		BidOperation bid = new BidOperation();
@@ -71,7 +71,7 @@ class TestBidOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 8);
+				assertEquals(8, ((DiscardMsg)msg).getTileId());
 			}
 		}
 		BidOperation bid = new BidOperation();

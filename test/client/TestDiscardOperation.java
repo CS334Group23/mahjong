@@ -40,7 +40,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 0);
+				assertEquals(0, ((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -67,7 +67,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 1);
+				assertEquals(1,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -94,7 +94,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 0);
+				assertEquals(0,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -121,7 +121,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 2);
+				assertEquals(2,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -148,7 +148,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 0);
+				assertEquals(0,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -175,7 +175,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 3);
+				assertEquals(3,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -202,7 +202,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 2);
+				assertEquals(2,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -229,7 +229,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 0);
+				assertEquals(0,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -256,7 +256,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 4);
+				assertEquals(4,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -283,7 +283,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 0);
+				assertEquals(0,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -310,7 +310,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 0);
+				assertEquals(0,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();
@@ -335,7 +335,7 @@ class TestDiscardOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 0);
+				assertEquals(0,((BidMsg)msg).getBidType());
 			}
 		}
 		DiscardOperation discardOp = new DiscardOperation();

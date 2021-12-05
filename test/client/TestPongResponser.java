@@ -44,7 +44,7 @@ class TestPongResponser {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 8);
+				assertEquals(8,((DiscardMsg)msg).getTileId());
 			}
 		}
 		PongResponser pongResponser = new PongResponser();

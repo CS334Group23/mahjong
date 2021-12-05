@@ -42,7 +42,7 @@ class TestWinResponser {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((WinMsg)msg).getScores().get(1), 6);
+				assertEquals(6,((WinMsg)msg).getScores().get(1));
 			}
 		}
 		WinResponser winResponser = new WinResponser();
@@ -66,7 +66,7 @@ class TestWinResponser {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((WinMsg)msg).getScores().get(1), 1);
+				assertEquals(1,((WinMsg)msg).getScores().get(1));
 			}
 		}
 		WinResponser winResponser = new WinResponser();
@@ -90,7 +90,7 @@ class TestWinResponser {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((WinMsg)msg).getScores().get(1), 0);
+				assertEquals(0,((WinMsg)msg).getScores().get(1));
 			}
 		}
 		WinResponser winResponser = new WinResponser();
