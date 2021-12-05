@@ -5,9 +5,9 @@
  */
 package utils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Enum BidType.
+ * The enumerate type which represent the bid type 
  */
 public enum BidType {
 	
@@ -25,14 +25,14 @@ public enum BidType {
 	/** The bid id. */
 	private final int bidId;
 	
-	/** The chn name. */
+	/** The Chinese name. */
 	private final String chnName;
 	
 	/**
 	 * Instantiates a new bid type.
 	 *
 	 * @param bidId the bid id
-	 * @param chnName the chn name
+	 * @param chnName the Chinese name
 	 */
 	private BidType(int bidId, String chnName) {
 		this.bidId = bidId;
@@ -40,18 +40,18 @@ public enum BidType {
 	}
 	
 	/**
-	 * Gets the bid type.
+	 * Gets the bid id the bid type
 	 *
-	 * @return the bid type
+	 * @return the bid type id
 	 */
 	public int getBidType() {
 		return bidId;
 	}
 	
 	/**
-	 * Gets the chn name.
+	 * Gets the Chinese name of the bid type.
 	 *
-	 * @return the chn name
+	 * @return the Chinese name of the bid type
 	 */
 	public String getChnName() {
 		return chnName;

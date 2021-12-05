@@ -10,22 +10,21 @@ import java.util.ArrayList;
 import utils.BidType;
 import utils.Meld;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BidMsg.
  */
 public class BidMsg implements Message, Comparable<BidMsg>{
 	
-	/** The Constant BID_NUM. */
+	/** The Constant BID_NUM represent the BidMsg Priority. */
 	public static final int BID_NUM = 5;
 	
-	/** The client id. */
+	/** The client id who send the bid. */
 	private int clientId;
 	
-	/** The previous client id. */
+	/** The previous client id who 哈市 been bided. */
 	private int previousClientId;
 	
-	/** The op name. */
+	/** The operation name. */
 	private String opName;
 	
 	/** The bid type. */
@@ -34,32 +33,32 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	/** The responser name. */
 	private String responserName;
 	
-	/** The tile id. */
+	/** The bided tile id. */
 	private int tileId;
 	
-	/** The meld. */
+	/** The formed meld by this Bid. */
 	private Meld meld;
 	
 	/** The bid name. */
 	private String bidName;
 	
-	/** The win hand. */
+	/** The win hand if is win. */
 	private ArrayList<Integer> winHand;
 	
-	/** The self drawn. */
+	/** If the bid is self drawn. */
 	private boolean selfDrawn;
 	
 	/**
 	 * Instantiates a new bid msg.
 	 *
 	 * @param clientId the client id
-	 * @param previous the previous
+	 * @param previous the previous client id
 	 * @param bidType the bid type
 	 * @param responserName the responser name
-	 * @param tileId the tile id
-	 * @param meld the meld
-	 * @param winHand the win hand
-	 * @param selfDrawn the self drawn
+	 * @param tileId the bided tile id
+	 * @param meld the formed meld
+	 * @param winHand the win hand if win
+	 * @param selfDrawn the selfDrawn flag
 	 */
 	public BidMsg(int clientId,int previous, BidType bidType, String responserName, int tileId, Meld meld, ArrayList<Integer> winHand, boolean selfDrawn) {
 		this.clientId = clientId;
@@ -75,13 +74,6 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	}
 	
 	/**
-	 * Instantiates a new bid msg.
-	 */
-	public BidMsg() { //this may need to be deleted later
-		
-	}
-	
-	/**
 	 * Gets the operation name.
 	 *
 	 * @return the operation name
@@ -92,10 +84,10 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	}
 
 	/**
-	 * Compare to.
+	 * Compare to another bid message to get relative priority
 	 *
-	 * @param another the another
-	 * @return the int
+	 * @param another the another BidMsg
+	 * @return the relative priority
 	 */
 	@Override
 	public int compareTo(BidMsg another) {
@@ -112,16 +104,16 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	}
 	
 	/**
-	 * Gets the bid client.
+	 * Gets the bid client id.
 	 *
-	 * @return the bid client
+	 * @return the bid client id
 	 */
 	public int getBidClient() {
 		return clientId;
 	}
 	
 	/**
-	 * Gets the meld.
+	 * Gets the formed bid meld.
 	 *
 	 * @return the meld
 	 */
@@ -139,9 +131,9 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	}
 	
 	/**
-	 * Gets the chn name.
+	 * Gets the Chinese name of the bid.
 	 *
-	 * @return the chn name
+	 * @return the Chinese name of the bid
 	 */
 	public String getChnName() {
 		return bidName;
@@ -150,16 +142,16 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	/**
 	 * Gets the win hand.
 	 *
-	 * @return the win hand
+	 * @return the win hand list
 	 */
 	public ArrayList<Integer> getWinHand(){
 		return winHand;
 	}
 	
 	/**
-	 * Prints the bid.
+	 * Print the bid message list.
 	 *
-	 * @param msgs the msgs
+	 * @param a list of BidMsg
 	 */
 	public static void printBid(ArrayList<BidMsg> msgs) {
 		String s = "";
@@ -175,16 +167,16 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	}
 	
 	/**
-	 * Checks if is self drawn.
-	 *
-	 * @return true, if is self drawn
+	 * Checks if is self drawn bid.
+	 * 
+	 * @return true, if is self drawn bid
 	 */
 	public boolean isSelfDrawn() {
 		return selfDrawn;
 	}
 	
 	/**
-	 * Gets the tile id.
+	 * Gets the bid tile id.
 	 *
 	 * @return the tile id
 	 */
@@ -193,9 +185,9 @@ public class BidMsg implements Message, Comparable<BidMsg>{
 	}
 	
 	/**
-	 * Gets the previous client.
+	 * Gets the previous client id.
 	 *
-	 * @return the previous client
+	 * @return the previous client id
 	 */
 	public int getPreviousClient() {
 		return previousClientId;

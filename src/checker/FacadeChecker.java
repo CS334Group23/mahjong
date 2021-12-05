@@ -59,21 +59,6 @@ public class FacadeChecker {
 		
 	}	
 	
-//	public ArrayList<Meld> check_if_kong() {//this is not used, may be changed to this later
-//		Tile temp=new Tile(136);//initialize as flower , which must different to hands
-//		ArrayList<Meld> result=new ArrayList<Meld>();
-//		for(int i=0;i<hand.size();i++) {
-//			if(hand.get(i).getRankIndex()==temp.getRankIndex() && hand.get(i).getType()==temp.getType()) { //only return kongs with distinct meld
-//				continue;
-//			}
-//			temp=hand.get(i);
-//			hand.remove(i);
-//			if(kongchecker.checkKong(hand, temp)!=null)
-//				result.add(kongchecker.checkKong(hand, temp));
-//			hand.add(i,temp);
-//		}
-//		return result;
-//	}	
 	
 	/**
 	 * Check if kong.

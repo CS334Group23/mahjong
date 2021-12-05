@@ -39,8 +39,6 @@ import utils.Sorting;
  */
 public class CheckWin {
 	
-	/** The comb. */
-	private GenerateWinningHand comb;
 	
 	/**
 	 * Instantiates a new check win.
@@ -69,7 +67,7 @@ public class CheckWin {
 	
 	/**
 	 * Check score.
-	 *
+	 * Passing hand and showed_hand, and calculate the total score by algorithm, 
 	 * @param hand the hand
 	 * @param showed_hand the showed hand
 	 * @return the array list
@@ -167,7 +165,6 @@ public class CheckWin {
 				Sequence aks=new All_Kongs();
 				temp_sequence.add(aks);
 			}
-			// other check will add later 
 			
 			//extra score
 			if(showed_hand != null) {
@@ -214,7 +211,7 @@ public class CheckWin {
 	 * @return true, if successful
 	 */
 	public boolean CheckSameType(Tile a, Tile b) {
-		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72), DRAGON(3, 108), FLOWER(5, 136), WIND(4, 120);
+
 		if(a.getType().equals(b.getType())
 				) {return true;}
 		
@@ -225,7 +222,7 @@ public class CheckWin {
 	
 	/**
 	 * Check PH.
-	 *
+	 * Check if the hand is in common hand
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -241,7 +238,7 @@ public class CheckWin {
 
 	/**
 	 * Check PPH.
-	 *
+	 * Check if the hand is All in Triplet 
 	 * @param hand the hand
 	 * @param showed_hand the showed hand
 	 * @return true, if successful
@@ -250,9 +247,9 @@ public class CheckWin {
 
 	public boolean CheckPPH(ArrayList<Meld> hand,ArrayList<Meld>showed_hand) {//
 		if(showed_hand.isEmpty())
-			return false; // exception for 
+			return false; 
 		boolean OnlyDragonOrWind = true;
-		boolean AllKongs=true; //exception for all kong
+		boolean AllKongs=true; 
 		for(int i=0;i<hand.size();i++){ 
 			if(hand.get(i).getcomb_type() ==1) {
 				return false;
@@ -277,7 +274,7 @@ public class CheckWin {
 	
 	/**
 	 * Check HYJ.
-	 *
+	 * Check if it Mix Terminals
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -311,18 +308,17 @@ public class CheckWin {
 
 	/**
 	 * Check HYS.
-	 *
+	 * Check if it is Mixed one suit
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
 
 
-	public boolean CheckHYS(ArrayList<Meld> hand) {//�������
+	public boolean CheckHYS(ArrayList<Meld> hand) {
 
 	
-		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type , assume meld is sort.
+		Tile first_hand= hand.get(0).getFirst(); //initial hand, use for check type 
 		
-		//BAMBOO(0, 0), CHARACTER(1, 36), DOT(2, 72),
 		if(!(first_hand.getType()== Type.BAMBOO || first_hand.getType()== Type.CHARACTER ||first_hand.getType()== Type.DOT )) {
 			
 			return false; // it should be check for ZYS , which is exception to HYS
@@ -346,7 +342,7 @@ public class CheckWin {
 
 	/**
 	 * Check QYS.
-	 *
+	 * Check if it is All one suit
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -370,7 +366,7 @@ public class CheckWin {
 	
 	/**
 	 * Check KKH.
-	 *
+	 * Check if it is  Four Concealed Triplet
 	 * @param hand the hand
 	 * @param showed_hand the showed hand
 	 * @return true, if successful
@@ -389,7 +385,7 @@ public class CheckWin {
 	
 	/**
 	 * Check AKS.
-	 *
+	 * Check if it is all kongs
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -405,7 +401,7 @@ public class CheckWin {
 	
 	/**
 	 * Check MC.
-	 *
+	 * Check if it is Win From Wall
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -417,7 +413,7 @@ public class CheckWin {
 	
 	/**
 	 * Check red dragon.
-	 *
+	 * Check if it is a pong with Red Dragon
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -431,7 +427,7 @@ public class CheckWin {
 	
 	/**
 	 * Check green dragon.
-	 *
+	 * Check if it is a pong with Green Dragon
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -446,7 +442,7 @@ public class CheckWin {
 	
 	/**
 	 * Check white dragon.
-	 *
+	 * Check if it is a pong with White Dragon
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -462,7 +458,7 @@ public class CheckWin {
 
 	/**
 	 * Check XSY.
-	 *
+	 * Check if it is small dragon
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -488,7 +484,7 @@ public class CheckWin {
 
 	/**
 	 * Check XSX.
-	 *
+	 * Check if it is small wind
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -512,7 +508,7 @@ public class CheckWin {
 
 	/**
 	 * Check ZYS.
-	 *
+	 * Check if it is all honours
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -529,7 +525,7 @@ public class CheckWin {
 
 	/**
 	 * Check QYJ.
-	 *
+	 * Check if it is all terminals
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -547,7 +543,7 @@ public class CheckWin {
 
 	/**
 	 * Check DSY.
-	 *
+	 * Check if it is Great Dragon
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -568,7 +564,7 @@ public class CheckWin {
   
 	/**
 	 * Check DSX.
-	 *
+	 * Check if it is Great Wind
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -588,17 +584,14 @@ public class CheckWin {
 
 	/**
 	 * Check JLBD.
-	 *
+	 * Check if it is nine gate
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
 	public boolean CheckJLBD(ArrayList<Meld> hand) {
-		int sum=0;
 		Tile first_hand= hand.get(0).getFirst();
 		int exceedtwo=0;
-		int two_position=-1;
 		int exceedfour=0;
-		int four_position=-1;
 		int [] list = {0,0,0,0,0,0,0,0,0};
 		for(int i=0;i<hand.size();i++){
 			if (hand.get(i).getFirst().getType()!=first_hand.getType()){ //make sure the types are all the same
@@ -609,12 +602,10 @@ public class CheckWin {
 			{
 				if(list[hand.get(i).getFirst().getRankIndex()]>3) {
 					exceedfour++;
-					four_position=hand.get(i).getFirst().getRankIndex();
 				}
 			}else {
 				if(list[hand.get(i).getFirst().getRankIndex()]>1)
 					exceedtwo++;
-					two_position=hand.get(i).getFirst().getRankIndex();
 				
 			}
 			list[hand.get(i).getSecond().getRankIndex()]++;
@@ -624,7 +615,6 @@ public class CheckWin {
 			}else {
 				if(list[hand.get(i).getSecond().getRankIndex()]>1)
 					exceedtwo++;
-					two_position=hand.get(i).getSecond().getRankIndex();
 				
 			}
 			
@@ -634,12 +624,10 @@ public class CheckWin {
 				{
 					if(list[hand.get(i).getThird().getRankIndex()]>3) {
 						exceedfour++;
-						four_position=hand.get(i).getThird().getRankIndex();
 					}
 				}else {
 					if(list[hand.get(i).getThird().getRankIndex()]>1) {
 						exceedtwo++;
-						two_position=hand.get(i).getThird().getRankIndex();
 					}
 					
 				}
@@ -658,7 +646,7 @@ public class CheckWin {
 
 	/**
 	 * Check SSY.
-	 *
+	 * Check if it is thirteen orphans
 	 * @param hand the hand
 	 * @return true, if successful
 	 */

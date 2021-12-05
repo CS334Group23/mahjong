@@ -8,23 +8,23 @@ package server;
 import network.Message;
 import network.WinMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WinOperation.
+ * WinOperation in server to deal with input WinMsg from client。
  */
 public class WinOperation implements ServerOperation{
 	
 	/** The msg count. */
 	private static int msgCount = 0;
 	
-	/** The win msg. */
+	/** The static stored win msg. */
 	private static WinMsg winMsg = null;
 	
 	/**
-	 * Operate.
+	 * WinOperation in server to deal with input WinMsg from client。
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input message
 	 */
 	@Override
 	public void operate(Server server, Message msg) {

@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Tile.
+ * The Tile class which represent a Tile in the game and contains the basic information and function needed for a Tile。
  */
 public class Tile implements Comparable<Tile> {
 	
@@ -68,16 +68,16 @@ public class Tile implements Comparable<Tile> {
 	/** The Constant TOTAL_TILES_WITHOUT_FLOWERS. */
 	public final static int TOTAL_TILES_WITHOUT_FLOWERS = 136;
 	
-	/** The eng name map. */
+	/** The Hash map between English name and id. */
 	private static Map<Integer, String> engNameMap = new HashMap<Integer, String>();
 	
-	/** The chn name map. */
+	/** The Hash map between Chinese name and id. */
 	private static Map<Integer, String> chnNameMap = new HashMap<Integer, String>();
 	
-	/** The eng filename. */
+	/** The file path of the English name file. */
 	private final String engFilename = "resource/TileName.txt";
 	
-	/** The chn filename. */
+	/** The file path of the Chinese name file. */
 	private final String chnFilename = "resource/TileName_CHN.txt";
 	
 	/** The id. */
@@ -86,23 +86,23 @@ public class Tile implements Comparable<Tile> {
 	/** The type. */
 	private Type type;
 	
-	/** The rank index. */
+	/** The rank index for the Tile with the same Type. */
 	private int rankIndex;
 	
-	/** The name. */
+	/** The English name. */
 	private String name;
 	
-	/** The chn name. */
+	/** The Chinese name. */
 	private String chnName;
 	
-	/** The url. */
+	/** The url to the Tile picture. */
 	private String url;
 	
 	
 	/**
 	 * Instantiates a new tile.
 	 *
-	 * @param id the id
+	 * @param id the id of the Tile
 	 */
 	public Tile(int id) {
 		this.id = id;
@@ -116,10 +116,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Id to type.
+	 * Deduce the type of a Tile from its id。
 	 *
-	 * @param id the id
-	 * @return the type
+	 * @param id the id of the Tile
+	 * @return the type of the Tile
 	 */
 	public static Type idToType(int id) { //later need to add exception handling
 		int typeIndex;
@@ -141,10 +141,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Id to rank index.
+	 * Deduce the rank index of a Tile from its id。
 	 *
-	 * @param id the id
-	 * @return the int
+	 * @param id the id of the Tile
+	 * @return the rank index of the Tile
 	 */
 	public static int idToRankIndex(int id) {
 		Type type = idToType(id);
@@ -158,10 +158,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Id to name.
+	 * Get the English of a Tile according to its id.
 	 *
-	 * @param id the id
-	 * @return the string
+	 * @param id the id of the Tile
+	 * @return the string of the English name of the Tile
 	 */
 	public static String idToName(int id) {
 		Type type = idToType(id);
@@ -171,10 +171,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Id to chn name.
+	 * Get the Chinese of a Tile according to its id.
 	 *
-	 * @param id the id
-	 * @return the string
+	 * @param id the id of the Tile
+	 * @return the string of the Chinese name of the Tile
 	 */
 	public static String idToChnName(int id) {
 		Type type = idToType(id);
@@ -184,7 +184,7 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Gets the id.
+	 * Gets the id of the Tile
 	 *
 	 * @return the id
 	 */
@@ -193,7 +193,7 @@ public class Tile implements Comparable<Tile> {
 	}
 
 	/**
-	 * Gets the type.
+	 * Gets the type of the Tile
 	 *
 	 * @return the type
 	 */
@@ -202,7 +202,7 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Gets the rank index.
+	 * Gets the rank index of the Tile
 	 *
 	 * @return the rank index
 	 */
@@ -211,28 +211,28 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Gets the name.
+	 * Gets the English name of the Tile.
 	 *
-	 * @return the name
+	 * @return the English name
 	 */
 	public String getName() {
 		return name;
 	}
 	
 	/**
-	 * Gets the chn name.
+	 * Gets the Chinese name of the Tile.
 	 *
-	 * @return the chn name
+	 * @return the Chinese name
 	 */
 	public String getChnName() {
 		return chnName;
 	}
 	
 	/**
-	 * Compare to.
+	 * Comparison between two Tile
 	 *
-	 * @param tile the tile
-	 * @return the int
+	 * @param tile another Tile to compare with
+	 * @return a integer represent the relative size of the Tile
 	 */
 	@Override
 	public int compareTo(Tile tile) {
@@ -248,10 +248,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * File to map.
+	 * read the name resource file and store it in accordance hash map.
 	 *
-	 * @param filename the filename
-	 * @return the map
+	 * @param filename the path to the name resource file
+	 * @return the accordance hash map
 	 */
 	public Map<Integer,String> fileToMap(String filename){
 		String delimiter = ":";
@@ -268,7 +268,7 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Sets the string url.
+	 * Set the url to the picture of the Tile.
 	 */
 	private void setStringUrl() {
 		String temp = "resource/static/tiles/";
@@ -280,7 +280,7 @@ public class Tile implements Comparable<Tile> {
 	/**
 	 * Gets the url.
 	 *
-	 * @return the url
+	 * @return the a string of url
 	 */
 	public String getUrl() {
 		return url;
@@ -296,10 +296,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Id to tile list.
+	 * Transfer an integer id list to a Tile list.
 	 *
 	 * @param idList the id list
-	 * @return the array list
+	 * @return the Tile list
 	 */
 	public static ArrayList<Tile> idToTileList(ArrayList<Integer> idList) {
 		ArrayList<Tile> result = new ArrayList<>();
@@ -310,10 +310,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Tile to id list.
+	 * Transfer a Tile list to an integer id list.
 	 *
 	 * @param tileList the tile list
-	 * @return the array list
+	 * @return the integer id list
 	 */
 	public static ArrayList<Integer> tileToIdList(ArrayList<Tile> tileList){
 		ArrayList<Integer> result = new ArrayList<>();
@@ -324,10 +324,10 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Tile list to string.
+	 * Get a formated string of Chinese names from a Tile list.
 	 *
 	 * @param tileList the tile list
-	 * @return the string
+	 * @return the Chinese name string
 	 */
 	public static String tileListToString (ArrayList<Tile> tileList) {
 		String s = "";
@@ -338,11 +338,11 @@ public class Tile implements Comparable<Tile> {
 	}
 	
 	/**
-	 * Checks if is same tile face.
+	 * Checks if two Tile have same tile face.
 	 *
 	 * @param tile1 the tile 1
 	 * @param tile2 the tile 2
-	 * @return true, if is same tile face
+	 * @return true, if two tile has same tile face
 	 */
 	public static boolean isSameTileFace(Tile tile1, Tile tile2) {
 		if(tile1.getType() == tile2.getType()) {
@@ -351,6 +351,6 @@ public class Tile implements Comparable<Tile> {
 		}
 		return false;
 	}
-	
+
 }
 

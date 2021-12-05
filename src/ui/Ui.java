@@ -14,72 +14,72 @@ import network.DrawMsg;
 import network.DrawNoticeMsg;
 import network.WinMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface Ui.
+ * The Ui interface which can be accessed by the Client
  */
 public interface Ui {
 	
 	/**
-	 * Info deal.
+	 * Inform the ui about deal message.
 	 *
-	 * @param dealMsg the deal msg
+	 * @param dealMsg the deal message
 	 */
 	public void infoDeal(DealMsg dealMsg); 
 	
 	/**
-	 * Info draw.
+	 * Info the ui about draw message.
 	 *
-	 * @param drawMsg the draw msg
-	 * @param possibleBid the possible bid
+	 * @param drawMsg the draw message
+	 * @param possibleBid the possible bid represented as BidMsg list
 	 */
 	public void infoDraw(DrawMsg drawMsg, ArrayList<BidMsg> possibleBid);
 	
 	/**
-	 * Gets the op index.
+	 * Gets the operation index of the user.
 	 *
-	 * @return the op index
+	 * @return the operation index
 	 */
 	public int getOpIndex();
 	
 	/**
-	 * Gets the discard.
+	 * Gets the discard index of the user.
 	 *
-	 * @return the discard
+	 * @return the discard index
 	 */
 	public int getDiscard();
 	
 	/**
-	 * Info discard.
+	 * Info the ui about discard message.
 	 *
-	 * @param discardMsg the discard msg
-	 * @param possibleBid the possible bid
+	 * @param discardMsg the discard message
+	 * @param possibleBid the possible bid represented as BidMsg list
 	 */
 	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid);
 	
 	/**
-	 * Info bid.
+	 * Info the ui about bid message.
 	 *
-	 * @param bidMsg the bid msg
+	 * @param bidMsg the bid message
 	 */
 	public void infoBid(BidMsg bidMsg);
 	
 	/**
-	 * Info win.
+	 * Info the ui about win message.
 	 *
-	 * @param winMsg the win msg
+	 * @param winMsg the win message
 	 */
 	public void infoWin(WinMsg winMsg);
 	
 	/**
-	 * Info draw notice.
+	 * Info the ui about draw notice message.
 	 *
-	 * @param drawNoticeMsg the draw notice msg
+	 * @param drawNoticeMsg the draw notice message
 	 */
 	public void infoDrawNotice(DrawNoticeMsg drawNoticeMsg);
 	
 	/**
-	 * Inits the.
+	 * Inits the ui.
 	 *
 	 * @param client the client
 	 */

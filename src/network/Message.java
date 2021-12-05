@@ -5,14 +5,13 @@
  */
 package network;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface Message.
  */
 public interface Message {
 	
 	/**
-	 * Gets the operation name.
+	 * Gets the corresponding operation name.
 	 *
 	 * @return the operation name
 	 */

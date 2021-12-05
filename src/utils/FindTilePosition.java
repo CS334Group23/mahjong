@@ -5,19 +5,19 @@
  */
 package utils;
 import java.util.*;
-// TODO: Auto-generated Javadoc
 
 /**
  * The Class FindTilePosition.
+ * The Class which is used to find the relative Tile position in a Tile list.
  */
 public class  FindTilePosition {
 	
 	/**
-	 * Next different tile.
+	 * Find the next different tile different from the input Tile in a Tile list.
 	 *
-	 * @param hand the hand
-	 * @param a the a
-	 * @return the int
+	 * @param hand a list of Tile
+	 * @param a the input Tile
+	 * @return the position of the target Tile
 	 */
 	public static int NextDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
@@ -32,11 +32,11 @@ public class  FindTilePosition {
 	}
 	
 	/**
-	 * Previous different tile.
+	 * Find the previous different tile different from the input Tile in a Tile list.
 	 *
-	 * @param hand the hand
-	 * @param a the a
-	 * @return the int
+	 * @param hand a list of Tile
+	 * @param a the input Tile
+	 * @return the position of the target Tile
 	 */
 	public static int PreviousDifferentTile(ArrayList<Tile> hand, Tile a) {
 		int pos=FindTilePosition.FindPosition(hand,a);
@@ -51,11 +51,11 @@ public class  FindTilePosition {
 	}
 	
 	   /**
-   	 * Find position.
+   	 * Find position of a Tile in a Tile list.
    	 *
-   	 * @param hand the hand
-   	 * @param a the a
-   	 * @return the int
+   	 * @param hand a list of Tile
+   	 * @param a the input Tile
+   	 * @return the position of the input Tile
    	 */
    	public static int FindPosition(ArrayList<Tile> hand, Tile a) {
 	   int low=0;

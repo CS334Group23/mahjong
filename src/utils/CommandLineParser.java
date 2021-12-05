@@ -12,16 +12,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CommandLineParser.
+ * The Class CommandLineParser to parse the command line arguments.
  */
 public class CommandLineParser {
     
-    /** The args. */
+    /** The args to store seperated commnad line arguments. */
     List <String> args = new ArrayList<>();
     
-    /** The map. */
+    /** The hash map option name and its parameters. */
     HashMap<String, List<String>> map = new HashMap<>();
     
     /** The flags. */
@@ -30,7 +30,7 @@ public class CommandLineParser {
     /**
      * Instantiates a new command line parser.
      *
-     * @param arguments the arguments
+     * @param arguments the arguments array
      */
     public CommandLineParser(String arguments[])
     {
@@ -39,12 +39,11 @@ public class CommandLineParser {
     }
 
     /**
-     * Gets the argument value.
+     * Gets the argument value according to a option name
      *
      * @param argumentName the argument name
      * @return the argument value
      */
-    // Return argument value for particular argument name
     public String[] getArgumentValue(String argumentName)
     {
         if(map.containsKey(argumentName))
@@ -54,9 +53,8 @@ public class CommandLineParser {
     }
 
     /**
-     * Map.
+     * Map the flags and argument names with the values.
      */
-    // Map the flags and argument names with the values 
     public void map()
     {
         for(String arg: args)
