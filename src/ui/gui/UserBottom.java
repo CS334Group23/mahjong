@@ -16,17 +16,11 @@ import javax.swing.JLabel;
 import utils.Meld;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class UserBottom.
  */
 public class UserBottom extends User{
 
-	/**
-	 * Instantiates a new user bottom.
-	 *
-	 * @param hand the hand
-	 */
 	public UserBottom(ArrayList<Tile> hand) {
 		userId = User.USER_BOTTOM;
 		tileOnBoard = 0;
@@ -36,12 +30,7 @@ public class UserBottom extends User{
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.37, GameController.FRAME_HEIGHT*0.52), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
-	
-	/**
-	 * Hand init.
-	 *
-	 * @param gamePanel the game panel
-	 */
+
 	@Override
 	public void handInit(GamePanel gamePanel) {
 		ArrayList<Tile> hand = getHand();
@@ -67,7 +56,8 @@ public class UserBottom extends User{
 	
 	/**
 	 * Discard tile.
-	 *
+	 * Discard the tile to this.boardDeck
+	 * 
 	 * @param gamePanel the game panel
 	 * @param tile the tile
 	 * @return the tile label
@@ -119,7 +109,7 @@ public class UserBottom extends User{
 			gamePanel.removeTileLabelFromPanel(handTileLabelList.get(i));
 		}
 		handTileLabelList.clear();
-//		sorting.sortTile(HandTileList);
+		
 		Collections.sort(HandTileList);
 		Point handStartPoint = handDeck.getPoint();
 		handStartPoint.resetCoordinate();
@@ -131,7 +121,7 @@ public class UserBottom extends User{
 	
 	/**
 	 * Put meld to right.
-	 *
+	 * This method is called when Pong/Kong/Chow
 	 * @param gamePanel the game panel
 	 * @param meld the meld
 	 */
@@ -202,7 +192,6 @@ public class UserBottom extends User{
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		gamePanel.remove(instruction);
@@ -220,8 +209,7 @@ public class UserBottom extends User{
 		JLabel scoreLabel = new JLabel();
 		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='red'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
 		scoreLabel.setOpaque(true);
-//		Border blackLine = BorderFactory.createLineBorder(Color.BLACK);
-//		scoreLabel.setBorder(blackLine);
+
 		scoreLabel.setText(text);
 		scoreLabel.setBounds(180,570,60,50);
 		scoreLabel.setBackground(Color.DARK_GRAY);

@@ -14,17 +14,11 @@ import javax.swing.JLabel;
 import utils.Meld;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class UserLeft.
  */
 public class UserLeft extends User{
 
-	/**
-	 * Instantiates a new user left.
-	 *
-	 * @param hand the hand
-	 */
 	public UserLeft(ArrayList<Tile> hand) {
 		userId = User.USER_LEFT;
 		tileOnBoard = 0;
@@ -33,12 +27,7 @@ public class UserLeft extends User{
 		meldDeck = new Deck(new Point(), Tile.TILE_WIDTH_MELD, Tile.TILE_HEIGHT_MELD);
 		boardDeck = new Deck(new Point(GameController.FRAME_WIDTH*0.25, GameController.FRAME_HEIGHT*0.24), Tile.TILE_WIDTH_BOARD, Tile.TILE_HEIGHT_BOARD);
 	}
-	
-	/**
-	 * Hand init.
-	 *
-	 * @param gamePanel the game panel
-	 */
+
 	@Override
 	public void handInit(GamePanel gamePanel) {
 		ArrayList<Tile> hand = getHand();
@@ -108,7 +97,7 @@ public class UserLeft extends User{
 	
 	/**
 	 * Put meld to right.
-	 *
+	 * This method is called when Pong/Kong/Chow
 	 * @param gamePanel the game panel
 	 * @param meld the meld
 	 */
@@ -180,7 +169,6 @@ public class UserLeft extends User{
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		gamePanel.remove(instruction);
@@ -198,6 +186,7 @@ public class UserLeft extends User{
 		JLabel scoreLabel = new JLabel();
 		String text = String.format("<html><font color='white'>&nbsp;Client %d</font><br><font color='fuchsia'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%d</font></html>", userId,score);
 		scoreLabel.setOpaque(true);
+		
 		scoreLabel.setText(text);
 		scoreLabel.setBounds(130,100,60,50);
 		scoreLabel.setBackground(Color.DARK_GRAY);

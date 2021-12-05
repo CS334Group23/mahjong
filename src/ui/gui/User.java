@@ -17,221 +17,102 @@ import utils.Meld;
 import utils.Tile;
 import network.WinMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
 public class User {
 	
-	/** The Constant USER_BOTTOM. */
 	public static final int USER_BOTTOM = 0;
-	
-	/** The Constant USER_RIGHT. */
 	public static final int USER_RIGHT = 1;
-	
-	/** The Constant USER_TOP. */
 	public static final int USER_TOP = 2;
-	
-	/** The Constant USER_LEFT. */
 	public static final int USER_LEFT = 3;
 	
-	/** The user id. */
 	protected int userId;
-	
-	/** The hand deck. */
 	protected Deck handDeck;
-	
-	/** The meld deck. */
 	protected Deck meldDeck;
-	
-	/** The board deck. */
 	protected Deck boardDeck;
-	
-	/** The new tile show point. */
 	protected Point newTileShowPoint;
-	
-	/** The tile on board. */
 	// count how many tiles are discarded by user, also is a line indicator to show which line should the discarded tile be placed
 	protected int tileOnBoard;
 	
-	/** The new tile from server. */
 	protected TileLabel newTileFromServer;
-	
-	/** The board tile is returned to last position. */
 	protected boolean boardTileIsReturnedToLastPosition;
-	
-	/**
-	 * Change tile img to face down.
-	 *
-	 * @param hand the hand
-	 */
+
 	protected void changeTileImgToFaceDown(ArrayList<Tile> hand) {
 		for(Tile tile : hand) 
 			ImageUtils.changeTileImgToFaceDown(tile);
 	}
 
-	/**
-	 * Gets the hand deck.
-	 *
-	 * @return the hand deck
-	 */
 	public Deck getHandDeck() {
 		return handDeck;
 	}
 
-	/**
-	 * Gets the meld deck.
-	 *
-	 * @return the meld deck
-	 */
 	public Deck getMeldDeck() {
 		return meldDeck;
 	}
 
-	/**
-	 * Gets the board deck.
-	 *
-	 * @return the board deck
-	 */
 	public Deck getBoardDeck() {
 		return boardDeck;
 	}
-	
-	/**
-	 * Gets the hand.
-	 *
-	 * @return the hand
-	 */
+
 	public ArrayList<Tile> getHand() {
 		return handDeck.getTiles();
 	}
-	
-	/**
-	 * Gets the meld.
-	 *
-	 * @return the meld
-	 */
+
 	public ArrayList<Tile> getMeld() {
 		return meldDeck.getTiles();
 	}
-	
-	/**
-	 * Gets the board.
-	 *
-	 * @return the board
-	 */
+
 	public ArrayList<Tile> getBoard() {
 		return boardDeck.getTiles();
 	}
-	
-	/**
-	 * Gets the user id.
-	 *
-	 * @return the user id
-	 */
+
 	public int getUserId() {
 		return userId;
 	}
-	
-	/**
-	 * Gets the new tile show point.
-	 *
-	 * @return the new tile show point
-	 */
+
 	public Point getNewTileShowPoint() {
 		return newTileShowPoint;
 	}
 
-	/**
-	 * Hand init.
-	 *
-	 * @param gamePanel the game panel
-	 */
 	public void handInit(GamePanel gamePanel) {
 		
 	}
 	
-	/**
-	 * Discard tile.
-	 *
-	 * @param gamePanel the game panel
-	 * @param tile the tile
-	 * @return the tile label
-	 */
 	public TileLabel discardTile(GamePanel gamePanel, Tile tile) {
 		
 		return null;
 	}
-	
-	/**
-	 * Put meld to right.
-	 *
-	 * @param gamePanel the game panel
-	 * @param meld the meld
-	 */
+
+	//This method is called when Pong/Kong/Chow
 	public void putMeldToRight(GamePanel gamePanel, Meld meld) {
 		
 	}
-	
-	/**
-	 * Gets the hand label.
-	 *
-	 * @return the hand label
-	 */
+
 	public ArrayList<TileLabel> getHandLabel() {
 		return handDeck.getTileLabels();
 	}
-	
-	/**
-	 * Gets the meld label.
-	 *
-	 * @return the meld label
-	 */
+
 	public ArrayList<TileLabel> getMeldLabel() {
 		return meldDeck.getTileLabels();
 	}
-	
-	/**
-	 * Gets the board label.
-	 *
-	 * @return the board label
-	 */
+
 	public ArrayList<TileLabel> getBoardLabel() {
 		return boardDeck.getTileLabels();
 	}
-	
-	/**
-	 * Gets the hand tile width.
-	 *
-	 * @return the hand tile width
-	 */
+
 	public int getHandTileWidth() {
 		return handDeck.getTileWidth();
 	}
-	
-	/**
-	 * Gets the hand tile height.
-	 *
-	 * @return the hand tile height
-	 */
+
 	public int getHandTileHeight() {
 		return handDeck.getTileHeight();
 	}
-	
-	/**
-	 * Sets the new tile from server.
-	 *
-	 * @param tileLabel the new new tile from server
-	 */
+
 	public void setNewTileFromServer(TileLabel tileLabel) {
 		this.newTileFromServer = tileLabel;
 	}
-	
-	/**
-	 * Removes the new tile.
-	 *
-	 * @param gamePanel the game panel
-	 */
+
 	public void removeNewTile(GamePanel gamePanel) {
 		if(newTileFromServer != null)
 			gamePanel.removeTileLabelFromPanel(newTileFromServer);
@@ -347,8 +228,8 @@ public class User {
 	}
 	
 	/**
-	 * Removes the all displayed tile label from panel.
-	 *
+	 * Removes all displayed tile label from panel.
+	 * Called when the game is end
 	 * @param gamePanel the game panel
 	 */
 	protected void removeAllDisplayedTileLabelFromPanel(GamePanel gamePanel) {
@@ -368,6 +249,7 @@ public class User {
 	
 	/**
 	 * Return board label to last position.
+	 * 
 	 */
 	public void returnBoardLabelToLastPosition() {
 		tileOnBoard--;
@@ -377,7 +259,7 @@ public class User {
 	
 	/**
 	 * Show bid info.
-	 *
+	 * 
 	 * @param gamePanel the game panel
 	 * @param bidResponser the bid responser
 	 */
@@ -388,7 +270,6 @@ public class User {
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		gamePanel.remove(instruction);
@@ -397,7 +278,8 @@ public class User {
 	
 	/**
 	 * Show all tile label.
-	 *
+	 * Called when the game is end
+	 * 
 	 * @param gamePanel the game panel
 	 * @param tileIdList the tile id list
 	 * @param winUserId the win user id
@@ -443,7 +325,7 @@ public class User {
 	
 	/**
 	 * Show score.
-	 *
+	 * Called when game is end
 	 * @param gamePanel the game panel
 	 * @param score the score
 	 */

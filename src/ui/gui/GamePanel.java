@@ -29,53 +29,28 @@ import ui.ClientInterface;
 import utils.Meld;
 import utils.Tile;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GamePanel.
  */
 public class GamePanel extends JPanel{	
 	
-	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
-
-	/** The bg image. */
 	private Image bgImage;
-	
-	/** The users. */
-	private ArrayList<User> users;
-	
-	/** The op index. */
+	private ArrayList<User> users; // users list of current game
 	private int opIndex;
-	
-	/** The card index. */
-	private int cardIndex;
-	
-	/** The operation button start point. */
-	private Point operationButtonStartPoint;
-	
-	/** The operation button list. */
-	private ArrayList<JButton> operationButtonList;
-	
-	/** The client. */
+	private int cardIndex; // store the discarded tile index of the user's tile list
+	private Point operationButtonStartPoint; // the point to store the operation button Pong/Kong/Chow/Win/Skip
+	private ArrayList<JButton> operationButtonList; // a list to store operation button
 	private ClientInterface client;
-	
-	/** The last discard tile label. */
-	private TileLabel lastDiscardTileLabel;
-	
-	/** The last discard sender id. */
+	private TileLabel lastDiscardTileLabel; // to store the latest discarded tile label
 	private int lastDiscardSenderId;
-	
-	/** The indicators. */
 	private ArrayList<JLabel> indicators;
-	
-	/** The last notice id. */
 	private int lastNoticeId;
 	
 	/**
-	 * Paint component.
+	 * draw the background
 	 *
-	 * @param g the g
 	 */
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -84,7 +59,7 @@ public class GamePanel extends JPanel{
 	}
 	
 	/**
-	 * Instantiates a new game panel.
+	 * Constructor
 	 *
 	 * @param client the client
 	 */
@@ -112,6 +87,7 @@ public class GamePanel extends JPanel{
 
 	/**
 	 * Info deal.
+	 * Api for game controller. This method is called in game start
 	 *
 	 * @param msg the msg
 	 */
@@ -151,6 +127,7 @@ public class GamePanel extends JPanel{
 	
 	/**
 	 * Info draw.
+	 * Api for game controller. This method is called when the server give a tile to the real user
 	 *
 	 * @param msg the msg
 	 * @param possibleBid the possible bid
@@ -184,7 +161,7 @@ public class GamePanel extends JPanel{
 
 	/**
 	 * Gets the op index.
-	 *
+	 * Api for game controller. This method is called when server need the last operation (e.g. Pong/Kong/Chow)
 	 * @return the op index
 	 */
 	public int getOpIndex() {
@@ -216,7 +193,7 @@ public class GamePanel extends JPanel{
 
 	/**
 	 * Info discard.
-	 *
+	 * Api for game controller. This method is called when user could discard a tile to the board
 	 * @param msg the msg
 	 * @param possibleBid the possible bid
 	 */
@@ -242,7 +219,7 @@ public class GamePanel extends JPanel{
 	
 	/**
 	 * Info bid.
-	 *
+	 * Api for game controller. This method is called when user form a sequence such as Pong/Kong/Chow
 	 * @param bidMsg the bid msg
 	 */
 	public void infoBid(BidMsg bidMsg) {
@@ -267,7 +244,7 @@ public class GamePanel extends JPanel{
 	
 	/**
 	 * Info win.
-	 *
+	 * Api for game controller. This method is called when some win the game
 	 * @param winMsg the win msg
 	 */
 	public void infoWin(WinMsg winMsg) {
@@ -324,7 +301,7 @@ public class GamePanel extends JPanel{
 	
 	/**
 	 * Operation button init.
-	 *
+	 * This method is called whenever the real user get a tile from server
 	 * @param msg the msg
 	 * @param opId the op id
 	 */
@@ -349,7 +326,8 @@ public class GamePanel extends JPanel{
 	
 	/**
 	 * Operation button event init.
-	 *
+	 * This method is called whenever the real user get a tile from server
+	 * 
 	 * @param btn the btn
 	 * @param btnName the btn name
 	 * @param msg the msg
