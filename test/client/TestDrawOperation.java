@@ -51,7 +51,7 @@ class TestDrawOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 3);
+				assertEquals(3,((BidMsg)msg).getBidType());
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
@@ -79,7 +79,7 @@ class TestDrawOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 4);
+				assertEquals(4,((BidMsg)msg).getBidType());
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
@@ -106,7 +106,7 @@ class TestDrawOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 3);
+				assertEquals(3,((BidMsg)msg).getBidType());
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
@@ -133,7 +133,7 @@ class TestDrawOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((BidMsg)msg).getBidType(), 4);
+				assertEquals(4,((BidMsg)msg).getBidType());
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();
@@ -160,7 +160,7 @@ class TestDrawOperation {
 			}
 			
 			public void send(Peer target, Message msg) {
-				assertEquals(((DiscardMsg)msg).getTileId(), 36);
+				assertEquals(36,((DiscardMsg)msg).getTileId());
 			}
 		}
 		DrawOperation drawOp = new DrawOperation();

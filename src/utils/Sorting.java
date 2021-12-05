@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * The Class sorting.
  * The Class which does some common sorting work.
  */
-public final class sorting {
+public final class Sorting {
     
     /**
      * Sort a list of Meld.

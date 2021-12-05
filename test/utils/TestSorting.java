@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * The Class Testsorting.
  */
-public class Testsorting {
+public class TestSorting {
 //	@Test
 //	public void UnitTestsortTilev1() { //test if can sort
 //		ArrayList<Tile> hand = new ArrayList<>();
@@ -91,7 +91,7 @@ public class Testsorting {
 		hand.add(new Meld(t1,t2,t3,null));
 		hand.add(new Meld(t10,t11,t12,null));
 		hand.add(new Meld(t7,t8,t9,null));
-		sorting.sort_Meld(hand);
+		Sorting.sort_Meld(hand);
 		boolean result=true;
 		for(int i=0;i<hand.size()-1;i++) {
 			if(hand.get(i).getFirst().getId()>hand.get(i+1).getFirst().getId()) {

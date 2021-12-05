@@ -174,5 +174,33 @@ class TestMeld {
 		int result = meld.getMeldLength();
 		assertEquals(2,result);
 	}
+	
+	@Test
+	void testgetFirst() {
+		Meld meld = new Meld(new Tile(0),new Tile(1),new Tile(2),new Tile(3));
+		int result = meld.getFirst().getId();
+		assertEquals(0,result);
+	}
+	
+	@Test
+	void testgetSecond() {
+		Meld meld = new Meld(new Tile(0),new Tile(1),new Tile(2),new Tile(3));
+		int result = meld.getSecond().getId();
+		assertEquals(1,result);
+	}
+	
+	@Test
+	void testgetThird() {
+		Meld meld = new Meld(new Tile(0),new Tile(1),new Tile(2),new Tile(3));
+		int result = meld.getThird().getId();
+		assertEquals(2,result);
+	}
+	
+	@Test
+	void testgetFourth() {
+		Meld meld = new Meld(new Tile(0),new Tile(1),new Tile(2),new Tile(3));
+		int result = meld.getForth().getId();
+		assertEquals(3,result);
+	}
 
 }

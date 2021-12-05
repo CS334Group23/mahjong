@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 /**
  * The Class TileTest.
  */
-class TileTest {
+class TestTile {
 
 	/**
 	 * Test id to rank index.
@@ -34,11 +34,27 @@ class TileTest {
 	 * Test id to type.
 	 */
 	@Test
-	void testIdToType() {
+	void testIdToType1() {
 		Tile t = new Tile(1);
 		Type type = t.getType();
 		//System.out.println(type);
 		assertEquals(Type.BAMBOO,type);
+	}
+	
+	@Test
+	void testIdToType2() {
+		Tile t = new Tile(108);
+		Type type = t.getType();
+		//System.out.println(type);
+		assertEquals(Type.DRAGON,type);
+	}
+	
+	@Test
+	void testIdToType3() {
+		Tile t = new Tile(128);
+		Type type = t.getType();
+		//System.out.println(type);
+		assertEquals(Type.WIND,type);
 	}
 
 	/**
@@ -57,15 +73,21 @@ class TileTest {
 	 * Test get url.
 	 */
 	@Test
+	void testSetUrl() {
+		Tile t = new Tile(143);
+		t.setUrl("resource/static/tiles/facedown-1.png");
+		String url = t.getUrl();
+		String name = t.getName();
+		assertEquals("resource/static/tiles/facedown-1.png", url);
+	}
+	
+	@Test
 	void testGetUrl() {
 		Tile t = new Tile(144);
 		String url = t.getUrl();
 		String name = t.getName();
-		System.out.println(name);
-		System.out.println(url);
 		assertEquals("resource/static/tiles/facedown-1.png", url);
 	}
-	
 	/**
 	 * Test tile to id list.
 	 */
@@ -78,7 +100,7 @@ class TileTest {
 		}
 		ArrayList<Integer> result;
 		result = Tile.tileToIdList(hand);
-		assertEquals(result,a);
+		assertEquals(a, result);
 	}
 	
 	/**
@@ -101,7 +123,7 @@ class TileTest {
 		Tile tile1 = new Tile(0);
 		Tile tile2 = new Tile(1);
 		boolean result = Tile.isSameTileFace(tile1, tile2);
-		assertEquals(result, true);
+		assertEquals(true, result);
 	}
 	
 	/**
@@ -112,7 +134,7 @@ class TileTest {
 		Tile tile1 = new Tile(0);
 		Tile tile2 = new Tile(4);
 		boolean result = Tile.isSameTileFace(tile1, tile2);
-		assertEquals(result, false);
+		assertEquals(false, result);
 	}
 	
 	/**
@@ -123,7 +145,15 @@ class TileTest {
 		Tile tile1 = new Tile(0);
 		Tile tile2 = new Tile(36);
 		boolean result = Tile.isSameTileFace(tile1, tile2);
-		assertEquals(result, false);
+		assertEquals(false,result);
+	}
+	
+	@Test
+	void testCompareTo() {
+		Tile tile1 = new Tile(0);
+		Tile tile2 = new Tile(0);
+		int result = tile1.compareTo(tile2);
+		assertEquals(0,result);
 	}
 
 }

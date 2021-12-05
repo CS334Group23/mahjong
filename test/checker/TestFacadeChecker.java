@@ -54,9 +54,9 @@ public class TestFacadeChecker {
 		hand.add(t12);
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
-		assertEquals(check.check_if_win().isEmpty(),true);
-		assertEquals(check.getScore()==0,true);
-		assertEquals(check.checkWhetherWin(),false);
+		assertEquals(true,check.check_if_win().isEmpty());
+		assertEquals(true, check.getScore()==0);
+		assertEquals(false, check.checkWhetherWin());
 		
 	}
 	
@@ -97,9 +97,9 @@ public class TestFacadeChecker {
 		hand.add(t12);
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
-		assertEquals(check.check_if_win().isEmpty(),false);
-		assertEquals(check.getScore()==0,false);
-		assertEquals(check.checkWhetherWin(),true);
+		assertEquals(false, check.check_if_win().isEmpty());
+		assertEquals(false,check.getScore()==0);
+		assertEquals(true, check.checkWhetherWin());
 	}
 	
 	/**
@@ -140,7 +140,7 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		Meld result=check.check_if_pong();
-		assertEquals(result.getcomb_type(),2);
+		assertEquals(2, result.getcomb_type());
 		
 	}
 	
@@ -182,7 +182,7 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		Meld result=check.check_if_pong();
-		assertEquals(result,null);
+		assertEquals(null, result);
 		
 	}
 	
@@ -224,7 +224,7 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		ArrayList<Meld> result=check.check_if_chow();
-		assertEquals(result.size(),3);
+		assertEquals(3,result.size());
 		
 	}
 	
@@ -266,7 +266,7 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		ArrayList<Meld> result=check.check_if_chow();
-		assertEquals(result.size(),0);
+		assertEquals(0, result.size());
 		
 	}
 	
@@ -308,7 +308,7 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		Meld result=check.check_if_kong();
-		assertEquals(result.getcomb_type(),3);
+		assertEquals(3, result.getcomb_type());
 		
 	}
 	
@@ -350,7 +350,7 @@ public class TestFacadeChecker {
 		hand.add(t13);
 		FacadeChecker check=new FacadeChecker(hand,showed_hand,t14);
 		Meld result=check.check_if_kong();
-		assertEquals(result,null);
+		assertEquals(null,result);
 		
 	}
 	
@@ -398,7 +398,7 @@ public class TestFacadeChecker {
 		boolean resulta=check.check_if_pong().getcomb_type()==2;
 		check.UpdateHand(hand, showed_hand, t15);
 		boolean resultb= check.check_if_pong() == null;
-		assertEquals(resulta && resultb,true);
+		assertEquals(true,resulta && resultb);
 		
 	}
 }

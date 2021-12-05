@@ -31,7 +31,7 @@ import checker.sequence.Win_From_Wall;
 import utils.Meld;
 import utils.Tile;
 import utils.Type;
-import utils.sorting;
+import utils.Sorting;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -87,9 +87,10 @@ public class CheckWin {
 			ArrayList<Sequence> temp_sequence =new ArrayList<>();
 			if(showed_hand!=null)
 				winning_hand.addAll(showed_hand);  // use to merge the showed_hand into winning_hand
-			sorting.sort_Meld(winning_hand);
+			Sorting.sort_Meld(winning_hand);
+			//sort winning all by first of each meld, put eye at last
 			int local_score=0;
-			sorting.sort_Meld(winning_hand);
+			Sorting.sort_Meld(winning_hand);
 			if(CheckPH(winning_hand)) {
 				Sequence common_hand=new Common_Hand();
 				temp_sequence.add(common_hand);

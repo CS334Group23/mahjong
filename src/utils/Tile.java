@@ -351,19 +351,6 @@ public class Tile implements Comparable<Tile> {
 		}
 		return false;
 	}
-	
-	/**
-	 * Sort tile list.
-	 *
-	 * @param tiles the tile list
-	 * @return the sorted Tile list
-	 */
-	public static ArrayList<Tile> sortTileList(ArrayList<Tile> tiles) {
-		ArrayList<Tile> sortedTiles = null;
-		Collections.sort(tiles);
-		sortedTiles = tiles;
-		return sortedTiles;
-	}
-	
+
 }
 
