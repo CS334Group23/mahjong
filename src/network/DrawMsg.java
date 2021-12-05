@@ -5,22 +5,21 @@
  */
 package network;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DrawMsg.
  */
 public class DrawMsg implements Message{
 	
-	/** The op name. */
+	/** The operation name. */
 	private String opName;
 	
-	/** The tile id. */
+	/** The drawn tile id. */
 	private int tileId;
 	
 	/**
 	 * Instantiates a new draw msg.
 	 *
-	 * @param id the id
+	 * @param id the drawn Tile id
 	 */
 	public DrawMsg(int id) {
 		this.tileId = id;
@@ -28,7 +27,7 @@ public class DrawMsg implements Message{
 	}
 	
 	/**
-	 * Gets the tile id.
+	 * Gets the drawn tile id.
 	 *
 	 * @return the tile id
 	 */

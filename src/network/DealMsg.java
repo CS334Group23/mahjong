@@ -7,22 +7,21 @@ package network;
 
 import java.util.ArrayList;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DealMsg.
  */
 public class DealMsg implements Message{
 	
-	/** The init cards. */
+	/** The initial cards id list. */
 	private ArrayList<Integer> initCards;
 	
-	/** The op name. */
+	/** The operation name. */
 	private String opName;
 	
 	/**
 	 * Instantiates a new deal msg.
 	 *
-	 * @param cards the cards
+	 * @param cards the initial cards list
 	 */
 	public DealMsg(ArrayList<Integer> cards) {
 		this.initCards = cards;
@@ -40,9 +39,9 @@ public class DealMsg implements Message{
 	}
 	
 	/**
-	 * Gets the inits the cards.
+	 * Gets the initial the cards list.
 	 *
-	 * @return the inits the cards
+	 * @return the initial the cards list
 	 */
 	public ArrayList<Integer> getInitCards(){
 		return initCards;

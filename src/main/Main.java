@@ -13,7 +13,7 @@ public class Main {
 	/**
 	 * The main method.
 	 *
-	 * @param args the arguments
+	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
 		// parse the command line argument

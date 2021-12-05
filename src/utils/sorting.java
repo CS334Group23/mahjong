@@ -7,16 +7,16 @@ package utils;
 
 import java.util.ArrayList;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class sorting.
+ * The Class which does some common sorting work.
  */
 public final class sorting {
     
     /**
-     * Sort meld.
+     * Sort a list of Meld.
      *
-     * @param showed_hand the showed hand
+     * @param showed_hand A list of showed Meld
      */
     public static void sort_Meld(ArrayList<Meld> showed_hand){
     	Meld temp;

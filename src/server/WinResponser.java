@@ -7,17 +7,16 @@ package server;
 
 import network.BidMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WinResponser.
  */
 public class WinResponser implements BidResponser{
 
 	/**
-	 * Response.
+	 * Response to Win Message to client。
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input message
 	 */
 	@Override
 	public void response(Server server, BidMsg msg) {

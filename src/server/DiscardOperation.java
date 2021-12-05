@@ -7,17 +7,17 @@ package server;
 
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DiscardOperation.
+ * DiscardOperation in server to deal with input DiscardMsg from client。
  */
 public class DiscardOperation implements ServerOperation{
 
 	/**
-	 * Operate.
+	 *DiscardOperation in server to deal with input DiscardMsg from client。
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input message
 	 */
 	@Override
 	public void operate(Server server, Message msg) {

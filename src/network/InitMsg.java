@@ -5,18 +5,16 @@
  */
 package network;
 
-
-// TODO: Auto-generated Javadoc
 /**
  * The Class InitMsg.
  */
 public class InitMsg implements Message{
 
-	/** The op name. */
+	/** The operation name. */
 	private String opName;
 	
 	/**
-	 * Instantiates a new inits the msg.
+	 * Instantiates a new initMsg.
 	 */
 	public InitMsg() {
 		this.opName = "InitOperation";
