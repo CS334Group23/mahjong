@@ -12,20 +12,20 @@ import java.util.Queue;
 import network.BidMsg;
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BidOperation.
+ * BidOperation in server to deal with input BidMsg from client。
  */
 public class BidOperation implements ServerOperation{
 	
-	/** The msg queue. */
+	/** The static input BidMsg queue. */
 	private static Queue<BidMsg> msgQueue = new PriorityQueue<>();
 	
 	/**
-	 * Operate.
+	 * BidOperation in server to deal with input BidMsg from client。
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input Message
 	 */
 	@Override
 	public void operate(Server server, Message msg) {

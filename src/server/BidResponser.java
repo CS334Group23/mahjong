@@ -7,17 +7,16 @@ package server;
 
 import network.BidMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface BidResponser.
  */
 public interface BidResponser {
 	
 	/**
-	 * Response.
+	 * Response to a certain BidMsg to client.
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input BidMsg
 	 */
 	public void response(Server server, BidMsg msg);
 }
