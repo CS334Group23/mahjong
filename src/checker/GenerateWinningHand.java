@@ -37,7 +37,7 @@ public class GenerateWinningHand {
 	public int count=0;
 	
 	/**
-	 * Gets the combination.
+	 * Gets the combination. 
 	 *
 	 * @param hand the hand
 	 * @return the combination
@@ -59,7 +59,7 @@ public class GenerateWinningHand {
 	
 	/**
 	 * Checkcombination.
-	 *
+	 * Find the combination of set with 4 meld + 1 eye by algorithm 
 	 * @param hand the hand
 	 * @return true, if successful
 	 */
@@ -169,7 +169,7 @@ public class GenerateWinningHand {
 	
 	/**
 	 * Check chow.
-	 *
+	 * Checking if three tile are in consecutive rank and same type.
 	 * @param a the a
 	 * @param b the b
 	 * @param c the c
@@ -188,7 +188,7 @@ public class GenerateWinningHand {
 
 	/**
 	 * Check pong.
-	 *
+	 * Checking if three tile are same rank and type. (Identical)
 	 * @param a the a
 	 * @param b the b
 	 * @param c the c
