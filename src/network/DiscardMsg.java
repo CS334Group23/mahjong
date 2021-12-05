@@ -5,26 +5,25 @@
  */
 package network;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DiscardMsg.
  */
 public class DiscardMsg implements Message{
 	
-	/** The op name. */
+	/** The operation name. */
 	private String opName;
 	
-	/** The tile id. */
+	/** The discarded tile id. */
 	private int tileId;
 	
-	/** The sender id. */
+	/** The sender id of this discard. */
 	private int senderId;
 	
 	/**
 	 * Instantiates a new discard msg.
 	 *
-	 * @param id the id
-	 * @param clientId the client id
+	 * @param id the discarded Tile id
+	 * @param clientId the sender client id
 	 */
 	public DiscardMsg(int id, int clientId) {
 		this.tileId = id;
@@ -52,7 +51,7 @@ public class DiscardMsg implements Message{
 	}
 	
 	/**
-	 * Gets the tile id.
+	 * Gets the discarded tile id.
 	 *
 	 * @return the tile id
 	 */

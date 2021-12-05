@@ -5,24 +5,23 @@
  */
 package network;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface Peer.
  */
 public interface Peer {
 	
 	/**
-	 * Send.
+	 * Send a message to a target Peer.
 	 *
-	 * @param target the target
-	 * @param msg the msg
+	 * @param target the target to send message 
+	 * @param msg the message
 	 */
 	public void send(Peer target, Message msg);
 	
 	/**
-	 * On recv.
+	 * Deal with a receiving message.
 	 *
-	 * @param msg the msg
+	 * @param msg the received message
 	 */
 	public void onRecv(Message msg);
 }	

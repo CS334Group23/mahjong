@@ -7,17 +7,16 @@ package server;
 
 import network.BidMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ChowResponser.
  */
 public class ChowResponser implements BidResponser{
 
 	/**
-	 * Response.
+	 * Response to Chow Message to client。
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input Bid Message.
 	 */
 	@Override
 	public void response(Server server, BidMsg msg) {

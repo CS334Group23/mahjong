@@ -8,9 +8,9 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Enum Type.
+ * The Enumerate class which represent the type of a Tile
  */
 public enum Type{
 	
@@ -32,10 +32,10 @@ public enum Type{
 	/** The type index. */
 	private final int typeIndex;
 	
-	/** The start id. */
+	/** The start id of this type of Tile. */
 	private final int startId;
 	
-	/** The index map. */
+	/** The hash map of index and type. */
 	private static Map<Integer, Type> indexMap = new HashMap<Integer, Type>();
 	static {
 		for (Type t : Type.values()) {
@@ -46,8 +46,8 @@ public enum Type{
 	/**
 	 * Instantiates a new type.
 	 *
-	 * @param typeIndex the type index
-	 * @param startId the start id
+	 * @param typeIndex the type index of the type
+	 * @param startId the start id of the type
 	 */
 	private Type(int typeIndex, int startId) {
 		this.typeIndex = typeIndex;
@@ -55,9 +55,9 @@ public enum Type{
 	}
 	
 	/**
-	 * Gets the type.
+	 * Gets the type according to the index of the type index.
 	 *
-	 * @param idx the idx
+	 * @param idx the type index
 	 * @return the type
 	 */
 	public static Type getType(int idx) {
@@ -65,28 +65,28 @@ public enum Type{
 	}
 	
 	/**
-	 * Gets the type index.
+	 * Gets the type index of the type.
 	 *
-	 * @return the type index
+	 * @return the type index of the type.
 	 */
 	public int getTypeIndex() {
 		return typeIndex;
 	}
 	
 	/**
-	 * Gets the start id.
+	 * Gets the start id of the type.
 	 *
-	 * @return the start id
+	 * @return the start id of the type.
 	 */
 	public int getStartId() {
 		return startId;
 	}
 	
 	/**
-	 * Checks if is same type.
+	 * Checks if tow type is same.
 	 *
-	 * @param type the type
-	 * @return true, if is same type
+	 * @param type another type to compare with
+	 * @return true, if is two type are the same
 	 */
 	public boolean isSameType(Type type) {
 		if(this.getTypeIndex()==type.getTypeIndex())

@@ -7,17 +7,16 @@ package server;
 
 import network.BidMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PongResponser.
  */
 public class PongResponser implements BidResponser{
 
 	/**
-	 * Response.
+	 * Response to Pong Message to client。
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input message
 	 */
 	@Override
 	public void response(Server server, BidMsg msg) {

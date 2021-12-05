@@ -7,14 +7,13 @@ package server;
 
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface ServerOperation.
  */
 public interface ServerOperation {
 	
 	/**
-	 * Operate.
+	 * Operate function to deal with input message in server.
 	 *
 	 * @param server the server
 	 * @param msg the msg

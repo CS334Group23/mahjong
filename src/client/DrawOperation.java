@@ -16,17 +16,16 @@ import network.DiscardMsg;
 import network.DrawMsg;
 import network.Message;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class DrawOperation.
+ * The Class DrawOperation is the class deals the received draw message.
  */
 public class DrawOperation implements ClientOperation{
 
 	/**
-	 * Operate.
+	 * Operate the draw message.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client who operates the message
+	 * @param msg the message the client receives
 	 */
 	@Override
 	public void operate(Client client, Message msg) {

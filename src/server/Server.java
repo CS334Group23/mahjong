@@ -24,31 +24,30 @@ import network.InitMsg;
 import network.Message;
 import network.Peer;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Server.
  */
 public class Server implements Peer{
 	
-	/** The Constant INITIAL_HAND. */
+	/** The Constant INITIAL_HAND number. */
 	public final static int INITIAL_HAND = 13;
 	
-	/** The Constant CLIENT_NUM. */
+	/** The Constant CLIENT_NUM number. */
 	public final static int CLIENT_NUM = 4;
 	
-	/** The cardlist. */
+	/** The total cardlist. */
 	private Deque<Integer> cardlist;
 	
-	/** The client hands. */
+	/** The list store each client's hands. */
 	private ArrayList<ArrayList<Integer>> clientHands;
 	
-	/** The op. */
-	private ServerOperation op; //need to later add exception handling
+	/** The current serverOperation. */
+	private ServerOperation op;
 	
-	/** The all clients. */
+	/** The list to store all client Peers. */
 	private ArrayList<Peer> allClients;
 	
-	/** The next client. */
+	/** The next client id. */
 	private int nextClient;
 
 	/**
@@ -60,8 +59,9 @@ public class Server implements Peer{
 	
 	/**
 	 * Form room.
+	 * Which means construct 4 client to form a room to start game in stand-alone mode.
 	 *
-	 * @param ui the ui
+	 * @param ui the ui string get from command line
 	 */
 	public void formRoom(String ui) {
 		allClients = new ArrayList<Peer>(CLIENT_NUM);
@@ -71,12 +71,12 @@ public class Server implements Peer{
 	}
 	
 	/**
-	 * Inits the.
+	 * Inits a round of game.
 	 */
 	public void init() {
 		cardlist = shuffle();
 		clientHands = deal();
-		//init the each ui
+		//init each ui
 		sendAll(new InitMsg(), 0);
 		//send initial hands to the clients
 		for(int i = 0;i<CLIENT_NUM;i++) {
@@ -85,7 +85,7 @@ public class Server implements Peer{
 	}
 	
 	/**
-	 * Start game.
+	 * Start a round of game.
 	 */
 	public void startGame() {
 		nextClient = 0;
@@ -94,7 +94,7 @@ public class Server implements Peer{
 	}
 	
 	/**
-	 * Shuffle.
+	 * Shuffle a the all card list for client to draw.
 	 *
 	 * @return the deque
 	 */
@@ -112,7 +112,7 @@ public class Server implements Peer{
 	}
 	
 	/**
-	 * Deal.
+	 * Deal init card list to all the clients.
 	 *
 	 * @return the array list
 	 */
@@ -133,10 +133,10 @@ public class Server implements Peer{
 	}
 	
 	/**
-	 * Send all.
+	 * Send a message to all the clients ends with the endClient.
 	 *
-	 * @param msg the msg
-	 * @param endClient the end client
+	 * @param msg the message to send
+	 * @param endClient the end client id
 	 */
 	public void sendAll(Message msg, int endClient) {
 		for(int i = 0;i<CLIENT_NUM;i++) {
@@ -146,25 +146,25 @@ public class Server implements Peer{
 	}
 	
 	/**
-	 * Sets the next client.
+	 * Sets the next client to send message.
 	 *
-	 * @param clientId the new next client
+	 * @param clientId the next client id
 	 */
 	public void setNextClient(int clientId) {
 		this.nextClient = clientId;
 	}
 	
 	/**
-	 * Gets the next client.
+	 * Gets the next client id.
 	 *
-	 * @return the next client
+	 * @return the next client id
 	 */
 	public int getNextClient() {
 		return nextClient;
 	}
 	
 	/**
-	 * Send next draw.
+	 * Send next draw to the nextClient stored in the server.
 	 */
 	public void sendNextDraw() {
 		int sendTarget = nextClient;
@@ -186,10 +186,10 @@ public class Server implements Peer{
 	
 	
 	/**
-	 * Send.
+	 * Send function inherent from the Peer.
 	 *
-	 * @param target the target
-	 * @param msg the msg
+	 * @param target the target Peer to send
+	 * @param msg the message to send
 	 */
 	@Override
 	public void send(Peer target, Message msg) {
@@ -197,13 +197,13 @@ public class Server implements Peer{
 	}
 
 	/**
-	 * On recv.
+	 * Deal with the message on receiving message.
 	 *
-	 * @param msg the msg
+	 * @param msg the received message
 	 */
 	@Override
 	public void onRecv(Message msg) {
-		try {// this part may be extracted later
+		try {
 			Class<?> c = Class.forName("server."+msg.getOperationName());
 			Constructor<?> constructor = c.getConstructor();
 			op = (ServerOperation)constructor.newInstance();

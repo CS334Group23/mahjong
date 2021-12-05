@@ -8,17 +8,16 @@ package server;
 import network.BidMsg;
 import network.DrawNoticeMsg;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class KongResponser.
  */
 public class KongResponser implements BidResponser{
 
 	/**
-	 * Response.
+	 * Response to Kong Message to client。
 	 *
 	 * @param server the server
-	 * @param msg the msg
+	 * @param msg the input message
 	 */
 	@Override
 	public void response(Server server, BidMsg msg) {

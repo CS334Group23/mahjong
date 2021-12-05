@@ -9,14 +9,17 @@ import java.lang.reflect.Constructor;
 
 import network.BidMsg;
 import network.Message;
-
+/**
+ * The Class BidOperation is the class deals the received bid message.
+ */
 public class BidOperation implements ClientOperation{
 	
 	/**
-	 * Operate.
+	 * Operate the bid message.
+	 * Creates the corresponding responser class according to message information
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client who operates the message
+	 * @param msg the message the client receives
 	 */
 	@Override
 	public void operate(Client client, Message msg) {

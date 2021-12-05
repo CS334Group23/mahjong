@@ -5,46 +5,46 @@
  */
 package utils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Meld.
+ * The Class which represent a Meld in the whole System.
  */
 public class Meld {
 	
-	/** The first. */
+	/** The first Tile of the Meld. */
 	private Tile first;
 	
-	/** The second. */
+	/** The second Tile of the Meld. */
 	private Tile second;
 	
-	/** The third. */
+	/** The third Tile of the Meld. */
 	private Tile third;
 	
-	/** The forth. */
+	/** The forth Tile of the Meld. */
 	private Tile forth;
 	
-	/** The comb type. */
+	/** The combination type of the Meld. */
 	private int comb_type; // just for temp
 	
-	/** The comb name. */
+	/** The combination name of the Meld. */
 	private String combName;
 	
-	/** The comb chn name. */
+	/** The Chinese combination name of the Meld. */
 	private String combChnName;
 	
-	/** The meld name. */
+	/** The name of the Meld. */
 	private String meldName;
 	
-	/** The meld length. */
+	/** The lenght of the Meld. */
 	private int meldLength;
 	
 	/**
 	 * Instantiates a new meld.
 	 *
-	 * @param a the a
-	 * @param b the b
-	 * @param c the c
-	 * @param d the d
+	 * @param a the first Tile
+	 * @param b the second Tile
+	 * @param c the third Tile
+	 * @param d the fourth Tile
 	 */
 	public Meld(Tile a,Tile b, Tile c, Tile d) {
 		String str = "";
@@ -83,10 +83,10 @@ public class Meld {
 	}
 	
 	/**
-	 * Compare to.
+	 * Compare the relative priority of two Meld.
 	 *
-	 * @param meld the meld
-	 * @return the int
+	 * @param meld another Meld to compare with.
+	 * @return the integer represent the relative priority of two Meld
 	 */
 	public int compareTo(Meld meld) {
 
@@ -94,9 +94,9 @@ public class Meld {
 	}
 	
 	/**
-	 * Gets the first.
+	 * Gets the first Tile of the Meld.
 	 *
-	 * @return the first
+	 * @return the first Tile of the Meld
 	 */
 	public Tile getFirst() {
 		return first;
@@ -104,9 +104,9 @@ public class Meld {
 	}
 	
 	/**
-	 * Gets the second.
+	 * Gets the second Tile of the Meld.
 	 *
-	 * @return the second
+	 * @return the second Tile of the Meld
 	 */
 	public Tile getSecond() {
 		return second;
@@ -114,9 +114,9 @@ public class Meld {
 	}
 	
 	/**
-	 * Gets the third.
+	 * Gets the third Tile of the Meld.
 	 *
-	 * @return the third
+	 * @return the third Tile of the Meld
 	 */
 	public Tile getThird() {
 		return third;
@@ -124,9 +124,9 @@ public class Meld {
 	}
 	
 	/**
-	 * Gets the forth.
+	 * Gets the forth Tile of the Meld.
 	 *
-	 * @return the forth
+	 * @return the forth Tile of the Meld
 	 */
 	public Tile getForth() {
 		return forth;
@@ -134,19 +134,19 @@ public class Meld {
 	}
 	
 	/**
-	 * Gets the comb type.
+	 * Gets the combination type of the Meld.
 	 *
-	 * @return the comb type
+	 * @return the combination type of the Meld
 	 */
 	public int getcomb_type() {
 		return comb_type;
 	}
 	
 	/**
-	 * To comb name.
+	 * Transfer the combination type to its English name.
 	 *
-	 * @param comb_type the comb type
-	 * @return the string
+	 * @param comb_type the combination type of a Meld
+	 * @return the string of the English name of the Combination type
 	 */
 	private String toCombName(int comb_type) {
 		switch(comb_type) {
@@ -164,10 +164,10 @@ public class Meld {
 	}
 	
 	/**
-	 * To chn comb name.
+	 * Transfer the combination type to its Chinese name.
 	 *
-	 * @param comb_type the comb type
-	 * @return the string
+	 * @param comb_type the combination type of a Meld
+	 * @return the string of the Chinese name of the Combination type
 	 */
 	private String toChnCombName(int comb_type) {
 		switch(comb_type) {
@@ -185,36 +185,36 @@ public class Meld {
 	}
 	
 	/**
-	 * Gets the name.
+	 * Gets the English name of the combination of the Meld.
 	 *
-	 * @return the name
+	 * @return the English name
 	 */
 	public String getName() {
 		return combName;
 	}
 	
 	/**
-	 * Gets the chn name.
+	 * Gets the Chinese name of the combination of the Meld.
 	 *
-	 * @return the chn name
+	 * @return the Chinese name
 	 */
 	public String getChnName() {
 		return combChnName;
 	}
 	
 	/**
-	 * Prints the meld.
+	 * Get a String of the Meld name
 	 *
-	 * @return the string
+	 * @return the string of the Meld name
 	 */
 	public String printMeld() {
 		return meldName;
 	}
 	
 	/**
-	 * Gets the meld length.
+	 * Gets the length of the Meld.
 	 *
-	 * @return the meld length
+	 * @return the length of the Meld
 	 */
 	public int getMeldLength() {
 		return meldLength;

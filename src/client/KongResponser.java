@@ -7,17 +7,16 @@ package client;
 
 import network.BidMsg;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class KongResponser.
+ * The Class KongResponser handles when some players play the Kong bid.
  */
 public class KongResponser implements BidResponser{
 	
 	/**
-	 * Response.
+	 * Response when some players play the Kong bid.
 	 *
-	 * @param client the client
-	 * @param msg the msg
+	 * @param client the client receives the bid message
+	 * @param msg the bid message this client receives
 	 */
 	@Override
 	public void response(Client client, BidMsg msg) {
