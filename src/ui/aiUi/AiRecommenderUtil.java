@@ -96,7 +96,7 @@ public class AiRecommenderUtil {
 			public int compare(List<Tile> a, List<Tile> b) {
 				if(a.get(a.size()-1).getId() > b.get(b.size()-1).getId())
 					return 1;
-				else if(a.get(a.size()-1).getId() > b.get(b.size()-1).getId())
+				else if(a.get(a.size()-1).getId() < b.get(b.size()-1).getId())
 					return -1;
 				return 0;
 			}

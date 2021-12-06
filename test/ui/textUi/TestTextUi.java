@@ -275,8 +275,7 @@ class TestTextUi {
 		client.initWall(a);
 		TextUi textui = new TextUi(client);
 		textui.infoDiscard(new DiscardMsg(39,3),possibleBid);
-		assertEquals("You are client1\n"
-				+ "Client3 discards 一万\n"
+		assertEquals("Client3 discards 一万\n"
 				+ "                    1    2\n"
 				+"You have options:杠 一万 一万 一万 一万 /过 /\n"
 				+"Client1 has cards: 六条 /八条 /一万 /一万 /一万 /三万 /六万 /六万 /九万 /九万 /一筒 /二筒 /四筒 /\n",getOutput());
@@ -299,8 +298,7 @@ class TestTextUi {
 		client.initWall(a);
 		TextUi textui = new TextUi(client);
 		textui.infoDiscard(new DiscardMsg(39,3),null);
-		assertEquals("You are client1\n"
-				+ "Client3 discards 一万\n",getOutput());
+		assertEquals("Client3 discards 一万\n",getOutput());
 	}
 	
 	/**
@@ -313,13 +311,11 @@ class TestTextUi {
 		setOutput();
 		Client client = new Client(1,new Server(),"TEXT");
 		ArrayList<BidMsg> possibleBid = new ArrayList<>();
-		Meld kong =new Meld(new Tile(36),new Tile(37),new Tile(38),new Tile(39));
 		ArrayList<Integer> a = new ArrayList<Integer> (Arrays.asList(20,28,36,37,38,44,56,57,68,69,72,76,84));
 		client.initWall(a);
 		TextUi textui = new TextUi(client);
 		textui.infoDiscard(new DiscardMsg(39,3),possibleBid);
-		assertEquals("You are client1\n"
-				+ "Client3 discards 一万\n",getOutput());
+		assertEquals("Client3 discards 一万\n",getOutput());
 	}
 	
 	/**
@@ -402,9 +398,8 @@ class TestTextUi {
 	 * @throws Exception the exception
 	 */
 	@Test
-	void testInfoWin() throws Exception {
+	void testInfoWin1() throws Exception {
 		setOutput();
-		ArrayList<ArrayList<Integer>> hands = new ArrayList<>();
 		ArrayList<Integer> a1 = new ArrayList<Integer> (Arrays.asList(4,8,36,37,56,60,64));
 		ArrayList<Integer> a2 = new ArrayList<Integer> (Arrays.asList(0,5,16,65,84,88,108,116,132,133));
 		ArrayList<Integer> a3 = new ArrayList<Integer> (Arrays.asList(61,66,80,85,89,90,92,93,109,134));
@@ -419,6 +414,29 @@ class TestTextUi {
 		TextUi textui = new TextUi(client);
 		textui.infoWin(msg);
 		assertEquals("client0 wins\n"
+				+ "The hand of client 0 is 二条 /三条 /一万 /一万 /六万 /七万 /八万 /\n"
+				+ "The hand of client 1 is 幺鸡 /二条 /五条 /八万 /四筒 /五筒 /红中 /白板 /北风 /北风 /\n"
+				+ "The hand of client 2 is 七万 /八万 /三筒 /四筒 /五筒 /五筒 /六筒 /六筒 /红中 /北风 /\n"
+				+ "The hand of client 3 is 二条 /二条 /五条 /一万 /一万 /七万 /七万 /九万 /三筒 /六筒 /红中 /红中 /白板 /\n",getOutput());
+	}
+	
+	@Test
+	void testInfoWin2() throws Exception {
+		setOutput();
+		ArrayList<Integer> a1 = new ArrayList<Integer> (Arrays.asList(4,8,36,37,56,60,64));
+		ArrayList<Integer> a2 = new ArrayList<Integer> (Arrays.asList(0,5,16,65,84,88,108,116,132,133));
+		ArrayList<Integer> a3 = new ArrayList<Integer> (Arrays.asList(61,66,80,85,89,90,92,93,109,134));
+		ArrayList<Integer> a4 = new ArrayList<Integer> (Arrays.asList(6,7,17,38,39,62,63,68,81,94,110,111,117));
+		ArrayList<Integer> scores = new ArrayList<Integer> (Arrays.asList(1,-1,0,0));
+		WinMsg msg = new WinMsg(-1,-1,null,scores,WinMsg.TIE);
+		msg.addHand(0, a1);
+		msg.addHand(1, a2);
+		msg.addHand(2, a3);
+		msg.addHand(3, a4);
+		Client client = new Client(0,new Server(),"TEXT");
+		TextUi textui = new TextUi(client);
+		textui.infoWin(msg);
+		assertEquals("No more tiles. It's a draw!\n"
 				+ "The hand of client 0 is 二条 /三条 /一万 /一万 /六万 /七万 /八万 /\n"
 				+ "The hand of client 1 is 幺鸡 /二条 /五条 /八万 /四筒 /五筒 /红中 /白板 /北风 /北风 /\n"
 				+ "The hand of client 2 is 七万 /八万 /三筒 /四筒 /五筒 /五筒 /六筒 /六筒 /红中 /北风 /\n"
@@ -451,7 +469,8 @@ class TestTextUi {
 		Client client = new Client(1,new Server(),"TEXT");
 		TextUi textui = new TextUi(client);
 		textui.init(client);
-		assertEquals("text ui init\n",getOutput());
+		assertEquals("text ui init\n"+
+					 "Game Start!!\n",getOutput());
 	}
 	
 	

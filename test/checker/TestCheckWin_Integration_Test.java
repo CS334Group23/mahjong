@@ -12,7 +12,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import checker.CheckWin;
 import checker.sequence.All_Honours;
 import checker.sequence.All_In_Triplet;
 import checker.sequence.All_Kongs;
@@ -35,7 +34,7 @@ import checker.sequence.White_Dragon;
 import checker.sequence.Win_From_Wall;
 import utils.Meld;
 import utils.Tile;
-// TODO: Auto-generated Javadoc
+
 
 /**
  * The Class TestCheckWin_Integration_Test.

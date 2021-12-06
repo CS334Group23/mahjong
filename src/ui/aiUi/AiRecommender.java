@@ -227,6 +227,15 @@ public class AiRecommender {
 		}
 		return value;
 	}
+	/**
+	 * Gets numbers of the cards that has not been drawn.
+	 *
+	 * @return numbers of the cards that has not been drawn
+	 */
+	public int getRemainingCards() {
+		return cardsNotPlayed.size();
+	}
+
 }
 
 
