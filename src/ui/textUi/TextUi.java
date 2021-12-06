@@ -110,7 +110,6 @@ public class TextUi implements Ui{
 	 */
 	@Override
 	public void infoDiscard(DiscardMsg discardMsg, ArrayList<BidMsg> possibleBid) {
-		System.out.printf("You are client%d\n", client.getId());
 		System.out.printf("Client%d discards %s\n", discardMsg.getSenderId(),Tile.idToChnName(discardMsg.getTileId()));
 		if(possibleBid != null && possibleBid.size()>0) { //in the main logic part still need to check
 			printIndex(possibleBid.size());
@@ -153,7 +152,10 @@ public class TextUi implements Ui{
 	 */
 	@Override
 	public void infoWin(WinMsg winMsg) {
-		System.out.printf("client%d wins\n", winMsg.getWinClientId());
+		if(winMsg.getWinClientId()!=-1)
+			System.out.printf("client%d wins\n", winMsg.getWinClientId());
+		else
+			System.out.printf("No more tiles. It's a draw!\n");
 		for(ArrayList<Integer> hand : winMsg.getHandsList()) {
 			System.out.printf("The hand of client %d is %s\n", winMsg.getHandsList().indexOf(hand),Tile.tileListToString(Tile.idToTileList(hand)));
 		}
@@ -194,6 +196,7 @@ public class TextUi implements Ui{
 	@Override
 	public void init(ClientInterface client) {
 		System.out.println("text ui init");
+		System.out.println("Game Start!!");
 	}
 	
 }
