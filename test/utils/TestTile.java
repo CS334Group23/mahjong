@@ -77,7 +77,6 @@ class TestTile {
 		Tile t = new Tile(143);
 		t.setUrl("resource/static/tiles/facedown-1.png");
 		String url = t.getUrl();
-		String name = t.getName();
 		assertEquals("resource/static/tiles/facedown-1.png", url);
 	}
 	
@@ -85,7 +84,6 @@ class TestTile {
 	void testGetUrl() {
 		Tile t = new Tile(144);
 		String url = t.getUrl();
-		String name = t.getName();
 		assertEquals("resource/static/tiles/facedown-1.png", url);
 	}
 	/**

@@ -33,7 +33,8 @@ class TestInitOperation {
 		Client client = new Client(0,new Server(),"TEXT");
 		InitOperation initOp = new InitOperation();
 		initOp.operate(client, new InitMsg());
-		assertEquals("text ui init\n",getOutput());
+		assertEquals("text ui init\n"+
+				 "Game Start!!\n",getOutput());
 	}
 	
 	/** The old print stream. */
