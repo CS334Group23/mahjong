@@ -61,9 +61,15 @@ Release 1 - Release CMD version
 
 ## Credit
 
-ZHOU Yukun                Project Manager
-YAO Shenglong            Assistant Project Manager
-WANG Yucheng           Developer
-TAM Kam Chuen         Developer
-CHAN Hiu Leong         Developer
-QI Xintong                    Developer 
+ZHOU Yukun [@Anyethan](https://github.com/Anyethan): Project Manager <br />
+
+YAO Shenglong [@James](https://github.com/James-yaoshenglong): Assistant Project Manager <br />
+
+WANG Yucheng [@Delta](https://github.com/DELTA-DoubleWise): Developer <br />
+
+TAM Kam Chuen [@edwintkc](https://github.com/edwintkc1): Developer <br />
+
+CHAN Hiu Leong [@Leo](https://github.com/leohlchan) :Developer <br />
+
+QI Xintong [@Amy](https://github.com/AmyQiXintong) :Developer
+
